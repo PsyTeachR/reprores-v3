@@ -1,9 +1,9 @@
 bookdown::bs4_book:
   default: yes
   md_extensions: -smart
-  df_print: kable
+  df_print: paged
   repo:
-    base: https://github.com/psyteachr/reprores-v2
+    base: https://github.com/psyteachr/reprores-v3
     branch: master
     subdir: book
   includes:

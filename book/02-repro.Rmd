@@ -1,24 +1,17 @@
 # Reproducible Workflows {#repro}
 
 <div class="right meme"><img src="images/memes/repro_reports.jpg"
-     alt="Top left: young spongebob; top right: Using Base R for your analysis and copy pasting yur results into tables in Word; middle left: older angry spongebob in workout clothes; middle right: learning how to use dplyr visualize data with ggplot2 and report your analysis in rmarkdown documents; bottom left: muscular spongebob shirtless in a boxing ring; bottom right: wielding the entire might of the tidyverse (with 50 hex stickers)" /></div>
+     alt="Top left: young spongebob; top right: Using Base R for your analysis and copy pasting your results into tables in Word; middle left: older angry spongebob in workout clothes; middle right: learning how to use dplyr visualize data with ggplot2 and report your analysis in rmarkdown documents; bottom left: muscular spongebob shirtless in a boxing ring; bottom right: wielding the entire might of the tidyverse (with 50 hex stickers)" /></div>
 
 ## Learning Objectives {#ilo-repro}
 
-### Basic {-}
-
 1. Organise a [project](#projects) [(video)](https://youtu.be/y-KiPueC9xw ){class="video"}
 2. Create and compile an [Rmarkdown document](#rmarkdown) [(video)](https://youtu.be/EqJiAlJAl8Y ){class="video"}
-3. Edit the YAML header to add table of contents and other options
-4. Include a table 
-5. Include a figure 
-6. Report the output of an analysis using inline R
-7. Add a bibliography and in-line citations
-
-### Intermediate {-}
-
-8. Output doc and PDF formats
-9. Format tables using `kableExtra`
+3. Edit the [YAML header](#yaml) to add table of contents and other options
+4. Include a [table](#repro-tables)
+5. Include a [figure](#repro-figures)
+6. Report the output of an analysis using [inline R](#inline-r)
+7. Add a [bibliography](#bibliography) and [citations](#citations)
 
 
 ## Setup {#setup-repro}
@@ -32,7 +25,7 @@ library(knitr)
 
 Have you ever worked on a report, creating a summary table for the demographics, making beautiful plots, getting the analysis just right, and copying all the relevant numbers into your manuscript, only to find out that you forgot to exclude a test run and have to redo everything?
 
-An R Markdown document produces a `r glossary("reproducibility", "reproducible")` report that fixes this problem. Although this requires a bit of extra effort at the start, it will more than pay you back by allowing you to update your entire report with the push of a button whenever anything changes.
+A`r glossary("reproducibility", "reproducible")` report fixes this problem. Although this requires a bit of extra effort at the start, it will more than pay you back by allowing you to update your entire report with the push of a button whenever anything changes.
 
 Studies also show that many, if not most, papers in the scientific literature have reporting errors. For example, more than half of over 250,000 psychology papers published between 1985 and 2013 have at least one value that is statistically incompatible (e.g., a p-value that is not possible given a t-value and degrees of freedom) [@nuijten2016prevalence]. Reproducible reports help avoid transcription and rounding errors.
 
@@ -140,6 +133,10 @@ Depending on your settings, you may also see a directory called `.Rproj.user`, w
 
 In this lesson, we will learn to make an R Markdown document with a table of contents, appropriate headers, code chunks, tables, images, inline R, and a bibliography. 
 
+::: {.info data-latex=""}
+There is a new type of reproducible report format called [quarto](https://quarto.org/){target="_blank"} that is very similar to R Markdown. We won't be using quarto in this class because it has a few small differences that get confusing if you're learning both quarto and R Markdown at the same time, but you should be able to pick up quarto very easily once you've learned R Markdown.
+:::
+
 We will use `r glossary("R Markdown")` to create reproducible reports, which enables mixing of text and code. A reproducible script will contain sections of code in code blocks. A code block starts and ends with three backtick symbols in a row, with some information about the code between curly brackets, such as `{r chunk-name, echo=FALSE}` (this runs the code, but does not show the text of the code block in the compiled document). The text outside of code blocks is written in `r glossary("markdown")`, which is a way to specify formatting, such as headers, paragraphs, lists, bolding, and links.
 
 ```{r img-reproducible-script, echo=FALSE, fig.cap="A reproducible script."}
@@ -153,7 +150,9 @@ Create a new R Markdown file from the **`File > New File > R Markdown...`** menu
 :::
 
 
-### YAML Header
+
+
+### YAML Header {#yaml}
 
 The `r glossary("YAML")` header is where you can set several options. 
 
@@ -280,7 +279,7 @@ If you name your objects clearly, you often don't need to add clarifying comment
 
 It's a bit of an art to comment your code well. The best way to develop this skill is to read a lot of other people's code and have others review your code. 
 
-#### Tables
+#### Tables {#repro-tables}
 
 Next, create a code chunk where you want to display a table of the descriptives (e.g., Participants section of the Methods). We'll use tidyverse functions you will learn in the [data wrangling lectures](#tidyr) to create summary statistics for each group.
 
@@ -318,7 +317,7 @@ knitr::kable(summary_table,
 Notice that the r chunk specifies the option `results='asis'`. This lets you format the table using the `kable()` function from `knitr`. You can also use more specialised functions from [papaja](https://crsh.github.io/papaja_man/reporting.html#tables) or [kableExtra](https://haozhu233.github.io/kableExtra/awesome_table_in_html.html) to format your tables.
 :::
 
-#### Images
+#### Images {#repro-figures}
 
 Next, create a code chunk where you want to display an image in your document. Let's put it in the Results section. We'll use some code that you'll learn more about  in the [data visualisation lecture](#ggplot) to show violin-boxplots for the groups.
 
@@ -364,7 +363,7 @@ You can also include images that you did not create in R using the typical markd
 
 ![All the Things by [Hyperbole and a Half](http://hyperboleandahalf.blogspot.com/)](images/memes/x-all-the-things.png){style="width: 50%"}
 
-#### In-line R
+#### In-line R {#inline-r}
 
 Now let's analyse the pets data to see if cats are heavier than ferrets. First we'll run the analysis code. Then we'll save any numbers we might want to use in our manuscript to variables and round them appropriately. Finally, we'll use `r hl(glue::glue())` to format a results string.
 
@@ -394,22 +393,25 @@ You can insert the results into a paragraph with inline R code that looks like t
 Cats were significantly heavier than ferrets (`r weight_result`). 
 
 
-
 ### Bibliography
 
-There are several ways to do in-text citations and automatically generate a [bibliography](https://rmarkdown.rstudio.com/authoring_bibliographies_and_citations.html#bibliographies) in R Markdown. Markdown files need a BibTex file that contains the references you need to cite. You specify the name of this file in the YAML header, like `bibliography: filename.bib` and reference citations in text using an at symbol and a shortname, like `[@tidyverse]`.
+There are several ways to do in-text references and automatically generate a [bibliography](https://bookdown.org/yihui/rmarkdown-cookbook/bibliography.html){target="_blank"} in R Markdown. Markdown files need to link to a BibTex file (a plain text file with references in a specific format) that contains the references you need to cite. You specify the name of this file in the YAML header, like `bibliography: filename.bib` and cite references in text using an at symbol and a shortname, like `[@tidyverse]`.
 
 #### Converting from reference software
 
 Most reference software like EndNote, Zotero or Mendeley have exporting options that can export to BibTeX format. You just need to check the shortnames in the resulting file.
 
-#### Create a BibTeX File Manually
+#### Creating a BibTeX File
 
-You can make a BibTeX file and add citations manually. Make a new Text File in RStudio called "bibliography.bib".
+Most reference software like EndNote, Zotero or Mendeley have exporting options that can export to BibTeX format. You just need to check the shortnames in the resulting file.
+
+You can also make a BibTeX file and add references manually. In RStudio, go to **`File`** > **`New File...`** > **`Text File`** and save the file as "bibliography.bib".
 
 Next, add the line `bibliography: bibliography.bib` to your YAML header.
 
-You can add citations in the following format:
+#### Adding references {#citations}
+
+You can add references to a journal article in the following format:
 
 ```
 @article{shortname,
@@ -424,18 +426,21 @@ You can add citations in the following format:
 }
 ```
 
-#### Citing R packages
+See [A complete guide to the BibTeX format](https://www.bibtex.com/g/bibtex-format/){target="_blank"} for instructions on citing books, technical reports, and more.
 
-You can get the citation for an R package using the functions `citation()` and `toBibtex()`. You can paste the bibtex entry into your bibliography.bib file. Make sure to add a short name (e.g., "faux") before the first comma to refer to the reference.
+You can get the reference for an R package using the functions `citation()` and `toBibtex()`. You can paste the bibtex entry into your bibliography.bib file. Make sure to add a short name (e.g., "ggplot2") before the first comma to refer to the reference.
 
 ```{r}
-citation(package="faux") %>% toBibtex()
+citation(package="ggplot2") %>% toBibtex()
 ```
 
 
-#### Download Citation Info
+[Google Scholar](https://scholar.google.com/) entries have a BibTeX citation option. This is usually the easiest way to get the relevant values, although you have to add the DOI yourself. You can keep the suggested shortname or change it to something that makes more sense to you.
 
-[Google Scholar](https://scholar.google.com/) entries have a BibTeX citation option. This is usually the easiest way to get the relevant values, although you have to add the DOI yourself. 
+```{r google-scholar, echo = FALSE, fi.caption = "Get BibTex citations from Google Scholar."}
+knitr::include_graphics("images/present/google-scholar.png")
+```
+
 
 Some journal websites also let you download citations in bibtex format. For example, go to the publisher's page for [Equivalence Testing for Psychological Research: A Tutorial](https://journals.sagepub.com/doi/abs/10.1177/2515245918770963){target="_blank"}, click on the Cite button (in the sidebar or under the bottom Explore More menu), choose BibTeX format, and download the citation. You can open up the file in a text editor and copy the text. It should look like this:
 
@@ -465,8 +470,7 @@ eprint = {
 
 Paste the reference into your bibliography.bib file. Change `doi:10.1177/2515245918770963` in the first line of the reference to a shortname you will use to cite the reference in your manuscript. We'll use `TOSTtutorial`.
 
-
-#### In-text citations
+#### Citing references
 
 You can cite references in text like this: 
 
@@ -512,10 +516,9 @@ Add some citations to your bibliography.bib file, reference them in your text, a
 By default, the reference section is added to the end of the document. If you want to change the position (e.g., to add figures and tables after the references), include `<div id="refs"></div>` where you want the references. 
 
 
-### Output Formats
-
-You can knit your file to PDF or Word if you have the right packages installed on your computer. You can also create presentations, dashboards, websites, and even books with R markdown. In fact, the book you are reading right now was created using R markdown. See [RStudio Formats](https://rmarkdown.rstudio.com/formats.html){target="_blank"} for a list of all the output types.
-
+::: {.try data-latex=""}
+Add in-text citations and a reference list to your report.
+:::
 
 ## Glossary {#glossary-repro}
 

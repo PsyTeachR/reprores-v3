@@ -48,22 +48,22 @@ untidy <- data.frame(
   score_1 = sample(1:7, 5),
   score_2 = sample(1:7, 5),
   score_3 = sample(1:7, 5),
-  rt_1 = rnorm(5, 800, 100) %>% round(),
-  rt_2 = rnorm(5, 800, 100) %>% round(),
-  rt_3 = rnorm(5, 800, 100) %>% round()
-) %>%
+  rt_1 = rnorm(5, 800, 100) |> round(),
+  rt_2 = rnorm(5, 800, 100) |> round(),
+  rt_3 = rnorm(5, 800, 100) |> round()
+) |>
   mutate(
     total = score_1 + score_2 + score_3,
     mean_rt = round((rt_1 + rt_2 + rt_3)/3),
     total_meanRT = paste0(total, " (", mean_rt, ")")
-  ) %>%
+  ) |>
   select(-total, -mean_rt)
 
-tidy <- untidy %>%
-  gather(var, val, score_1:rt_3) %>%
-  separate(var, c("var", "trial")) %>%
-  spread(var, val) %>%
-  separate(total_meanRT, c("total", "mean_rt"), extra = "drop") %>%
+tidy <- untidy |>
+  gather(var, val, score_1:rt_3) |>
+  separate(var, c("var", "trial")) |>
+  spread(var, val) |>
+  separate(total_meanRT, c("total", "mean_rt"), extra = "drop") |>
   select(id, trial:score, total, mean_rt)
   
 ```
@@ -94,7 +94,7 @@ knitr::kable(x, caption = "Wide data")
 The same data can be represented in a long format by creating a new column that specifies what `item` the observation is from and a new column that specifies the `value` of that observation.
 
 ```{r long-data, echo = FALSE, render = "asis"}
-gather(x, "item", "value", Q1:Q3) %>%
+gather(x, "item", "value", Q1:Q3) |>
   knitr::kable(caption = "Long data")
 ```
 
@@ -140,7 +140,7 @@ data("personality", package = "reprores")
 
 ```
 
-`r head(personality) %>% knitr::kable()`
+`r head(personality) |> knitr::kable()`
 
 ### pivot_longer() {#pivot_longer}
 
@@ -158,7 +158,7 @@ personality_long <- pivot_longer(
   names_to = c("domain", "qnumber"), # new column names for headers
   names_sep = 2,                     # how to split the headers
   values_to = "score"                # new column name for values
-) %>%
+) |>
   glimpse()
 ```
 
@@ -199,7 +199,7 @@ personality_wide <- pivot_wider(
   names_from = c(domain, qnumber),
   values_from = score,
   names_sep = ""
-) %>%
+) |>
   glimpse()
 ```
 
@@ -224,7 +224,7 @@ personality_gathered <- gather(
   key = "question", # new column name for gathered headers
   value = "score",  # new column name for gathered values
   Op1:Ex9           # columns to gather
-) %>%
+) |>
   glimpse()
 ```
 
@@ -244,7 +244,7 @@ personality_sep <- separate(
   col = question,                # column to separate
   into = c("domain", "qnumber"), # new column names
   sep = 2                        # where to separate
-) %>%
+) |>
   glimpse()
 ```
 
@@ -267,7 +267,7 @@ personality_unite <- unite(
   col = "domain_n", # new column name
   domain, qnumber,  # columns to unite
   sep = "_Q"        # separation characters
-) %>%
+) |>
   glimpse()
 ```
 
@@ -283,7 +283,7 @@ personality_spread <- spread(
   data = personality_unite,
   key = domain_n, # column that contains new headers
   value = score   # column that contains new values
-) %>%
+) |>
   glimpse()
 ```
 
@@ -293,6 +293,10 @@ personality_spread <- spread(
 <div class="small_right"><img src="images/tidyr/pipe_sticker.png" alt="Pipe hex sticker" /></div>
 
 Pipes are a way to order your code in a more readable format. 
+
+::: {.info data-latex=""}
+Base R recently added a "native pipe" that looks like this: `|>`, while the tidyverse has traditionally used the "magrittr pipe" that looks like this `%>%`. They have a few small differences that you don't need to learn about yet. We'll be using the new native pipe, but you might see the magrittr pipe in materials we haven't updated yet.
+:::
 
 Let's say you have a small data table with 10 participant IDs, two columns with variable type A, and 2 columns with variable type B. You want to calculate the mean of the A variables and the mean of the B variables and return a table with 10 rows (1 for each participant) and 3 columns (`id`, `A_mean` and `B_mean`). 
 
@@ -375,12 +379,12 @@ data <- tibble(
   A2 = rnorm(10, 1),
   B1 = rnorm(10, 2),
   B2 = rnorm(10,3)
-) %>%
-  gather(variable, value, A1:B2) %>%
-  separate(variable, c("var", "var_n"), sep=1) %>%
-  group_by(id, var) %>%
-  summarise(mean = mean(value), .groups = "drop") %>%
-  spread(var, mean) %>%
+) |>
+  gather(variable, value, A1:B2) |>
+  separate(variable, c("var", "var_n"), sep=1) |>
+  group_by(id, var) |>
+  summarise(mean = mean(value), .groups = "drop") |>
+  spread(var, mean) |>
   rename(A_mean = A, B_mean = B)
   
 ```
@@ -410,10 +414,10 @@ You can debug a pipe by highlighting from the beginning to just before the pipe 
 Chain all the steps above using pipes.
     
 ```{r personality-pipe}
-personality_reshaped <- personality %>%
-  gather("question", "score", Op1:Ex9) %>%
-  separate(question, c("domain", "qnumber"), sep = 2) %>%
-  unite("domain_n", domain, qnumber, sep = "_Q") %>%
+personality_reshaped <- personality |>
+  gather("question", "score", Op1:Ex9) |>
+  separate(question, c("domain", "qnumber"), sep = 2) |>
+  unite("domain_n", domain, qnumber, sep = "_Q") |>
   spread(domain_n, score)
 ```
 
@@ -448,10 +452,10 @@ This example is complicated because the column names to gather _are_ numbers. If
 
 ```{r matmort-long}
 
-matmort_long <- matmort %>%
+matmort_long <- matmort |>
   pivot_longer(cols = `1990`:`2015`,
                names_to = "Year",
-               values_to = "stats") %>%
+               values_to = "stats") |>
   glimpse()
 
 ```
@@ -463,8 +467,8 @@ You can put `matmort` at the first argument to `pivot_longer()`; you don't have 
 Alternatively, you can use the `gather()` function.
 
 ```{r matmort-long-gather}
-matmort_long <- matmort %>%
-  gather("Year", "stats", `1990`:`2015`) %>%
+matmort_long <- matmort |>
+  gather("Year", "stats", `1990`:`2015`) |>
   glimpse()
 ```
 
@@ -476,9 +480,9 @@ The `separate` function will separate your data on anything that is not a number
 
 ```{r matmort-split-separate}
 
-matmort_split <- matmort_long %>%
-  mutate(stats = gsub(" ", "", stats)) %>%
-  separate(stats, c("rate", "ci_low", "ci_hi")) %>%
+matmort_split <- matmort_long |>
+  mutate(stats = gsub(" ", "", stats)) |>
+  separate(stats, c("rate", "ci_low", "ci_hi")) |>
   glimpse()
 
 ```
@@ -499,9 +503,9 @@ The previous example should have given you an error warning about
 
 ```{r matmort-split-extra}
 
-matmort_split <- matmort_long %>%
-  mutate(stats = gsub(" ", "", stats)) %>%
-  separate(stats, c("rate", "ci_low", "ci_hi"), extra = "drop") %>%
+matmort_split <- matmort_long |>
+  mutate(stats = gsub(" ", "", stats)) |>
+  separate(stats, c("rate", "ci_low", "ci_hi"), extra = "drop") |>
   glimpse()
 
 ```
@@ -512,8 +516,8 @@ Now do the same with `infmort`. It's already in long format, so you don't need t
 
 ```{r infmort-split-sep}
 
-infmort_split <- infmort %>%
-  separate(3, c("rate", "ci_low", "ci_hi"), extra = "drop") %>%
+infmort_split <- infmort |>
+  separate(3, c("rate", "ci_low", "ci_hi"), extra = "drop") |>
   glimpse()
 
 ```
@@ -528,13 +532,13 @@ to separate complex columns. Here, we want to separate on dashes and brackets. Y
 
 ```{r infmort-split}
 
-infmort_split <- infmort %>%
+infmort_split <- infmort |>
   separate(
     col = 3, 
     into = c("rate", "ci_low", "ci_hi"), 
     extra = "drop", 
     sep = "(\\[|-|])"
-  ) %>%
+  ) |>
   glimpse()
 
 ```
@@ -545,12 +549,12 @@ That's better. Notice the _<chr>_ next to `Year`, `rate`, `ci_low` and `ci_hi`. 
 
 ```{r infmort-split-convert}
 
-infmort_split <- infmort %>%
+infmort_split <- infmort |>
   separate(col = 3, 
            into = c("rate", "ci_low", "ci_hi"), 
            extra = "drop", 
            sep = "(\\[|-|])", 
-           convert = TRUE) %>%
+           convert = TRUE) |>
   glimpse()
   
 ```
@@ -559,12 +563,12 @@ Do the same for `matmort`.
 
 ```{r matmort-split-convert}
 
-matmort_split <- matmort_long %>%
-  mutate(stats = gsub(" ", "", stats)) %>%
+matmort_split <- matmort_long |>
+  mutate(stats = gsub(" ", "", stats)) |>
   separate(col = stats, 
            into = c("rate", "ci_low", "ci_hi"), 
            extra = "drop", 
-           convert = TRUE) %>%
+           convert = TRUE) |>
   glimpse()
 
 ```
@@ -575,15 +579,15 @@ We can chain all the steps for `matmort` above together, since we don't need tho
 
 ```{r matmort-pipes}
 
-matmort2 <- matmort %>%
-  gather("Year", "stats", `1990`:`2015`) %>%
-  mutate(stats = gsub(" ", "", stats)) %>%
+matmort2 <- matmort |>
+  gather("Year", "stats", `1990`:`2015`) |>
+  mutate(stats = gsub(" ", "", stats)) |>
   separate(
     col = stats, 
     into = c("rate", "ci_low", "ci_hi"), 
     extra = "drop", 
     convert = TRUE
-  ) %>%
+  ) |>
   glimpse()
 
 ```
@@ -595,8 +599,8 @@ Spread out the maternal mortality rate by year.
 
 ```{r infmort-wide-spread}
 
-matmort_wide <- matmort2 %>%
-  spread(key = Year, value = rate) %>%
+matmort_wide <- matmort2 |>
+  spread(key = Year, value = rate) |>
   print()
 
 ```
@@ -608,7 +612,7 @@ Nope, that didn't work at all, but it's a really common mistake when spreading d
 This is where `pivot_wider()` can be very useful. You can set `values_from` to multiple column names and their names will be added to the `names_from` values. 
 
 ```{r}
-matmort_wide <- matmort2 %>%
+matmort_wide <- matmort2 |>
   pivot_wider(
     names_from = Year,
     values_from = c(rate, ci_low, ci_hi)
@@ -635,11 +639,11 @@ Look at the help menu for built-in dataset `experimentum_quests` to learn what e
 To get the dataset into wide format, where each question is in a separate column, use the following code:
 
 ```{r}
-q <- experimentum_quests %>%
+q <- experimentum_quests |>
   pivot_wider(id_cols = session_id:user_age,
               names_from = q_name,
-              values_from = dv) %>%
-  type.convert(as.is = TRUE) %>%
+              values_from = dv) |>
+  type.convert(as.is = TRUE) |>
   print()
 ```
 

@@ -6,17 +6,17 @@ This R package contains the datasets needed for the University of Glasgow School
 
 ## Installation
 
-You can install the newest version of reprores from [GitHub](https://github.com/psyteachr/reprores-v2) with:
+You can install the newest version of reprores from [GitHub](https://github.com/psyteachr/reprores-v3) with:
 
 ``` r
-devtools::install_github("psyteachr/reprores-v2")
+devtools::install_github("psyteachr/reprores-v3")
 ```
 
 You can access the book online at <https://psyteachr.github.io/reprores/>, but you can access a local version with the function `reprores::book()`.
 
 ## Citing
 
-Lisa DeBruine & Dale Barr. (2021). Data Skills for Reproducible Research (2.0.0) Zenodo. doi:10.5281/zenodo.6527194
+Lisa DeBruine & Dale Barr. (2022). Data Skills for Reproducible Research (3.0) Zenodo. doi:10.5281/zenodo.6527194
 
 
 [![DOI](https://zenodo.org/badge/DOI/10.5281/zenodo.6527195.svg)](https://doi.org/10.5281/zenodo.6527195)

@@ -24,6 +24,7 @@
 | ?      | question mark     |                   |
 | '      | single quote      | quote / apostrophe|
 | "      | double quote      | quote             |
+| |>     | pipe              | native pipe / base pipe |
 | %>%    | pipe              | magrittr pipe     |
 | \|     | vertical bar      | pipe              |
 | ,      | comma             |                   |

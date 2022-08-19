@@ -47,7 +47,6 @@
     + [`geom_hex()`](#geom_hex)
     + [`geom_count()`](#geom_count)
 9. Adjust axes (e.g., flip coordinates, set axis limits)
-10. Create interactive graphs with [`plotly`](#plotly)
 
 
 ## Setup {#setup_ggplot}
@@ -759,45 +758,6 @@ ggplot(heatmap, aes(V1, V2, fill=r)) +
   scale_fill_viridis_c()
 ```
 
-## Word Clouds
-
-You can visualise qualitative data using the package `r pkg("ggwordcloud")`. In the example below, we'll use a dataset from `r pkg("ggwordcloud")` called `thankyou_words_small` that lists the words for "thank you" in 34 languages, plus the number of native speakers and total speakers. We're going to plot the names of the languages, sized by the number of speakers.
-
-```{r}
-# load the data
-data("thankyou_words_small", package = "ggwordcloud")
-
-# create the ggwordclouds
-ggplot(thankyou_words_small, 
-                   aes(label = name, 
-                       color = name, 
-                       size = speakers)) +
-  ggwordcloud::geom_text_wordcloud() +
-  scale_size_area(max_size = 12) +
-  theme_minimal()
-```
-
-::: {.try data-latex=""}
-Look at the [ggwordcloud vignette](https://cran.r-project.org/web/packages/ggwordcloud/vignettes/ggwordcloud.html){target="_blank"} and see what elese you can do with the plot above. Try changing the colour scheme or the maximum word size. What happens if you use the `thankyou_words` dataset with 147 words?
-:::
-
-## Interactive Plots {#plotly}
-
-You can use the `plotly` package to make interactive graphs. Just assign your ggplot to a variable and use the function `ggplotly()`.
-
-```{r plotly, message = FALSE, fig.cap="Interactive graph using plotly"}
-
-demog_plot <- ggplot(pets, aes(age, score, fill=pet)) +
-  geom_point() +
-  geom_smooth(formula = y~x, method = lm)
-
-ggplotly(demog_plot)
-
-```
-
-::: {.info data-latex=""}
-Hover over the data points above and click on the legend items.
-:::
 
 ## Glossary {#glossary-ggplot}
 

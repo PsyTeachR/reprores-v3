@@ -45,19 +45,19 @@ Hover over a colour to see its R name.
 name <- colours(TRUE)
 rgb <- col2rgb(name) 
 hsv <- rgb2hsv(rgb)
-hex <- as.hexmode(rgb) %>% as.character() %>% 
+hex <- as.hexmode(rgb) |> as.character() |> 
   apply(2, paste, collapse = "")
 
 colors <- tibble(name = name,
-       hue = hsv[1, ] %>% round(2),
-       sat = hsv[2, ] %>% round(2),
-       val = hsv[3, ] %>% round(2),
-       hex = hex) %>%
+       hue = hsv[1, ] |> round(2),
+       sat = hsv[2, ] |> round(2),
+       val = hsv[3, ] |> round(2),
+       hex = hex) |>
   arrange(hue, sat, val)
 
-glue::glue("    <li style='background-color: #{colors$hex};'><span>{colors$name}</span></li>") %>%
-  paste(collapse = "\n") %>%
-  paste0("\n<ul class='colordemo'>\n", ., "\n</ul>\n") %>%
+glue::glue("    <li style='background-color: #{colors$hex};'><span>{colors$name}</span></li>") |>
+  paste(collapse = "\n") |>
+  paste0("\n<ul class='colordemo'>\n", ., "\n</ul>\n") |>
   cat()
 ```
 
@@ -101,7 +101,7 @@ You can probably guess what the `linetype` argument does.
 
 
 ```{r linetype-demo, echo = FALSE, fig.height = 4, fig.width = 10, fig.cap="The 6 linetype values at different sizes."}
-lines <- crossing(linetype = 1:6, size = c(0.25, 0.5, 1, 2)) %>% 
+lines <- crossing(linetype = 1:6, size = c(0.25, 0.5, 1, 2)) |> 
   mutate(x = linetype)
 ggplot(lines) +
   geom_vline(aes(xintercept = linetype, 
@@ -202,7 +202,7 @@ set.seed(8675309)
 g <- faux::rnorm_multi(
     n = 10000,
     vars = 2, 
-    r = 0.5) %>%
+    r = 0.5) |>
   ggplot(aes(X1, X2)) + 
   theme(axis.text.y = element_blank(),
         axis.title.y = element_blank(),
@@ -292,7 +292,7 @@ You can get more themes from add-on packages, like `r pkg("ggthemes", "https://y
 ```{r, fig.width = 8, fig.height = 18, fig.cap="{ggthemes} themes."}
 g <- palette_demo(2) + facet_wrap(~condition)
 
-themes <- c("theme_wsj", "theme_tufte", "theme_stata", "theme_gdocs", "theme_fivethirtyeight", "theme_economist", "theme_igray", "theme_hc", "theme_few", "theme_map", "theme_excel", "theme_calc", "theme_economist_white", "theme_excel_new", "theme_pander", "theme_solarized", "theme_solarized_2") %>% sort() %>% setNames(., .)
+themes <- c("theme_wsj", "theme_tufte", "theme_stata", "theme_gdocs", "theme_fivethirtyeight", "theme_economist", "theme_igray", "theme_hc", "theme_few", "theme_map", "theme_excel", "theme_calc", "theme_economist_white", "theme_excel_new", "theme_pander", "theme_solarized", "theme_solarized_2") |> sort() |> setNames(., .)
 
 plots <- lapply(themes, function(f) {
   scale_colour <- tryCatch({

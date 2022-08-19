@@ -14,7 +14,7 @@ Alternatively, download all [exercises and data files](exercises/exercises.zip) 
 
 ```{r, echo = FALSE, results = "asis"}
 exercises <- data.frame(
-  n = 1:10,
+  n = 1:9,
   exercise = list.files("exercises", "\\d.*_exercise.Rmd", full.names = TRUE),
   answer = list.files("exercises", "\\d.*_answers.Rmd", full.names = TRUE),
   exercise_html = list.files("exercises", "\\d.*_exercise.html", full.names = TRUE),
@@ -26,14 +26,13 @@ exercises <- data.frame(
            "Data relations",
            "Tidy Data",
            "Data wrangling",
-           "GLM",
            "Functions and iteration",
            "Simulation")
-) %>%
+) |>
   mutate(entry = glue::glue("* Chapter {n}: {desc}\n    * Exercise: [Rmd]({exercise})|[html]({exercise_html}); Answers: [Rmd]({answer})|[html]({answer_html})"))
 
 
-paste(exercises$entry, collapse = "\n") %>% cat()
+paste(exercises$entry, collapse = "\n") |> cat()
 ```
 
 

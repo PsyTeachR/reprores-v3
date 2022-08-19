@@ -33,7 +33,7 @@ untidy <- tribble(
   "A", "t(26) = -0.424", 0.6749,  "[-0.444, 0.292]",
   "B", "t(19) =  0.754", 0.4600,  "[-0.287, 0.610]",
   "C", "t(19) =  4.289", 0.0004,  "[ 0.374, 1.088]"
-) %>% print()
+) |> print()
 ```
 
 ```{r tidy}
@@ -67,9 +67,9 @@ Convert from wide to long format.
 
 ```{r pivot-longer-error}
 # has an error
-ss_long <- ss %>%
+ss_long <- ss |>
   pivot_longer(names_to = "question", 
-               values_to = "score") %>%
+               values_to = "score") |>
   glimpse()
 ```
 
@@ -85,8 +85,8 @@ Convert back to wide format. Make sure `ss_wide` is the same as `ss`.
 
 ```{r pivot-wider-error}
 # has an error
-ss_wide <- ss_long %>%
-  pivot_wider(question, score) %>%
+ss_wide <- ss_long |>
+  pivot_wider(question, score) |>
   glimpse()
 ```
 
@@ -106,7 +106,7 @@ Use the `gather()` function to convert `ss` from wide to long.
 
 ```{r gather-error}
 # has an error
-ss_long <- gather(ss, "question", "score") %>%
+ss_long <- gather(ss, "question", "score") |>
   glimpse()
 ```
 
@@ -122,8 +122,8 @@ Split the `question` column from `ss_long` into two columns: `domain` and `qnumb
 
 ```{r separate-error}
 # has an error
-ss_sep <- ss_long %>%
-  separate(question, domain, qnumber, sep = 3) %>%
+ss_sep <- ss_long |>
+  separate(question, domain, qnumber, sep = 3) |>
   glimpse()
 ```
 
@@ -139,8 +139,8 @@ Put the `id` and `user_id` columns together into a new column named `super_id`. 
 
 ```{r unite-error}
 # has an error
-ss_unite <- ss_sep %>%
-  unite(id, user_id, "super_id", sep = "-") %>%
+ss_unite <- ss_sep |>
+  unite(id, user_id, "super_id", sep = "-") |>
   glimpse()
 ```
 
@@ -156,8 +156,8 @@ Convert back to wide format. (N.B. the new question columns headers will just be
 
 ```{r spread-error}
 # has an error
-ss_wide <- ss_unite %>%
-  spreadr(qnumber, score, ) %>%
+ss_wide <- ss_unite |>
+  spreadr(qnumber, score, ) |>
   glimpse()
 ```
 
@@ -192,9 +192,9 @@ Deconstruct the pipeline below back into separate commands.
 
 ```{r ex_pipe2}
 # do not edit this chunk
-lager <- LETTERS[c(18, 5, 7, 1, 12)] %>%
-  rev() %>%
-  paste(collapse = "") %>%
+lager <- LETTERS[c(18, 5, 7, 1, 12)] |>
+  rev() |>
+  paste(collapse = "") |>
   print()
 ```
 

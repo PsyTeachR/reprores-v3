@@ -347,14 +347,14 @@ This is done using `r hl(install.packages())`. This is like installing an app on
 You may only be able to permanently install packages if you are using R on your own system; you may not be able to do this on public workstations if you lack the appropriate privileges.
 :::
 
-Install the `r pkg("esquisse")` package on your system. This package lets you create plots interactively and copy the code needed to make them reproducibly.
+Install the `r pkg("faux")` package on your system. This package helps you simulate data.
 
 ```{r install-pckg, eval = FALSE}
 # type this in the console pane
-install.packages("esquisse")
+install.packages("faux")
 ```
 
-If you don't already have packages like `r pkg("ggplot2")` and `r pkg("shiny")` installed, it will also install these **dependencies** for you. If you don't get an error message at the end, the installation was successful. 
+If you don't already have packages like `r pkg("ggplot2")` installed, it will also install these **dependencies** for you. If you don't get an error message at the end, the installation was successful. 
 
 ::: {.dangerous data-latex=""}
 Never install a package from inside a script. Only do this from the console pane.
@@ -364,10 +364,10 @@ Never install a package from inside a script. Only do this from the console pane
 
 This is done using `r hl(library(packagename))`. This is like **launching** an app on your phone: the functionality is only there where the app is launched and remains there until you close the app or restart. Likewise, when you run `r hl(library(packagename))` within a session, the functionality of the package referred to by `packagename` will be made available for your R session. The next time you start R, you will need to run the `r hl(library())` function again if you want to access its functionality.
 
-You can load the functions in `r pkg("esquisse")` for your current R session as follows:
+You can load the functions in `r pkg("faux")` for your current R session as follows:
 
 ```{r library-pckg}
-library(esquisse)
+library(faux)
 ```
 
 You might get some red text when you load a package, this is normal. It is usually warning you that this package has functions that have the same name as other packages you've already loaded.
