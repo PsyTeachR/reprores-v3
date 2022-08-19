@@ -60,7 +60,8 @@ Imports:
     ggwordcloud,
     googlesheets4,
     waffle,
-    sf
+    sf,
+    beepr
 Suggests: 
     rmarkdown,
     zip,

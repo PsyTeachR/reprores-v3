@@ -2,7 +2,7 @@
 title: Data Skills for Reproducible Research
 subtitle: "<br><a href='https://doi.org/10.5281/zenodo.6527194'><img src='https://zenodo.org/badge/DOI/10.5281/zenodo.6527194.svg' alt='DOI: 10.5281/zenodo.6527194'></a>"
 authors: "Lisa DeBruine & Dale Barr"
-date: "2022-08-08"
+date: "2022-08-19"
 site: bookdown::bookdown_site
 documentclass: book
 classoption: oneside # for PDFs
@@ -38,8 +38,8 @@ This book is also available in [PDF](reprores-v3.pdf), [ePub](reprores-v3.epub) 
 
 ## Resources {-}
 
-* [Data Skills Videos](https://www.youtube.com/playlist?list=PLA2iRWVwbpTKqULIFGBIe4Bg-YounTV1J){target="_blank"}
-    Each chapter has several short video lectures for the main learning outcomes. The videos are captioned and watching with the captioning on is a useful way to learn the jargon of computational reproducibility. If you cannot access YouTube, the videos are available by request.
+* [Data Skills Videos](https://www.youtube.com/playlist?list=PLA2iRWVwbpTLa6PIJhCyJbB2XrOStHmvD){target="_blank"}
+    Each chapter has several short video lectures for the main learning outcomes. The videos are captioned and watching with the captioning on is a useful way to learn the jargon of computational reproducibility. If you cannot access YouTube, the videos are available by request. The videos were created in 2020, so a few aspects of the RStudio interface or the book text have changed.
 
 * [reprores](https://github.com/psyteachr/reprores-v3){target="_blank"}
     This is a custom R package for this course. You can install it with the code below. It will download all of the packages that are used in the book, along with an offline copy of this book, the shiny apps used in the book, and the exercises.

@@ -346,8 +346,8 @@ rnorm(10)
 ```
 
 ```
-##  [1] -0.6942583 -0.7026276  1.2396121  1.8685441  0.9708169 -1.0149473
-##  [7] -0.5372992 -0.9892825  0.2185711 -1.4730331
+##  [1] -1.34048487 -0.01296427 -1.26416741 -0.49957273  0.19184931 -0.67907539
+##  [7]  1.44049757 -0.29132055  0.86402908 -0.08233646
 ```
 
 If you want 10 numbers from a normal distribution with a mean of 100:
@@ -358,8 +358,8 @@ rnorm(10, 100)
 ```
 
 ```
-##  [1] 101.30976 100.30137 101.07043  98.73942 100.09760  99.26402 100.99043
-##  [8] 101.05205 100.97393  98.68182
+##  [1] 101.29507 101.33352  98.60343  99.71575  99.03419 100.50184 101.03300
+##  [8]  99.55062 100.62169 100.01609
 ```
 
 This would be an equivalent but less efficient way of calling the function:
@@ -370,8 +370,8 @@ rnorm(n = 10, mean = 100)
 ```
 
 ```
-##  [1]  99.04318  99.49836  99.97378  99.57541  99.22303  99.75238 100.05367
-##  [8] 100.12070 100.49446  99.49904
+##  [1]  99.65861 100.02023 100.28751  99.54172 100.75493 100.68291 100.72375
+##  [8]  99.56908  98.69692  98.83167
 ```
 
 We don't need to name the arguments because R will recognize that we intended to fill in the first and second arguments by their position in the function call. However, if we want to change the default for an argument coming later in the list, then we need to name it. For instance, if we wanted to keep the default `mean = 0` but change the standard deviation to 100, we would do it this way:
@@ -382,8 +382,8 @@ rnorm(10, sd = 100)
 ```
 
 ```
-##  [1]  73.467285  58.809250 -28.463422  11.523026 238.462749 143.363654
-##  [7]  32.297246  71.023222   2.598059  26.116631
+##  [1] -74.52685 108.72053  34.81431  72.64161 -66.90008  11.47211 -39.39711
+##  [8] -31.63554  12.72880  77.78461
 ```
 
 Some functions give a list of options after an argument; this means the default value is the first option. The usage entry for the <code><span><span class='fu'><a target='_blank' href='https://rdrr.io/r/stats/power.t.test.html'>power.t.test</a></span><span class='op'>(</span><span class='op'>)</span></span></code> function looks like this:
@@ -401,9 +401,9 @@ power.t.test(n = NULL, delta = NULL, sd = 1, sig.level = 0.05,
 
 
 
-* What is the default value for `sd`? <select class='webex-select'><option value='blank'></option><option value=''>NULL</option><option value=''>two.sample</option><option value='answer'>1</option><option value=''>0.05</option></select>
-* What is the default value for `type`? <select class='webex-select'><option value='blank'></option><option value='answer'>two.sample</option><option value=''>NULL</option><option value=''>one.sample</option><option value=''>paired</option></select>
-* Which is equivalent to <code><span><span class='fu'><a target='_blank' href='https://rdrr.io/r/stats/power.t.test.html'>power.t.test</a></span><span class='op'>(</span><span class='fl'>100</span>, <span class='fl'>0.5</span><span class='op'>)</span></span></code>? <div class='webex-radiogroup' id='radio_REOJHMQPKW'><label><input type="radio" autocomplete="off" name="radio_REOJHMQPKW" value=""></input> <span>power.t.test(n = 100)</span></label><label><input type="radio" autocomplete="off" name="radio_REOJHMQPKW" value=""></input> <span>power.t.test()</span></label><label><input type="radio" autocomplete="off" name="radio_REOJHMQPKW" value="answer"></input> <span>power.t.test(delta = 0.5, n = 100)</span></label><label><input type="radio" autocomplete="off" name="radio_REOJHMQPKW" value=""></input> <span>power.t.test(100, 0.5, sig.level = 1, sd = 0.05)</span></label></div>
+* What is the default value for `sd`? <select class='webex-select'><option value='blank'></option><option value='answer'>1</option><option value=''>NULL</option><option value=''>two.sample</option><option value=''>0.05</option></select>
+* What is the default value for `type`? <select class='webex-select'><option value='blank'></option><option value=''>NULL</option><option value='answer'>two.sample</option><option value=''>one.sample</option><option value=''>paired</option></select>
+* Which is equivalent to <code><span><span class='fu'><a target='_blank' href='https://rdrr.io/r/stats/power.t.test.html'>power.t.test</a></span><span class='op'>(</span><span class='fl'>100</span>, <span class='fl'>0.5</span><span class='op'>)</span></span></code>? <div class='webex-radiogroup' id='radio_QEMKGTRANX'><label><input type="radio" autocomplete="off" name="radio_QEMKGTRANX" value=""></input> <span>power.t.test(100, 0.5, sig.level = 1, sd = 0.05)</span></label><label><input type="radio" autocomplete="off" name="radio_QEMKGTRANX" value=""></input> <span>power.t.test()</span></label><label><input type="radio" autocomplete="off" name="radio_QEMKGTRANX" value="answer"></input> <span>power.t.test(delta = 0.5, n = 100)</span></label><label><input type="radio" autocomplete="off" name="radio_QEMKGTRANX" value=""></input> <span>power.t.test(n = 100)</span></label></div>
 
 
 :::
@@ -429,15 +429,15 @@ This is done using <code><span><span class='fu'><a target='_blank' href='https:/
 You may only be able to permanently install packages if you are using R on your own system; you may not be able to do this on public workstations if you lack the appropriate privileges.
 :::
 
-Install the <code class='package'>faux</code> package on your system. This package helps you simulate data.
+Install the <code class='package'>beepr</code> package on your system. This package plays sounds, so you can set a long script to play a sound to notify you when it is done.
 
 
 ```r
 # type this in the console pane
-install.packages("faux")
+install.packages("beepr")
 ```
 
-If you don't already have packages like <code class='package'>ggplot2</code> installed, it will also install these **dependencies** for you. If you don't get an error message at the end, the installation was successful. 
+If you don't already have packages like <code class='package'>audio</code> installed, it will also install these `r` glossary("dependency", "dependencies", )` for you. If you don't get an error message at the end, the installation was successful. 
 
 ::: {.dangerous data-latex=""}
 Never install a package from inside a script. Only do this from the console pane.
@@ -447,20 +447,21 @@ Never install a package from inside a script. Only do this from the console pane
 
 This is done using <code><span><span class='kw'><a target='_blank' href='https://rdrr.io/r/base/library.html'>library</a></span><span class='op'>(</span><span class='va'>packagename</span><span class='op'>)</span></span></code>. This is like **launching** an app on your phone: the functionality is only there where the app is launched and remains there until you close the app or restart. Likewise, when you run <code><span><span class='kw'><a target='_blank' href='https://rdrr.io/r/base/library.html'>library</a></span><span class='op'>(</span><span class='va'>packagename</span><span class='op'>)</span></span></code> within a session, the functionality of the package referred to by `packagename` will be made available for your R session. The next time you start R, you will need to run the <code><span><span class='kw'><a target='_blank' href='https://rdrr.io/r/base/library.html'>library</a></span><span class='op'>(</span><span class='op'>)</span></span></code> function again if you want to access its functionality.
 
-You can load the functions in <code class='package'>faux</code> for your current R session as follows:
+You can load the functions in <code class='package'>beepr</code> for your current R session as follows:
 
 
 ```r
-library(faux)
+library(beepr)
 ```
 
 You might get some red text when you load a package, this is normal. It is usually warning you that this package has functions that have the same name as other packages you've already loaded.
 
-Now you can run the function <code><span><span class='fu'>esquisse</span><span class='fu'>::</span><span class='fu'><a target='_blank' href='https://dreamrs.github.io/esquisse/reference/esquisser.html'>esquisser</a></span><span class='op'>(</span><span class='op'>)</span></span></code>, which runs an interactive plotting example on the built-in dataset `diamonds` from the <code class='package'>ggplot2</code> package.
+Now you can run the function `beepr::beep()`.
 
 
 ```r
-esquisse::esquisser(ggplot2::diamonds)
+beepr::beep() # default sound
+beepr::beep(sound = "mario") # change the sound argument
 ```
 
 ::: {.info data-latex=""}
