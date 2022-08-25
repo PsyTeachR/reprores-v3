@@ -346,8 +346,8 @@ rnorm(10)
 ```
 
 ```
-##  [1] -1.34048487 -0.01296427 -1.26416741 -0.49957273  0.19184931 -0.67907539
-##  [7]  1.44049757 -0.29132055  0.86402908 -0.08233646
+##  [1]  1.0804126 -0.5508347  0.8152069 -0.5905688  0.2160278 -1.5466672
+##  [7]  0.6213702  0.5476731 -1.7198723  0.1581429
 ```
 
 If you want 10 numbers from a normal distribution with a mean of 100:
@@ -358,8 +358,8 @@ rnorm(10, 100)
 ```
 
 ```
-##  [1] 101.29507 101.33352  98.60343  99.71575  99.03419 100.50184 101.03300
-##  [8]  99.55062 100.62169 100.01609
+##  [1]  99.71107 101.59732  99.46936  97.99384  98.54907 101.54321 101.60525
+##  [8]  99.53730  99.82893  99.45449
 ```
 
 This would be an equivalent but less efficient way of calling the function:
@@ -370,8 +370,8 @@ rnorm(n = 10, mean = 100)
 ```
 
 ```
-##  [1]  99.65861 100.02023 100.28751  99.54172 100.75493 100.68291 100.72375
-##  [8]  99.56908  98.69692  98.83167
+##  [1]  99.33404 100.46754 100.09958 101.67558 100.24796  99.40000 100.63165
+##  [8]  99.66395 100.25134 100.54147
 ```
 
 We don't need to name the arguments because R will recognize that we intended to fill in the first and second arguments by their position in the function call. However, if we want to change the default for an argument coming later in the list, then we need to name it. For instance, if we wanted to keep the default `mean = 0` but change the standard deviation to 100, we would do it this way:
@@ -382,8 +382,8 @@ rnorm(10, sd = 100)
 ```
 
 ```
-##  [1] -74.52685 108.72053  34.81431  72.64161 -66.90008  11.47211 -39.39711
-##  [8] -31.63554  12.72880  77.78461
+##  [1]  144.22499  -16.26375  -40.61169 -133.43251  -83.37266  102.77581
+##  [7]  111.94985   35.75502  -91.21525   85.01351
 ```
 
 Some functions give a list of options after an argument; this means the default value is the first option. The usage entry for the <code><span><span class='fu'><a target='_blank' href='https://rdrr.io/r/stats/power.t.test.html'>power.t.test</a></span><span class='op'>(</span><span class='op'>)</span></span></code> function looks like this:
@@ -401,9 +401,9 @@ power.t.test(n = NULL, delta = NULL, sd = 1, sig.level = 0.05,
 
 
 
-* What is the default value for `sd`? <select class='webex-select'><option value='blank'></option><option value='answer'>1</option><option value=''>NULL</option><option value=''>two.sample</option><option value=''>0.05</option></select>
-* What is the default value for `type`? <select class='webex-select'><option value='blank'></option><option value=''>NULL</option><option value='answer'>two.sample</option><option value=''>one.sample</option><option value=''>paired</option></select>
-* Which is equivalent to <code><span><span class='fu'><a target='_blank' href='https://rdrr.io/r/stats/power.t.test.html'>power.t.test</a></span><span class='op'>(</span><span class='fl'>100</span>, <span class='fl'>0.5</span><span class='op'>)</span></span></code>? <div class='webex-radiogroup' id='radio_QEMKGTRANX'><label><input type="radio" autocomplete="off" name="radio_QEMKGTRANX" value=""></input> <span>power.t.test(100, 0.5, sig.level = 1, sd = 0.05)</span></label><label><input type="radio" autocomplete="off" name="radio_QEMKGTRANX" value=""></input> <span>power.t.test()</span></label><label><input type="radio" autocomplete="off" name="radio_QEMKGTRANX" value="answer"></input> <span>power.t.test(delta = 0.5, n = 100)</span></label><label><input type="radio" autocomplete="off" name="radio_QEMKGTRANX" value=""></input> <span>power.t.test(n = 100)</span></label></div>
+* What is the default value for `sd`? <select class='webex-select'><option value='blank'></option><option value=''>two.sample</option><option value='answer'>1</option><option value=''>0.05</option><option value=''>NULL</option></select>
+* What is the default value for `type`? <select class='webex-select'><option value='blank'></option><option value=''>paired</option><option value=''>NULL</option><option value='answer'>two.sample</option><option value=''>one.sample</option></select>
+* Which is equivalent to <code><span><span class='fu'><a target='_blank' href='https://rdrr.io/r/stats/power.t.test.html'>power.t.test</a></span><span class='op'>(</span><span class='fl'>100</span>, <span class='fl'>0.5</span><span class='op'>)</span></span></code>? <div class='webex-radiogroup' id='radio_CWKYJGXRNZ'><label><input type="radio" autocomplete="off" name="radio_CWKYJGXRNZ" value="answer"></input> <span>power.t.test(delta = 0.5, n = 100)</span></label><label><input type="radio" autocomplete="off" name="radio_CWKYJGXRNZ" value=""></input> <span>power.t.test(100, 0.5, sig.level = 1, sd = 0.05)</span></label><label><input type="radio" autocomplete="off" name="radio_CWKYJGXRNZ" value=""></input> <span>power.t.test()</span></label><label><input type="radio" autocomplete="off" name="radio_CWKYJGXRNZ" value=""></input> <span>power.t.test(n = 100)</span></label></div>
 
 
 :::

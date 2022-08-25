@@ -527,5 +527,163 @@ citation(package="ggplot2") %>% toBibtex()
 
 [Google Scholar](https://scholar.google.com/) entries have a BibTeX citation option. This is usually the easiest way to get the relevant values, although you have to add the DOI yourself. You can keep the suggested shortname or change it to something that makes more sense to you.
 
+<img src="images/present/google-scholar.png" width="100%" style="display: block; margin: auto;" />
 
 
+Some journal websites also let you download citations in bibtex format. For example, go to the publisher's page for [Equivalence Testing for Psychological Research: A Tutorial](https://journals.sagepub.com/doi/abs/10.1177/2515245918770963){target="_blank"}, click on the Cite button (in the sidebar or under the bottom Explore More menu), choose BibTeX format, and download the citation. You can open up the file in a text editor and copy the text. It should look like this:
+
+```
+@article{doi:10.1177/2515245918770963,
+author = {Daniël Lakens and Anne M. Scheel and Peder M. Isager},
+title ={Equivalence Testing for Psychological Research: A Tutorial},
+journal = {Advances in Methods and Practices in Psychological Science},
+volume = {1},
+number = {2},
+pages = {259-269},
+year = {2018},
+doi = {10.1177/2515245918770963},
+
+URL = { 
+        https://doi.org/10.1177/2515245918770963
+    
+},
+eprint = { 
+        https://doi.org/10.1177/2515245918770963
+    
+}
+,
+    abstract = { Psychologists must be able to test both for the presence of an effect and for the absence of an effect. In addition to testing against zero, researchers can use the two one-sided tests (TOST) procedure to test for equivalence and reject the presence of a smallest effect size of interest (SESOI). The TOST procedure can be used to determine if an observed effect is surprisingly small, given that a true effect at least as extreme as the SESOI exists. We explain a range of approaches to determine the SESOI in psychological science and provide detailed examples of how equivalence tests should be performed and reported. Equivalence tests are an important extension of the statistical tools psychologists currently use and enable researchers to falsify predictions about the presence, and declare the absence, of meaningful effects. }
+}
+```
+
+Paste the reference into your bibliography.bib file. Change `doi:10.1177/2515245918770963` in the first line of the reference to a shortname you will use to cite the reference in your manuscript. We'll use `TOSTtutorial`.
+
+#### Citing references
+
+You can cite references in text like this: 
+
+```
+This tutorial uses several R packages [@tidyverse;@rmarkdown].
+```
+
+This tutorial uses several R packages [@tidyverse;@rmarkdown].
+
+Put a minus in front of the @ if you just want the year:
+
+```
+Lakens, Scheel and Isengar [-@TOSTtutorial] wrote a tutorial explaining how to test for the absence of an effect.
+```
+
+Lakens, Scheel and Isengar [-@TOSTtutorial] wrote a tutorial explaining how to test for the absence of an effect.
+
+#### Uncited references
+
+If you want to add an item to the reference section without citing, it, add it to the YAML header like this:
+
+```
+nocite: |
+  @ref1, @ref2, @ref3
+```
+
+Or add all of the items in the .bib file like this:
+
+```
+nocite: '@*'
+```
+
+#### Citation Styles
+
+You can search a [list of style files](https://www.zotero.org/styles){target="_blank"} for various journals and download a file that will format your bibliography for a specific journal's style. You'll need to add the line `csl: filename.csl` to your YAML header. 
+
+::: {.try data-latex=""}
+Add some citations to your bibliography.bib file, reference them in your text, and render your manuscript to see the automatically generated reference section. Try a few different citation style files.
+:::
+
+#### Reference Section
+
+By default, the reference section is added to the end of the document. If you want to change the position (e.g., to add figures and tables after the references), include `<div id="refs"></div>` where you want the references. 
+
+
+::: {.try data-latex=""}
+Add in-text citations and a reference list to your report.
+:::
+
+## Glossary {#glossary-repro}
+
+<table class="table" style="margin-left: auto; margin-right: auto;">
+ <thead>
+  <tr>
+   <th style="text-align:left;"> term </th>
+   <th style="text-align:left;"> definition </th>
+  </tr>
+ </thead>
+<tbody>
+  <tr>
+   <td style="text-align:left;"> [absolute path](https://psyteachr.github.io/glossary/a.html#absolute-path){class="glossary" target="_blank"} </td>
+   <td style="text-align:left;"> A file path that starts with / and is not appended to the working directory </td>
+  </tr>
+  <tr>
+   <td style="text-align:left;"> [chunk](https://psyteachr.github.io/glossary/c.html#chunk){class="glossary" target="_blank"} </td>
+   <td style="text-align:left;"> A section of code in an R Markdown file </td>
+  </tr>
+  <tr>
+   <td style="text-align:left;"> [directory](https://psyteachr.github.io/glossary/d.html#directory){class="glossary" target="_blank"} </td>
+   <td style="text-align:left;"> A collection or "folder" of files on a computer. </td>
+  </tr>
+  <tr>
+   <td style="text-align:left;"> [extension](https://psyteachr.github.io/glossary/e.html#extension){class="glossary" target="_blank"} </td>
+   <td style="text-align:left;"> The end part of a file name that tells you what type of file it is (e.g., .R or .Rmd). </td>
+  </tr>
+  <tr>
+   <td style="text-align:left;"> [knit](https://psyteachr.github.io/glossary/k.html#knit){class="glossary" target="_blank"} </td>
+   <td style="text-align:left;"> To create an HTML, PDF, or Word document from an R Markdown (Rmd) document </td>
+  </tr>
+  <tr>
+   <td style="text-align:left;"> [markdown](https://psyteachr.github.io/glossary/m.html#markdown){class="glossary" target="_blank"} </td>
+   <td style="text-align:left;"> A way to specify formatting, such as headers, paragraphs, lists, bolding, and links. </td>
+  </tr>
+  <tr>
+   <td style="text-align:left;"> [path](https://psyteachr.github.io/glossary/p.html#path){class="glossary" target="_blank"} </td>
+   <td style="text-align:left;"> A string representing the location of a file or directory. </td>
+  </tr>
+  <tr>
+   <td style="text-align:left;"> [project](https://psyteachr.github.io/glossary/p.html#project){class="glossary" target="_blank"} </td>
+   <td style="text-align:left;"> A way to organise related files in RStudio </td>
+  </tr>
+  <tr>
+   <td style="text-align:left;"> [r markdown](https://psyteachr.github.io/glossary/r.html#r-markdown){class="glossary" target="_blank"} </td>
+   <td style="text-align:left;"> The R-specific version of markdown: a way to specify formatting, such as headers, paragraphs, lists, bolding, and links, as well as code blocks and inline code. </td>
+  </tr>
+  <tr>
+   <td style="text-align:left;"> [relative path](https://psyteachr.github.io/glossary/r.html#relative-path){class="glossary" target="_blank"} </td>
+   <td style="text-align:left;"> The location of a file in relation to the working directory. </td>
+  </tr>
+  <tr>
+   <td style="text-align:left;"> [reproducibility](https://psyteachr.github.io/glossary/r.html#reproducibility){class="glossary" target="_blank"} </td>
+   <td style="text-align:left;"> The extent to which the findings of a study can be repeated in some other context </td>
+  </tr>
+  <tr>
+   <td style="text-align:left;"> [working directory](https://psyteachr.github.io/glossary/w.html#working-directory){class="glossary" target="_blank"} </td>
+   <td style="text-align:left;"> The filepath where R is currently reading and writing files. </td>
+  </tr>
+  <tr>
+   <td style="text-align:left;"> [yaml](https://psyteachr.github.io/glossary/y.html#yaml){class="glossary" target="_blank"} </td>
+   <td style="text-align:left;"> A structured format for information </td>
+  </tr>
+</tbody>
+</table>
+
+
+
+
+## Further Resources {#resources-repro}
+
+* [Chapter 27: R Markdown](http://r4ds.had.co.nz/r-markdown.html) in *R for Data Science*
+* [R Markdown Cheat Sheet](https://github.com/rstudio/cheatsheets/raw/master/rmarkdown.pdf)
+* [R Markdown reference Guide](https://www.rstudio.com/wp-content/uploads/2015/03/rmarkdown-reference.pdf)
+* [R Markdown Tutorial](https://rmarkdown.rstudio.com/lesson-1.html)
+* [R Markdown: The Definitive Guide](https://bookdown.org/yihui/rmarkdown/) by Yihui Xie, J. J. Allaire, & Garrett Grolemund
+* [Project Structure](https://slides.djnavarro.net/project-structure/) by Danielle Navarro
+* [How to name files](https://speakerdeck.com/jennybc/how-to-name-files) by Jenny Bryan
+* [Papaja](https://crsh.github.io/papaja_man/) Reproducible APA Manuscripts
+* [The Turing Way](https://the-turing-way.netlify.app/)
