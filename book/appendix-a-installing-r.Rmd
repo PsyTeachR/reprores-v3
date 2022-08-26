@@ -95,7 +95,7 @@ Many R packages are not yet on CRAN because they are still in development. Incre
 # install devtools if you get
 # Error in loadNamespace(name) : there is no package called ‘devtools’
 # install.packages("devtools")
-devtools::install_github("psyteachr/reprores-v2")
+devtools::install_github("psyteachr/reprores-v3")
 ```
 
 If you use a development package in a script, it is good practice to include a comment with the website where you downloaded the package. Other people who use your script are unlikely to have that package or know where to find it.

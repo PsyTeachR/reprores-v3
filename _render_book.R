@@ -16,17 +16,17 @@ set.seed(8675309)
 browseURL(
   xfun::in_dir("book", bookdown::render_book("index.Rmd", "bookdown::pdf_book"))
 )
-file.remove("docs/reprores-v2.pdf")
-file.rename("docs/_main.pdf", "docs/reprores-v2.pdf")
+file.remove("docs/reprores-v3.pdf")
+file.rename("docs/_main.pdf", "docs/reprores-v3.pdf")
 
 ## make EPUB ----
 set.seed(8675309)
 xfun::in_dir("book", bookdown::render_book("index.Rmd", "bookdown::epub_book"))
-file.remove("docs/reprores-v2.epub")
-file.rename("docs/_main.epub", "docs/reprores-v2.epub")
+file.remove("docs/reprores-v3.epub")
+file.rename("docs/_main.epub", "docs/reprores-v3.epub")
 
 ## make MOBI ----
-epub <- file.path(getwd(), "docs/reprores-v2.epub")
+epub <- file.path(getwd(), "docs/reprores-v3.epub")
 # requires the command line tools from calibre
 ebook_convert <- "/Applications/calibre.app/Contents/MacOS/ebook-convert"
 if (file.exists(epub) & file.exists(ebook_convert)) {
@@ -41,7 +41,7 @@ browseURL(
   xfun::in_dir("book", bookdown::render_book("index.Rmd", "bookdown::bs4_book"))
 )
 
-#browseURL(xfun::in_dir("book", bookdown::preview_chapter("06-tidyr.Rmd", output = "bookdown::bs4_book")))
+#browseURL(xfun::in_dir("book", bookdown::preview_chapter("appendix-e-plotstyles.Rmd", output = "bookdown::bs4_book")))
 
 # copies dir
 R.utils::copyDirectory(

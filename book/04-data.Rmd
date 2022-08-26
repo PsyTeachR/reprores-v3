@@ -300,7 +300,11 @@ We'll be working with `r glossary("tabular data")` a lot in this class, but tabu
 
 ## Basic data types {#data_types}
 
-Data can be numbers, words, true/false values or combinations of these. In order to understand some later concepts, it's useful to have a basic understanding of `r glossary("data type", "data types")` in R: `r glossary("numeric")`, `r glossary("character")`, and `r glossary("logical")` 
+Data can be numbers, words, true/false values or combinations of these. The basic `r glossary("data type", "data types")` in R are: `r glossary("numeric")`, `r glossary("character")`, and `r glossary("logical")`, as well as the special classes of `r glossary("factor")` and date/times.
+
+```{r excel-format-cells-e, echo = FALSE, fig.cap="Data types are like the categories when you format cells in Excel."}
+include_graphics("images/appx/excel-format-cells.png")
+```
 
 ### Numeric data
 
@@ -325,7 +329,7 @@ is.numeric("Not a number")
 
 ### Character data
 
-`r glossary("character", "Character")` strings are any text between quotation marks. 
+`r glossary("character", "Characters")` (also called "strings") are any text between quotation marks. 
 
 ```{r character-data}
 typeof("This is a character string")
@@ -348,15 +352,17 @@ class(TRUE)
 class(FALSE)
 ```
 
+::: {.info data-latex=""}
+You might also see logical values abbreviated as `T` and `F`, or `0` and `1`. This can cause some problems down the road, so we will always spell out the whole thing.
+
+R Markdown headers use YAML format, not R, so the logical values are lowercase true and false.
+:::
+
 When you compare two values with an `r glossary("operator")`, such as checking to see if 10 is greater than 5, the resulting value is logical.
 
 ```{r logical-operator}
 is.logical(10 > 5)
 ```
-
-::: {.info data-latex=""}
-You might also see logical values abbreviated as `T` and `F`, or `0` and `1`. This can cause some problems down the road, so we will always spell out the whole thing.
-:::
 
 ### Factors
 
@@ -376,21 +382,18 @@ class(myfactor)
 
 ### Dates and Times
 
-Dates and times are represented by doubles with special classes. Dates and times are very hard to work with, but the `r pkg("lubridate", "https://lubridate.tidyverse.org/")` package provides functions to help you with this.
+Dates and times are represented by doubles with special classes. Although `typeof()` will tell you they are a double, you can tell that they are dates by checking their `class()`. Datetimes can have one or more of a few classes that start with `POSIX`.
 
 ```{r}
-today <- lubridate::today()
-now <- lubridate::now(tzone = "GMT")
+date <- as.Date("2022-01-24")
+datetime <- ISOdatetime(2022, 1, 24, 10, 35, 00, "GMT")
+typeof(date)
+typeof(datetime)
+class(date)
+class(datetime)
 ```
 
-Date and datetimes are a type of double, but you can tell that they are dates by checking their `class()`. Datetimes can have one or more of a few classes that start with `POSIX`.
-
-```{r}
-typeof(today)
-typeof(now)
-class(today)
-class(now)
-```
+See Appendix\ \@ref(dates-times) for how to use `r pkg("lubridate")` to work with dates and times.
 
 
 
@@ -439,6 +442,11 @@ What happens when you mix types? What class is the variable `mixed`?
 ```{r}
 mixed <- c(2, "good", 2L, "b", TRUE)
 ```
+
+```{r, webex.hide="Solution"}
+typeof(mixed)
+```
+
 :::
 
 ::: {.warning data-latex=""}
@@ -600,11 +608,17 @@ dollar   <- data_types$double
 
 :::
 
+The single brackets (`bracket1` and `name1`) return a list with the subset of items inside the brackets. In this case, that's just one item, but can be more (try `data_types[1:2]`). The items keep their names if they have them, so the returned value is `r hl(list(double = 10))`.
+
+The double brackets (`bracket2` and `name2` return a single item as a vector. You can't select more than one item; `data_types[[1:2]]` will give you a "subscript out of bounds" error. 
+
+The dollar-sign notation is the same as double-brackets. If the name has spaces or any characters other than letters, numbers, underscores, and full stops, you need to surround the name with backticks (e.g., `` sales$`Customer ID` ``).
+
 ### Tables {#tables-data}
 
 The built-in, imported, and created data above are `r glossary("tabular data")`, data arranged in the form of a table.
 
-Tabular data structures allow for a collection of data of different types (characters, integers, logical, etc.) but subject to the constraint that each "column" of the table (element of the list) must have the same number of elements. The base R version of a table is called a `data.frame`, while the 'tidyverse' version is called a `tibble`.  Tibbles are far easier to work with, so we'll be using those. To learn more about differences between these two data structures, see `vignette("tibble")`.
+`r glossary("Tabular data")` structures allow for a collection of data of different types (characters, integers, logical, etc.) but subject to the constraint that each "column" of the table (element of the list) must have the same number of elements. The base R version of a table is called a `data.frame`, while the 'tidyverse' version is called a `tibble`.  Tibbles are far easier to work with, so we'll be using those. To learn more about differences between these two data structures, see `vignette("tibble")`.
 
 Tabular data becomes especially important for when we talk about `r glossary("tidy data")` in [chapter 4](#tidyr), which consists of a set of simple principles for structuring data.
 
@@ -613,45 +627,70 @@ Tabular data becomes especially important for when we talk about `r glossary("ti
 We learned how to create a table by importing a Excel or CSV file, and creating a table from scratch using the `tibble()` function. You can also use the `tibble::tribble()` function to create a table by row, rather than by column. You start by listing the column names, each preceded by a tilde (`~`), then you list the values for each column, row by row, separated by commas (don't forget a comma at the end of each row). This method can be easier for some data, but doesn't let you use shortcuts, like setting all of the values in a column to the same value or a [repeating sequence](#rep_seq).
 
 ```{r}
-# by column using tibble
-avatar_by_col <- tibble(
-  name = c("Katara", "Toph", "Sokka", "Azula"),
-  bends = c("water", "earth", NA, "fire"),
-  friendly = rep(c(TRUE, FALSE), c(3, 1))
+# construct a table by column with tibble
+avatar <- tibble(
+  name = c("Katara", "Toph", "Sokka"),
+  bends = c("water", "earth", NA),
+  friendly = TRUE
 )
 
-# by row using tribble
-avatar_by_row <- tribble(
-  ~name,    ~bends, ~friendly,
-  "Katara", "water",       TRUE,
-  "Toph",   "earth",       TRUE,
-  "Sokka",  NA,            TRUE,
-  "Azula",  "fire",        FALSE
+# or by row with tribble
+avatar <- tribble(
+  ~name,    ~bends,  ~friendly,
+  "Katara", "water", TRUE,
+  "Toph",   "earth", TRUE,
+  "Sokka",  NA,      TRUE
 )
+```
 
+```{r, eval = FALSE}
+# export the data to a file
+rio::export(avatar, "data/avatar.csv")
+
+# or by importing data from a file
+avatar <- rio::import("data/avatar.csv")
 ```
 
 #### Table info
 
-We can get information about the table using the functions `ncol()` (number of columns), `nrow()` (number of rows), `dim()` (the number of rows and number of columns), and `name()` (the column names).
+We can get information about the table using the functions:
+
+* `ncol()`: number of columns
+* `nrow()`: number of rows
+* `dim()`: the number of rows and number of columns 
+* `name()`: the column names
+* `glimpse()`: the column types
 
 ```{r table-info}
-nrow(avatar) # how many rows?
-ncol(avatar) # how many columns?
-dim(avatar)  # what are the table dimensions?
-names(avatar) # what are the column names?
+nrow(avatar)
+ncol(avatar)
+dim(avatar)
+names(avatar)
+glimpse(avatar)
 ```
 
 #### Accessing rows and columns {#row-col-access}
 
-There are various ways of accessing specific columns or rows from a table. The ones below are from `r glossary("base R")` and are useful to know about, but you'll be learning easier (and more readable) ways in Chapter\ \@ref(tidyr) and Chapter\ \@ref(dplyr). Examples of these base R accessing functions are provided here for reference, since you might see them in other people's scripts.
+There are various ways of accessing specific columns or rows from a table. You'll be learning more about this in Chapters\ \@ref(tidyr) and \@ref(dplyr). 
 
-```{r dataframe-access}
-katara     <- avatar[1, ] # first row
-type       <- avatar[, 2] # second column (bends)
-benders    <- avatar[c(1, 2), ] # selected rows (by number)
-bends_name <- avatar[, c("bends", "name")] # selected columns (by name)
-friendly   <- avatar$friendly  # by column name
+```{r dataframe-access-tidyverse}
+siblings   <- avatar %>% slice(1, 3) # rows (by number)
+bends      <- avatar %>% pull(2) # column vector (by number)
+friendly   <- avatar %>% pull(friendly) # column vector (by name)
+bends_name <- avatar %>% select(bends, name) # subset table (by name)
+toph       <- avatar %>% pull(name) %>% pluck(2) # single cell
+``` 
+
+The code below uses `r glossary("base R")` to produce the same subsets as the functions above. This format is useful to know about, since you might see them in other people's scripts.
+
+```{r dataframe-access-base}
+# base R access
+
+siblings   <- avatar[c(1, 3), ] # rows (by number)
+bends      <- avatar[, 2] # column vector (by number)
+friendly   <- avatar$friendly  # column vector (by name)
+bends_name <- avatar[, c("bends", "name")] # subset table (by name)
+toph       <- avatar[[2, 1]] # single cell (row, col)
 ```
 
 ## Troubleshooting

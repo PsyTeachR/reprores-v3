@@ -9,7 +9,7 @@
 #'    \item{V2}{The second correlated item}
 #'    \item{r}{The Pearson's correlation between the first and second item}
 #' }
-#' @source \url{https://psyteachr.github.io/reprores-v2/data/disgust_cors.csv}
+#' @source \url{https://psyteachr.github.io/reprores-v3/data/disgust_cors.csv}
 "disgust_cors"
 
 

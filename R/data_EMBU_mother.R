@@ -32,7 +32,7 @@
 #'    \item{p9}{My mother wanted to decide how I should be dressed or how I should look}
 #'    \item{e6}{I felt that my mother was proud when I succeeded in something I had undertaken}
 #' }
-#' @source \url{https://psyteachr.github.io/reprores-v2/data/EMBU_mother.csv}
+#' @source \url{https://psyteachr.github.io/reprores-v3/data/EMBU_mother.csv}
 "EMBU_mother"
 
 

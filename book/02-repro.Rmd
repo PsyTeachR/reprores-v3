@@ -49,9 +49,9 @@ Your script should only reference files in three locations, using the appropriat
 
 | Where                    | Example                                                          |
 |--------------------------|------------------------------------------------------------------|
-| on the web               | "<https://psyteachr.github.io/ads-v1/data/widgets_gadgets.xlsx>" |
-| in the working directory | "widgets_gadgets.xlsx"                                           |
-| in a subdirectory        | "data/widgets_gadgets.xlsx"                                      |
+| on the web               | "<https://psyteachr.github.io/reprores-v3/data/5factor.xlsx>" |
+| in the working directory | "5factor.xlsx"                                           |
+| in a subdirectory        | "data/5factor.xlsx"                                      |
 
 ::: {.warning data-latex=""}
 Never set or change your working directory in a script.
@@ -59,16 +59,16 @@ Never set or change your working directory in a script.
 
 R Markdown files will automatically use the same directory the .Rmd file is in as the working directory.
 
-If your script needs a file in a subdirectory of your working directory, such as, `r path("data/widgets_gadgets.xlsx")`, load it in using a `r glossary("relative path")` so that it is accessible if you move the working directory to another location or computer:
+If your script needs a file in a subdirectory of your working directory, such as, `r path("data/5factor.xlsx")`, load it in using a `r glossary("relative path")` so that it is accessible if you move the working directory to another location or computer:
 
 ```{r read-csv, eval = FALSE}
-dat <- read_csv("data/widgets_gadgets.xlsx")  # correct
+dat <- read_csv("data/5factor.xlsx")  # correct
 ```
 
 Do not load it in using an `r glossary("absolute path")`:
 
 ```{r abs-path, eval = FALSE}
-dat <- read_csv("C:/My Files/2020-2021/data/widgets_gadgets.xlsx")   # wrong
+dat <- read_csv("C:/My Files/2020-2021/data/5factor.xlsx")   # wrong
 ```
 
 ::: {.info data-latex=""}
@@ -89,11 +89,11 @@ For example, these file names are a mess:
 
 -   `r path("report.doc")`
 -   `r path("report final.doc")`
--   `r path("Data (Customers) 11-15.xls")`
--   `r path("Customers Data Nov 12.xls")`
+-   `r path("Data (Participants) 11-15.xls")`
+-   `r path("Participants Data Nov 12.xls")`
 -   `r path("final report2.doc")`
 -   `r path("project notes.txt")`
--   `r path("Vendor Data November 15.xls")`
+-   `r path("Questionnaire Data November 15.xls")`
 
 Here is one way to structure them so that similar files have the same structure and it's easy for a human to scan the list or to use code to find relevant files. See if you can figure out what the last one should be.
 
@@ -101,9 +101,9 @@ Here is one way to structure them so that similar files have the same structure 
 -   `r path("report_v1.doc")`
 -   `r path("report_v2.doc")`
 -   `r path("report_v3.doc")`
--   `r path("data_customer_2021-11-12.xls")`
--   `r path("data_customer_2021-11-15.xls")`
--   `r mcq(c("vendor-data_2021-11-15.xls", "data-vendor-2021_11_15.xls", answer = "data_vendor_2021-11-15.xls", "data_2021-11-15_vendor.xls"))`
+-   `r path("data_participants_2021-11-12.xls")`
+-   `r path("data_participants_2021-11-15.xls")`
+-   `r mcq(c("questionnaire-data_2021-11-15.xls", "data-questionnaire-2021_11_15.xls", answer = "data_questionnaire_2021-11-15.xls", "data_2021-11-15_questionnaire.xls"))`
 
 ::: {.try data-latex=""}
 Think of other ways to name the files above. Look at some of your own project files and see what you can improve.
@@ -149,9 +149,6 @@ If you open up a new R Markdown file from a template, you will see an example do
 Create a new R Markdown file from the **`File > New File > R Markdown...`** menu. Change the title and author, then click the knit button to create an html file.
 :::
 
-
-
-
 ### YAML Header {#yaml}
 
 The `r glossary("YAML")` header is where you can set several options. 
@@ -162,17 +159,13 @@ title: "My Demo Document"
 author: "Me"
 output:
   html_document:
-    df_print: kable
-    theme: 
-      version: 4
-      bootswatch: yeti
-    highlight: tango
     toc: true
     toc_float:
       collapsed: false
       smooth_scroll: false
-    toc_depth: 3
     number_sections: false
+bibliography: refs.bib
+csl: apa.csl
 ---
 ```
 
@@ -189,11 +182,9 @@ knitr::include_graphics("images/repro/bootswatch.png")
 ```
 
 
-
-
 ### Setup
 
-When you create a new R Markdown file in RStudio, a setup chunk is automatically created.
+When you create a new R Markdown file in RStudio using the default template, a setup chunk is automatically created.
 
 ```{r knitr-setup, eval=FALSE, verbatim="r setup, include=FALSE"}
 knitr::opts_chunk$set(echo = TRUE)
@@ -395,7 +386,18 @@ Cats were significantly heavier than ferrets (`r weight_result`).
 
 ### Bibliography
 
-There are several ways to do in-text references and automatically generate a [bibliography](https://bookdown.org/yihui/rmarkdown-cookbook/bibliography.html){target="_blank"} in R Markdown. Markdown files need to link to a BibTex file (a plain text file with references in a specific format) that contains the references you need to cite. You specify the name of this file in the YAML header, like `bibliography: filename.bib` and cite references in text using an at symbol and a shortname, like `[@tidyverse]`.
+There are several ways to do in-text references and automatically generate a [bibliography](https://bookdown.org/yihui/rmarkdown-cookbook/bibliography.html){target="_blank"} in R Markdown. Markdown files need to link to a BibTex file (a plain text file with references in a specific format) that contains the references you need to cite. You specify the name of this file in the YAML header, like `bibliography: refs.bib` and cite references in text using an at symbol and a shortname, like `[@tidyverse]`. You can also include a "csl" style file to format your references in, for example, APA style.
+
+```
+---
+title: "My Paper"
+author: "Me"
+output: 
+  html_document:
+    toc: true
+bibliography: refs.bib
+csl: apa.csl
+```
 
 #### Converting from reference software
 
@@ -470,7 +472,7 @@ eprint = {
 
 Paste the reference into your bibliography.bib file. Change `doi:10.1177/2515245918770963` in the first line of the reference to a shortname you will use to cite the reference in your manuscript. We'll use `TOSTtutorial`.
 
-#### Citing references
+#### Citing references {#references}
 
 You can cite references in text like this: 
 
@@ -518,6 +520,20 @@ By default, the reference section is added to the end of the document. If you wa
 
 ::: {.try data-latex=""}
 Add in-text citations and a reference list to your report.
+:::
+
+### Custom Templates
+
+Some packages provide custom R Markdown templates. `reprores` has a Report template that shows all of the possible options in the YAML header, has bibliography and style files, and explains how to set up linked figures and tables. Because it contains multiple files, RStudio will ask you to create a new folder to keep all of the files in.
+
+```{r img-custom-rmd, echo=FALSE, fig.cap="The custom R markdown temlate from reprores.", out.width = '50%'}
+
+knitr::include_graphics("images/custom-rmd.png")
+
+```
+
+::: {.try data-latex=""}
+Start a report with the Report template and knit it. Try changing or deleting options.
 :::
 
 ## Glossary {#glossary-repro}

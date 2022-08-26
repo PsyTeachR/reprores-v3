@@ -16,7 +16,7 @@ A data frame with 800 rows and 6 variables:
 }
 }
 \source{
-\url{https://psyteachr.github.io/reprores-v2/data/pets.csv}
+\url{https://psyteachr.github.io/reprores-v3/data/pets.csv}
 }
 \usage{
 pets

@@ -152,7 +152,7 @@ Montserrat,MS,MSR,500,ISO 3166-2:MS,Americas,Latin America and the Caribbean,Car
 Morocco,MA,MAR,504,ISO 3166-2:MA,Africa,Northern Africa,NA,002,015,NA
 Mozambique,MZ,MOZ,508,ISO 3166-2:MZ,Africa,Sub-Saharan Africa,Eastern Africa,002,202,014
 Myanmar,MM,MMR,104,ISO 3166-2:MM,Asia,South-eastern Asia,NA,142,035,NA
-Namibia,NA,NAM,516,ISO 3166-2:NA,Africa,Sub-Saharan Africa,Southern Africa,002,202,018
+Namibia,NA,"NAM",516,ISO 3166-2:NA,Africa,Sub-Saharan Africa,Southern Africa,002,202,018
 Nauru,NR,NRU,520,ISO 3166-2:NR,Oceania,Micronesia,NA,009,057,NA
 Nepal,NP,NPL,524,ISO 3166-2:NP,Asia,Southern Asia,NA,142,034,NA
 Netherlands,NL,NLD,528,ISO 3166-2:NL,Europe,Western Europe,NA,150,155,NA

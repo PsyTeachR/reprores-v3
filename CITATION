@@ -8,7 +8,7 @@ authors:
   given-names: "Dale"
   orcid: "https://orcid.org/0000-0002-1121-4608"
 title: "Data Skills for Reproducible Research"
-version: 2.0
-date-released: 2021-09-18
-url: "https://github.com/psyteachr/reprores-v2/"
+version: 3.0
+date-released: 2022-09-20
+url: "https://github.com/psyteachr/reprores-v3/"
 doi: 10.5281/zenodo.6527194

@@ -14,7 +14,7 @@ A data frame with 10 rows and 4 variables:
 }
 }
 \source{
-\url{https://psyteachr.github.io/reprores-v2/data/smalldata.csv}
+\url{https://psyteachr.github.io/reprores-v3/data/smalldata.csv}
 }
 \usage{
 smalldata

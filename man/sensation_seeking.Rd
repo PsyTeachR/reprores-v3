@@ -27,7 +27,7 @@ A data frame with 27021 rows and 17 variables:
 }
 }
 \source{
-\url{https://psyteachr.github.io/reprores-v2/data/sensation_seeking.csv}
+\url{https://psyteachr.github.io/reprores-v3/data/sensation_seeking.csv}
 }
 \usage{
 sensation_seeking

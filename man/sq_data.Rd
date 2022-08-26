@@ -41,7 +41,7 @@ A data frame with 4745 rows and 31 variables:
 }
 }
 \source{
-\url{https://psyteachr.github.io/reprores-v2/data/sq_data.csv}
+\url{https://psyteachr.github.io/reprores-v3/data/sq_data.csv}
 }
 \usage{
 sq_data

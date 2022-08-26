@@ -59,7 +59,7 @@
 #'    \item{t49}{The description for face 49}
 #'    \item{t50}{The description for face 50}
 #' }
-#' @source \url{https://psyteachr.github.io/reprores-v2/data/eye_descriptions.csv}
+#' @source \url{https://psyteachr.github.io/reprores-v3/data/eye_descriptions.csv}
 "eye_descriptions"
 
 

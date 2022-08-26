@@ -1,0 +1,167 @@
+---
+title: "Your Title"
+author: "Your Name"
+date: 'Rendered on `r Sys.Date()`'
+bibliography: extras/refs.bib # add references here
+csl: extras/apa.csl # https://www.zotero.org/styles
+nocite: '@*' # includes all citations in bib, even if not cited in text
+output: 
+  bookdown::html_document2: 
+    theme: 
+      version: 4 # 3 or 4
+      bootswatch: default # default, bootstrap, cerulean, cosmo, darkly, flatly, journal, lumen, paper, readable, sandstone, simplex, spacelab, united, yeti, null
+    highlight: default # default, tango, pygments, kate, monochrome, espresso, zenburn, haddock, breezedark, textmate, null
+    toc: true
+    toc_depth: 3
+    toc_float:
+      collapsed: false
+      smooth_scroll: false
+    df_print: paged # default, kable, tibble, paged, or a custom function
+    code_folding: show # null, hide, show
+    number_sections: true
+    css: extras/style.css # path to css file
+    
+    # less likely to change - can usually delete
+    fig_width: 7
+    fig_heigh: 5
+    fig_retina: 2 # default 2, null to prevent scaling
+    fig_caption: true
+    dev: png # see names(knitr:::auto_exts) for options
+    mathjax: default # default, local, specify URL, null
+    self_contained: true # set to false if using local mathjax
+    lib_dir: libs # only used if self_contained is false
+    keep_md: false
+    includes:
+      in_header: null # url of header html
+      before_body: null # url of pre-body html
+      after_body: null # url of post-body html
+---
+
+```{r setup, include=FALSE}
+# https://yihui.org/knitr/options/#chunk-options
+# str(knitr::opts_chunk$get()) # see current opts 
+knitr::opts_chunk$set(
+  echo = TRUE,
+  message = TRUE,
+  warning = TRUE,
+  cache = FALSE,
+  fig.align = 'default', # default, left, right, center
+  fig.width = 7,
+  fig.height = 5,
+  out.width = '100%',
+  background = '#F7F7F7', # code chunk bg colour
+  size = 'normalsize' # code chunk font size: tiny, scriptsize, footnotesize, small, normalsize, large, Large, LARGE ,huge, Huge
+)
+
+# packages used ----
+library(ggplot2)    # for plots
+library(kableExtra) # for tables
+library(DT)         # for interactive tables
+```
+
+# ReproRes Template
+
+The YAML header above contains all options for an HTML document. Options without obvious choices have choices listed in a comment. You can get more details at the [R Markdown Manual](https://bookdown.org/yihui/rmarkdown/html-document.html). The options are ordered by how likely you are to want to change them. The last section is fairly unusual options that you can usually delete and keep the defaults.
+
+This template uses the output style [bookdown::html_document2](https://bookdown.org/yihui/bookdown/a-single-document.html) from bookdown [@bookdown], which allows for figures and tables to be referenced in text, such as Figure \@ref(fig:disp-hp-vs) and Table \@ref(tab:mtcars).
+
+## Figures
+
+The fig-alt option sets alt-text for screen readers. This should allow a person with low or no vision to understand the meaning of the plot. 
+
+```{r disp-hp-vs}
+#| fig.cap: The relationship between displacement and horsepower for V-shaped and straight engines.
+#| fig.alt: A scatterplot with Displacement (cu.in.) along the x-axis, ranging from ~50 to ~500, and Gross Horsepower along the y-axis, ranging from ~50 to ~350. 15 red points are plotted for V-shaped engines and 12 blue points for straight engines. There is a positive relationship between displacement and horsepower, with the V-shaped engines having typically higher values on both than straight engines. 
+ggplot(mtcars, aes(x = disp, y = hp, color = as.factor(vs))) +
+  geom_point() +
+  labs(x = "Displacement (cu.in.)",
+       y = "Gross Horsepower") +
+  scale_color_manual(name = "Engine", 
+                     labels = c("V-shaped", "straight"), 
+                     values = c("firebrick", "dodgerblue3"))
+```
+
+## Tables {.tabset}
+
+The sections below are show in tabs by adding `{.tabset}` at the end of the higher-level header. However, this removes the tabbed sections from the table of contents, so add ` {-}` after the tab headers to remove section numbering.
+
+### Kable {-}
+
+If you use `knitr::kable()` or `kabelExtra::kable()` to display tables with captions, they are added to the auto-numbered tables.
+
+```{r mtcars}
+head(mtcars, 5) |>
+  kable(caption = "The first 5 entries in the Motor Trend Car Road Tests table.") |>
+  kable_material()
+```
+
+### Paged {-}
+
+Because this template has the setting `df_print: paged`, tables that don't have explicit formatting with `kable()` or another table formatter like `DT::datatable()` will be printed as a paged table without a caption and not included in the auto-numbered tables. You can also set options to control the display of the table (see `?rmarkdown::paged_table`).
+
+```{r mtcars-paged}
+#| rows.print: 5
+#| rownames.print: true
+mtcars
+```
+
+### Datatable {-}
+
+The `DT` package lets you make interactive tables with search and reordering, but also does not work with auto-numbering.
+
+```{r mtcars-dt}
+DT::datatable(mtcars, 
+              options = list(pageLength = 5),
+              caption = "Table displayed with DT::datatable().")
+```
+
+## CSS
+
+The title text in small caps are made using CSS ([Cascading Style Sheets](https://www.w3schools.com/cssref/)). Edit the `extras/styles.css` file to customise the look of your html document, or delete that line of the header to use default styles.
+
+For example, the css code below sets the document font in order of preference, ending with a generic font (serif, sans-serif, cursive, fantasy, monospace) because not all readers will have all fonts).
+
+``` css
+body {
+  font-family: "Helvetica Neue", "Arial", "sans-serif";
+}
+```
+
+This code defines some colours for reuse and adds a rainbow border to the top of the page.
+
+``` css
+/* define colours for reuse */
+:root {
+  --pink:   #983E82;   /* hsl(315, 42%, 42%) */
+  --orange: #E2A458; /* hsl( 33, 70%, 62%) */
+  --yellow: #F5DC70; /* hsl( 49, 87%, 70%) */
+  --green:  #59935B;  /* hsl(122, 25%, 46%) */
+  --blue:   #467AAC;   /* hsl(209, 42%, 47%) */
+  --purple: #61589C; /* hsl(248, 28%, 48%) */
+}
+
+/* rainbow top border */
+body {
+  margin-top: 18px;
+  box-shadow: 0 -3px 0 0px var(--purple),
+              0 -6px 0 0px var(--blue),
+              0 -9px 0 0px var(--green),
+              0 -12px 0 0px var(--yellow),
+              0 -15px 0 0px var(--orange),
+              0 -18px 0 0px var(--pink);
+}
+```
+
+# References {#refs}
+
+<div id="refs"></div>
+
+# (APPENDIX) Appendices {-}
+
+# Further Resources
+
+* [R Markdown: The Definitive Guide](https://bookdown.org/yihui/rmarkdown/)
+* [R Markdown Cookbook](https://bookdown.org/yihui/rmarkdown-cookbook/)
+* [bookdown: Authoring Books and Technical Documents with R Markdown](https://bookdown.org/yihui/bookdown/)
+
+

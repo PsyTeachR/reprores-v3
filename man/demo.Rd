@@ -15,7 +15,7 @@ A data frame with 6 rows and 5 variables:
 }
 }
 \source{
-\url{https://psyteachr.github.io/reprores-v2/data/demo.csv}
+\url{https://psyteachr.github.io/reprores-v3/data/demo.csv}
 }
 \usage{
 demo

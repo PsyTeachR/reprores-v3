@@ -10,7 +10,7 @@
 #'    \item{pre}{Score before the intervention}
 #'    \item{post}{Score after the intervention}
 #' }
-#' @source \url{https://psyteachr.github.io/reprores-v2/data/smalldata.csv}
+#' @source \url{https://psyteachr.github.io/reprores-v3/data/smalldata.csv}
 "smalldata"
 
 

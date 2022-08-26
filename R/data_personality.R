@@ -51,7 +51,7 @@
 #'    \item{Ex8}{Feel comfortable around people (FWD)}
 #'    \item{Ex9}{Have little to say (REV)}
 #' }
-#' @source \url{https://psyteachr.github.io/reprores-v2/data/personality.csv}
+#' @source \url{https://psyteachr.github.io/reprores-v3/data/personality.csv}
 "personality"
 
 

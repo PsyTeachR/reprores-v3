@@ -13,7 +13,7 @@
 #'    \item{Ne}{Mean score on Neuroticism items}
 #'    \item{Op}{Mean score on Openness items}
 #' }
-#' @source \url{https://psyteachr.github.io/reprores-v2/data/personality_scores.csv}
+#' @source \url{https://psyteachr.github.io/reprores-v3/data/personality_scores.csv}
 "personality_scores"
 
 

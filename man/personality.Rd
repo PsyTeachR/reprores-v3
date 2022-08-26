@@ -53,7 +53,7 @@ A data frame with 15000 rows and 43 variables:
 }
 }
 \source{
-\url{https://psyteachr.github.io/reprores-v2/data/personality.csv}
+\url{https://psyteachr.github.io/reprores-v3/data/personality.csv}
 }
 \usage{
 personality

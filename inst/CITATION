@@ -1,4 +1,4 @@
-citHeader("To cite dataskills in publications use:")
+citHeader("To cite reprores in publications use:")
 
 citEntry(
   entry    = "Manual",
@@ -6,9 +6,9 @@ citEntry(
   author   = "Lisa DeBruine and Dale Barr",
   doi      = "10.5281/zenodo.6527194",
   publisher = "Zenodo",
-  year     = "2021",
+  year     = "2022",
   month    = "September",
-  note     = "R package version 2.0",
-  url      = "https://psyteachr.github.io/msc-data-skills/",
-  textVersion = paste("Lisa DeBruine and Dale Barr (2021, Septmeber 18). Data Skills for Reproducible Science. R package version 2.0. Zenodo. http://doi.org/10.5281/zenodo.6527194")
+  note     = "R package version 3.0",
+  url      = "https://psyteachr.github.io/reprores-v3/",
+  textVersion = paste("Lisa DeBruine and Dale Barr (2022, Septmeber). Data Skills for Reproducible Research. R package version 3.0. Zenodo. http://doi.org/10.5281/zenodo.6527194")
 )

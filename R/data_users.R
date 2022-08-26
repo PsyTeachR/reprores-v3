@@ -9,7 +9,7 @@
 #'    \item{sex}{The participant's sex}
 #'    \item{birthyear}{The participant's year of birth}
 #' }
-#' @source \url{https://psyteachr.github.io/reprores-v2/data/users.csv}
+#' @source \url{https://psyteachr.github.io/reprores-v3/data/users.csv}
 "users"
 
 

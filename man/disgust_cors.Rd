@@ -13,7 +13,7 @@ A data frame with 441 rows and 3 variables:
 }
 }
 \source{
-\url{https://psyteachr.github.io/reprores-v2/data/disgust_cors.csv}
+\url{https://psyteachr.github.io/reprores-v3/data/disgust_cors.csv}
 }
 \usage{
 disgust_cors

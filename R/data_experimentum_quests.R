@@ -19,7 +19,7 @@
 #'    \item{starttime}{The timestamp of the questionnaire start}
 #'    \item{endtime}{The timestamp of the questionnaire submission}
 #' }
-#' @source \url{https://psyteachr.github.io/reprores-v2/data/experimentum_quests.csv}
+#' @source \url{https://psyteachr.github.io/reprores-v3/data/experimentum_quests.csv}
 "experimentum_quests"
 
 

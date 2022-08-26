@@ -24,7 +24,7 @@ A data frame with 990 rows and 14 variables:
 }
 }
 \source{
-\url{https://psyteachr.github.io/reprores-v2/data/experimentum_exps.csv}
+\url{https://psyteachr.github.io/reprores-v3/data/experimentum_exps.csv}
 }
 \usage{
 experimentum_exps

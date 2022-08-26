@@ -16,7 +16,7 @@ A data frame with 20000 rows and 6 variables:
 }
 }
 \source{
-\url{https://psyteachr.github.io/reprores-v2/data/disgust_scores.csv}
+\url{https://psyteachr.github.io/reprores-v3/data/disgust_scores.csv}
 }
 \usage{
 disgust_scores

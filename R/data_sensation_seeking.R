@@ -23,7 +23,7 @@
 #'    \item{sss13}{0:People who ride motorcycles must have some kind of unconscious need to hurt themselves. vs 1:I would like to drive or ride a motorcycle.}
 #'    \item{sss14}{0:In a good sexual relationship, people never get bored with each other. vs 1:It is normal to get bored after a time with the same sexual partner.}
 #' }
-#' @source \url{https://psyteachr.github.io/reprores-v2/data/sensation_seeking.csv}
+#' @source \url{https://psyteachr.github.io/reprores-v3/data/sensation_seeking.csv}
 "sensation_seeking"
 
 

@@ -11,7 +11,7 @@
 #'    \item{response}{The subject's response (should equal the ink colour)}
 #'    \item{rt}{Reaction time (in ms)}
 #' }
-#' @source \url{https://psyteachr.github.io/reprores-v2/data/stroop.csv}
+#' @source \url{https://psyteachr.github.io/reprores-v3/data/stroop.csv}
 "stroop"
 
 

@@ -11,7 +11,7 @@
 #'    \item{logical}{TRUE/FALSE values}
 #'    \item{date}{Dates in the format 31-Jan-21}
 #' }
-#' @source \url{https://psyteachr.github.io/reprores-v2/data/demo.csv}
+#' @source \url{https://psyteachr.github.io/reprores-v3/data/demo.csv}
 "demo"
 
 

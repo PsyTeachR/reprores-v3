@@ -13,7 +13,7 @@ A data frame with 60000 rows and 3 variables:
 }
 }
 \source{
-\url{https://psyteachr.github.io/reprores-v2/data/users2.csv}
+\url{https://psyteachr.github.io/reprores-v3/data/users2.csv}
 }
 \usage{
 users2

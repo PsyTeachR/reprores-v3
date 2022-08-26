@@ -17,7 +17,7 @@ A data frame with 15000 rows and 7 variables:
 }
 }
 \source{
-\url{https://psyteachr.github.io/reprores-v2/data/personality_scores.csv}
+\url{https://psyteachr.github.io/reprores-v3/data/personality_scores.csv}
 }
 \usage{
 personality_scores

@@ -12,7 +12,7 @@
 #'    \item{sexual}{The mean value for the 7 sexual items}
 #'    \item{pathogen}{The mean value for the 7 pathogen items}
 #' }
-#' @source \url{https://psyteachr.github.io/reprores-v2/data/disgust_scores.csv}
+#' @source \url{https://psyteachr.github.io/reprores-v3/data/disgust_scores.csv}
 "disgust_scores"
 
 

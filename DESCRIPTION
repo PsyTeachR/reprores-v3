@@ -30,7 +30,7 @@ License: CC BY 4.0 + LICENSE
 Encoding: UTF-8
 LazyData: true
 Roxygen: list(markdown = TRUE)
-RoxygenNote: 7.1.1
+RoxygenNote: 7.2.1
 Imports: 
     installr,
     dplyr,
@@ -61,7 +61,13 @@ Imports:
     googlesheets4,
     waffle,
     sf,
-    beepr
+    rnaturalearth,
+    rnaturalearthdata, 
+    rnaturalearthhires,
+    flexdashboard,
+    treemap,
+    beepr,
+    rtweet
 Suggests: 
     rmarkdown,
     zip,
@@ -71,8 +77,9 @@ Suggests:
 VignetteBuilder: knitr
 Depends: 
     R (>= 4.1)
-URL: https://github.com/psyteachr/reprores-v2
-BugReports: https://github.com/psyteachr/reprores-v2/issues
+URL: https://github.com/psyteachr/reprores-v3
+BugReports: https://github.com/psyteachr/reprores-v3/issues
 Remotes: 
     psyteachr/glossary,
-    hrbrmstr/waffle
+    hrbrmstr/waffle,
+    ropensci/rnaturalearthhires

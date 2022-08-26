@@ -1,5 +1,5 @@
 # eq_data ----
-#' Empathizing Quotient
+#' Empathy Quotient
 #'
 #' Reverse coded (Q#R) questions coded and strongly disagree = 2, slightly disagree = 1, else = 0. The other questions are coded as strongly agree = 2, slightly agree = 1, else = 0.
 #'
@@ -36,7 +36,7 @@
 #'    \item{Q21}{I am good at predicting what someone will do.}
 #'    \item{Q22}{I tend to get emotionally involved with a friend's problems.}
 #' }
-#' @source \url{https://psyteachr.github.io/reprores-v2/data/eq_data.csv}
+#' @source \url{https://psyteachr.github.io/reprores-v3/data/eq_data.csv}
 "eq_data"
 
 

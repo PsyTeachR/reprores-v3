@@ -408,7 +408,7 @@ knitr::include_graphics("images/intro/packages.png")
 # install devtools if you get
 # Error in loadNamespace(name) : there is no package called ‘devtools’
 # install.packages("devtools")
-devtools::install_github("psyteachr/reprores-v2")
+devtools::install_github("psyteachr/reprores-v3")
 ```
 
 After you install the `r pkg("reprores")` package, load it using the `r hl(library())` function. You can then try out some of the functions below.

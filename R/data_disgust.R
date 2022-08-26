@@ -30,7 +30,7 @@
 #'    \item{pathogen6}{Seeing a cockroach run across the floor}
 #'    \item{pathogen7}{Accidentally touching a person's bloody cut}
 #' }
-#' @source \url{https://psyteachr.github.io/reprores-v2/data/disgust.csv}
+#' @source \url{https://psyteachr.github.io/reprores-v3/data/disgust.csv}
 "disgust"
 
 

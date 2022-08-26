@@ -32,7 +32,7 @@ theme_set(theme_light())
 ```
 
 You'll need to make a folder called "data" and download data files into it: 
-<a href="https://psyteachr.github.io/ads-v1/data/survey_data.csv" download>survey_data.csv</a> and <a href="https://psyteachr.github.io/ads-v1/data/scottish_population.csv" download>scottish_population.csv</a>.
+<a href="https://psyteachr.github.io/reprores-v3/data/survey_data.csv" download>survey_data.csv</a> and <a href="https://psyteachr.github.io/reprores-v3/data/scottish_population.csv" download>scottish_population.csv</a>.
 
 Download the [ggplot2 cheat sheet](https://raw.githubusercontent.com/rstudio/cheatsheets/main/data-visualization.pdf).
 
@@ -241,7 +241,7 @@ Hover over the data points above and click on the legend items.
 
 #### Waffle Plots
 
-In Chapter\ \@ref(viz), we mentioned that pie charts are such a poor way to visualise proportions that we refused to even show you how to make one. Waffle plots are a delicious alternative. 
+In Chapter\ \@ref(ggplot), we mentioned that pie charts are such a poor way to visualise proportions that we refused to even show you how to make one. Waffle plots are a delicious alternative. 
 
 ::: {.warning data-latex=""}
 Use `r pkg("waffle")` by [hrbrmstr on GitHub](https://github.com/hrbrmstr/waffle/) using the `install_github()` function below, rather than the one on CRAN you get from using `install.packages()`.
@@ -403,7 +403,7 @@ ggplot(data = rank_data,
 
 #### Word Clouds
 
-Word clouds are a common way to summarise text data. First, download <a href="https://psyteachr.github.io/ads-v1/data/amazon_alexa.csv" download>amazon_alexa.csv</a> into your data folder and then load it into an object. This dataset contains  text reviews as well as the 1-5 rating from customers who bought an Alexa device on Amazon.
+Word clouds are a common way to summarise text data. First, download <a href="https://psyteachr.github.io/reprores-v3/data/amazon_alexa.csv" download>amazon_alexa.csv</a> into your data folder and then load it into an object. This dataset contains  text reviews as well as the 1-5 rating from customers who bought an Alexa device on Amazon.
 
 ```{r}
 # https://www.kaggle.com/sid321axn/amazon-alexa-reviews
@@ -537,7 +537,7 @@ ggplot() +
 ```
 
 
-You can join <a href="https://psyteachr.github.io/ads-v1/data/scottish_population.csv" download>Scottish population data</a> to the map table to visualise data on the map using colours or labels.
+You can join <a href="https://psyteachr.github.io/reprores-v3/data/scottish_population.csv" download>Scottish population data</a> to the map table to visualise data on the map using colours or labels.
 
 ```{r}
 # load map data
@@ -707,7 +707,7 @@ library(DT)            # for interactive tables
 ```
 
 You'll need to make a folder called "data" and download data files into it: 
-<a href="https://psyteachr.github.io/ads-v1/data/amazon_alexa.csv" download>amazon_alexa.csv</a> and <a href="https://psyteachr.github.io/ads-v1/data/scottish_population.csv" download>scottish_population.csv</a>.
+<a href="https://psyteachr.github.io/reprores-v3/data/amazon_alexa.csv" download>amazon_alexa.csv</a> and <a href="https://psyteachr.github.io/reprores-v3/data/scottish_population.csv" download>scottish_population.csv</a>.
 
 ### Linked documents
 

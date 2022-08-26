@@ -15,7 +15,7 @@ A data frame with 12500 rows and 5 variables:
 }
 }
 \source{
-\url{https://psyteachr.github.io/reprores-v2/data/stroop.csv}
+\url{https://psyteachr.github.io/reprores-v3/data/stroop.csv}
 }
 \usage{
 stroop

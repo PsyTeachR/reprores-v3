@@ -3,7 +3,7 @@
 \docType{data}
 \name{eq_data}
 \alias{eq_data}
-\title{Empathizing Quotient}
+\title{Empathy Quotient}
 \format{
 A data frame with 7689 rows and 28 variables:
 \describe{
@@ -38,7 +38,7 @@ A data frame with 7689 rows and 28 variables:
 }
 }
 \source{
-\url{https://psyteachr.github.io/reprores-v2/data/eq_data.csv}
+\url{https://psyteachr.github.io/reprores-v3/data/eq_data.csv}
 }
 \usage{
 eq_data

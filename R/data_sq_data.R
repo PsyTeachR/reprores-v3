@@ -39,7 +39,7 @@
 #'    \item{Q24}{I am interested in knowing the path a river takes from its source to the sea.}
 #'    \item{Q25R}{I am not interested in understanding how wireless communication works.}
 #' }
-#' @source \url{https://psyteachr.github.io/reprores-v2/data/sq_data.csv}
+#' @source \url{https://psyteachr.github.io/reprores-v3/data/sq_data.csv}
 "sq_data"
 
 

@@ -20,7 +20,7 @@
 #'    \item{side}{The side of presentation (for multi-stimulus trials)}
 #'    \item{dt}{The timestamp of the trial response}
 #' }
-#' @source \url{https://psyteachr.github.io/reprores-v2/data/experimentum_exps.csv}
+#' @source \url{https://psyteachr.github.io/reprores-v3/data/experimentum_exps.csv}
 "experimentum_exps"
 
 

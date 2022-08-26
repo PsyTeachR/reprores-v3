@@ -12,7 +12,7 @@
 #'    \item{age}{Age of the pet in years}
 #'    \item{weight}{Weight of the pet in kilograms}
 #' }
-#' @source \url{https://psyteachr.github.io/reprores-v2/data/pets.csv}
+#' @source \url{https://psyteachr.github.io/reprores-v3/data/pets.csv}
 "pets"
 
 

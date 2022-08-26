@@ -1,0 +1,4 @@
+name: Report
+description: >
+   A bookdown:: html_document2 template with all YAML header options set.
+create_dir: FALSE

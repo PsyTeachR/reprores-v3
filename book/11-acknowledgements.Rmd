@@ -3,8 +3,13 @@
 
 [![DOI](https://zenodo.org/badge/166541547.svg)](https://zenodo.org/badge/latestdoi/166541547)
 
+```{r}
+citation("reprores")
+```
 
-The whole [psyTeachR](https://psyteachr.github.io) team at the University of Glasgow School of Psychology deserves enormous thanks for making it possible and rewarding to teach methods with a focus on reproducibility and open science. Particularly 
+
+
+The whole [psyTeachR](https://psyteachr.github.io) team at the University of Glasgow School of Psychology deserves enormous thanks for making it possible and rewarding to teach methods with a focus on reproducibility and open research. Particularly 
 [Heather Cleland Woods](https://github.com/clelandwoods), 
 [Phil McAleer](https://github.com/philmcaleer), 
 [Helena Paterson](https://github.com/HelenaPaterson), 
