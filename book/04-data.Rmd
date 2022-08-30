@@ -5,13 +5,14 @@
 
 ## Learning Objectives {#ilo-data}
 
-1. Load [built-in datasets](#builtin) [(video)](https://youtu.be/Z5fK5VGmzlY){class="video"}
-2. [Import data](#import_data) from CSV and Excel files [(video)](https://youtu.be/a7Ra-hnB8l8){class="video"}
-3. Create a [data table](#tables-data) [(video)](https://youtu.be/k-aqhurepb4){class="video"}
-4. Understand the use the [basic data types](#data_types) [(video)](https://youtu.be/jXQrF18Jaac){class="video"}
-5. Understand and use the [basic container types](#containers) (list, vector) [(video)](https://youtu.be/4xU7uKNdoig){class="video"}
-6. Use [vectorized operations](#vectorized_ops) [(video)](https://youtu.be/9I5MdS7UWmI){class="video"}
-7. Be able to [troubleshoot](#Troubleshooting) common data import problems [(video)](https://youtu.be/gcxn4LJ_vAI){class="video"}
+1. Be able to [structure data](#data-structure) for scripting
+2. Load [built-in datasets](#builtin) [(video)](https://youtu.be/Z5fK5VGmzlY){class="video"}
+3. [Import data](#import_data) from CSV and Excel files [(video)](https://youtu.be/a7Ra-hnB8l8){class="video"}
+4. Create a [data table](#tables-data) [(video)](https://youtu.be/k-aqhurepb4){class="video"}
+5. Understand and use the [basic data types](#data_types) [(video)](https://youtu.be/jXQrF18Jaac){class="video"}
+6. Understand and use the [basic container types](#containers) (list, vector) [(video)](https://youtu.be/4xU7uKNdoig){class="video"}
+7. Use [vectorized operations](#vectorized_ops) [(video)](https://youtu.be/9I5MdS7UWmI){class="video"}
+8. Be able to [troubleshoot](#Troubleshooting) common data import problems [(video)](https://youtu.be/gcxn4LJ_vAI){class="video"}
 
 
 
@@ -23,11 +24,86 @@ library(tidyverse)
 library(reprores)
 ```
 
+## Data structure {#data-structure}
+
+You're probably most familiar with data recorded in Excel spreadsheets. These are fine for data entry, but are very prone to error if used for calculations and analysis (see these [horror stories](http://www.eusprig.org/horror-stories.htm)). @broman2018data recommend following several guidelines for less error-prone use of spreadsheets. The paper is well worth reading, but I'll summarise some of the most important guidelines here.
+
+### Be consistent
+
+Use the same names for `r glossary("variables")` in different data files, and the exact same format for `r glossary("categorical")` values. Capitalisation and spaces also matter. For example, do not record group as "A", "a", and "A " in different places (or in the same column); these will be treated by any computational script as three different values.
+
+If you have column names for items you might want to group later, such as a questionnaire with items belonging to one of three subscales, use a consistent naming convention. This will make it easier to reshape data to create subscale scores. For example, use column names like `O_1`, `E_2`, `O_3`, `C_4` rather than `q1`, `q2`, `q3`, `q4`. (Alternatively, you can include a separate table with a column for question number and a corresponding column for the subscale and join it to the reformatted questionnaire data, as we'll learn in Chapter\ \@ref(joins).)
+
+### Choose good names for things
+
+We covered this in Chapter\ \@ref(naming-things) for file names. It is also important to use names for variables and values that make it easy to work with them in R. For example, use column names with only letters, numbers, full stops and underscores so you don't have to quote them. Using camel case is OK, just use a consistent naming scheme so you don't have to keep looking up whether you named a column `SleepTime`, `sleepTime`, `sleep_time` or `sleep.time`.
+
+
+::: {.try data-latex=""}
+```{r, echo = FALSE}
+sub_id <- c(answer = "subject_id", "subject ID", "subject.id", "sid") |> sample() |> mcq()
+age <- c(answer = "age_months", "Age (in months)", "ageMonths", "age") |> sample() |> mcq()
+birth_year <- c(answer = "birth_year", "Birth Year", "birth-year", "by") |> sample() |>mcq()
+```
+
+Choose the best column names for a single data file:
+
+* `r sub_id`
+* `r age`
+* `r birth_year`
+
+:::
+
+### Write dates as YYYY-MM-DD
+
+<div class="right meme"><img src="images/memes/YYYY-MM-DD.png"
+     alt = "Cheerful man sitting behind a card table outdoors with a cup of coffee. A poster is taped to the front of the table that reads: YYYY-MM-DD is the best and only acceptable date format" /></div>
+
+This format is nearly impossible to misinterpret (unlike formats like "01/02/03") and sorts in a sensible order (unlike "January 2, 2003" or "2-1-03").
+
+### No empty cells
+
+I'm not as strict about this one, but I do think that missing values should be either empty cells ("") or `NA` and that this should be consistent across all your data sets. If you use other values, this requires some extra steps at data import (see Section\ \@ref(missing-values) below).
+
+### Put just one thing in a cell
+
+Don't put two pieces of information in the same cell. For example, rather than a column called `id-group` containing subject ID and experimental group (e.g., "001A"), record this info in two columns, `id` and `group`. We'll learn more about `r glossary("tidy data")` in Chapter\ \@ref(tidyr).
+
+### Make it a rectangle
+
+While merging cells or putting extra info into cells in a spreadsheet can look nice, it's a nightmare for data import. 
+
+```{r multirow-headers, echo = FALSE}
+#| fig-cap: Data with multiple headers and merged cells can take many extra steps to import. 
+knitr::include_graphics("images/data/multirow-excel.png")
+```
+
+We'll learn more about data formats to better represent data like this in Chapter\ \@ref(tidyr). See this [blog post](https://debruine.github.io/post/multi-row-headers/) for some solutions to deal with data like above.
+
+### Create a data dictionary
+
+You may think all of your column names and factor labels are intuitive, but other researchers and future you will thank you for creating a data dictionary. 
+
+You can create a data dictionary manually, or use an R package to help you make them for data you've imported to R. Crystal Lewis [reviews some of these](https://github.com/Cghlewis/codebook-pkg-comparison){target="_blank"}, like [codebookr](https://brad-cannell.github.io/codebookr/){target="_blank"}.
+
+### No calculations in the raw data files
+
+That's what we're learning R for!
+
+### Do not use font colour or highlighting
+
+There are ways to extract this computationally, but they're complex and annoying to deal with. When you are tempted to use colour to highlight something like outliers, add a column with TRUE/FALSE or text values instead.
+
+::: {.try data-latex=""}
+Find a paper in [Psychological Science](https://journals.sagepub.com/home/pss){target="_blank"} or another journal that encourages data sharing. Find a paper you're interested in that shares data (usually has this badge <img src="images/data/open-data.png" style="height: 1.5em;">) and download the data (usually listed in the "Open Practices" section at the end). Access their data and assess how well they follow each of the guidelines above.
+:::
+
+
 ## Data tables
 
 ### Built-in data {#builtin}
 
-R comes with built-in datasets. Some packages, like tidyr and reprores, also contain data. The `data()` function lists the datasets available in a package.
+R comes with built-in datasets. Some packages, like `r pkg("tidyr")` and `r pkg("reprores")`, also contain data. The `data()` function lists the datasets available in a package.
 
 ```{r built-in-data, eval = FALSE}
 # lists datasets in reprores
@@ -146,6 +222,7 @@ demo  <- readr::read_csv("data/demo.csv", col_types = ct)
 For dates, you might need to set the format. See `?strptime` for a list of the codes used to represent different date formats. Above, `r hl("%d-%b-%y")` means that the dates are formatted like `{day number}-{month abbreviation}-{2-digit year}`. 
 :::
 
+
 We'll learn more about how to fix data import problems in the [troubleshooting](#troubleshooting) section below.
 
 #### Other File Types
@@ -183,6 +260,22 @@ ocean_sav  <- haven::read_sav("data/5factor.sav")
 ```
 :::
 
+#### Missing Values {#missing-values}
+
+If you represent missing values with anything other than a blank cell or "NA", you need to specify this. Set the argument `na` to a vector of all the values that are used to represent missing data. By default this is set to `c("", "NA")`, so you will also need to change it if you have valid values that really are the word "NA", such as the 2-letter ISO country code for Nigeria.
+
+```{r}
+# make a short CSV string with two types of missing values
+csv_text <- "id, country
+              1, UK
+              2, missing
+              3, 
+              4, NA"
+
+readr::read_csv(csv_text, na = c("", "missing"),
+                show_col_types = FALSE)
+```
+
 
 ### Looking at data
 
@@ -204,6 +297,10 @@ Let's look at the `demo_tsv` table that we loaded above. Depending on how wide y
 demo_tsv
 ```
 
+::: {.warning data-latex=""}
+Remember that the way tables are displayed can look different in the interactive interface from the knit version, depending on how df_print is set.
+:::
+
 #### glimpse() 
 
 The function `r hl(tibble::glimpse())` gives a sideways version of the table. This is useful if the table is very wide and you can't see all of the columns. It also tells you the `r glossary("data type")` of each column in angled brackets after each column name. 
@@ -219,6 +316,13 @@ You can get a quick summary of a dataset with the `r hl(summary())` function.
 ```{r summary-demo}
 summary(demo_sav)
 ```
+
+There are other packages that can give you a more detailed summary, such as [skimr](https://docs.ropensci.org/skimr/).
+
+```{r}
+skimr::skim(demo)
+```
+
 
 ### Creating data 
 
@@ -238,6 +342,7 @@ avatar <- tibble(
 # print it
 avatar
 ```
+
 
 
 ### Writing Data
@@ -624,7 +729,7 @@ Tabular data becomes especially important for when we talk about `r glossary("ti
 
 #### Creating a table
 
-We learned how to create a table by importing a Excel or CSV file, and creating a table from scratch using the `tibble()` function. You can also use the `tibble::tribble()` function to create a table by row, rather than by column. You start by listing the column names, each preceded by a tilde (`~`), then you list the values for each column, row by row, separated by commas (don't forget a comma at the end of each row). This method can be easier for some data, but doesn't let you use shortcuts, like setting all of the values in a column to the same value or a [repeating sequence](#rep_seq).
+We learned how to create a table by importing a CSV or Excel file, and creating a table from scratch using the `tibble()` function. You can also use the `tibble::tribble()` function to create a table by row, rather than by column. You start by listing the column names, each preceded by a tilde (`~`), then you list the values for each column, row by row, separated by commas (don't forget a comma at the end of each row). This method can be easier for some data, but doesn't let you use shortcuts, like setting all of the values in a column to the same value or a [repeating sequence](#rep_seq).
 
 ```{r}
 # construct a table by column with tibble
@@ -796,5 +901,9 @@ tidiest
 
 ## Further Resources {#resources-data}
 
+* [Data Organization in Spreadsheets](https://doi.org/10.1080/00031305.2017.1375989) (@broman2018data)
 * [Chapter 11: Data Import](http://r4ds.had.co.nz/data-import.html) in *R for Data Science*
 * [RStudio Data Import Cheatsheet](https://github.com/rstudio/cheatsheets/raw/master/data-import.pdf)
+* [Codebook Package Comparison](https://github.com/Cghlewis/codebook-pkg-comparison)
+* [How to automatically document data with the codebook package to facilitate data reuse](https://doi.org/10.1177/2515245919838783) (@arslan2019automatically)
+* [Skimr](https://docs.ropensci.org/skimr/)

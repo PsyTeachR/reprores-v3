@@ -75,7 +75,7 @@ dat <- read_csv("C:/My Files/2020-2021/data/5factor.xlsx")   # wrong
 Also note the convention of using forward slashes, unlike the Windows-specific convention of using backward slashes. This is to make references to files work for everyone, regardless of their operating system.
 :::
 
-### Naming Things
+### Naming Things {#naming-things}
 
 Name files so that both people and computers can easily find things. Here are some important principles:
 
@@ -247,10 +247,10 @@ You can include `r glossary("chunk", "code chunks")` that create and display ima
 First, create a code chunk in your document. This code loads some data from the web. 
 
 ```{r}
-pets <- read_csv("https://psyteachr.github.io/reprores/data/pets.csv")
+pets <- read_csv("https://psyteachr.github.io/reprores/data/pets.csv",
+                 show_col_types = FALSE)
 ```
 
-#### Comments
 
 You can add comments inside R chunks with the hash symbol (`#`). The R interpreter will ignore characters from the hash to the end of the line.
 
@@ -270,31 +270,43 @@ If you name your objects clearly, you often don't need to add clarifying comment
 
 It's a bit of an art to comment your code well. The best way to develop this skill is to read a lot of other people's code and have others review your code. 
 
-#### Tables {#repro-tables}
+### Tables {#repro-tables}
 
 Next, create a code chunk where you want to display a table of the descriptives (e.g., Participants section of the Methods). We'll use tidyverse functions you will learn in the [data wrangling lectures](#tidyr) to create summary statistics for each group.
 
 ```{r}
-pets %>%
+summary_table <- pets %>%
   group_by(pet) %>%
   summarise(
     n = n(),
     mean_weight = mean(weight),
     mean_score = mean(score)
   )
+
+# print
+summary_table
 ```
 
-The table above is OK, but it could be more reader-friendly by changing the column labels, rounding the means, and adding a caption. You can use `r hl(knitr::kable())` for this.
+::: {.warning data-latex=""}
+The table above will print in tibble format in the interactive view, but will use the format from the `df_print` setting in the YAML header when you knit. 
+:::
 
-```{r}
-summary_table <-pets %>%
-  group_by(pet) %>%
-  summarise(
-    n = n(),
-    mean_weight = mean(weight),
-    mean_score = mean(score)
-  )
 
+The table above is OK, but it could be more reader-friendly by changing the column labels, rounding the means, and adding a caption. You can use `r hl(knitr::kable())` for this, or more specialised functions from other packages to format your tables.
+
+<!-- Tab links -->
+<div class="tab">
+  <button class="tablinks" onclick="openCity(event, 'knitr')">knitr</button>
+  <button class="tablinks" onclick="openCity(event, 'kableExtra')">kableExtra</button>
+  <button class="tablinks" onclick="openCity(event, 'papaja')">papaja</button>
+  <button class="tablinks" onclick="openCity(event, 'gt')">gt</button>
+  <button class="tablinks" onclick="openCity(event, 'DT')">DT</button>
+</div>
+
+<!-- Tab content -->
+<div id="knitr" class="tabcontent">
+
+```{r kable-demo}
 newnames <- c("Pet Type", "N", "Mean Weight", "Mean Score")
 
 knitr::kable(summary_table, 
@@ -303,12 +315,81 @@ knitr::kable(summary_table,
              caption = "Summary statistics for the pets dataset.")
 ```
 
+</div>
 
-::: {.info data-latex=""}
-Notice that the r chunk specifies the option `results='asis'`. This lets you format the table using the `kable()` function from `knitr`. You can also use more specialised functions from [papaja](https://crsh.github.io/papaja_man/reporting.html#tables) or [kableExtra](https://haozhu233.github.io/kableExtra/awesome_table_in_html.html) to format your tables.
-:::
+<!-- Tab content -->
+<div id="kableExtra" class="tabcontent">
 
-#### Images {#repro-figures}
+The [kableExtra](https://haozhu233.github.io/kableExtra/awesome_table_in_html.html) package gives you a lot of flexibility with table display.
+
+```{r kableExtra-demo, warning = FALSE}
+library(kableExtra)
+
+kable(summary_table, 
+      digits = 2, 
+      col.names = c("Pet Type", "N", "Weight", "Score"),
+      caption = "Summary statistics for the pets dataset.") |>
+  kable_classic() |>
+  kable_styling(full_width = FALSE, font_size = 20) |>
+  add_header_above(c(" " = 2, "Means" = 2)) |>
+  kableExtra::row_spec(2, bold = TRUE, background = "lightyellow")
+```
+
+</div>
+
+<!-- Tab content -->
+<div id="papaja" class="tabcontent">
+
+[papaja](https://crsh.github.io/papaja_man/reporting.html#tables) helps you create APA-formatted manuscripts, including tables.
+
+```{r papaja-demo}
+papaja::apa_table(summary_table, 
+                  col.names = c("Pet Type", "N", "Weight", "Score"),
+                  caption = "Summary statistics for the pets dataset.",
+                  col_spanners = list("Means" = c(3, 4)))
+```
+
+</div>
+
+<!-- Tab content -->
+<div id="gt" class="tabcontent">
+
+The [gt](https://gt.rstudio.com/index.html) package allows for even more customisation.
+
+```{r gt-demo}
+library(gt)
+
+gt(summary_table, caption = "Summary statistics for the pets dataset.") |>
+  fmt_number(columns = c(mean_weight, mean_score),
+            decimals = 2) |>
+  cols_label(pet = "Pet Type", 
+             n = "N", 
+             mean_weight = "Weight", 
+             mean_score = "Score") |>
+  tab_spanner(label = "Means",
+              columns = c(mean_weight, mean_score)) |>
+ opt_stylize(style = 6, color = "blue")
+```
+
+</div>
+
+
+<!-- Tab content -->
+<div id="DT" class="tabcontent">
+
+[DT](https://rstudio.github.io/DT/) lets you make interactive data tables. It can be tricky to customise, but the defaults are similar to other table functions.
+
+```{r dt-demo}
+DT::datatable(summary_table, 
+              caption = "Summary statistics for the pets dataset.",
+              colnames = c("Pet Type", "N", "Weight", "Score")) |>
+  DT::formatRound(c("mean_weight", "mean_score"),
+                  digits = 2)
+```
+
+</div>
+
+### Images {#repro-figures}
 
 Next, create a code chunk where you want to display an image in your document. Let's put it in the Results section. We'll use some code that you'll learn more about  in the [data visualisation lecture](#ggplot) to show violin-boxplots for the groups.
 
@@ -354,7 +435,7 @@ You can also include images that you did not create in R using the typical markd
 
 ![All the Things by [Hyperbole and a Half](http://hyperboleandahalf.blogspot.com/)](images/memes/x-all-the-things.png){style="width: 50%"}
 
-#### In-line R {#inline-r}
+### In-line R {#inline-r}
 
 Now let's analyse the pets data to see if cats are heavier than ferrets. First we'll run the analysis code. Then we'll save any numbers we might want to use in our manuscript to variables and round them appropriately. Finally, we'll use `r hl(glue::glue())` to format a results string.
 

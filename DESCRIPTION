@@ -67,7 +67,11 @@ Imports:
     flexdashboard,
     treemap,
     beepr,
-    rtweet
+    rtweet,
+    skimr,
+    DT,
+    kableExtra,
+    papaja
 Suggests: 
     rmarkdown,
     zip,

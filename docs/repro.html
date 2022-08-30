@@ -19,14 +19,13 @@
 <!-- JS --><script src="https://cdnjs.cloudflare.com/ajax/libs/clipboard.js/2.0.6/clipboard.min.js" integrity="sha256-inc5kl9MA1hkeYUt+EC3BhlIgyp/2jDIyBLS6k3UxPI=" crossorigin="anonymous"></script><script src="https://cdnjs.cloudflare.com/ajax/libs/fuse.js/6.4.6/fuse.js" integrity="sha512-zv6Ywkjyktsohkbp9bb45V6tEMoWhzFzXis+LrMehmJZZSys19Yxf1dopHx7WzIKxr5tK2dVcYmaCk2uqdjF4A==" crossorigin="anonymous"></script><script src="https://kit.fontawesome.com/6ecbd6c532.js" crossorigin="anonymous"></script><script src="libs/jquery-3.6.0/jquery-3.6.0.min.js"></script><meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
 <link href="libs/bootstrap-4.6.0/bootstrap.min.css" rel="stylesheet">
 <script src="libs/bootstrap-4.6.0/bootstrap.bundle.min.js"></script><script src="libs/bs3compat-0.4.0/transition.js"></script><script src="libs/bs3compat-0.4.0/tabs.js"></script><script src="libs/bs3compat-0.4.0/bs3compat.js"></script><link href="libs/bs4_book-1.0.0/bs4_book.css" rel="stylesheet">
-<script src="libs/bs4_book-1.0.0/bs4_book.js"></script><link href="libs/pagedtable-1.1/css/pagedtable.css" rel="stylesheet">
-<script src="libs/pagedtable-1.1/js/pagedtable.js"></script><script src="libs/kePrint-0.0.1/kePrint.js"></script><link href="libs/lightable-0.0.1/lightable.css" rel="stylesheet">
-<script src="libs/htmlwidgets-1.5.4/htmlwidgets.js"></script><script src="libs/plotly-binding-4.10.0/plotly.js"></script><script src="libs/typedarray-0.1/typedarray.min.js"></script><link href="libs/crosstalk-1.2.0/css/crosstalk.min.css" rel="stylesheet">
-<script src="libs/crosstalk-1.2.0/js/crosstalk.min.js"></script><link href="libs/plotly-htmlwidgets-css-2.5.1/plotly-htmlwidgets.css" rel="stylesheet">
-<script src="libs/plotly-main-2.5.1/plotly-latest.min.js"></script><link href="libs/datatables-css-0.0.0/datatables-crosstalk.css" rel="stylesheet">
+<script src="libs/bs4_book-1.0.0/bs4_book.js"></script><script src="libs/kePrint-0.0.1/kePrint.js"></script><link href="libs/lightable-0.0.1/lightable.css" rel="stylesheet">
+<script src="libs/htmlwidgets-1.5.4/htmlwidgets.js"></script><link href="libs/datatables-css-0.0.0/datatables-crosstalk.css" rel="stylesheet">
 <script src="libs/datatables-binding-0.24/datatables.js"></script><link href="libs/dt-core-1.11.3/css/jquery.dataTables.min.css" rel="stylesheet">
 <link href="libs/dt-core-1.11.3/css/jquery.dataTables.extra.css" rel="stylesheet">
-<script src="libs/dt-core-1.11.3/js/jquery.dataTables.min.js"></script><!-- Global site tag (gtag.js) - Google Analytics --><script async src="https://www.googletagmanager.com/gtag/js?id=G-6NP3MF25W3"></script><script>
+<script src="libs/dt-core-1.11.3/js/jquery.dataTables.min.js"></script><link href="libs/crosstalk-1.2.0/css/crosstalk.min.css" rel="stylesheet">
+<script src="libs/crosstalk-1.2.0/js/crosstalk.min.js"></script><script src="libs/plotly-binding-4.10.0/plotly.js"></script><script src="libs/typedarray-0.1/typedarray.min.js"></script><link href="libs/plotly-htmlwidgets-css-2.5.1/plotly-htmlwidgets.css" rel="stylesheet">
+<script src="libs/plotly-main-2.5.1/plotly-latest.min.js"></script><!-- Global site tag (gtag.js) - Google Analytics --><script async src="https://www.googletagmanager.com/gtag/js?id=G-6NP3MF25W3"></script><script>
       window.dataLayer = window.dataLayer || [];
       function gtag(){dataLayer.push(arguments);}
       gtag('js', new Date());
@@ -411,21 +410,10 @@ Figure 2.5: Light themes in versions 3 and 4.
 <p>You can include <a class="glossary" target="_blank" title="A section of code in an R Markdown file" href="https://psyteachr.github.io/glossary/c#chunk">code chunks</a> that create and display images, tables, or computations to include in your text. Let's start by loading some data.</p>
 <p>First, create a code chunk in your document. This code loads some data from the web.</p>
 <div class="sourceCode" id="cb53"><pre class="downlit sourceCode r">
-<code class="sourceCode R"><span><span class="va">pets</span> <span class="op">&lt;-</span> <span class="fu"><a href="https://readr.tidyverse.org/reference/read_delim.html">read_csv</a></span><span class="op">(</span><span class="st">"https://psyteachr.github.io/reprores/data/pets.csv"</span><span class="op">)</span></span></code></pre></div>
-<pre><code>## Rows: 800 Columns: 6
-## ── Column specification ────────────────────────────────────────────────────────
-## Delimiter: ","
-## chr (3): id, pet, country
-## dbl (3): score, age, weight
-## 
-## ℹ Use `spec()` to retrieve the full column specification for this data.
-## ℹ Specify the column types or set `show_col_types = FALSE` to quiet this message.</code></pre>
-<div id="comments" class="section level4" number="2.5.4.1">
-<h4>
-<span class="header-section-number">2.5.4.1</span> Comments<a class="anchor" aria-label="anchor" href="#comments"><i class="fas fa-link"></i></a>
-</h4>
+<code class="sourceCode R"><span><span class="va">pets</span> <span class="op">&lt;-</span> <span class="fu"><a href="https://readr.tidyverse.org/reference/read_delim.html">read_csv</a></span><span class="op">(</span><span class="st">"https://psyteachr.github.io/reprores/data/pets.csv"</span>,</span>
+<span>                 show_col_types <span class="op">=</span> <span class="cn">FALSE</span><span class="op">)</span></span></code></pre></div>
 <p>You can add comments inside R chunks with the hash symbol (<code>#</code>). The R interpreter will ignore characters from the hash to the end of the line.</p>
-<div class="sourceCode" id="cb55"><pre class="downlit sourceCode r">
+<div class="sourceCode" id="cb54"><pre class="downlit sourceCode r">
 <code class="sourceCode R"><span><span class="co"># simulating new data</span></span>
 <span></span>
 <span><span class="va">n</span> <span class="op">&lt;-</span> <span class="fu"><a href="https://rdrr.io/r/base/nrow.html">nrow</a></span><span class="op">(</span><span class="va">pets</span><span class="op">)</span> <span class="co"># the total number of pet</span></span>
@@ -437,27 +425,13 @@ Figure 2.5: Light themes in versions 3 and 4.
 <p>If you name your objects clearly, you often don't need to add clarifying comments. For example, if I'd named the three objects above <code>total_pet_n</code>, <code>mean_score</code> and <code>sd_score</code>, I would omit the comments.</p>
 <p>It's a bit of an art to comment your code well. The best way to develop this skill is to read a lot of other people's code and have others review your code.</p>
 </div>
-<div id="repro-tables" class="section level4" number="2.5.4.2">
-<h4>
-<span class="header-section-number">2.5.4.2</span> Tables<a class="anchor" aria-label="anchor" href="#repro-tables"><i class="fas fa-link"></i></a>
-</h4>
+<div id="repro-tables" class="section level3" number="2.5.5">
+<h3>
+<span class="header-section-number">2.5.5</span> Tables<a class="anchor" aria-label="anchor" href="#repro-tables"><i class="fas fa-link"></i></a>
+</h3>
 <p>Next, create a code chunk where you want to display a table of the descriptives (e.g., Participants section of the Methods). We'll use tidyverse functions you will learn in the <a href="tidyr.html#tidyr">data wrangling lectures</a> to create summary statistics for each group.</p>
-<div class="sourceCode" id="cb56"><pre class="downlit sourceCode r">
-<code class="sourceCode R"><span><span class="va">pets</span> <span class="op"><a href="https://magrittr.tidyverse.org/reference/pipe.html">%&gt;%</a></span></span>
-<span>  <span class="fu"><a href="https://dplyr.tidyverse.org/reference/group_by.html">group_by</a></span><span class="op">(</span><span class="va">pet</span><span class="op">)</span> <span class="op"><a href="https://magrittr.tidyverse.org/reference/pipe.html">%&gt;%</a></span></span>
-<span>  <span class="fu"><a href="https://dplyr.tidyverse.org/reference/summarise.html">summarise</a></span><span class="op">(</span></span>
-<span>    n <span class="op">=</span> <span class="fu"><a href="https://dplyr.tidyverse.org/reference/context.html">n</a></span><span class="op">(</span><span class="op">)</span>,</span>
-<span>    mean_weight <span class="op">=</span> <span class="fu"><a href="https://rdrr.io/r/base/mean.html">mean</a></span><span class="op">(</span><span class="va">weight</span><span class="op">)</span>,</span>
-<span>    mean_score <span class="op">=</span> <span class="fu"><a href="https://rdrr.io/r/base/mean.html">mean</a></span><span class="op">(</span><span class="va">score</span><span class="op">)</span></span>
-<span>  <span class="op">)</span></span></code></pre></div>
-<div data-pagedtable="false">
-<script data-pagedtable-source type="application/json">
-{"columns":[{"label":["pet"],"name":[1],"type":["chr"],"align":["left"]},{"label":["n"],"name":[2],"type":["int"],"align":["right"]},{"label":["mean_weight"],"name":[3],"type":["dbl"],"align":["right"]},{"label":["mean_score"],"name":[4],"type":["dbl"],"align":["right"]}],"data":[{"1":"cat","2":"300","3":"9.371613","4":"90.23667"},{"1":"dog","2":"400","3":"19.067974","4":"99.98250"},{"1":"ferret","2":"100","3":"4.781569","4":"111.78000"}],"options":{"columns":{"min":{},"max":[10]},"rows":{"min":[10],"max":[10]},"pages":{}}}
-  </script>
-</div>
-<p>The table above is OK, but it could be more reader-friendly by changing the column labels, rounding the means, and adding a caption. You can use <code><span><span class="fu">knitr</span><span class="fu">::</span><span class="fu"><a target="_blank" href="https://rdrr.io/pkg/knitr/man/kable.html">kable</a></span><span class="op">(</span><span class="op">)</span></span></code> for this.</p>
-<div class="sourceCode" id="cb57"><pre class="downlit sourceCode r">
-<code class="sourceCode R"><span><span class="va">summary_table</span> <span class="op">&lt;-</span><span class="va">pets</span> <span class="op"><a href="https://magrittr.tidyverse.org/reference/pipe.html">%&gt;%</a></span></span>
+<div class="sourceCode" id="cb55"><pre class="downlit sourceCode r">
+<code class="sourceCode R"><span><span class="va">summary_table</span> <span class="op">&lt;-</span> <span class="va">pets</span> <span class="op"><a href="https://magrittr.tidyverse.org/reference/pipe.html">%&gt;%</a></span></span>
 <span>  <span class="fu"><a href="https://dplyr.tidyverse.org/reference/group_by.html">group_by</a></span><span class="op">(</span><span class="va">pet</span><span class="op">)</span> <span class="op"><a href="https://magrittr.tidyverse.org/reference/pipe.html">%&gt;%</a></span></span>
 <span>  <span class="fu"><a href="https://dplyr.tidyverse.org/reference/summarise.html">summarise</a></span><span class="op">(</span></span>
 <span>    n <span class="op">=</span> <span class="fu"><a href="https://dplyr.tidyverse.org/reference/context.html">n</a></span><span class="op">(</span><span class="op">)</span>,</span>
@@ -465,7 +439,86 @@ Figure 2.5: Light themes in versions 3 and 4.
 <span>    mean_score <span class="op">=</span> <span class="fu"><a href="https://rdrr.io/r/base/mean.html">mean</a></span><span class="op">(</span><span class="va">score</span><span class="op">)</span></span>
 <span>  <span class="op">)</span></span>
 <span></span>
-<span><span class="va">newnames</span> <span class="op">&lt;-</span> <span class="fu"><a href="https://rdrr.io/r/base/c.html">c</a></span><span class="op">(</span><span class="st">"Pet Type"</span>, <span class="st">"N"</span>, <span class="st">"Mean Weight"</span>, <span class="st">"Mean Score"</span><span class="op">)</span></span>
+<span><span class="co"># print</span></span>
+<span><span class="va">summary_table</span></span></code></pre></div>
+<div class="kable-table">
+<div class="inline-table"><table class="table table-sm">
+<thead><tr>
+<th style="text-align:left;">
+pet
+</th>
+<th style="text-align:right;">
+n
+</th>
+<th style="text-align:right;">
+mean_weight
+</th>
+<th style="text-align:right;">
+mean_score
+</th>
+</tr></thead>
+<tbody>
+<tr>
+<td style="text-align:left;">
+cat
+</td>
+<td style="text-align:right;">
+300
+</td>
+<td style="text-align:right;">
+9.371613
+</td>
+<td style="text-align:right;">
+90.23667
+</td>
+</tr>
+<tr>
+<td style="text-align:left;">
+dog
+</td>
+<td style="text-align:right;">
+400
+</td>
+<td style="text-align:right;">
+19.067974
+</td>
+<td style="text-align:right;">
+99.98250
+</td>
+</tr>
+<tr>
+<td style="text-align:left;">
+ferret
+</td>
+<td style="text-align:right;">
+100
+</td>
+<td style="text-align:right;">
+4.781569
+</td>
+<td style="text-align:right;">
+111.78000
+</td>
+</tr>
+</tbody>
+</table></div>
+</div>
+<div class="warning">
+<p>The table above will print in tibble format in the interactive view, but will use the format from the <code>df_print</code> setting in the YAML header when you knit.</p>
+</div>
+<p>The table above is OK, but it could be more reader-friendly by changing the column labels, rounding the means, and adding a caption. You can use <code><span><span class="fu">knitr</span><span class="fu">::</span><span class="fu"><a target="_blank" href="https://rdrr.io/pkg/knitr/man/kable.html">kable</a></span><span class="op">(</span><span class="op">)</span></span></code> for this, or more specialised functions from other packages to format your tables.</p>
+<!-- Tab links -->
+<div class="tab">
+<p><button class="tablinks" onclick="openCity(event, 'knitr')">knitr</button>
+<button class="tablinks" onclick="openCity(event, 'kableExtra')">kableExtra</button>
+<button class="tablinks" onclick="openCity(event, 'papaja')">papaja</button>
+<button class="tablinks" onclick="openCity(event, 'gt')">gt</button>
+<button class="tablinks" onclick="openCity(event, 'DT')">DT</button></p>
+</div>
+<!-- Tab content -->
+<div id="knitr" class="tabcontent">
+<div class="sourceCode" id="cb56"><pre class="downlit sourceCode r">
+<code class="sourceCode R"><span><span class="va">newnames</span> <span class="op">&lt;-</span> <span class="fu"><a href="https://rdrr.io/r/base/c.html">c</a></span><span class="op">(</span><span class="st">"Pet Type"</span>, <span class="st">"N"</span>, <span class="st">"Mean Weight"</span>, <span class="st">"Mean Score"</span><span class="op">)</span></span>
 <span></span>
 <span><span class="fu">knitr</span><span class="fu">::</span><span class="fu"><a href="https://rdrr.io/pkg/knitr/man/kable.html">kable</a></span><span class="op">(</span><span class="va">summary_table</span>, </span>
 <span>             digits <span class="op">=</span> <span class="fl">2</span>, </span>
@@ -473,7 +526,7 @@ Figure 2.5: Light themes in versions 3 and 4.
 <span>             caption <span class="op">=</span> <span class="st">"Summary statistics for the pets dataset."</span><span class="op">)</span></span></code></pre></div>
 <div class="inline-table"><table class="table table-sm">
 <caption>
-<span id="tab:unnamed-chunk-6">Table 2.1: </span>Summary statistics for the pets dataset.
+<span id="tab:kable-demo">Table 2.1: </span>Summary statistics for the pets dataset.
 </caption>
 <thead><tr>
 <th style="text-align:left;">
@@ -534,14 +587,617 @@ ferret
 </tr>
 </tbody>
 </table></div>
-<div class="info">
-<p>Notice that the r chunk specifies the option <code>results='asis'</code>. This lets you format the table using the <code><a href="https://rdrr.io/pkg/knitr/man/kable.html">kable()</a></code> function from <code>knitr</code>. You can also use more specialised functions from <a href="https://crsh.github.io/papaja_man/reporting.html#tables">papaja</a> or <a href="https://haozhu233.github.io/kableExtra/awesome_table_in_html.html">kableExtra</a> to format your tables.</p>
+</div>
+<!-- Tab content -->
+<div id="kableExtra" class="tabcontent">
+<p>The <a href="https://haozhu233.github.io/kableExtra/awesome_table_in_html.html">kableExtra</a> package gives you a lot of flexibility with table display.</p>
+<div class="sourceCode" id="cb57"><pre class="downlit sourceCode r">
+<code class="sourceCode R"><span><span class="kw"><a href="https://rdrr.io/r/base/library.html">library</a></span><span class="op">(</span><span class="va"><a href="http://haozhu233.github.io/kableExtra/">kableExtra</a></span><span class="op">)</span></span>
+<span></span>
+<span><span class="fu"><a href="https://rdrr.io/pkg/knitr/man/kable.html">kable</a></span><span class="op">(</span><span class="va">summary_table</span>, </span>
+<span>      digits <span class="op">=</span> <span class="fl">2</span>, </span>
+<span>      col.names <span class="op">=</span> <span class="fu"><a href="https://rdrr.io/r/base/c.html">c</a></span><span class="op">(</span><span class="st">"Pet Type"</span>, <span class="st">"N"</span>, <span class="st">"Weight"</span>, <span class="st">"Score"</span><span class="op">)</span>,</span>
+<span>      caption <span class="op">=</span> <span class="st">"Summary statistics for the pets dataset."</span><span class="op">)</span> <span class="op">|&gt;</span></span>
+<span>  <span class="fu"><a href="https://rdrr.io/pkg/kableExtra/man/kable_classic.html">kable_classic</a></span><span class="op">(</span><span class="op">)</span> <span class="op">|&gt;</span></span>
+<span>  <span class="fu"><a href="https://rdrr.io/pkg/kableExtra/man/kable_styling.html">kable_styling</a></span><span class="op">(</span>full_width <span class="op">=</span> <span class="cn">FALSE</span>, font_size <span class="op">=</span> <span class="fl">20</span><span class="op">)</span> <span class="op">|&gt;</span></span>
+<span>  <span class="fu"><a href="https://rdrr.io/pkg/kableExtra/man/add_header_above.html">add_header_above</a></span><span class="op">(</span><span class="fu"><a href="https://rdrr.io/r/base/c.html">c</a></span><span class="op">(</span><span class="st">" "</span> <span class="op">=</span> <span class="fl">2</span>, <span class="st">"Means"</span> <span class="op">=</span> <span class="fl">2</span><span class="op">)</span><span class="op">)</span> <span class="op">|&gt;</span></span>
+<span>  <span class="fu">kableExtra</span><span class="fu">::</span><span class="fu"><a href="https://rdrr.io/pkg/kableExtra/man/row_spec.html">row_spec</a></span><span class="op">(</span><span class="fl">2</span>, bold <span class="op">=</span> <span class="cn">TRUE</span>, background <span class="op">=</span> <span class="st">"lightyellow"</span><span class="op">)</span></span></code></pre></div>
+<div class="inline-table"><table class=" lightable-classic table" style='font-family: "Arial Narrow", "Source Sans Pro", sans-serif; margin-left: auto; margin-right: auto; font-size: 20px; width: auto !important; margin-left: auto; margin-right: auto;'>
+<caption style="font-size: initial !important;">
+<span id="tab:kableExtra-demo">Table 2.2: </span>Summary statistics for the pets dataset.
+</caption>
+<thead>
+<tr>
+<th style="empty-cells: hide;" colspan="2">
+</th>
+<th style="padding-bottom:0; padding-left:3px;padding-right:3px;text-align: center; " colspan="2">
+<div style="border-bottom: 1px solid #111111; margin-bottom: -1px; ">
+Means
+</div>
+</th>
+</tr>
+<tr>
+<th style="text-align:left;">
+Pet Type
+</th>
+<th style="text-align:right;">
+N
+</th>
+<th style="text-align:right;">
+Weight
+</th>
+<th style="text-align:right;">
+Score
+</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td style="text-align:left;">
+cat
+</td>
+<td style="text-align:right;">
+300
+</td>
+<td style="text-align:right;">
+9.37
+</td>
+<td style="text-align:right;">
+90.24
+</td>
+</tr>
+<tr>
+<td style="text-align:left;font-weight: bold;background-color: lightyellow !important;">
+dog
+</td>
+<td style="text-align:right;font-weight: bold;background-color: lightyellow !important;">
+400
+</td>
+<td style="text-align:right;font-weight: bold;background-color: lightyellow !important;">
+19.07
+</td>
+<td style="text-align:right;font-weight: bold;background-color: lightyellow !important;">
+99.98
+</td>
+</tr>
+<tr>
+<td style="text-align:left;">
+ferret
+</td>
+<td style="text-align:right;">
+100
+</td>
+<td style="text-align:right;">
+4.78
+</td>
+<td style="text-align:right;">
+111.78
+</td>
+</tr>
+</tbody>
+</table></div>
+</div>
+<!-- Tab content -->
+<div id="papaja" class="tabcontent">
+<p><a href="https://crsh.github.io/papaja_man/reporting.html#tables">papaja</a> helps you create APA-formatted manuscripts, including tables.</p>
+<div class="sourceCode" id="cb58"><pre class="downlit sourceCode r">
+<code class="sourceCode R"><span><span class="fu">papaja</span><span class="fu">::</span><span class="fu"><a href="https://rdrr.io/pkg/papaja/man/apa_table.html">apa_table</a></span><span class="op">(</span><span class="va">summary_table</span>, </span>
+<span>                  col.names <span class="op">=</span> <span class="fu"><a href="https://rdrr.io/r/base/c.html">c</a></span><span class="op">(</span><span class="st">"Pet Type"</span>, <span class="st">"N"</span>, <span class="st">"Weight"</span>, <span class="st">"Score"</span><span class="op">)</span>,</span>
+<span>                  caption <span class="op">=</span> <span class="st">"Summary statistics for the pets dataset."</span>,</span>
+<span>                  col_spanners <span class="op">=</span> <span class="fu"><a href="https://rdrr.io/r/base/list.html">list</a></span><span class="op">(</span><span class="st">"Means"</span> <span class="op">=</span> <span class="fu"><a href="https://rdrr.io/r/base/c.html">c</a></span><span class="op">(</span><span class="fl">3</span>, <span class="fl">4</span><span class="op">)</span><span class="op">)</span><span class="op">)</span></span></code></pre></div>
+<caption>
+<span id="tab:papaja-demo">Table 2.3: </span>
+</caption>
+<div custom-style="Table Caption">
+<em>Summary statistics for the pets dataset.</em>
+</div>
+<div class="inline-table"><table class="table table-sm">
+<thead><tr class="header">
+<th align="left">Pet Type</th>
+<th align="left">N</th>
+<th align="left">Weight</th>
+<th align="left">Score</th>
+</tr></thead>
+<tbody>
+<tr class="odd">
+<td align="left">cat</td>
+<td align="left">300</td>
+<td align="left">9.37</td>
+<td align="left">90.24</td>
+</tr>
+<tr class="even">
+<td align="left">dog</td>
+<td align="left">400</td>
+<td align="left">19.07</td>
+<td align="left">99.98</td>
+</tr>
+<tr class="odd">
+<td align="left">ferret</td>
+<td align="left">100</td>
+<td align="left">4.78</td>
+<td align="left">111.78</td>
+</tr>
+</tbody>
+</table></div>
+</div>
+<!-- Tab content -->
+<div id="gt" class="tabcontent">
+<p>The <a href="https://gt.rstudio.com/index.html">gt</a> package allows for even more customisation.</p>
+<div class="sourceCode" id="cb59"><pre class="downlit sourceCode r">
+<code class="sourceCode R"><span><span class="kw"><a href="https://rdrr.io/r/base/library.html">library</a></span><span class="op">(</span><span class="va"><a href="https://gt.rstudio.com/">gt</a></span><span class="op">)</span></span>
+<span></span>
+<span><span class="fu"><a href="https://gt.rstudio.com/reference/gt.html">gt</a></span><span class="op">(</span><span class="va">summary_table</span>, caption <span class="op">=</span> <span class="st">"Summary statistics for the pets dataset."</span><span class="op">)</span> <span class="op">|&gt;</span></span>
+<span>  <span class="fu"><a href="https://gt.rstudio.com/reference/fmt_number.html">fmt_number</a></span><span class="op">(</span>columns <span class="op">=</span> <span class="fu"><a href="https://rdrr.io/r/base/c.html">c</a></span><span class="op">(</span><span class="va">mean_weight</span>, <span class="va">mean_score</span><span class="op">)</span>,</span>
+<span>            decimals <span class="op">=</span> <span class="fl">2</span><span class="op">)</span> <span class="op">|&gt;</span></span>
+<span>  <span class="fu"><a href="https://gt.rstudio.com/reference/cols_label.html">cols_label</a></span><span class="op">(</span>pet <span class="op">=</span> <span class="st">"Pet Type"</span>, </span>
+<span>             n <span class="op">=</span> <span class="st">"N"</span>, </span>
+<span>             mean_weight <span class="op">=</span> <span class="st">"Weight"</span>, </span>
+<span>             mean_score <span class="op">=</span> <span class="st">"Score"</span><span class="op">)</span> <span class="op">|&gt;</span></span>
+<span>  <span class="fu"><a href="https://gt.rstudio.com/reference/tab_spanner.html">tab_spanner</a></span><span class="op">(</span>label <span class="op">=</span> <span class="st">"Means"</span>,</span>
+<span>              columns <span class="op">=</span> <span class="fu"><a href="https://rdrr.io/r/base/c.html">c</a></span><span class="op">(</span><span class="va">mean_weight</span>, <span class="va">mean_score</span><span class="op">)</span><span class="op">)</span> <span class="op">|&gt;</span></span>
+<span> <span class="fu"><a href="https://gt.rstudio.com/reference/opt_stylize.html">opt_stylize</a></span><span class="op">(</span>style <span class="op">=</span> <span class="fl">6</span>, color <span class="op">=</span> <span class="st">"blue"</span><span class="op">)</span></span></code></pre></div>
+<div id="ceatgionfl" style="overflow-x:auto;overflow-y:auto;width:auto;height:auto;">
+<style>html {
+  font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Oxygen, Ubuntu, Cantarell, 'Helvetica Neue', 'Fira Sans', 'Droid Sans', Arial, sans-serif;
+}
+
+#ceatgionfl .gt_table {
+  display: table;
+  border-collapse: collapse;
+  margin-left: auto;
+  margin-right: auto;
+  color: #333333;
+  font-size: 16px;
+  font-weight: normal;
+  font-style: normal;
+  background-color: #FFFFFF;
+  width: auto;
+  border-top-style: solid;
+  border-top-width: 2px;
+  border-top-color: #5F5F5F;
+  border-right-style: none;
+  border-right-width: 2px;
+  border-right-color: #D3D3D3;
+  border-bottom-style: solid;
+  border-bottom-width: 2px;
+  border-bottom-color: #5F5F5F;
+  border-left-style: none;
+  border-left-width: 2px;
+  border-left-color: #D3D3D3;
+}
+
+#ceatgionfl .gt_heading {
+  background-color: #FFFFFF;
+  text-align: center;
+  border-bottom-color: #FFFFFF;
+  border-left-style: none;
+  border-left-width: 1px;
+  border-left-color: #D3D3D3;
+  border-right-style: none;
+  border-right-width: 1px;
+  border-right-color: #D3D3D3;
+}
+
+#ceatgionfl .gt_title {
+  color: #333333;
+  font-size: 125%;
+  font-weight: initial;
+  padding-top: 4px;
+  padding-bottom: 4px;
+  padding-left: 5px;
+  padding-right: 5px;
+  border-bottom-color: #FFFFFF;
+  border-bottom-width: 0;
+}
+
+#ceatgionfl .gt_subtitle {
+  color: #333333;
+  font-size: 85%;
+  font-weight: initial;
+  padding-top: 0;
+  padding-bottom: 6px;
+  padding-left: 5px;
+  padding-right: 5px;
+  border-top-color: #FFFFFF;
+  border-top-width: 0;
+}
+
+#ceatgionfl .gt_bottom_border {
+  border-bottom-style: solid;
+  border-bottom-width: 2px;
+  border-bottom-color: #5F5F5F;
+}
+
+#ceatgionfl .gt_col_headings {
+  border-top-style: solid;
+  border-top-width: 2px;
+  border-top-color: #5F5F5F;
+  border-bottom-style: solid;
+  border-bottom-width: 2px;
+  border-bottom-color: #5F5F5F;
+  border-left-style: none;
+  border-left-width: 1px;
+  border-left-color: #D3D3D3;
+  border-right-style: none;
+  border-right-width: 1px;
+  border-right-color: #D3D3D3;
+}
+
+#ceatgionfl .gt_col_heading {
+  color: #FFFFFF;
+  background-color: #0076BA;
+  font-size: 100%;
+  font-weight: normal;
+  text-transform: inherit;
+  border-left-style: none;
+  border-left-width: 1px;
+  border-left-color: #D3D3D3;
+  border-right-style: none;
+  border-right-width: 1px;
+  border-right-color: #D3D3D3;
+  vertical-align: bottom;
+  padding-top: 5px;
+  padding-bottom: 6px;
+  padding-left: 5px;
+  padding-right: 5px;
+  overflow-x: hidden;
+}
+
+#ceatgionfl .gt_column_spanner_outer {
+  color: #FFFFFF;
+  background-color: #0076BA;
+  font-size: 100%;
+  font-weight: normal;
+  text-transform: inherit;
+  padding-top: 0;
+  padding-bottom: 0;
+  padding-left: 4px;
+  padding-right: 4px;
+}
+
+#ceatgionfl .gt_column_spanner_outer:first-child {
+  padding-left: 0;
+}
+
+#ceatgionfl .gt_column_spanner_outer:last-child {
+  padding-right: 0;
+}
+
+#ceatgionfl .gt_column_spanner {
+  border-bottom-style: solid;
+  border-bottom-width: 2px;
+  border-bottom-color: #5F5F5F;
+  vertical-align: bottom;
+  padding-top: 5px;
+  padding-bottom: 5px;
+  overflow-x: hidden;
+  display: inline-block;
+  width: 100%;
+}
+
+#ceatgionfl .gt_group_heading {
+  padding-top: 8px;
+  padding-bottom: 8px;
+  padding-left: 5px;
+  padding-right: 5px;
+  color: #333333;
+  background-color: #FFFFFF;
+  font-size: 100%;
+  font-weight: initial;
+  text-transform: inherit;
+  border-top-style: solid;
+  border-top-width: 2px;
+  border-top-color: #5F5F5F;
+  border-bottom-style: solid;
+  border-bottom-width: 2px;
+  border-bottom-color: #5F5F5F;
+  border-left-style: none;
+  border-left-width: 1px;
+  border-left-color: #D3D3D3;
+  border-right-style: none;
+  border-right-width: 1px;
+  border-right-color: #D3D3D3;
+  vertical-align: middle;
+}
+
+#ceatgionfl .gt_empty_group_heading {
+  padding: 0.5px;
+  color: #333333;
+  background-color: #FFFFFF;
+  font-size: 100%;
+  font-weight: initial;
+  border-top-style: solid;
+  border-top-width: 2px;
+  border-top-color: #5F5F5F;
+  border-bottom-style: solid;
+  border-bottom-width: 2px;
+  border-bottom-color: #5F5F5F;
+  vertical-align: middle;
+}
+
+#ceatgionfl .gt_from_md > :first-child {
+  margin-top: 0;
+}
+
+#ceatgionfl .gt_from_md > :last-child {
+  margin-bottom: 0;
+}
+
+#ceatgionfl .gt_row {
+  padding-top: 8px;
+  padding-bottom: 8px;
+  padding-left: 5px;
+  padding-right: 5px;
+  margin: 10px;
+  border-top-style: none;
+  border-top-width: 1px;
+  border-top-color: #D5D5D5;
+  border-left-style: none;
+  border-left-width: 1px;
+  border-left-color: #D5D5D5;
+  border-right-style: none;
+  border-right-width: 1px;
+  border-right-color: #D5D5D5;
+  vertical-align: middle;
+  overflow-x: hidden;
+}
+
+#ceatgionfl .gt_stub {
+  color: #333333;
+  background-color: #89D3FE;
+  font-size: 100%;
+  font-weight: initial;
+  text-transform: inherit;
+  border-right-style: solid;
+  border-right-width: 2px;
+  border-right-color: #D5D5D5;
+  padding-left: 5px;
+  padding-right: 5px;
+}
+
+#ceatgionfl .gt_stub_row_group {
+  color: #333333;
+  background-color: #FFFFFF;
+  font-size: 100%;
+  font-weight: initial;
+  text-transform: inherit;
+  border-right-style: solid;
+  border-right-width: 2px;
+  border-right-color: #D3D3D3;
+  padding-left: 5px;
+  padding-right: 5px;
+  vertical-align: top;
+}
+
+#ceatgionfl .gt_row_group_first td {
+  border-top-width: 2px;
+}
+
+#ceatgionfl .gt_summary_row {
+  color: #333333;
+  background-color: #FFFFFF;
+  text-transform: inherit;
+  padding-top: 8px;
+  padding-bottom: 8px;
+  padding-left: 5px;
+  padding-right: 5px;
+}
+
+#ceatgionfl .gt_first_summary_row {
+  border-top-style: solid;
+  border-top-color: #5F5F5F;
+}
+
+#ceatgionfl .gt_first_summary_row.thick {
+  border-top-width: 2px;
+}
+
+#ceatgionfl .gt_last_summary_row {
+  padding-top: 8px;
+  padding-bottom: 8px;
+  padding-left: 5px;
+  padding-right: 5px;
+  border-bottom-style: solid;
+  border-bottom-width: 2px;
+  border-bottom-color: #5F5F5F;
+}
+
+#ceatgionfl .gt_grand_summary_row {
+  color: #333333;
+  background-color: #D5D5D5;
+  text-transform: inherit;
+  padding-top: 8px;
+  padding-bottom: 8px;
+  padding-left: 5px;
+  padding-right: 5px;
+}
+
+#ceatgionfl .gt_first_grand_summary_row {
+  padding-top: 8px;
+  padding-bottom: 8px;
+  padding-left: 5px;
+  padding-right: 5px;
+  border-top-style: double;
+  border-top-width: 6px;
+  border-top-color: #5F5F5F;
+}
+
+#ceatgionfl .gt_striped {
+  background-color: #EDF7FC;
+}
+
+#ceatgionfl .gt_table_body {
+  border-top-style: solid;
+  border-top-width: 2px;
+  border-top-color: #5F5F5F;
+  border-bottom-style: solid;
+  border-bottom-width: 2px;
+  border-bottom-color: #5F5F5F;
+}
+
+#ceatgionfl .gt_footnotes {
+  color: #333333;
+  background-color: #FFFFFF;
+  border-bottom-style: none;
+  border-bottom-width: 2px;
+  border-bottom-color: #D3D3D3;
+  border-left-style: none;
+  border-left-width: 2px;
+  border-left-color: #D3D3D3;
+  border-right-style: none;
+  border-right-width: 2px;
+  border-right-color: #D3D3D3;
+}
+
+#ceatgionfl .gt_footnote {
+  margin: 0px;
+  font-size: 90%;
+  padding-left: 4px;
+  padding-right: 4px;
+  padding-left: 5px;
+  padding-right: 5px;
+}
+
+#ceatgionfl .gt_sourcenotes {
+  color: #333333;
+  background-color: #FFFFFF;
+  border-bottom-style: none;
+  border-bottom-width: 2px;
+  border-bottom-color: #D3D3D3;
+  border-left-style: none;
+  border-left-width: 2px;
+  border-left-color: #D3D3D3;
+  border-right-style: none;
+  border-right-width: 2px;
+  border-right-color: #D3D3D3;
+}
+
+#ceatgionfl .gt_sourcenote {
+  font-size: 90%;
+  padding-top: 4px;
+  padding-bottom: 4px;
+  padding-left: 5px;
+  padding-right: 5px;
+}
+
+#ceatgionfl .gt_left {
+  text-align: left;
+}
+
+#ceatgionfl .gt_center {
+  text-align: center;
+}
+
+#ceatgionfl .gt_right {
+  text-align: right;
+  font-variant-numeric: tabular-nums;
+}
+
+#ceatgionfl .gt_font_normal {
+  font-weight: normal;
+}
+
+#ceatgionfl .gt_font_bold {
+  font-weight: bold;
+}
+
+#ceatgionfl .gt_font_italic {
+  font-style: italic;
+}
+
+#ceatgionfl .gt_super {
+  font-size: 65%;
+}
+
+#ceatgionfl .gt_footnote_marks {
+  font-style: italic;
+  font-weight: normal;
+  font-size: 75%;
+  vertical-align: 0.4em;
+}
+
+#ceatgionfl .gt_asterisk {
+  font-size: 100%;
+  vertical-align: 0;
+}
+
+#ceatgionfl .gt_indent_1 {
+  text-indent: 5px;
+}
+
+#ceatgionfl .gt_indent_2 {
+  text-indent: 10px;
+}
+
+#ceatgionfl .gt_indent_3 {
+  text-indent: 15px;
+}
+
+#ceatgionfl .gt_indent_4 {
+  text-indent: 20px;
+}
+
+#ceatgionfl .gt_indent_5 {
+  text-indent: 25px;
+}
+</style>
+<div class="inline-table"><table class="gt_table">
+<caption>
+<span id="tab:gt-demo">Table 2.4: </span>Summary statistics for the pets dataset.</caption>
+  
+  <thead class="gt_col_headings">
+<tr>
+<th class="gt_col_heading gt_columns_bottom_border gt_left" rowspan="2" colspan="1" scope="col">Pet Type</th>
+      <th class="gt_col_heading gt_columns_bottom_border gt_right" rowspan="2" colspan="1" scope="col">N</th>
+      <th class="gt_center gt_columns_top_border gt_column_spanner_outer" rowspan="1" colspan="2" scope="colgroup">
+        <span class="gt_column_spanner">Means</span>
+      </th>
+    </tr>
+<tr>
+<th class="gt_col_heading gt_columns_bottom_border gt_right" rowspan="1" colspan="1" scope="col">Weight</th>
+      <th class="gt_col_heading gt_columns_bottom_border gt_right" rowspan="1" colspan="1" scope="col">Score</th>
+    </tr>
+</thead>
+<tbody class="gt_table_body">
+<tr>
+<td class="gt_row gt_left">cat</td>
+<td class="gt_row gt_right">300</td>
+<td class="gt_row gt_right">9.37</td>
+<td class="gt_row gt_right">90.24</td>
+</tr>
+<tr>
+<td class="gt_row gt_left gt_striped">dog</td>
+<td class="gt_row gt_right gt_striped">400</td>
+<td class="gt_row gt_right gt_striped">19.07</td>
+<td class="gt_row gt_right gt_striped">99.98</td>
+</tr>
+<tr>
+<td class="gt_row gt_left">ferret</td>
+<td class="gt_row gt_right">100</td>
+<td class="gt_row gt_right">4.78</td>
+<td class="gt_row gt_right">111.78</td>
+</tr>
+</tbody>
+</table></div>
 </div>
 </div>
-<div id="repro-figures" class="section level4" number="2.5.4.3">
-<h4>
-<span class="header-section-number">2.5.4.3</span> Images<a class="anchor" aria-label="anchor" href="#repro-figures"><i class="fas fa-link"></i></a>
-</h4>
+<!-- Tab content -->
+<div id="DT" class="tabcontent">
+<p><a href="https://rstudio.github.io/DT/">DT</a> lets you make interactive data tables. It can be tricky to customise, but the defaults are similar to other table functions.</p>
+<div class="sourceCode" id="cb60"><pre class="downlit sourceCode r">
+<code class="sourceCode R"><span><span class="fu">DT</span><span class="fu">::</span><span class="fu"><a href="https://rdrr.io/pkg/DT/man/datatable.html">datatable</a></span><span class="op">(</span><span class="va">summary_table</span>, </span>
+<span>              caption <span class="op">=</span> <span class="st">"Summary statistics for the pets dataset."</span>,</span>
+<span>              colnames <span class="op">=</span> <span class="fu"><a href="https://rdrr.io/r/base/c.html">c</a></span><span class="op">(</span><span class="st">"Pet Type"</span>, <span class="st">"N"</span>, <span class="st">"Weight"</span>, <span class="st">"Score"</span><span class="op">)</span><span class="op">)</span> <span class="op">|&gt;</span></span>
+<span>  <span class="fu">DT</span><span class="fu">::</span><span class="fu"><a href="https://rdrr.io/pkg/DT/man/formatCurrency.html">formatRound</a></span><span class="op">(</span><span class="fu"><a href="https://rdrr.io/r/base/c.html">c</a></span><span class="op">(</span><span class="st">"mean_weight"</span>, <span class="st">"mean_score"</span><span class="op">)</span>,</span>
+<span>                  digits <span class="op">=</span> <span class="fl">2</span><span class="op">)</span></span></code></pre></div>
+<div id="htmlwidget-3c47dd0fab7617369218" style="width:100%;height:auto;" class="datatables html-widget"></div>
+<script type="application/json" data-for="htmlwidget-3c47dd0fab7617369218">{"x":{"filter":"none","vertical":false,"caption":"<caption>Summary statistics for the pets dataset.<\/caption>","data":[["1","2","3"],["cat","dog","ferret"],[300,400,100],[9.3716129083,19.0679737427696,4.78156944173321],[90.2366666666667,99.9825,111.78]],"container":"<table class=\"display\">\n  <thead>\n    <tr>\n      <th> <\/th>\n      <th>Pet Type<\/th>\n      <th>N<\/th>\n      <th>Weight<\/th>\n      <th>Score<\/th>\n    <\/tr>\n  <\/thead>\n<\/table>","options":{"columnDefs":[{"targets":3,"render":"function(data, type, row, meta) {\n    return type !== 'display' ? data : DTWidget.formatRound(data, 2, 3, \",\", \".\", null);\n  }"},{"targets":4,"render":"function(data, type, row, meta) {\n    return type !== 'display' ? data : DTWidget.formatRound(data, 2, 3, \",\", \".\", null);\n  }"},{"className":"dt-right","targets":[2,3,4]},{"orderable":false,"targets":0}],"order":[],"autoWidth":false,"orderClasses":false}},"evals":["options.columnDefs.0.render","options.columnDefs.1.render"],"jsHooks":[]}</script>
+</div>
+</div>
+<div id="repro-figures" class="section level3" number="2.5.6">
+<h3>
+<span class="header-section-number">2.5.6</span> Images<a class="anchor" aria-label="anchor" href="#repro-figures"><i class="fas fa-link"></i></a>
+</h3>
 <p>Next, create a code chunk where you want to display an image in your document. Let's put it in the Results section. We'll use some code that you'll learn more about in the <a href="ggplot.html#ggplot">data visualisation lecture</a> to show violin-boxplots for the groups.</p>
 <p>Notice how the figure caption is formatted in the chunk options.</p>
 <pre><code>
@@ -558,12 +1214,12 @@ ggplot(pets, aes(pet, score, fill = country)) +
 ```
 
 &lt;div class="figure" style="text-align: center"&gt;
-&lt;img src="02-repro_files/figure-html/unnamed-chunk-7-1.png" alt="Figure 1. Scores by pet type and country." width="100%" /&gt;
-&lt;p class="caption"&gt;(\#fig:unnamed-chunk-7)Figure 1. Scores by pet type and country.&lt;/p&gt;
+&lt;img src="02-repro_files/figure-html/unnamed-chunk-6-1.png" alt="Figure 1. Scores by pet type and country." width="100%" /&gt;
+&lt;p class="caption"&gt;(\#fig:unnamed-chunk-6)Figure 1. Scores by pet type and country.&lt;/p&gt;
 &lt;/div&gt;</code></pre>
 <div class="figure" style="text-align: center">
-<span style="display:block;" id="fig:unnamed-chunk-8"></span>
-<img src="02-repro_files/figure-html/unnamed-chunk-8-1.png" alt="Figure 1. Scores by pet type and country." width="100%"><p class="caption">
+<span style="display:block;" id="fig:unnamed-chunk-7"></span>
+<img src="02-repro_files/figure-html/unnamed-chunk-7-1.png" alt="Figure 1. Scores by pet type and country." width="100%"><p class="caption">
 Figure 2.6: Figure 1. Scores by pet type and country.
 </p>
 </div>
@@ -576,12 +1232,12 @@ Figure 2.6: Figure 1. Scores by pet type and country.
 <img src="images/memes/x-all-the-things.png" style="width: 50%" alt=""><p class="caption">All the Things by <a href="http://hyperboleandahalf.blogspot.com/">Hyperbole and a Half</a></p>
 </div>
 </div>
-<div id="inline-r" class="section level4" number="2.5.4.4">
-<h4>
-<span class="header-section-number">2.5.4.4</span> In-line R<a class="anchor" aria-label="anchor" href="#inline-r"><i class="fas fa-link"></i></a>
-</h4>
+<div id="inline-r" class="section level3" number="2.5.7">
+<h3>
+<span class="header-section-number">2.5.7</span> In-line R<a class="anchor" aria-label="anchor" href="#inline-r"><i class="fas fa-link"></i></a>
+</h3>
 <p>Now let's analyse the pets data to see if cats are heavier than ferrets. First we'll run the analysis code. Then we'll save any numbers we might want to use in our manuscript to variables and round them appropriately. Finally, we'll use <code><span><span class="fu">glue</span><span class="fu">::</span><span class="fu"><a target="_blank" href="https://glue.tidyverse.org/reference/glue.html">glue</a></span><span class="op">(</span><span class="op">)</span></span></code> to format a results string.</p>
-<div class="sourceCode" id="cb60"><pre class="downlit sourceCode r">
+<div class="sourceCode" id="cb63"><pre class="downlit sourceCode r">
 <code class="sourceCode R"><span><span class="co"># analysis</span></span>
 <span><span class="va">cat_weight</span> <span class="op">&lt;-</span> <span class="fu"><a href="https://dplyr.tidyverse.org/reference/filter.html">filter</a></span><span class="op">(</span><span class="va">pets</span>, <span class="va">pet</span> <span class="op">==</span> <span class="st">"cat"</span><span class="op">)</span> <span class="op"><a href="https://magrittr.tidyverse.org/reference/pipe.html">%&gt;%</a></span> <span class="fu"><a href="https://dplyr.tidyverse.org/reference/pull.html">pull</a></span><span class="op">(</span><span class="va">weight</span><span class="op">)</span></span>
 <span><span class="va">ferret_weight</span> <span class="op">&lt;-</span> <span class="fu"><a href="https://dplyr.tidyverse.org/reference/filter.html">filter</a></span><span class="op">(</span><span class="va">pets</span>, <span class="va">pet</span> <span class="op">==</span> <span class="st">"ferret"</span><span class="op">)</span> <span class="op"><a href="https://magrittr.tidyverse.org/reference/pipe.html">%&gt;%</a></span> <span class="fu"><a href="https://dplyr.tidyverse.org/reference/pull.html">pull</a></span><span class="op">(</span><span class="va">weight</span><span class="op">)</span></span>
@@ -602,10 +1258,9 @@ Figure 2.6: Figure 1. Scores by pet type and country.
 <p><strong>Rendered text:</strong><br>
 Cats were significantly heavier than ferrets (t = 18.42, df = 180.4, p &lt; 0.001).</p>
 </div>
-</div>
-<div id="bibliography" class="section level3" number="2.5.5">
+<div id="bibliography" class="section level3" number="2.5.8">
 <h3>
-<span class="header-section-number">2.5.5</span> Bibliography<a class="anchor" aria-label="anchor" href="#bibliography"><i class="fas fa-link"></i></a>
+<span class="header-section-number">2.5.8</span> Bibliography<a class="anchor" aria-label="anchor" href="#bibliography"><i class="fas fa-link"></i></a>
 </h3>
 <p>There are several ways to do in-text references and automatically generate a <a href="https://bookdown.org/yihui/rmarkdown-cookbook/bibliography.html" target="_blank">bibliography</a> in R Markdown. Markdown files need to link to a BibTex file (a plain text file with references in a specific format) that contains the references you need to cite. You specify the name of this file in the YAML header, like <code>bibliography: refs.bib</code> and cite references in text using an at symbol and a shortname, like <code>[@tidyverse]</code>. You can also include a "csl" style file to format your references in, for example, APA style.</p>
 <pre><code>---
@@ -616,23 +1271,23 @@ output:
     toc: true
 bibliography: refs.bib
 csl: apa.csl</code></pre>
-<div id="converting-from-reference-software" class="section level4" number="2.5.5.1">
+<div id="converting-from-reference-software" class="section level4" number="2.5.8.1">
 <h4>
-<span class="header-section-number">2.5.5.1</span> Converting from reference software<a class="anchor" aria-label="anchor" href="#converting-from-reference-software"><i class="fas fa-link"></i></a>
+<span class="header-section-number">2.5.8.1</span> Converting from reference software<a class="anchor" aria-label="anchor" href="#converting-from-reference-software"><i class="fas fa-link"></i></a>
 </h4>
 <p>Most reference software like EndNote, Zotero or Mendeley have exporting options that can export to BibTeX format. You just need to check the shortnames in the resulting file.</p>
 </div>
-<div id="creating-a-bibtex-file" class="section level4" number="2.5.5.2">
+<div id="creating-a-bibtex-file" class="section level4" number="2.5.8.2">
 <h4>
-<span class="header-section-number">2.5.5.2</span> Creating a BibTeX File<a class="anchor" aria-label="anchor" href="#creating-a-bibtex-file"><i class="fas fa-link"></i></a>
+<span class="header-section-number">2.5.8.2</span> Creating a BibTeX File<a class="anchor" aria-label="anchor" href="#creating-a-bibtex-file"><i class="fas fa-link"></i></a>
 </h4>
 <p>Most reference software like EndNote, Zotero or Mendeley have exporting options that can export to BibTeX format. You just need to check the shortnames in the resulting file.</p>
 <p>You can also make a BibTeX file and add references manually. In RStudio, go to <strong><code>File</code></strong> &gt; <strong><code>New File...</code></strong> &gt; <strong><code>Text File</code></strong> and save the file as "bibliography.bib".</p>
 <p>Next, add the line <code>bibliography: bibliography.bib</code> to your YAML header.</p>
 </div>
-<div id="citations" class="section level4" number="2.5.5.3">
+<div id="citations" class="section level4" number="2.5.8.3">
 <h4>
-<span class="header-section-number">2.5.5.3</span> Adding references<a class="anchor" aria-label="anchor" href="#citations"><i class="fas fa-link"></i></a>
+<span class="header-section-number">2.5.8.3</span> Adding references<a class="anchor" aria-label="anchor" href="#citations"><i class="fas fa-link"></i></a>
 </h4>
 <p>You can add references to a journal article in the following format:</p>
 <pre><code>@article{shortname,
@@ -647,7 +1302,7 @@ csl: apa.csl</code></pre>
 }</code></pre>
 <p>See <a href="https://www.bibtex.com/g/bibtex-format/" target="_blank">A complete guide to the BibTeX format</a> for instructions on citing books, technical reports, and more.</p>
 <p>You can get the reference for an R package using the functions <code><a href="https://rdrr.io/r/utils/citation.html">citation()</a></code> and <code><a href="https://rdrr.io/r/utils/toLatex.html">toBibtex()</a></code>. You can paste the bibtex entry into your bibliography.bib file. Make sure to add a short name (e.g., "ggplot2") before the first comma to refer to the reference.</p>
-<div class="sourceCode" id="cb63"><pre class="downlit sourceCode r">
+<div class="sourceCode" id="cb66"><pre class="downlit sourceCode r">
 <code class="sourceCode R"><span><span class="fu"><a href="https://rdrr.io/r/utils/citation.html">citation</a></span><span class="op">(</span>package<span class="op">=</span><span class="st">"ggplot2"</span><span class="op">)</span> <span class="op"><a href="https://magrittr.tidyverse.org/reference/pipe.html">%&gt;%</a></span> <span class="fu"><a href="https://rdrr.io/r/utils/toLatex.html">toBibtex</a></span><span class="op">(</span><span class="op">)</span></span></code></pre></div>
 <pre><code>## @Book{,
 ##   author = {Hadley Wickham},
@@ -683,9 +1338,9 @@ eprint = {
 }</code></pre>
 <p>Paste the reference into your bibliography.bib file. Change <code>doi:10.1177/2515245918770963</code> in the first line of the reference to a shortname you will use to cite the reference in your manuscript. We'll use <code>TOSTtutorial</code>.</p>
 </div>
-<div id="references" class="section level4" number="2.5.5.4">
+<div id="references" class="section level4" number="2.5.8.4">
 <h4>
-<span class="header-section-number">2.5.5.4</span> Citing references<a class="anchor" aria-label="anchor" href="#references"><i class="fas fa-link"></i></a>
+<span class="header-section-number">2.5.8.4</span> Citing references<a class="anchor" aria-label="anchor" href="#references"><i class="fas fa-link"></i></a>
 </h4>
 <p>You can cite references in text like this:</p>
 <pre><code>This tutorial uses several R packages [@tidyverse;@rmarkdown].</code></pre>
@@ -694,9 +1349,9 @@ eprint = {
 <pre><code>Lakens, Scheel and Isengar [-@TOSTtutorial] wrote a tutorial explaining how to test for the absence of an effect.</code></pre>
 <p>Lakens, Scheel and Isengar <span class="citation">(<a href="bookrefs.html#ref-TOSTtutorial" role="doc-biblioref">2018</a>)</span> wrote a tutorial explaining how to test for the absence of an effect.</p>
 </div>
-<div id="uncited-references" class="section level4" number="2.5.5.5">
+<div id="uncited-references" class="section level4" number="2.5.8.5">
 <h4>
-<span class="header-section-number">2.5.5.5</span> Uncited references<a class="anchor" aria-label="anchor" href="#uncited-references"><i class="fas fa-link"></i></a>
+<span class="header-section-number">2.5.8.5</span> Uncited references<a class="anchor" aria-label="anchor" href="#uncited-references"><i class="fas fa-link"></i></a>
 </h4>
 <p>If you want to add an item to the reference section without citing, it, add it to the YAML header like this:</p>
 <pre><code>nocite: |
@@ -704,18 +1359,18 @@ eprint = {
 <p>Or add all of the items in the .bib file like this:</p>
 <pre><code>nocite: '@*'</code></pre>
 </div>
-<div id="citation-styles" class="section level4" number="2.5.5.6">
+<div id="citation-styles" class="section level4" number="2.5.8.6">
 <h4>
-<span class="header-section-number">2.5.5.6</span> Citation Styles<a class="anchor" aria-label="anchor" href="#citation-styles"><i class="fas fa-link"></i></a>
+<span class="header-section-number">2.5.8.6</span> Citation Styles<a class="anchor" aria-label="anchor" href="#citation-styles"><i class="fas fa-link"></i></a>
 </h4>
 <p>You can search a <a href="https://www.zotero.org/styles" target="_blank">list of style files</a> for various journals and download a file that will format your bibliography for a specific journal's style. You'll need to add the line <code>csl: filename.csl</code> to your YAML header.</p>
 <div class="try">
 <p>Add some citations to your bibliography.bib file, reference them in your text, and render your manuscript to see the automatically generated reference section. Try a few different citation style files.</p>
 </div>
 </div>
-<div id="reference-section" class="section level4" number="2.5.5.7">
+<div id="reference-section" class="section level4" number="2.5.8.7">
 <h4>
-<span class="header-section-number">2.5.5.7</span> Reference Section<a class="anchor" aria-label="anchor" href="#reference-section"><i class="fas fa-link"></i></a>
+<span class="header-section-number">2.5.8.7</span> Reference Section<a class="anchor" aria-label="anchor" href="#reference-section"><i class="fas fa-link"></i></a>
 </h4>
 <p>By default, the reference section is added to the end of the document. If you want to change the position (e.g., to add figures and tables after the references), include <code>&lt;div id="refs"&gt;&lt;/div&gt;</code> where you want the references.</p>
 <div class="try">
@@ -723,9 +1378,9 @@ eprint = {
 </div>
 </div>
 </div>
-<div id="custom-templates" class="section level3" number="2.5.6">
+<div id="custom-templates" class="section level3" number="2.5.9">
 <h3>
-<span class="header-section-number">2.5.6</span> Custom Templates<a class="anchor" aria-label="anchor" href="#custom-templates"><i class="fas fa-link"></i></a>
+<span class="header-section-number">2.5.9</span> Custom Templates<a class="anchor" aria-label="anchor" href="#custom-templates"><i class="fas fa-link"></i></a>
 </h3>
 <p>Some packages provide custom R Markdown templates. <code>reprores</code> has a Report template that shows all of the possible options in the YAML header, has bibliography and style files, and explains how to set up linked figures and tables. Because it contains multiple files, RStudio will ask you to create a new folder to keep all of the files in.</p>
 <div class="figure" style="text-align: center">
@@ -1077,6 +1732,29 @@ $( document ).ready(function() {
   move_sidebar();
   window.onresize = move_sidebar;
 });
+
+
+function openCity(evt, cityName) {
+  // Declare all variables
+  var i, tabcontent, tablinks;
+
+  // Get all elements with class="tabcontent" and hide them
+  tabcontent = document.getElementsByClassName("tabcontent");
+  for (i = 0; i < tabcontent.length; i++) {
+    tabcontent[i].style.display = "none";
+  }
+
+  // Get all elements with class="tablinks" and remove the class "active"
+  tablinks = document.getElementsByClassName("tablinks");
+  for (i = 0; i < tablinks.length; i++) {
+    tablinks[i].className = tablinks[i].className.replace(" active", "");
+  }
+
+  // Show the current tab, and add an "active" class to the button that opened the tab
+  document.getElementById(cityName).style.display = "block";
+  evt.currentTarget.className += " active";
+} 
+
 </script><div class="chapter-nav">
 <div class="prev"><a href="intro.html"><span class="header-section-number">1</span> Getting Started</a></div>
 <div class="next"><a href="ggplot.html"><span class="header-section-number">3</span> Data Visualisation</a></div>
@@ -1101,8 +1779,11 @@ $( document ).ready(function() {
 <li><a class="nav-link" href="#setup"><span class="header-section-number">2.5.2</span> Setup</a></li>
 <li><a class="nav-link" href="#structure"><span class="header-section-number">2.5.3</span> Structure</a></li>
 <li><a class="nav-link" href="#code-chunks"><span class="header-section-number">2.5.4</span> Code Chunks</a></li>
-<li><a class="nav-link" href="#bibliography"><span class="header-section-number">2.5.5</span> Bibliography</a></li>
-<li><a class="nav-link" href="#custom-templates"><span class="header-section-number">2.5.6</span> Custom Templates</a></li>
+<li><a class="nav-link" href="#repro-tables"><span class="header-section-number">2.5.5</span> Tables</a></li>
+<li><a class="nav-link" href="#repro-figures"><span class="header-section-number">2.5.6</span> Images</a></li>
+<li><a class="nav-link" href="#inline-r"><span class="header-section-number">2.5.7</span> In-line R</a></li>
+<li><a class="nav-link" href="#bibliography"><span class="header-section-number">2.5.8</span> Bibliography</a></li>
+<li><a class="nav-link" href="#custom-templates"><span class="header-section-number">2.5.9</span> Custom Templates</a></li>
 </ul>
 </li>
 <li><a class="nav-link" href="#glossary-repro"><span class="header-section-number">2.6</span> Glossary</a></li>
@@ -1124,7 +1805,7 @@ $( document ).ready(function() {
 <footer class="bg-primary text-light mt-5"><div class="container"><div class="row">
 
   <div class="col-12 col-md-6 mt-3">
-    <p>"<strong>Data Skills for Reproducible Research</strong>: <br><a href="https://doi.org/10.5281/zenodo.6527194"><img src="https://zenodo.org/badge/DOI/10.5281/zenodo.6527194.svg" alt="DOI: 10.5281/zenodo.6527194"></a>" was written by . It was last built on 2022-08-26.</p>
+    <p>"<strong>Data Skills for Reproducible Research</strong>: <br><a href="https://doi.org/10.5281/zenodo.6527194"><img src="https://zenodo.org/badge/DOI/10.5281/zenodo.6527194.svg" alt="DOI: 10.5281/zenodo.6527194"></a>" was written by . It was last built on 2022-08-30.</p>
   </div>
 
   <div class="col-12 col-md-6 mt-3">

@@ -1030,10 +1030,70 @@ data <- rename(data_spread, A_mean = A, B_mean = B)
 data
 ```
 
-<div data-pagedtable="false">
-  <script data-pagedtable-source type="application/json">
-{"columns":[{"label":["id"],"name":[1],"type":["int"],"align":["right"]},{"label":["A_mean"],"name":[2],"type":["dbl"],"align":["right"]},{"label":["B_mean"],"name":[3],"type":["dbl"],"align":["right"]}],"data":[{"1":"1","2":"-0.59382558","3":"1.0243046"},{"1":"2","2":"0.74406234","3":"2.7172046"},{"1":"3","2":"0.93092751","3":"3.9262358"},{"1":"4","2":"0.71976860","3":"1.9662632"},{"1":"5","2":"-0.02808323","3":"1.9473456"},{"1":"6","2":"-0.09825547","3":"3.2073687"},{"1":"7","2":"0.12569220","3":"0.9256321"},{"1":"8","2":"1.45264472","3":"2.3778116"},{"1":"9","2":"0.29764434","3":"1.6617481"},{"1":"10","2":"0.55891989","3":"2.1034679"}],"options":{"columns":{"min":{},"max":[10]},"rows":{"min":[10],"max":[10]},"pages":{}}}
-  </script>
+<div class="kable-table">
+
+<table>
+ <thead>
+  <tr>
+   <th style="text-align:right;"> id </th>
+   <th style="text-align:right;"> A_mean </th>
+   <th style="text-align:right;"> B_mean </th>
+  </tr>
+ </thead>
+<tbody>
+  <tr>
+   <td style="text-align:right;"> 1 </td>
+   <td style="text-align:right;"> -0.5938256 </td>
+   <td style="text-align:right;"> 1.0243046 </td>
+  </tr>
+  <tr>
+   <td style="text-align:right;"> 2 </td>
+   <td style="text-align:right;"> 0.7440623 </td>
+   <td style="text-align:right;"> 2.7172046 </td>
+  </tr>
+  <tr>
+   <td style="text-align:right;"> 3 </td>
+   <td style="text-align:right;"> 0.9309275 </td>
+   <td style="text-align:right;"> 3.9262358 </td>
+  </tr>
+  <tr>
+   <td style="text-align:right;"> 4 </td>
+   <td style="text-align:right;"> 0.7197686 </td>
+   <td style="text-align:right;"> 1.9662632 </td>
+  </tr>
+  <tr>
+   <td style="text-align:right;"> 5 </td>
+   <td style="text-align:right;"> -0.0280832 </td>
+   <td style="text-align:right;"> 1.9473456 </td>
+  </tr>
+  <tr>
+   <td style="text-align:right;"> 6 </td>
+   <td style="text-align:right;"> -0.0982555 </td>
+   <td style="text-align:right;"> 3.2073687 </td>
+  </tr>
+  <tr>
+   <td style="text-align:right;"> 7 </td>
+   <td style="text-align:right;"> 0.1256922 </td>
+   <td style="text-align:right;"> 0.9256321 </td>
+  </tr>
+  <tr>
+   <td style="text-align:right;"> 8 </td>
+   <td style="text-align:right;"> 1.4526447 </td>
+   <td style="text-align:right;"> 2.3778116 </td>
+  </tr>
+  <tr>
+   <td style="text-align:right;"> 9 </td>
+   <td style="text-align:right;"> 0.2976443 </td>
+   <td style="text-align:right;"> 1.6617481 </td>
+  </tr>
+  <tr>
+   <td style="text-align:right;"> 10 </td>
+   <td style="text-align:right;"> 0.5589199 </td>
+   <td style="text-align:right;"> 2.1034679 </td>
+  </tr>
+</tbody>
+</table>
+
 </div>
 
 ::: {.warning data-latex=""}
@@ -1141,10 +1201,50 @@ data("infmort")
 head(infmort)
 ```
 
-<div data-pagedtable="false">
-  <script data-pagedtable-source type="application/json">
-{"columns":[{"label":["Country"],"name":[1],"type":["chr"],"align":["left"]},{"label":["Year"],"name":[2],"type":["dbl"],"align":["right"]},{"label":["Infant mortality rate (probability of dying between birth and age 1 per 1000 live births)"],"name":[3],"type":["chr"],"align":["left"]}],"data":[{"1":"Afghanistan","2":"2015","3":"66.3 [52.7-83.9]"},{"1":"Afghanistan","2":"2014","3":"68.1 [55.7-83.6]"},{"1":"Afghanistan","2":"2013","3":"69.9 [58.7-83.5]"},{"1":"Afghanistan","2":"2012","3":"71.7 [61.6-83.7]"},{"1":"Afghanistan","2":"2011","3":"73.4 [64.4-84.2]"},{"1":"Afghanistan","2":"2010","3":"75.1 [66.9-85.1]"}],"options":{"columns":{"min":{},"max":[10]},"rows":{"min":[10],"max":[10]},"pages":{}}}
-  </script>
+<div class="kable-table">
+
+<table>
+ <thead>
+  <tr>
+   <th style="text-align:left;"> Country </th>
+   <th style="text-align:right;"> Year </th>
+   <th style="text-align:left;"> Infant mortality rate (probability of dying between birth and age 1 per 1000 live births) </th>
+  </tr>
+ </thead>
+<tbody>
+  <tr>
+   <td style="text-align:left;"> Afghanistan </td>
+   <td style="text-align:right;"> 2015 </td>
+   <td style="text-align:left;"> 66.3 [52.7-83.9] </td>
+  </tr>
+  <tr>
+   <td style="text-align:left;"> Afghanistan </td>
+   <td style="text-align:right;"> 2014 </td>
+   <td style="text-align:left;"> 68.1 [55.7-83.6] </td>
+  </tr>
+  <tr>
+   <td style="text-align:left;"> Afghanistan </td>
+   <td style="text-align:right;"> 2013 </td>
+   <td style="text-align:left;"> 69.9 [58.7-83.5] </td>
+  </tr>
+  <tr>
+   <td style="text-align:left;"> Afghanistan </td>
+   <td style="text-align:right;"> 2012 </td>
+   <td style="text-align:left;"> 71.7 [61.6-83.7] </td>
+  </tr>
+  <tr>
+   <td style="text-align:left;"> Afghanistan </td>
+   <td style="text-align:right;"> 2011 </td>
+   <td style="text-align:left;"> 73.4 [64.4-84.2] </td>
+  </tr>
+  <tr>
+   <td style="text-align:left;"> Afghanistan </td>
+   <td style="text-align:right;"> 2010 </td>
+   <td style="text-align:left;"> 75.1 [66.9-85.1] </td>
+  </tr>
+</tbody>
+</table>
+
 </div>
 
 
@@ -1154,10 +1254,57 @@ data("matmort")
 head(matmort)
 ```
 
-<div data-pagedtable="false">
-  <script data-pagedtable-source type="application/json">
-{"columns":[{"label":["Country"],"name":[1],"type":["chr"],"align":["left"]},{"label":["1990"],"name":[2],"type":["chr"],"align":["left"]},{"label":["2000"],"name":[3],"type":["chr"],"align":["left"]},{"label":["2015"],"name":[4],"type":["chr"],"align":["left"]}],"data":[{"1":"Afghanistan","2":"1 340 [ 878 - 1 950]","3":"1 100 [ 745 - 1 570]","4":"396 [ 253 -  620]"},{"1":"Albania","2":"71 [ 58 -  88]","3":"43 [ 33 -  56]","4":"29 [ 16 -  46]"},{"1":"Algeria","2":"216 [ 141 -  327]","3":"170 [ 118 -  241]","4":"140 [ 82 -  244]"},{"1":"Angola","2":"1 160 [ 627 - 2 020]","3":"924 [ 472 - 1 730]","4":"477 [ 221 -  988]"},{"1":"Argentina","2":"72 [ 64 -  80]","3":"60 [ 54 -  65]","4":"52 [ 44 -  63]"},{"1":"Armenia","2":"58 [ 51 -  65]","3":"40 [ 35 -  46]","4":"25 [ 21 -  31]"}],"options":{"columns":{"min":{},"max":[10]},"rows":{"min":[10],"max":[10]},"pages":{}}}
-  </script>
+<div class="kable-table">
+
+<table>
+ <thead>
+  <tr>
+   <th style="text-align:left;"> Country </th>
+   <th style="text-align:left;"> 1990 </th>
+   <th style="text-align:left;"> 2000 </th>
+   <th style="text-align:left;"> 2015 </th>
+  </tr>
+ </thead>
+<tbody>
+  <tr>
+   <td style="text-align:left;"> Afghanistan </td>
+   <td style="text-align:left;"> 1 340 [ 878 - 1 950] </td>
+   <td style="text-align:left;"> 1 100 [ 745 - 1 570] </td>
+   <td style="text-align:left;"> 396 [ 253 -  620] </td>
+  </tr>
+  <tr>
+   <td style="text-align:left;"> Albania </td>
+   <td style="text-align:left;"> 71 [ 58 -  88] </td>
+   <td style="text-align:left;"> 43 [ 33 -  56] </td>
+   <td style="text-align:left;"> 29 [ 16 -  46] </td>
+  </tr>
+  <tr>
+   <td style="text-align:left;"> Algeria </td>
+   <td style="text-align:left;"> 216 [ 141 -  327] </td>
+   <td style="text-align:left;"> 170 [ 118 -  241] </td>
+   <td style="text-align:left;"> 140 [ 82 -  244] </td>
+  </tr>
+  <tr>
+   <td style="text-align:left;"> Angola </td>
+   <td style="text-align:left;"> 1 160 [ 627 - 2 020] </td>
+   <td style="text-align:left;"> 924 [ 472 - 1 730] </td>
+   <td style="text-align:left;"> 477 [ 221 -  988] </td>
+  </tr>
+  <tr>
+   <td style="text-align:left;"> Argentina </td>
+   <td style="text-align:left;"> 72 [ 64 -  80] </td>
+   <td style="text-align:left;"> 60 [ 54 -  65] </td>
+   <td style="text-align:left;"> 52 [ 44 -  63] </td>
+  </tr>
+  <tr>
+   <td style="text-align:left;"> Armenia </td>
+   <td style="text-align:left;"> 58 [ 51 -  65] </td>
+   <td style="text-align:left;"> 40 [ 35 -  46] </td>
+   <td style="text-align:left;"> 25 [ 21 -  31] </td>
+  </tr>
+</tbody>
+</table>
+
 </div>
 
 

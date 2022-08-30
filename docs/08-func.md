@@ -208,10 +208,31 @@ tibble(
 )
 ```
 
-<div data-pagedtable="false">
-  <script data-pagedtable-source type="application/json">
-{"columns":[{"label":["n"],"name":[1],"type":["chr"],"align":["left"]},{"label":["power"],"name":[2],"type":["chr"],"align":["left"]}],"data":[{"1":"100","2":"0.290266404572217"},{"1":"...","2":"..."},{"1":"1000","2":"0.884788352886661"}],"options":{"columns":{"min":{},"max":[10]},"rows":{"min":[10],"max":[10]},"pages":{}}}
-  </script>
+<div class="kable-table">
+
+<table>
+ <thead>
+  <tr>
+   <th style="text-align:left;"> n </th>
+   <th style="text-align:left;"> power </th>
+  </tr>
+ </thead>
+<tbody>
+  <tr>
+   <td style="text-align:left;"> 100 </td>
+   <td style="text-align:left;"> 0.290266404572217 </td>
+  </tr>
+  <tr>
+   <td style="text-align:left;"> ... </td>
+   <td style="text-align:left;"> ... </td>
+  </tr>
+  <tr>
+   <td style="text-align:left;"> 1000 </td>
+   <td style="text-align:left;"> 0.884788352886661 </td>
+  </tr>
+</tbody>
+</table>
+
 </div>
 
 However, the `apply()` and `map()` functions allow you to perform a function on each item in a vector or list. First make an object `n` that is the vector of the sample sizes you want to test, then use `lapply()` or `map()` to run the function `power.t.test()` on each item. You can set other arguments to `power.t.test()` after the function argument.
@@ -596,10 +617,39 @@ tibble(
   broom::tidy()
 ```
 
-<div data-pagedtable="false">
-  <script data-pagedtable-source type="application/json">
-{"columns":[{"label":["estimate"],"name":[1],"type":["dbl"],"align":["right"]},{"label":["estimate1"],"name":[2],"type":["dbl"],"align":["right"]},{"label":["estimate2"],"name":[3],"type":["dbl"],"align":["right"]},{"label":["statistic"],"name":[4],"type":["dbl"],"align":["right"]},{"label":["p.value"],"name":[5],"type":["dbl"],"align":["right"]},{"label":["parameter"],"name":[6],"type":["dbl"],"align":["right"]},{"label":["conf.low"],"name":[7],"type":["dbl"],"align":["right"]},{"label":["conf.high"],"name":[8],"type":["dbl"],"align":["right"]},{"label":["method"],"name":[9],"type":["chr"],"align":["left"]},{"label":["alternative"],"name":[10],"type":["chr"],"align":["left"]}],"data":[{"1":"-0.1135539","2":"5.004773","3":"5.118327","4":"-0.3782388","5":"0.7075268","6":"35.16785","7":"-0.7229241","8":"0.4958162","9":"Welch Two Sample t-test","10":"two.sided"}],"options":{"columns":{"min":{},"max":[10]},"rows":{"min":[10],"max":[10]},"pages":{}}}
-  </script>
+<div class="kable-table">
+
+<table>
+ <thead>
+  <tr>
+   <th style="text-align:right;"> estimate </th>
+   <th style="text-align:right;"> estimate1 </th>
+   <th style="text-align:right;"> estimate2 </th>
+   <th style="text-align:right;"> statistic </th>
+   <th style="text-align:right;"> p.value </th>
+   <th style="text-align:right;"> parameter </th>
+   <th style="text-align:right;"> conf.low </th>
+   <th style="text-align:right;"> conf.high </th>
+   <th style="text-align:left;"> method </th>
+   <th style="text-align:left;"> alternative </th>
+  </tr>
+ </thead>
+<tbody>
+  <tr>
+   <td style="text-align:right;"> -0.1135539 </td>
+   <td style="text-align:right;"> 5.004773 </td>
+   <td style="text-align:right;"> 5.118327 </td>
+   <td style="text-align:right;"> -0.3782388 </td>
+   <td style="text-align:right;"> 0.7075268 </td>
+   <td style="text-align:right;"> 35.16785 </td>
+   <td style="text-align:right;"> -0.7229241 </td>
+   <td style="text-align:right;"> 0.4958162 </td>
+   <td style="text-align:left;"> Welch Two Sample t-test </td>
+   <td style="text-align:left;"> two.sided </td>
+  </tr>
+</tbody>
+</table>
+
 </div>
 
 ::: {.info data-latex=""}

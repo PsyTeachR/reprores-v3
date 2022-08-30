@@ -78,7 +78,7 @@ dat <- read_csv("C:/My Files/2020-2021/data/5factor.xlsx")   # wrong
 Also note the convention of using forward slashes, unlike the Windows-specific convention of using backward slashes. This is to make references to files work for everyone, regardless of their operating system.
 :::
 
-### Naming Things
+### Naming Things {#naming-things}
 
 Name files so that both people and computers can easily find things. Here are some important principles:
 
@@ -273,21 +273,10 @@ First, create a code chunk in your document. This code loads some data from the 
 
 
 ```r
-pets <- read_csv("https://psyteachr.github.io/reprores/data/pets.csv")
+pets <- read_csv("https://psyteachr.github.io/reprores/data/pets.csv",
+                 show_col_types = FALSE)
 ```
 
-```
-## Rows: 800 Columns: 6
-## ── Column specification ────────────────────────────────────────────────────────
-## Delimiter: ","
-## chr (3): id, pet, country
-## dbl (3): score, age, weight
-## 
-## ℹ Use `spec()` to retrieve the full column specification for this data.
-## ℹ Specify the column types or set `show_col_types = FALSE` to quiet this message.
-```
-
-#### Comments
 
 You can add comments inside R chunks with the hash symbol (`#`). The R interpreter will ignore characters from the hash to the end of the line.
 
@@ -308,39 +297,80 @@ If you name your objects clearly, you often don't need to add clarifying comment
 
 It's a bit of an art to comment your code well. The best way to develop this skill is to read a lot of other people's code and have others review your code. 
 
-#### Tables {#repro-tables}
+### Tables {#repro-tables}
 
 Next, create a code chunk where you want to display a table of the descriptives (e.g., Participants section of the Methods). We'll use tidyverse functions you will learn in the [data wrangling lectures](#tidyr) to create summary statistics for each group.
 
 
 ```r
-pets %>%
+summary_table <- pets %>%
   group_by(pet) %>%
   summarise(
     n = n(),
     mean_weight = mean(weight),
     mean_score = mean(score)
   )
+
+# print
+summary_table
 ```
 
-<div data-pagedtable="false">
-  <script data-pagedtable-source type="application/json">
-{"columns":[{"label":["pet"],"name":[1],"type":["chr"],"align":["left"]},{"label":["n"],"name":[2],"type":["int"],"align":["right"]},{"label":["mean_weight"],"name":[3],"type":["dbl"],"align":["right"]},{"label":["mean_score"],"name":[4],"type":["dbl"],"align":["right"]}],"data":[{"1":"cat","2":"300","3":"9.371613","4":"90.23667"},{"1":"dog","2":"400","3":"19.067974","4":"99.98250"},{"1":"ferret","2":"100","3":"4.781569","4":"111.78000"}],"options":{"columns":{"min":{},"max":[10]},"rows":{"min":[10],"max":[10]},"pages":{}}}
-  </script>
+<div class="kable-table">
+
+<table>
+ <thead>
+  <tr>
+   <th style="text-align:left;"> pet </th>
+   <th style="text-align:right;"> n </th>
+   <th style="text-align:right;"> mean_weight </th>
+   <th style="text-align:right;"> mean_score </th>
+  </tr>
+ </thead>
+<tbody>
+  <tr>
+   <td style="text-align:left;"> cat </td>
+   <td style="text-align:right;"> 300 </td>
+   <td style="text-align:right;"> 9.371613 </td>
+   <td style="text-align:right;"> 90.23667 </td>
+  </tr>
+  <tr>
+   <td style="text-align:left;"> dog </td>
+   <td style="text-align:right;"> 400 </td>
+   <td style="text-align:right;"> 19.067974 </td>
+   <td style="text-align:right;"> 99.98250 </td>
+  </tr>
+  <tr>
+   <td style="text-align:left;"> ferret </td>
+   <td style="text-align:right;"> 100 </td>
+   <td style="text-align:right;"> 4.781569 </td>
+   <td style="text-align:right;"> 111.78000 </td>
+  </tr>
+</tbody>
+</table>
+
 </div>
 
-The table above is OK, but it could be more reader-friendly by changing the column labels, rounding the means, and adding a caption. You can use <code><span><span class='fu'>knitr</span><span class='fu'>::</span><span class='fu'><a target='_blank' href='https://rdrr.io/pkg/knitr/man/kable.html'>kable</a></span><span class='op'>(</span><span class='op'>)</span></span></code> for this.
+::: {.warning data-latex=""}
+The table above will print in tibble format in the interactive view, but will use the format from the `df_print` setting in the YAML header when you knit. 
+:::
+
+
+The table above is OK, but it could be more reader-friendly by changing the column labels, rounding the means, and adding a caption. You can use <code><span><span class='fu'>knitr</span><span class='fu'>::</span><span class='fu'><a target='_blank' href='https://rdrr.io/pkg/knitr/man/kable.html'>kable</a></span><span class='op'>(</span><span class='op'>)</span></span></code> for this, or more specialised functions from other packages to format your tables.
+
+<!-- Tab links -->
+<div class="tab">
+  <button class="tablinks" onclick="openCity(event, 'knitr')">knitr</button>
+  <button class="tablinks" onclick="openCity(event, 'kableExtra')">kableExtra</button>
+  <button class="tablinks" onclick="openCity(event, 'papaja')">papaja</button>
+  <button class="tablinks" onclick="openCity(event, 'gt')">gt</button>
+  <button class="tablinks" onclick="openCity(event, 'DT')">DT</button>
+</div>
+
+<!-- Tab content -->
+<div id="knitr" class="tabcontent">
 
 
 ```r
-summary_table <-pets %>%
-  group_by(pet) %>%
-  summarise(
-    n = n(),
-    mean_weight = mean(weight),
-    mean_score = mean(score)
-  )
-
 newnames <- c("Pet Type", "N", "Mean Weight", "Mean Score")
 
 knitr::kable(summary_table, 
@@ -350,7 +380,7 @@ knitr::kable(summary_table,
 ```
 
 <table>
-<caption>(\#tab:unnamed-chunk-6)Summary statistics for the pets dataset.</caption>
+<caption>(\#tab:kable-demo)Summary statistics for the pets dataset.</caption>
  <thead>
   <tr>
    <th style="text-align:left;"> Pet Type </th>
@@ -381,12 +411,579 @@ knitr::kable(summary_table,
 </tbody>
 </table>
 
+</div>
 
-::: {.info data-latex=""}
-Notice that the r chunk specifies the option `results='asis'`. This lets you format the table using the `kable()` function from `knitr`. You can also use more specialised functions from [papaja](https://crsh.github.io/papaja_man/reporting.html#tables) or [kableExtra](https://haozhu233.github.io/kableExtra/awesome_table_in_html.html) to format your tables.
-:::
+<!-- Tab content -->
+<div id="kableExtra" class="tabcontent">
 
-#### Images {#repro-figures}
+The [kableExtra](https://haozhu233.github.io/kableExtra/awesome_table_in_html.html) package gives you a lot of flexibility with table display.
+
+
+```r
+library(kableExtra)
+
+kable(summary_table, 
+      digits = 2, 
+      col.names = c("Pet Type", "N", "Weight", "Score"),
+      caption = "Summary statistics for the pets dataset.") |>
+  kable_classic() |>
+  kable_styling(full_width = FALSE, font_size = 20) |>
+  add_header_above(c(" " = 2, "Means" = 2)) |>
+  kableExtra::row_spec(2, bold = TRUE, background = "lightyellow")
+```
+
+<table class=" lightable-classic table" style='font-family: "Arial Narrow", "Source Sans Pro", sans-serif; margin-left: auto; margin-right: auto; font-size: 20px; width: auto !important; margin-left: auto; margin-right: auto;'>
+<caption style="font-size: initial !important;">(\#tab:kableExtra-demo)Summary statistics for the pets dataset.</caption>
+ <thead>
+<tr>
+<th style="empty-cells: hide;" colspan="2"></th>
+<th style="padding-bottom:0; padding-left:3px;padding-right:3px;text-align: center; " colspan="2"><div style="border-bottom: 1px solid #111111; margin-bottom: -1px; ">Means</div></th>
+</tr>
+  <tr>
+   <th style="text-align:left;"> Pet Type </th>
+   <th style="text-align:right;"> N </th>
+   <th style="text-align:right;"> Weight </th>
+   <th style="text-align:right;"> Score </th>
+  </tr>
+ </thead>
+<tbody>
+  <tr>
+   <td style="text-align:left;"> cat </td>
+   <td style="text-align:right;"> 300 </td>
+   <td style="text-align:right;"> 9.37 </td>
+   <td style="text-align:right;"> 90.24 </td>
+  </tr>
+  <tr>
+   <td style="text-align:left;font-weight: bold;background-color: lightyellow !important;"> dog </td>
+   <td style="text-align:right;font-weight: bold;background-color: lightyellow !important;"> 400 </td>
+   <td style="text-align:right;font-weight: bold;background-color: lightyellow !important;"> 19.07 </td>
+   <td style="text-align:right;font-weight: bold;background-color: lightyellow !important;"> 99.98 </td>
+  </tr>
+  <tr>
+   <td style="text-align:left;"> ferret </td>
+   <td style="text-align:right;"> 100 </td>
+   <td style="text-align:right;"> 4.78 </td>
+   <td style="text-align:right;"> 111.78 </td>
+  </tr>
+</tbody>
+</table>
+
+</div>
+
+<!-- Tab content -->
+<div id="papaja" class="tabcontent">
+
+[papaja](https://crsh.github.io/papaja_man/reporting.html#tables) helps you create APA-formatted manuscripts, including tables.
+
+
+```r
+papaja::apa_table(summary_table, 
+                  col.names = c("Pet Type", "N", "Weight", "Score"),
+                  caption = "Summary statistics for the pets dataset.",
+                  col_spanners = list("Means" = c(3, 4)))
+```
+
+<caption>(\#tab:papaja-demo)</caption>
+
+<div custom-style='Table Caption'>*Summary statistics for the pets dataset.*</div>
+
+
+Pet Type   N     Weight   Score  
+---------  ----  -------  -------
+cat        300   9.37     90.24  
+dog        400   19.07    99.98  
+ferret     100   4.78     111.78 
+
+</div>
+
+<!-- Tab content -->
+<div id="gt" class="tabcontent">
+
+The [gt](https://gt.rstudio.com/index.html) package allows for even more customisation.
+
+
+```r
+library(gt)
+
+gt(summary_table, caption = "Summary statistics for the pets dataset.") |>
+  fmt_number(columns = c(mean_weight, mean_score),
+            decimals = 2) |>
+  cols_label(pet = "Pet Type", 
+             n = "N", 
+             mean_weight = "Weight", 
+             mean_score = "Score") |>
+  tab_spanner(label = "Means",
+              columns = c(mean_weight, mean_score)) |>
+ opt_stylize(style = 6, color = "blue")
+```
+
+```{=html}
+<div id="ceatgionfl" style="overflow-x:auto;overflow-y:auto;width:auto;height:auto;">
+<style>html {
+  font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Oxygen, Ubuntu, Cantarell, 'Helvetica Neue', 'Fira Sans', 'Droid Sans', Arial, sans-serif;
+}
+
+#ceatgionfl .gt_table {
+  display: table;
+  border-collapse: collapse;
+  margin-left: auto;
+  margin-right: auto;
+  color: #333333;
+  font-size: 16px;
+  font-weight: normal;
+  font-style: normal;
+  background-color: #FFFFFF;
+  width: auto;
+  border-top-style: solid;
+  border-top-width: 2px;
+  border-top-color: #5F5F5F;
+  border-right-style: none;
+  border-right-width: 2px;
+  border-right-color: #D3D3D3;
+  border-bottom-style: solid;
+  border-bottom-width: 2px;
+  border-bottom-color: #5F5F5F;
+  border-left-style: none;
+  border-left-width: 2px;
+  border-left-color: #D3D3D3;
+}
+
+#ceatgionfl .gt_heading {
+  background-color: #FFFFFF;
+  text-align: center;
+  border-bottom-color: #FFFFFF;
+  border-left-style: none;
+  border-left-width: 1px;
+  border-left-color: #D3D3D3;
+  border-right-style: none;
+  border-right-width: 1px;
+  border-right-color: #D3D3D3;
+}
+
+#ceatgionfl .gt_title {
+  color: #333333;
+  font-size: 125%;
+  font-weight: initial;
+  padding-top: 4px;
+  padding-bottom: 4px;
+  padding-left: 5px;
+  padding-right: 5px;
+  border-bottom-color: #FFFFFF;
+  border-bottom-width: 0;
+}
+
+#ceatgionfl .gt_subtitle {
+  color: #333333;
+  font-size: 85%;
+  font-weight: initial;
+  padding-top: 0;
+  padding-bottom: 6px;
+  padding-left: 5px;
+  padding-right: 5px;
+  border-top-color: #FFFFFF;
+  border-top-width: 0;
+}
+
+#ceatgionfl .gt_bottom_border {
+  border-bottom-style: solid;
+  border-bottom-width: 2px;
+  border-bottom-color: #5F5F5F;
+}
+
+#ceatgionfl .gt_col_headings {
+  border-top-style: solid;
+  border-top-width: 2px;
+  border-top-color: #5F5F5F;
+  border-bottom-style: solid;
+  border-bottom-width: 2px;
+  border-bottom-color: #5F5F5F;
+  border-left-style: none;
+  border-left-width: 1px;
+  border-left-color: #D3D3D3;
+  border-right-style: none;
+  border-right-width: 1px;
+  border-right-color: #D3D3D3;
+}
+
+#ceatgionfl .gt_col_heading {
+  color: #FFFFFF;
+  background-color: #0076BA;
+  font-size: 100%;
+  font-weight: normal;
+  text-transform: inherit;
+  border-left-style: none;
+  border-left-width: 1px;
+  border-left-color: #D3D3D3;
+  border-right-style: none;
+  border-right-width: 1px;
+  border-right-color: #D3D3D3;
+  vertical-align: bottom;
+  padding-top: 5px;
+  padding-bottom: 6px;
+  padding-left: 5px;
+  padding-right: 5px;
+  overflow-x: hidden;
+}
+
+#ceatgionfl .gt_column_spanner_outer {
+  color: #FFFFFF;
+  background-color: #0076BA;
+  font-size: 100%;
+  font-weight: normal;
+  text-transform: inherit;
+  padding-top: 0;
+  padding-bottom: 0;
+  padding-left: 4px;
+  padding-right: 4px;
+}
+
+#ceatgionfl .gt_column_spanner_outer:first-child {
+  padding-left: 0;
+}
+
+#ceatgionfl .gt_column_spanner_outer:last-child {
+  padding-right: 0;
+}
+
+#ceatgionfl .gt_column_spanner {
+  border-bottom-style: solid;
+  border-bottom-width: 2px;
+  border-bottom-color: #5F5F5F;
+  vertical-align: bottom;
+  padding-top: 5px;
+  padding-bottom: 5px;
+  overflow-x: hidden;
+  display: inline-block;
+  width: 100%;
+}
+
+#ceatgionfl .gt_group_heading {
+  padding-top: 8px;
+  padding-bottom: 8px;
+  padding-left: 5px;
+  padding-right: 5px;
+  color: #333333;
+  background-color: #FFFFFF;
+  font-size: 100%;
+  font-weight: initial;
+  text-transform: inherit;
+  border-top-style: solid;
+  border-top-width: 2px;
+  border-top-color: #5F5F5F;
+  border-bottom-style: solid;
+  border-bottom-width: 2px;
+  border-bottom-color: #5F5F5F;
+  border-left-style: none;
+  border-left-width: 1px;
+  border-left-color: #D3D3D3;
+  border-right-style: none;
+  border-right-width: 1px;
+  border-right-color: #D3D3D3;
+  vertical-align: middle;
+}
+
+#ceatgionfl .gt_empty_group_heading {
+  padding: 0.5px;
+  color: #333333;
+  background-color: #FFFFFF;
+  font-size: 100%;
+  font-weight: initial;
+  border-top-style: solid;
+  border-top-width: 2px;
+  border-top-color: #5F5F5F;
+  border-bottom-style: solid;
+  border-bottom-width: 2px;
+  border-bottom-color: #5F5F5F;
+  vertical-align: middle;
+}
+
+#ceatgionfl .gt_from_md > :first-child {
+  margin-top: 0;
+}
+
+#ceatgionfl .gt_from_md > :last-child {
+  margin-bottom: 0;
+}
+
+#ceatgionfl .gt_row {
+  padding-top: 8px;
+  padding-bottom: 8px;
+  padding-left: 5px;
+  padding-right: 5px;
+  margin: 10px;
+  border-top-style: none;
+  border-top-width: 1px;
+  border-top-color: #D5D5D5;
+  border-left-style: none;
+  border-left-width: 1px;
+  border-left-color: #D5D5D5;
+  border-right-style: none;
+  border-right-width: 1px;
+  border-right-color: #D5D5D5;
+  vertical-align: middle;
+  overflow-x: hidden;
+}
+
+#ceatgionfl .gt_stub {
+  color: #333333;
+  background-color: #89D3FE;
+  font-size: 100%;
+  font-weight: initial;
+  text-transform: inherit;
+  border-right-style: solid;
+  border-right-width: 2px;
+  border-right-color: #D5D5D5;
+  padding-left: 5px;
+  padding-right: 5px;
+}
+
+#ceatgionfl .gt_stub_row_group {
+  color: #333333;
+  background-color: #FFFFFF;
+  font-size: 100%;
+  font-weight: initial;
+  text-transform: inherit;
+  border-right-style: solid;
+  border-right-width: 2px;
+  border-right-color: #D3D3D3;
+  padding-left: 5px;
+  padding-right: 5px;
+  vertical-align: top;
+}
+
+#ceatgionfl .gt_row_group_first td {
+  border-top-width: 2px;
+}
+
+#ceatgionfl .gt_summary_row {
+  color: #333333;
+  background-color: #FFFFFF;
+  text-transform: inherit;
+  padding-top: 8px;
+  padding-bottom: 8px;
+  padding-left: 5px;
+  padding-right: 5px;
+}
+
+#ceatgionfl .gt_first_summary_row {
+  border-top-style: solid;
+  border-top-color: #5F5F5F;
+}
+
+#ceatgionfl .gt_first_summary_row.thick {
+  border-top-width: 2px;
+}
+
+#ceatgionfl .gt_last_summary_row {
+  padding-top: 8px;
+  padding-bottom: 8px;
+  padding-left: 5px;
+  padding-right: 5px;
+  border-bottom-style: solid;
+  border-bottom-width: 2px;
+  border-bottom-color: #5F5F5F;
+}
+
+#ceatgionfl .gt_grand_summary_row {
+  color: #333333;
+  background-color: #D5D5D5;
+  text-transform: inherit;
+  padding-top: 8px;
+  padding-bottom: 8px;
+  padding-left: 5px;
+  padding-right: 5px;
+}
+
+#ceatgionfl .gt_first_grand_summary_row {
+  padding-top: 8px;
+  padding-bottom: 8px;
+  padding-left: 5px;
+  padding-right: 5px;
+  border-top-style: double;
+  border-top-width: 6px;
+  border-top-color: #5F5F5F;
+}
+
+#ceatgionfl .gt_striped {
+  background-color: #EDF7FC;
+}
+
+#ceatgionfl .gt_table_body {
+  border-top-style: solid;
+  border-top-width: 2px;
+  border-top-color: #5F5F5F;
+  border-bottom-style: solid;
+  border-bottom-width: 2px;
+  border-bottom-color: #5F5F5F;
+}
+
+#ceatgionfl .gt_footnotes {
+  color: #333333;
+  background-color: #FFFFFF;
+  border-bottom-style: none;
+  border-bottom-width: 2px;
+  border-bottom-color: #D3D3D3;
+  border-left-style: none;
+  border-left-width: 2px;
+  border-left-color: #D3D3D3;
+  border-right-style: none;
+  border-right-width: 2px;
+  border-right-color: #D3D3D3;
+}
+
+#ceatgionfl .gt_footnote {
+  margin: 0px;
+  font-size: 90%;
+  padding-left: 4px;
+  padding-right: 4px;
+  padding-left: 5px;
+  padding-right: 5px;
+}
+
+#ceatgionfl .gt_sourcenotes {
+  color: #333333;
+  background-color: #FFFFFF;
+  border-bottom-style: none;
+  border-bottom-width: 2px;
+  border-bottom-color: #D3D3D3;
+  border-left-style: none;
+  border-left-width: 2px;
+  border-left-color: #D3D3D3;
+  border-right-style: none;
+  border-right-width: 2px;
+  border-right-color: #D3D3D3;
+}
+
+#ceatgionfl .gt_sourcenote {
+  font-size: 90%;
+  padding-top: 4px;
+  padding-bottom: 4px;
+  padding-left: 5px;
+  padding-right: 5px;
+}
+
+#ceatgionfl .gt_left {
+  text-align: left;
+}
+
+#ceatgionfl .gt_center {
+  text-align: center;
+}
+
+#ceatgionfl .gt_right {
+  text-align: right;
+  font-variant-numeric: tabular-nums;
+}
+
+#ceatgionfl .gt_font_normal {
+  font-weight: normal;
+}
+
+#ceatgionfl .gt_font_bold {
+  font-weight: bold;
+}
+
+#ceatgionfl .gt_font_italic {
+  font-style: italic;
+}
+
+#ceatgionfl .gt_super {
+  font-size: 65%;
+}
+
+#ceatgionfl .gt_footnote_marks {
+  font-style: italic;
+  font-weight: normal;
+  font-size: 75%;
+  vertical-align: 0.4em;
+}
+
+#ceatgionfl .gt_asterisk {
+  font-size: 100%;
+  vertical-align: 0;
+}
+
+#ceatgionfl .gt_indent_1 {
+  text-indent: 5px;
+}
+
+#ceatgionfl .gt_indent_2 {
+  text-indent: 10px;
+}
+
+#ceatgionfl .gt_indent_3 {
+  text-indent: 15px;
+}
+
+#ceatgionfl .gt_indent_4 {
+  text-indent: 20px;
+}
+
+#ceatgionfl .gt_indent_5 {
+  text-indent: 25px;
+}
+</style>
+<table class="gt_table">
+  <caption>(#tab:gt-demo)Summary statistics for the pets dataset.</caption>
+  
+  <thead class="gt_col_headings">
+    <tr>
+      <th class="gt_col_heading gt_columns_bottom_border gt_left" rowspan="2" colspan="1" scope="col">Pet Type</th>
+      <th class="gt_col_heading gt_columns_bottom_border gt_right" rowspan="2" colspan="1" scope="col">N</th>
+      <th class="gt_center gt_columns_top_border gt_column_spanner_outer" rowspan="1" colspan="2" scope="colgroup">
+        <span class="gt_column_spanner">Means</span>
+      </th>
+    </tr>
+    <tr>
+      <th class="gt_col_heading gt_columns_bottom_border gt_right" rowspan="1" colspan="1" scope="col">Weight</th>
+      <th class="gt_col_heading gt_columns_bottom_border gt_right" rowspan="1" colspan="1" scope="col">Score</th>
+    </tr>
+  </thead>
+  <tbody class="gt_table_body">
+    <tr><td class="gt_row gt_left">cat</td>
+<td class="gt_row gt_right">300</td>
+<td class="gt_row gt_right">9.37</td>
+<td class="gt_row gt_right">90.24</td></tr>
+    <tr><td class="gt_row gt_left gt_striped">dog</td>
+<td class="gt_row gt_right gt_striped">400</td>
+<td class="gt_row gt_right gt_striped">19.07</td>
+<td class="gt_row gt_right gt_striped">99.98</td></tr>
+    <tr><td class="gt_row gt_left">ferret</td>
+<td class="gt_row gt_right">100</td>
+<td class="gt_row gt_right">4.78</td>
+<td class="gt_row gt_right">111.78</td></tr>
+  </tbody>
+  
+  
+</table>
+</div>
+```
+
+</div>
+
+
+<!-- Tab content -->
+<div id="DT" class="tabcontent">
+
+[DT](https://rstudio.github.io/DT/) lets you make interactive data tables. It can be tricky to customise, but the defaults are similar to other table functions.
+
+
+```r
+DT::datatable(summary_table, 
+              caption = "Summary statistics for the pets dataset.",
+              colnames = c("Pet Type", "N", "Weight", "Score")) |>
+  DT::formatRound(c("mean_weight", "mean_score"),
+                  digits = 2)
+```
+
+```{=html}
+<div id="htmlwidget-3c47dd0fab7617369218" style="width:100%;height:auto;" class="datatables html-widget"></div>
+<script type="application/json" data-for="htmlwidget-3c47dd0fab7617369218">{"x":{"filter":"none","vertical":false,"caption":"<caption>Summary statistics for the pets dataset.<\/caption>","data":[["1","2","3"],["cat","dog","ferret"],[300,400,100],[9.3716129083,19.0679737427696,4.78156944173321],[90.2366666666667,99.9825,111.78]],"container":"<table class=\"display\">\n  <thead>\n    <tr>\n      <th> <\/th>\n      <th>Pet Type<\/th>\n      <th>N<\/th>\n      <th>Weight<\/th>\n      <th>Score<\/th>\n    <\/tr>\n  <\/thead>\n<\/table>","options":{"columnDefs":[{"targets":3,"render":"function(data, type, row, meta) {\n    return type !== 'display' ? data : DTWidget.formatRound(data, 2, 3, \",\", \".\", null);\n  }"},{"targets":4,"render":"function(data, type, row, meta) {\n    return type !== 'display' ? data : DTWidget.formatRound(data, 2, 3, \",\", \".\", null);\n  }"},{"className":"dt-right","targets":[2,3,4]},{"orderable":false,"targets":0}],"order":[],"autoWidth":false,"orderClasses":false}},"evals":["options.columnDefs.0.render","options.columnDefs.1.render"],"jsHooks":[]}</script>
+```
+
+</div>
+
+### Images {#repro-figures}
 
 Next, create a code chunk where you want to display an image in your document. Let's put it in the Results section. We'll use some code that you'll learn more about  in the [data visualisation lecture](#ggplot) to show violin-boxplots for the groups.
 
@@ -407,14 +1004,14 @@ ggplot(pets, aes(pet, score, fill = country)) +
 ```
 
 <div class="figure" style="text-align: center">
-<img src="02-repro_files/figure-html/unnamed-chunk-7-1.png" alt="Figure 1. Scores by pet type and country." width="100%" />
-<p class="caption">(\#fig:unnamed-chunk-7)Figure 1. Scores by pet type and country.</p>
+<img src="02-repro_files/figure-html/unnamed-chunk-6-1.png" alt="Figure 1. Scores by pet type and country." width="100%" />
+<p class="caption">(\#fig:unnamed-chunk-6)Figure 1. Scores by pet type and country.</p>
 </div>
 ````
 
 <div class="figure" style="text-align: center">
-<img src="02-repro_files/figure-html/unnamed-chunk-8-1.png" alt="Figure 1. Scores by pet type and country." width="100%" />
-<p class="caption">(\#fig:unnamed-chunk-8)Figure 1. Scores by pet type and country.</p>
+<img src="02-repro_files/figure-html/unnamed-chunk-7-1.png" alt="Figure 1. Scores by pet type and country." width="100%" />
+<p class="caption">(\#fig:unnamed-chunk-7)Figure 1. Scores by pet type and country.</p>
 </div>
 
 ::: {.info data-latex=""}
@@ -431,7 +1028,7 @@ You can also include images that you did not create in R using the typical markd
 
 ![All the Things by [Hyperbole and a Half](http://hyperboleandahalf.blogspot.com/)](images/memes/x-all-the-things.png){style="width: 50%"}
 
-#### In-line R {#inline-r}
+### In-line R {#inline-r}
 
 Now let's analyse the pets data to see if cats are heavier than ferrets. First we'll run the analysis code. Then we'll save any numbers we might want to use in our manuscript to variables and round them appropriately. Finally, we'll use <code><span><span class='fu'>glue</span><span class='fu'>::</span><span class='fu'><a target='_blank' href='https://glue.tidyverse.org/reference/glue.html'>glue</a></span><span class='op'>(</span><span class='op'>)</span></span></code> to format a results string.
 

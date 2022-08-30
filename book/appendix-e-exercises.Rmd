@@ -29,7 +29,7 @@ exercises <- data.frame(
            "Functions and iteration",
            "Simulation")
 ) |>
-  mutate(entry = glue::glue("* Chapter {n}: {desc}\n    * Exercise: [Rmd]({exercise})|[html]({exercise_html}); Answers: [Rmd]({answer})|[html]({answer_html})"))
+  mutate(entry = glue::glue("* Chapter {n}: {desc}\n      * Exercise: [Rmd]({exercise}) | [html]({exercise_html}); Answers: [Rmd]({answer}) | [html]({answer_html})"))
 
 
 paste(exercises$entry, collapse = "\n") |> cat()

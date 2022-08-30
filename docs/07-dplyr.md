@@ -177,10 +177,67 @@ Select all rows where the user_id is 1 (that's Lisa).
 disgust |> filter(user_id == 1)
 ```
 
-<div data-pagedtable="false">
-  <script data-pagedtable-source type="application/json">
-{"columns":[{"label":["id"],"name":[1],"type":["dbl"],"align":["right"]},{"label":["user_id"],"name":[2],"type":["dbl"],"align":["right"]},{"label":["date"],"name":[3],"type":["date"],"align":["right"]},{"label":["moral1"],"name":[4],"type":["dbl"],"align":["right"]},{"label":["moral2"],"name":[5],"type":["dbl"],"align":["right"]},{"label":["moral3"],"name":[6],"type":["dbl"],"align":["right"]},{"label":["moral4"],"name":[7],"type":["dbl"],"align":["right"]},{"label":["moral5"],"name":[8],"type":["dbl"],"align":["right"]},{"label":["moral6"],"name":[9],"type":["dbl"],"align":["right"]},{"label":["moral7"],"name":[10],"type":["dbl"],"align":["right"]},{"label":["sexual1"],"name":[11],"type":["dbl"],"align":["right"]},{"label":["sexual2"],"name":[12],"type":["dbl"],"align":["right"]},{"label":["sexual3"],"name":[13],"type":["dbl"],"align":["right"]},{"label":["sexual4"],"name":[14],"type":["dbl"],"align":["right"]},{"label":["sexual5"],"name":[15],"type":["dbl"],"align":["right"]},{"label":["sexual6"],"name":[16],"type":["dbl"],"align":["right"]},{"label":["sexual7"],"name":[17],"type":["dbl"],"align":["right"]},{"label":["pathogen1"],"name":[18],"type":["dbl"],"align":["right"]},{"label":["pathogen2"],"name":[19],"type":["dbl"],"align":["right"]},{"label":["pathogen3"],"name":[20],"type":["dbl"],"align":["right"]},{"label":["pathogen4"],"name":[21],"type":["dbl"],"align":["right"]},{"label":["pathogen5"],"name":[22],"type":["dbl"],"align":["right"]},{"label":["pathogen6"],"name":[23],"type":["dbl"],"align":["right"]},{"label":["pathogen7"],"name":[24],"type":["dbl"],"align":["right"]}],"data":[{"1":"1","2":"1","3":"2008-07-10","4":"2","5":"2","6":"1","7":"2","8":"1","9":"1","10":"1","11":"3","12":"1","13":"1","14":"2","15":"1","16":"2","17":"2","18":"3","19":"2","20":"3","21":"3","22":"2","23":"3","24":"3"}],"options":{"columns":{"min":{},"max":[10]},"rows":{"min":[10],"max":[10]},"pages":{}}}
-  </script>
+<div class="kable-table">
+
+<table>
+ <thead>
+  <tr>
+   <th style="text-align:right;"> id </th>
+   <th style="text-align:right;"> user_id </th>
+   <th style="text-align:left;"> date </th>
+   <th style="text-align:right;"> moral1 </th>
+   <th style="text-align:right;"> moral2 </th>
+   <th style="text-align:right;"> moral3 </th>
+   <th style="text-align:right;"> moral4 </th>
+   <th style="text-align:right;"> moral5 </th>
+   <th style="text-align:right;"> moral6 </th>
+   <th style="text-align:right;"> moral7 </th>
+   <th style="text-align:right;"> sexual1 </th>
+   <th style="text-align:right;"> sexual2 </th>
+   <th style="text-align:right;"> sexual3 </th>
+   <th style="text-align:right;"> sexual4 </th>
+   <th style="text-align:right;"> sexual5 </th>
+   <th style="text-align:right;"> sexual6 </th>
+   <th style="text-align:right;"> sexual7 </th>
+   <th style="text-align:right;"> pathogen1 </th>
+   <th style="text-align:right;"> pathogen2 </th>
+   <th style="text-align:right;"> pathogen3 </th>
+   <th style="text-align:right;"> pathogen4 </th>
+   <th style="text-align:right;"> pathogen5 </th>
+   <th style="text-align:right;"> pathogen6 </th>
+   <th style="text-align:right;"> pathogen7 </th>
+  </tr>
+ </thead>
+<tbody>
+  <tr>
+   <td style="text-align:right;"> 1 </td>
+   <td style="text-align:right;"> 1 </td>
+   <td style="text-align:left;"> 2008-07-10 </td>
+   <td style="text-align:right;"> 2 </td>
+   <td style="text-align:right;"> 2 </td>
+   <td style="text-align:right;"> 1 </td>
+   <td style="text-align:right;"> 2 </td>
+   <td style="text-align:right;"> 1 </td>
+   <td style="text-align:right;"> 1 </td>
+   <td style="text-align:right;"> 1 </td>
+   <td style="text-align:right;"> 3 </td>
+   <td style="text-align:right;"> 1 </td>
+   <td style="text-align:right;"> 1 </td>
+   <td style="text-align:right;"> 2 </td>
+   <td style="text-align:right;"> 1 </td>
+   <td style="text-align:right;"> 2 </td>
+   <td style="text-align:right;"> 2 </td>
+   <td style="text-align:right;"> 3 </td>
+   <td style="text-align:right;"> 2 </td>
+   <td style="text-align:right;"> 3 </td>
+   <td style="text-align:right;"> 3 </td>
+   <td style="text-align:right;"> 2 </td>
+   <td style="text-align:right;"> 3 </td>
+   <td style="text-align:right;"> 3 </td>
+  </tr>
+</tbody>
+</table>
+
 </div>
 
 ::: {.warning data-latex=""}
@@ -1759,10 +1816,35 @@ dupes <- tibble(
 distinct(dupes)
 ```
 
-<div data-pagedtable="false">
-  <script data-pagedtable-source type="application/json">
-{"columns":[{"label":["id"],"name":[1],"type":["dbl"],"align":["right"]},{"label":["dv"],"name":[2],"type":["chr"],"align":["left"]}],"data":[{"1":"1","2":"A"},{"1":"2","2":"B"},{"1":"1","2":"C"},{"1":"2","2":"D"}],"options":{"columns":{"min":{},"max":[10]},"rows":{"min":[10],"max":[10]},"pages":{}}}
-  </script>
+<div class="kable-table">
+
+<table>
+ <thead>
+  <tr>
+   <th style="text-align:right;"> id </th>
+   <th style="text-align:left;"> dv </th>
+  </tr>
+ </thead>
+<tbody>
+  <tr>
+   <td style="text-align:right;"> 1 </td>
+   <td style="text-align:left;"> A </td>
+  </tr>
+  <tr>
+   <td style="text-align:right;"> 2 </td>
+   <td style="text-align:left;"> B </td>
+  </tr>
+  <tr>
+   <td style="text-align:right;"> 1 </td>
+   <td style="text-align:left;"> C </td>
+  </tr>
+  <tr>
+   <td style="text-align:right;"> 2 </td>
+   <td style="text-align:left;"> D </td>
+  </tr>
+</tbody>
+</table>
+
 </div>
 
 ### count() {#count}
@@ -1776,10 +1858,39 @@ starwars |>
   summarise(n = n(), .groups = "drop")
 ```
 
-<div data-pagedtable="false">
-  <script data-pagedtable-source type="application/json">
-{"columns":[{"label":["sex"],"name":[1],"type":["chr"],"align":["left"]},{"label":["n"],"name":[2],"type":["int"],"align":["right"]}],"data":[{"1":"female","2":"16"},{"1":"hermaphroditic","2":"1"},{"1":"male","2":"60"},{"1":"none","2":"6"},{"1":"NA","2":"4"}],"options":{"columns":{"min":{},"max":[10]},"rows":{"min":[10],"max":[10]},"pages":{}}}
-  </script>
+<div class="kable-table">
+
+<table>
+ <thead>
+  <tr>
+   <th style="text-align:left;"> sex </th>
+   <th style="text-align:right;"> n </th>
+  </tr>
+ </thead>
+<tbody>
+  <tr>
+   <td style="text-align:left;"> female </td>
+   <td style="text-align:right;"> 16 </td>
+  </tr>
+  <tr>
+   <td style="text-align:left;"> hermaphroditic </td>
+   <td style="text-align:right;"> 1 </td>
+  </tr>
+  <tr>
+   <td style="text-align:left;"> male </td>
+   <td style="text-align:right;"> 60 </td>
+  </tr>
+  <tr>
+   <td style="text-align:left;"> none </td>
+   <td style="text-align:right;"> 6 </td>
+  </tr>
+  <tr>
+   <td style="text-align:left;"> NA </td>
+   <td style="text-align:right;"> 4 </td>
+  </tr>
+</tbody>
+</table>
+
 </div>
 
 
@@ -1787,10 +1898,39 @@ starwars |>
 count(starwars, sex)
 ```
 
-<div data-pagedtable="false">
-  <script data-pagedtable-source type="application/json">
-{"columns":[{"label":["sex"],"name":[1],"type":["chr"],"align":["left"]},{"label":["n"],"name":[2],"type":["int"],"align":["right"]}],"data":[{"1":"female","2":"16"},{"1":"hermaphroditic","2":"1"},{"1":"male","2":"60"},{"1":"none","2":"6"},{"1":"NA","2":"4"}],"options":{"columns":{"min":{},"max":[10]},"rows":{"min":[10],"max":[10]},"pages":{}}}
-  </script>
+<div class="kable-table">
+
+<table>
+ <thead>
+  <tr>
+   <th style="text-align:left;"> sex </th>
+   <th style="text-align:right;"> n </th>
+  </tr>
+ </thead>
+<tbody>
+  <tr>
+   <td style="text-align:left;"> female </td>
+   <td style="text-align:right;"> 16 </td>
+  </tr>
+  <tr>
+   <td style="text-align:left;"> hermaphroditic </td>
+   <td style="text-align:right;"> 1 </td>
+  </tr>
+  <tr>
+   <td style="text-align:left;"> male </td>
+   <td style="text-align:right;"> 60 </td>
+  </tr>
+  <tr>
+   <td style="text-align:left;"> none </td>
+   <td style="text-align:right;"> 6 </td>
+  </tr>
+  <tr>
+   <td style="text-align:left;"> NA </td>
+   <td style="text-align:right;"> 4 </td>
+  </tr>
+</tbody>
+</table>
+
 </div>
 
 
@@ -1801,10 +1941,95 @@ count(starwars, sex)
 slice(starwars, 1:3, 10)
 ```
 
-<div data-pagedtable="false">
-  <script data-pagedtable-source type="application/json">
-{"columns":[{"label":["name"],"name":[1],"type":["chr"],"align":["left"]},{"label":["height"],"name":[2],"type":["int"],"align":["right"]},{"label":["mass"],"name":[3],"type":["dbl"],"align":["right"]},{"label":["hair_color"],"name":[4],"type":["chr"],"align":["left"]},{"label":["skin_color"],"name":[5],"type":["chr"],"align":["left"]},{"label":["eye_color"],"name":[6],"type":["chr"],"align":["left"]},{"label":["birth_year"],"name":[7],"type":["dbl"],"align":["right"]},{"label":["sex"],"name":[8],"type":["chr"],"align":["left"]},{"label":["gender"],"name":[9],"type":["chr"],"align":["left"]},{"label":["homeworld"],"name":[10],"type":["chr"],"align":["left"]},{"label":["species"],"name":[11],"type":["chr"],"align":["left"]},{"label":["films"],"name":[12],"type":["list"],"align":["right"]},{"label":["vehicles"],"name":[13],"type":["list"],"align":["right"]},{"label":["starships"],"name":[14],"type":["list"],"align":["right"]}],"data":[{"1":"Luke Skywalker","2":"172","3":"77","4":"blond","5":"fair","6":"blue","7":"19","8":"male","9":"masculine","10":"Tatooine","11":"Human","12":"<chr [5]>","13":"<chr [2]>","14":"<chr [2]>"},{"1":"C-3PO","2":"167","3":"75","4":"NA","5":"gold","6":"yellow","7":"112","8":"none","9":"masculine","10":"Tatooine","11":"Droid","12":"<chr [6]>","13":"<chr [0]>","14":"<chr [0]>"},{"1":"R2-D2","2":"96","3":"32","4":"NA","5":"white, blue","6":"red","7":"33","8":"none","9":"masculine","10":"Naboo","11":"Droid","12":"<chr [7]>","13":"<chr [0]>","14":"<chr [0]>"},{"1":"Obi-Wan Kenobi","2":"182","3":"77","4":"auburn, white","5":"fair","6":"blue-gray","7":"57","8":"male","9":"masculine","10":"Stewjon","11":"Human","12":"<chr [6]>","13":"<chr [1]>","14":"<chr [5]>"}],"options":{"columns":{"min":{},"max":[10]},"rows":{"min":[10],"max":[10]},"pages":{}}}
-  </script>
+<div class="kable-table">
+
+<table>
+ <thead>
+  <tr>
+   <th style="text-align:left;"> name </th>
+   <th style="text-align:right;"> height </th>
+   <th style="text-align:right;"> mass </th>
+   <th style="text-align:left;"> hair_color </th>
+   <th style="text-align:left;"> skin_color </th>
+   <th style="text-align:left;"> eye_color </th>
+   <th style="text-align:right;"> birth_year </th>
+   <th style="text-align:left;"> sex </th>
+   <th style="text-align:left;"> gender </th>
+   <th style="text-align:left;"> homeworld </th>
+   <th style="text-align:left;"> species </th>
+   <th style="text-align:left;"> films </th>
+   <th style="text-align:left;"> vehicles </th>
+   <th style="text-align:left;"> starships </th>
+  </tr>
+ </thead>
+<tbody>
+  <tr>
+   <td style="text-align:left;"> Luke Skywalker </td>
+   <td style="text-align:right;"> 172 </td>
+   <td style="text-align:right;"> 77 </td>
+   <td style="text-align:left;"> blond </td>
+   <td style="text-align:left;"> fair </td>
+   <td style="text-align:left;"> blue </td>
+   <td style="text-align:right;"> 19 </td>
+   <td style="text-align:left;"> male </td>
+   <td style="text-align:left;"> masculine </td>
+   <td style="text-align:left;"> Tatooine </td>
+   <td style="text-align:left;"> Human </td>
+   <td style="text-align:left;"> The Empire Strikes Back, Revenge of the Sith    , Return of the Jedi     , A New Hope             , The Force Awakens </td>
+   <td style="text-align:left;"> Snowspeeder          , Imperial Speeder Bike </td>
+   <td style="text-align:left;"> X-wing          , Imperial shuttle </td>
+  </tr>
+  <tr>
+   <td style="text-align:left;"> C-3PO </td>
+   <td style="text-align:right;"> 167 </td>
+   <td style="text-align:right;"> 75 </td>
+   <td style="text-align:left;"> NA </td>
+   <td style="text-align:left;"> gold </td>
+   <td style="text-align:left;"> yellow </td>
+   <td style="text-align:right;"> 112 </td>
+   <td style="text-align:left;"> none </td>
+   <td style="text-align:left;"> masculine </td>
+   <td style="text-align:left;"> Tatooine </td>
+   <td style="text-align:left;"> Droid </td>
+   <td style="text-align:left;"> The Empire Strikes Back, Attack of the Clones   , The Phantom Menace     , Revenge of the Sith    , Return of the Jedi     , A New Hope </td>
+   <td style="text-align:left;">  </td>
+   <td style="text-align:left;">  </td>
+  </tr>
+  <tr>
+   <td style="text-align:left;"> R2-D2 </td>
+   <td style="text-align:right;"> 96 </td>
+   <td style="text-align:right;"> 32 </td>
+   <td style="text-align:left;"> NA </td>
+   <td style="text-align:left;"> white, blue </td>
+   <td style="text-align:left;"> red </td>
+   <td style="text-align:right;"> 33 </td>
+   <td style="text-align:left;"> none </td>
+   <td style="text-align:left;"> masculine </td>
+   <td style="text-align:left;"> Naboo </td>
+   <td style="text-align:left;"> Droid </td>
+   <td style="text-align:left;"> The Empire Strikes Back, Attack of the Clones   , The Phantom Menace     , Revenge of the Sith    , Return of the Jedi     , A New Hope             , The Force Awakens </td>
+   <td style="text-align:left;">  </td>
+   <td style="text-align:left;">  </td>
+  </tr>
+  <tr>
+   <td style="text-align:left;"> Obi-Wan Kenobi </td>
+   <td style="text-align:right;"> 182 </td>
+   <td style="text-align:right;"> 77 </td>
+   <td style="text-align:left;"> auburn, white </td>
+   <td style="text-align:left;"> fair </td>
+   <td style="text-align:left;"> blue-gray </td>
+   <td style="text-align:right;"> 57 </td>
+   <td style="text-align:left;"> male </td>
+   <td style="text-align:left;"> masculine </td>
+   <td style="text-align:left;"> Stewjon </td>
+   <td style="text-align:left;"> Human </td>
+   <td style="text-align:left;"> The Empire Strikes Back, Attack of the Clones   , The Phantom Menace     , Revenge of the Sith    , Return of the Jedi     , A New Hope </td>
+   <td style="text-align:left;"> Tribubble bongo </td>
+   <td style="text-align:left;"> Jedi starfighter        , Trade Federation cruiser, Naboo star skiff        , Jedi Interceptor        , Belbullab-22 starfighter </td>
+  </tr>
+</tbody>
+</table>
+
 </div>
 
 ### pull() {#pull}

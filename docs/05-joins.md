@@ -176,10 +176,63 @@ A `left_join` keeps all the data from the first (left) table and joins anything 
 left_join(subject, exp, by = "id")
 ```
 
-<div data-pagedtable="false">
-  <script data-pagedtable-source type="application/json">
-{"columns":[{"label":["id"],"name":[1],"type":["dbl"],"align":["right"]},{"label":["gender"],"name":[2],"type":["chr"],"align":["left"]},{"label":["age"],"name":[3],"type":["dbl"],"align":["right"]},{"label":["score"],"name":[4],"type":["dbl"],"align":["right"]}],"data":[{"1":"1","2":"m","3":"19","4":"NA"},{"1":"2","2":"m","3":"22","4":"10"},{"1":"3","2":"NA","3":"NA","4":"18"},{"1":"4","2":"nb","3":"19","4":"21"},{"1":"4","2":"nb","3":"19","4":"23"},{"1":"5","2":"f","3":"18","4":"9"},{"1":"5","2":"f","3":"18","4":"11"}],"options":{"columns":{"min":{},"max":[10]},"rows":{"min":[10],"max":[10]},"pages":{}}}
-  </script>
+<div class="kable-table">
+
+<table>
+ <thead>
+  <tr>
+   <th style="text-align:right;"> id </th>
+   <th style="text-align:left;"> gender </th>
+   <th style="text-align:right;"> age </th>
+   <th style="text-align:right;"> score </th>
+  </tr>
+ </thead>
+<tbody>
+  <tr>
+   <td style="text-align:right;"> 1 </td>
+   <td style="text-align:left;"> m </td>
+   <td style="text-align:right;"> 19 </td>
+   <td style="text-align:right;"> NA </td>
+  </tr>
+  <tr>
+   <td style="text-align:right;"> 2 </td>
+   <td style="text-align:left;"> m </td>
+   <td style="text-align:right;"> 22 </td>
+   <td style="text-align:right;"> 10 </td>
+  </tr>
+  <tr>
+   <td style="text-align:right;"> 3 </td>
+   <td style="text-align:left;"> NA </td>
+   <td style="text-align:right;"> NA </td>
+   <td style="text-align:right;"> 18 </td>
+  </tr>
+  <tr>
+   <td style="text-align:right;"> 4 </td>
+   <td style="text-align:left;"> nb </td>
+   <td style="text-align:right;"> 19 </td>
+   <td style="text-align:right;"> 21 </td>
+  </tr>
+  <tr>
+   <td style="text-align:right;"> 4 </td>
+   <td style="text-align:left;"> nb </td>
+   <td style="text-align:right;"> 19 </td>
+   <td style="text-align:right;"> 23 </td>
+  </tr>
+  <tr>
+   <td style="text-align:right;"> 5 </td>
+   <td style="text-align:left;"> f </td>
+   <td style="text-align:right;"> 18 </td>
+   <td style="text-align:right;"> 9 </td>
+  </tr>
+  <tr>
+   <td style="text-align:right;"> 5 </td>
+   <td style="text-align:left;"> f </td>
+   <td style="text-align:right;"> 18 </td>
+   <td style="text-align:right;"> 11 </td>
+  </tr>
+</tbody>
+</table>
+
 </div>
 
 <div class = 'join'><div class="figure" style="text-align: center">
@@ -194,10 +247,75 @@ The order of tables is swapped here, so the result is all rows from the `exp` ta
 left_join(exp, subject, by = "id")
 ```
 
-<div data-pagedtable="false">
-  <script data-pagedtable-source type="application/json">
-{"columns":[{"label":["id"],"name":[1],"type":["dbl"],"align":["right"]},{"label":["score"],"name":[2],"type":["dbl"],"align":["right"]},{"label":["gender"],"name":[3],"type":["chr"],"align":["left"]},{"label":["age"],"name":[4],"type":["dbl"],"align":["right"]}],"data":[{"1":"2","2":"10","3":"m","4":"22"},{"1":"3","2":"18","3":"NA","4":"NA"},{"1":"4","2":"21","3":"nb","4":"19"},{"1":"4","2":"23","3":"nb","4":"19"},{"1":"5","2":"9","3":"f","4":"18"},{"1":"5","2":"11","3":"f","4":"18"},{"1":"6","2":"11","3":"NA","4":"NA"},{"1":"6","2":"12","3":"NA","4":"NA"},{"1":"7","2":"3","3":"NA","4":"NA"}],"options":{"columns":{"min":{},"max":[10]},"rows":{"min":[10],"max":[10]},"pages":{}}}
-  </script>
+<div class="kable-table">
+
+<table>
+ <thead>
+  <tr>
+   <th style="text-align:right;"> id </th>
+   <th style="text-align:right;"> score </th>
+   <th style="text-align:left;"> gender </th>
+   <th style="text-align:right;"> age </th>
+  </tr>
+ </thead>
+<tbody>
+  <tr>
+   <td style="text-align:right;"> 2 </td>
+   <td style="text-align:right;"> 10 </td>
+   <td style="text-align:left;"> m </td>
+   <td style="text-align:right;"> 22 </td>
+  </tr>
+  <tr>
+   <td style="text-align:right;"> 3 </td>
+   <td style="text-align:right;"> 18 </td>
+   <td style="text-align:left;"> NA </td>
+   <td style="text-align:right;"> NA </td>
+  </tr>
+  <tr>
+   <td style="text-align:right;"> 4 </td>
+   <td style="text-align:right;"> 21 </td>
+   <td style="text-align:left;"> nb </td>
+   <td style="text-align:right;"> 19 </td>
+  </tr>
+  <tr>
+   <td style="text-align:right;"> 4 </td>
+   <td style="text-align:right;"> 23 </td>
+   <td style="text-align:left;"> nb </td>
+   <td style="text-align:right;"> 19 </td>
+  </tr>
+  <tr>
+   <td style="text-align:right;"> 5 </td>
+   <td style="text-align:right;"> 9 </td>
+   <td style="text-align:left;"> f </td>
+   <td style="text-align:right;"> 18 </td>
+  </tr>
+  <tr>
+   <td style="text-align:right;"> 5 </td>
+   <td style="text-align:right;"> 11 </td>
+   <td style="text-align:left;"> f </td>
+   <td style="text-align:right;"> 18 </td>
+  </tr>
+  <tr>
+   <td style="text-align:right;"> 6 </td>
+   <td style="text-align:right;"> 11 </td>
+   <td style="text-align:left;"> NA </td>
+   <td style="text-align:right;"> NA </td>
+  </tr>
+  <tr>
+   <td style="text-align:right;"> 6 </td>
+   <td style="text-align:right;"> 12 </td>
+   <td style="text-align:left;"> NA </td>
+   <td style="text-align:right;"> NA </td>
+  </tr>
+  <tr>
+   <td style="text-align:right;"> 7 </td>
+   <td style="text-align:right;"> 3 </td>
+   <td style="text-align:left;"> NA </td>
+   <td style="text-align:right;"> NA </td>
+  </tr>
+</tbody>
+</table>
+
 </div>
 
 ### right_join() {#right_join}
@@ -214,10 +332,75 @@ A `right_join` keeps all the data from the second (right) table and joins anythi
 right_join(subject, exp, by = "id")
 ```
 
-<div data-pagedtable="false">
-  <script data-pagedtable-source type="application/json">
-{"columns":[{"label":["id"],"name":[1],"type":["dbl"],"align":["right"]},{"label":["gender"],"name":[2],"type":["chr"],"align":["left"]},{"label":["age"],"name":[3],"type":["dbl"],"align":["right"]},{"label":["score"],"name":[4],"type":["dbl"],"align":["right"]}],"data":[{"1":"2","2":"m","3":"22","4":"10"},{"1":"3","2":"NA","3":"NA","4":"18"},{"1":"4","2":"nb","3":"19","4":"21"},{"1":"4","2":"nb","3":"19","4":"23"},{"1":"5","2":"f","3":"18","4":"9"},{"1":"5","2":"f","3":"18","4":"11"},{"1":"6","2":"NA","3":"NA","4":"11"},{"1":"6","2":"NA","3":"NA","4":"12"},{"1":"7","2":"NA","3":"NA","4":"3"}],"options":{"columns":{"min":{},"max":[10]},"rows":{"min":[10],"max":[10]},"pages":{}}}
-  </script>
+<div class="kable-table">
+
+<table>
+ <thead>
+  <tr>
+   <th style="text-align:right;"> id </th>
+   <th style="text-align:left;"> gender </th>
+   <th style="text-align:right;"> age </th>
+   <th style="text-align:right;"> score </th>
+  </tr>
+ </thead>
+<tbody>
+  <tr>
+   <td style="text-align:right;"> 2 </td>
+   <td style="text-align:left;"> m </td>
+   <td style="text-align:right;"> 22 </td>
+   <td style="text-align:right;"> 10 </td>
+  </tr>
+  <tr>
+   <td style="text-align:right;"> 3 </td>
+   <td style="text-align:left;"> NA </td>
+   <td style="text-align:right;"> NA </td>
+   <td style="text-align:right;"> 18 </td>
+  </tr>
+  <tr>
+   <td style="text-align:right;"> 4 </td>
+   <td style="text-align:left;"> nb </td>
+   <td style="text-align:right;"> 19 </td>
+   <td style="text-align:right;"> 21 </td>
+  </tr>
+  <tr>
+   <td style="text-align:right;"> 4 </td>
+   <td style="text-align:left;"> nb </td>
+   <td style="text-align:right;"> 19 </td>
+   <td style="text-align:right;"> 23 </td>
+  </tr>
+  <tr>
+   <td style="text-align:right;"> 5 </td>
+   <td style="text-align:left;"> f </td>
+   <td style="text-align:right;"> 18 </td>
+   <td style="text-align:right;"> 9 </td>
+  </tr>
+  <tr>
+   <td style="text-align:right;"> 5 </td>
+   <td style="text-align:left;"> f </td>
+   <td style="text-align:right;"> 18 </td>
+   <td style="text-align:right;"> 11 </td>
+  </tr>
+  <tr>
+   <td style="text-align:right;"> 6 </td>
+   <td style="text-align:left;"> NA </td>
+   <td style="text-align:right;"> NA </td>
+   <td style="text-align:right;"> 11 </td>
+  </tr>
+  <tr>
+   <td style="text-align:right;"> 6 </td>
+   <td style="text-align:left;"> NA </td>
+   <td style="text-align:right;"> NA </td>
+   <td style="text-align:right;"> 12 </td>
+  </tr>
+  <tr>
+   <td style="text-align:right;"> 7 </td>
+   <td style="text-align:left;"> NA </td>
+   <td style="text-align:right;"> NA </td>
+   <td style="text-align:right;"> 3 </td>
+  </tr>
+</tbody>
+</table>
+
 </div>
 
 ::: {.info data-latex=""}
@@ -238,10 +421,57 @@ An `inner_join` returns all the rows that have a match in the other table.
 inner_join(subject, exp, by = "id")
 ```
 
-<div data-pagedtable="false">
-  <script data-pagedtable-source type="application/json">
-{"columns":[{"label":["id"],"name":[1],"type":["dbl"],"align":["right"]},{"label":["gender"],"name":[2],"type":["chr"],"align":["left"]},{"label":["age"],"name":[3],"type":["dbl"],"align":["right"]},{"label":["score"],"name":[4],"type":["dbl"],"align":["right"]}],"data":[{"1":"2","2":"m","3":"22","4":"10"},{"1":"3","2":"NA","3":"NA","4":"18"},{"1":"4","2":"nb","3":"19","4":"21"},{"1":"4","2":"nb","3":"19","4":"23"},{"1":"5","2":"f","3":"18","4":"9"},{"1":"5","2":"f","3":"18","4":"11"}],"options":{"columns":{"min":{},"max":[10]},"rows":{"min":[10],"max":[10]},"pages":{}}}
-  </script>
+<div class="kable-table">
+
+<table>
+ <thead>
+  <tr>
+   <th style="text-align:right;"> id </th>
+   <th style="text-align:left;"> gender </th>
+   <th style="text-align:right;"> age </th>
+   <th style="text-align:right;"> score </th>
+  </tr>
+ </thead>
+<tbody>
+  <tr>
+   <td style="text-align:right;"> 2 </td>
+   <td style="text-align:left;"> m </td>
+   <td style="text-align:right;"> 22 </td>
+   <td style="text-align:right;"> 10 </td>
+  </tr>
+  <tr>
+   <td style="text-align:right;"> 3 </td>
+   <td style="text-align:left;"> NA </td>
+   <td style="text-align:right;"> NA </td>
+   <td style="text-align:right;"> 18 </td>
+  </tr>
+  <tr>
+   <td style="text-align:right;"> 4 </td>
+   <td style="text-align:left;"> nb </td>
+   <td style="text-align:right;"> 19 </td>
+   <td style="text-align:right;"> 21 </td>
+  </tr>
+  <tr>
+   <td style="text-align:right;"> 4 </td>
+   <td style="text-align:left;"> nb </td>
+   <td style="text-align:right;"> 19 </td>
+   <td style="text-align:right;"> 23 </td>
+  </tr>
+  <tr>
+   <td style="text-align:right;"> 5 </td>
+   <td style="text-align:left;"> f </td>
+   <td style="text-align:right;"> 18 </td>
+   <td style="text-align:right;"> 9 </td>
+  </tr>
+  <tr>
+   <td style="text-align:right;"> 5 </td>
+   <td style="text-align:left;"> f </td>
+   <td style="text-align:right;"> 18 </td>
+   <td style="text-align:right;"> 11 </td>
+  </tr>
+</tbody>
+</table>
+
 </div>
 
 
@@ -259,10 +489,81 @@ A `full_join` lets you join up rows in two tables while keeping all of the infor
 full_join(subject, exp, by = "id")
 ```
 
-<div data-pagedtable="false">
-  <script data-pagedtable-source type="application/json">
-{"columns":[{"label":["id"],"name":[1],"type":["dbl"],"align":["right"]},{"label":["gender"],"name":[2],"type":["chr"],"align":["left"]},{"label":["age"],"name":[3],"type":["dbl"],"align":["right"]},{"label":["score"],"name":[4],"type":["dbl"],"align":["right"]}],"data":[{"1":"1","2":"m","3":"19","4":"NA"},{"1":"2","2":"m","3":"22","4":"10"},{"1":"3","2":"NA","3":"NA","4":"18"},{"1":"4","2":"nb","3":"19","4":"21"},{"1":"4","2":"nb","3":"19","4":"23"},{"1":"5","2":"f","3":"18","4":"9"},{"1":"5","2":"f","3":"18","4":"11"},{"1":"6","2":"NA","3":"NA","4":"11"},{"1":"6","2":"NA","3":"NA","4":"12"},{"1":"7","2":"NA","3":"NA","4":"3"}],"options":{"columns":{"min":{},"max":[10]},"rows":{"min":[10],"max":[10]},"pages":{}}}
-  </script>
+<div class="kable-table">
+
+<table>
+ <thead>
+  <tr>
+   <th style="text-align:right;"> id </th>
+   <th style="text-align:left;"> gender </th>
+   <th style="text-align:right;"> age </th>
+   <th style="text-align:right;"> score </th>
+  </tr>
+ </thead>
+<tbody>
+  <tr>
+   <td style="text-align:right;"> 1 </td>
+   <td style="text-align:left;"> m </td>
+   <td style="text-align:right;"> 19 </td>
+   <td style="text-align:right;"> NA </td>
+  </tr>
+  <tr>
+   <td style="text-align:right;"> 2 </td>
+   <td style="text-align:left;"> m </td>
+   <td style="text-align:right;"> 22 </td>
+   <td style="text-align:right;"> 10 </td>
+  </tr>
+  <tr>
+   <td style="text-align:right;"> 3 </td>
+   <td style="text-align:left;"> NA </td>
+   <td style="text-align:right;"> NA </td>
+   <td style="text-align:right;"> 18 </td>
+  </tr>
+  <tr>
+   <td style="text-align:right;"> 4 </td>
+   <td style="text-align:left;"> nb </td>
+   <td style="text-align:right;"> 19 </td>
+   <td style="text-align:right;"> 21 </td>
+  </tr>
+  <tr>
+   <td style="text-align:right;"> 4 </td>
+   <td style="text-align:left;"> nb </td>
+   <td style="text-align:right;"> 19 </td>
+   <td style="text-align:right;"> 23 </td>
+  </tr>
+  <tr>
+   <td style="text-align:right;"> 5 </td>
+   <td style="text-align:left;"> f </td>
+   <td style="text-align:right;"> 18 </td>
+   <td style="text-align:right;"> 9 </td>
+  </tr>
+  <tr>
+   <td style="text-align:right;"> 5 </td>
+   <td style="text-align:left;"> f </td>
+   <td style="text-align:right;"> 18 </td>
+   <td style="text-align:right;"> 11 </td>
+  </tr>
+  <tr>
+   <td style="text-align:right;"> 6 </td>
+   <td style="text-align:left;"> NA </td>
+   <td style="text-align:right;"> NA </td>
+   <td style="text-align:right;"> 11 </td>
+  </tr>
+  <tr>
+   <td style="text-align:right;"> 6 </td>
+   <td style="text-align:left;"> NA </td>
+   <td style="text-align:right;"> NA </td>
+   <td style="text-align:right;"> 12 </td>
+  </tr>
+  <tr>
+   <td style="text-align:right;"> 7 </td>
+   <td style="text-align:left;"> NA </td>
+   <td style="text-align:right;"> NA </td>
+   <td style="text-align:right;"> 3 </td>
+  </tr>
+</tbody>
+</table>
+
 </div>
 
 
@@ -284,10 +585,40 @@ A `semi_join` returns all rows from the left table where there are matching valu
 semi_join(subject, exp, by = "id")
 ```
 
-<div data-pagedtable="false">
-  <script data-pagedtable-source type="application/json">
-{"columns":[{"label":["id"],"name":[1],"type":["int"],"align":["right"]},{"label":["gender"],"name":[2],"type":["chr"],"align":["left"]},{"label":["age"],"name":[3],"type":["dbl"],"align":["right"]}],"data":[{"1":"2","2":"m","3":"22"},{"1":"3","2":"NA","3":"NA"},{"1":"4","2":"nb","3":"19"},{"1":"5","2":"f","3":"18"}],"options":{"columns":{"min":{},"max":[10]},"rows":{"min":[10],"max":[10]},"pages":{}}}
-  </script>
+<div class="kable-table">
+
+<table>
+ <thead>
+  <tr>
+   <th style="text-align:right;"> id </th>
+   <th style="text-align:left;"> gender </th>
+   <th style="text-align:right;"> age </th>
+  </tr>
+ </thead>
+<tbody>
+  <tr>
+   <td style="text-align:right;"> 2 </td>
+   <td style="text-align:left;"> m </td>
+   <td style="text-align:right;"> 22 </td>
+  </tr>
+  <tr>
+   <td style="text-align:right;"> 3 </td>
+   <td style="text-align:left;"> NA </td>
+   <td style="text-align:right;"> NA </td>
+  </tr>
+  <tr>
+   <td style="text-align:right;"> 4 </td>
+   <td style="text-align:left;"> nb </td>
+   <td style="text-align:right;"> 19 </td>
+  </tr>
+  <tr>
+   <td style="text-align:right;"> 5 </td>
+   <td style="text-align:left;"> f </td>
+   <td style="text-align:right;"> 18 </td>
+  </tr>
+</tbody>
+</table>
+
 </div>
 
 ::: {.info data-latex=""}
@@ -306,10 +637,43 @@ Order matters in a semi join.
 semi_join(exp, subject, by = "id")
 ```
 
-<div data-pagedtable="false">
-  <script data-pagedtable-source type="application/json">
-{"columns":[{"label":["id"],"name":[1],"type":["dbl"],"align":["right"]},{"label":["score"],"name":[2],"type":["dbl"],"align":["right"]}],"data":[{"1":"2","2":"10"},{"1":"3","2":"18"},{"1":"4","2":"21"},{"1":"4","2":"23"},{"1":"5","2":"9"},{"1":"5","2":"11"}],"options":{"columns":{"min":{},"max":[10]},"rows":{"min":[10],"max":[10]},"pages":{}}}
-  </script>
+<div class="kable-table">
+
+<table>
+ <thead>
+  <tr>
+   <th style="text-align:right;"> id </th>
+   <th style="text-align:right;"> score </th>
+  </tr>
+ </thead>
+<tbody>
+  <tr>
+   <td style="text-align:right;"> 2 </td>
+   <td style="text-align:right;"> 10 </td>
+  </tr>
+  <tr>
+   <td style="text-align:right;"> 3 </td>
+   <td style="text-align:right;"> 18 </td>
+  </tr>
+  <tr>
+   <td style="text-align:right;"> 4 </td>
+   <td style="text-align:right;"> 21 </td>
+  </tr>
+  <tr>
+   <td style="text-align:right;"> 4 </td>
+   <td style="text-align:right;"> 23 </td>
+  </tr>
+  <tr>
+   <td style="text-align:right;"> 5 </td>
+   <td style="text-align:right;"> 9 </td>
+  </tr>
+  <tr>
+   <td style="text-align:right;"> 5 </td>
+   <td style="text-align:right;"> 11 </td>
+  </tr>
+</tbody>
+</table>
+
 </div>
 
 ### anti_join() {#anti_join}
@@ -326,10 +690,25 @@ An `anti_join` return all rows from the left table where there are *not* matchin
 anti_join(subject, exp, by = "id")
 ```
 
-<div data-pagedtable="false">
-  <script data-pagedtable-source type="application/json">
-{"columns":[{"label":["id"],"name":[1],"type":["int"],"align":["right"]},{"label":["gender"],"name":[2],"type":["chr"],"align":["left"]},{"label":["age"],"name":[3],"type":["dbl"],"align":["right"]}],"data":[{"1":"1","2":"m","3":"19"}],"options":{"columns":{"min":{},"max":[10]},"rows":{"min":[10],"max":[10]},"pages":{}}}
-  </script>
+<div class="kable-table">
+
+<table>
+ <thead>
+  <tr>
+   <th style="text-align:right;"> id </th>
+   <th style="text-align:left;"> gender </th>
+   <th style="text-align:right;"> age </th>
+  </tr>
+ </thead>
+<tbody>
+  <tr>
+   <td style="text-align:right;"> 1 </td>
+   <td style="text-align:left;"> m </td>
+   <td style="text-align:right;"> 19 </td>
+  </tr>
+</tbody>
+</table>
+
 </div>
 
 <div class = 'join'><div class="figure" style="text-align: center">
@@ -344,10 +723,31 @@ Order matters in an anti join.
 anti_join(exp, subject, by = "id")
 ```
 
-<div data-pagedtable="false">
-  <script data-pagedtable-source type="application/json">
-{"columns":[{"label":["id"],"name":[1],"type":["dbl"],"align":["right"]},{"label":["score"],"name":[2],"type":["dbl"],"align":["right"]}],"data":[{"1":"6","2":"11"},{"1":"6","2":"12"},{"1":"7","2":"3"}],"options":{"columns":{"min":{},"max":[10]},"rows":{"min":[10],"max":[10]},"pages":{}}}
-  </script>
+<div class="kable-table">
+
+<table>
+ <thead>
+  <tr>
+   <th style="text-align:right;"> id </th>
+   <th style="text-align:right;"> score </th>
+  </tr>
+ </thead>
+<tbody>
+  <tr>
+   <td style="text-align:right;"> 6 </td>
+   <td style="text-align:right;"> 11 </td>
+  </tr>
+  <tr>
+   <td style="text-align:right;"> 6 </td>
+   <td style="text-align:right;"> 12 </td>
+  </tr>
+  <tr>
+   <td style="text-align:right;"> 7 </td>
+   <td style="text-align:right;"> 3 </td>
+  </tr>
+</tbody>
+</table>
+
 </div>
 
 ## Binding Joins
@@ -371,10 +771,65 @@ new_subjects <- tibble(
 bind_rows(subject, new_subjects)
 ```
 
-<div data-pagedtable="false">
-  <script data-pagedtable-source type="application/json">
-{"columns":[{"label":["id"],"name":[1],"type":["int"],"align":["right"]},{"label":["gender"],"name":[2],"type":["chr"],"align":["left"]},{"label":["age"],"name":[3],"type":["dbl"],"align":["right"]}],"data":[{"1":"1","2":"m","3":"19"},{"1":"2","2":"m","3":"22"},{"1":"3","2":"NA","3":"NA"},{"1":"4","2":"nb","3":"19"},{"1":"5","2":"f","3":"18"},{"1":"6","2":"nb","3":"19"},{"1":"7","2":"m","3":"16"},{"1":"8","2":"f","3":"20"},{"1":"9","2":"f","3":"19"}],"options":{"columns":{"min":{},"max":[10]},"rows":{"min":[10],"max":[10]},"pages":{}}}
-  </script>
+<div class="kable-table">
+
+<table>
+ <thead>
+  <tr>
+   <th style="text-align:right;"> id </th>
+   <th style="text-align:left;"> gender </th>
+   <th style="text-align:right;"> age </th>
+  </tr>
+ </thead>
+<tbody>
+  <tr>
+   <td style="text-align:right;"> 1 </td>
+   <td style="text-align:left;"> m </td>
+   <td style="text-align:right;"> 19 </td>
+  </tr>
+  <tr>
+   <td style="text-align:right;"> 2 </td>
+   <td style="text-align:left;"> m </td>
+   <td style="text-align:right;"> 22 </td>
+  </tr>
+  <tr>
+   <td style="text-align:right;"> 3 </td>
+   <td style="text-align:left;"> NA </td>
+   <td style="text-align:right;"> NA </td>
+  </tr>
+  <tr>
+   <td style="text-align:right;"> 4 </td>
+   <td style="text-align:left;"> nb </td>
+   <td style="text-align:right;"> 19 </td>
+  </tr>
+  <tr>
+   <td style="text-align:right;"> 5 </td>
+   <td style="text-align:left;"> f </td>
+   <td style="text-align:right;"> 18 </td>
+  </tr>
+  <tr>
+   <td style="text-align:right;"> 6 </td>
+   <td style="text-align:left;"> nb </td>
+   <td style="text-align:right;"> 19 </td>
+  </tr>
+  <tr>
+   <td style="text-align:right;"> 7 </td>
+   <td style="text-align:left;"> m </td>
+   <td style="text-align:right;"> 16 </td>
+  </tr>
+  <tr>
+   <td style="text-align:right;"> 8 </td>
+   <td style="text-align:left;"> f </td>
+   <td style="text-align:right;"> 20 </td>
+  </tr>
+  <tr>
+   <td style="text-align:right;"> 9 </td>
+   <td style="text-align:left;"> f </td>
+   <td style="text-align:right;"> 19 </td>
+  </tr>
+</tbody>
+</table>
+
 </div>
 
 The columns just have to have the same names, they don't have to be in the same order. Any columns that differ between the two tables will just have `NA` values for entries from the other table.
@@ -393,10 +848,81 @@ new_subjects <- tibble(
 bind_rows(subject, new_subjects)
 ```
 
-<div data-pagedtable="false">
-  <script data-pagedtable-source type="application/json">
-{"columns":[{"label":["id"],"name":[1],"type":["int"],"align":["right"]},{"label":["gender"],"name":[2],"type":["chr"],"align":["left"]},{"label":["age"],"name":[3],"type":["dbl"],"align":["right"]},{"label":["new"],"name":[4],"type":["dbl"],"align":["right"]}],"data":[{"1":"1","2":"m","3":"19","4":"NA"},{"1":"2","2":"m","3":"22","4":"NA"},{"1":"3","2":"NA","3":"NA","4":"NA"},{"1":"4","2":"nb","3":"19","4":"NA"},{"1":"5","2":"f","3":"18","4":"NA"},{"1":"5","2":"f","3":"18","4":"1"},{"1":"6","2":"nb","3":"19","4":"2"},{"1":"7","2":"m","3":"16","4":"3"},{"1":"8","2":"f","3":"20","4":"4"},{"1":"9","2":"f","3":"19","4":"5"}],"options":{"columns":{"min":{},"max":[10]},"rows":{"min":[10],"max":[10]},"pages":{}}}
-  </script>
+<div class="kable-table">
+
+<table>
+ <thead>
+  <tr>
+   <th style="text-align:right;"> id </th>
+   <th style="text-align:left;"> gender </th>
+   <th style="text-align:right;"> age </th>
+   <th style="text-align:right;"> new </th>
+  </tr>
+ </thead>
+<tbody>
+  <tr>
+   <td style="text-align:right;"> 1 </td>
+   <td style="text-align:left;"> m </td>
+   <td style="text-align:right;"> 19 </td>
+   <td style="text-align:right;"> NA </td>
+  </tr>
+  <tr>
+   <td style="text-align:right;"> 2 </td>
+   <td style="text-align:left;"> m </td>
+   <td style="text-align:right;"> 22 </td>
+   <td style="text-align:right;"> NA </td>
+  </tr>
+  <tr>
+   <td style="text-align:right;"> 3 </td>
+   <td style="text-align:left;"> NA </td>
+   <td style="text-align:right;"> NA </td>
+   <td style="text-align:right;"> NA </td>
+  </tr>
+  <tr>
+   <td style="text-align:right;"> 4 </td>
+   <td style="text-align:left;"> nb </td>
+   <td style="text-align:right;"> 19 </td>
+   <td style="text-align:right;"> NA </td>
+  </tr>
+  <tr>
+   <td style="text-align:right;"> 5 </td>
+   <td style="text-align:left;"> f </td>
+   <td style="text-align:right;"> 18 </td>
+   <td style="text-align:right;"> NA </td>
+  </tr>
+  <tr>
+   <td style="text-align:right;"> 5 </td>
+   <td style="text-align:left;"> f </td>
+   <td style="text-align:right;"> 18 </td>
+   <td style="text-align:right;"> 1 </td>
+  </tr>
+  <tr>
+   <td style="text-align:right;"> 6 </td>
+   <td style="text-align:left;"> nb </td>
+   <td style="text-align:right;"> 19 </td>
+   <td style="text-align:right;"> 2 </td>
+  </tr>
+  <tr>
+   <td style="text-align:right;"> 7 </td>
+   <td style="text-align:left;"> m </td>
+   <td style="text-align:right;"> 16 </td>
+   <td style="text-align:right;"> 3 </td>
+  </tr>
+  <tr>
+   <td style="text-align:right;"> 8 </td>
+   <td style="text-align:left;"> f </td>
+   <td style="text-align:right;"> 20 </td>
+   <td style="text-align:right;"> 4 </td>
+  </tr>
+  <tr>
+   <td style="text-align:right;"> 9 </td>
+   <td style="text-align:left;"> f </td>
+   <td style="text-align:right;"> 19 </td>
+   <td style="text-align:right;"> 5 </td>
+  </tr>
+</tbody>
+</table>
+
 </div>
 
 ### bind_cols() {#bind_cols}
@@ -412,10 +938,51 @@ new_info <- tibble(
 bind_cols(subject, new_info)
 ```
 
-<div data-pagedtable="false">
-  <script data-pagedtable-source type="application/json">
-{"columns":[{"label":["id"],"name":[1],"type":["int"],"align":["right"]},{"label":["gender"],"name":[2],"type":["chr"],"align":["left"]},{"label":["age"],"name":[3],"type":["dbl"],"align":["right"]},{"label":["colour"],"name":[4],"type":["chr"],"align":["left"]}],"data":[{"1":"1","2":"m","3":"19","4":"red"},{"1":"2","2":"m","3":"22","4":"orange"},{"1":"3","2":"NA","3":"NA","4":"yellow"},{"1":"4","2":"nb","3":"19","4":"green"},{"1":"5","2":"f","3":"18","4":"blue"}],"options":{"columns":{"min":{},"max":[10]},"rows":{"min":[10],"max":[10]},"pages":{}}}
-  </script>
+<div class="kable-table">
+
+<table>
+ <thead>
+  <tr>
+   <th style="text-align:right;"> id </th>
+   <th style="text-align:left;"> gender </th>
+   <th style="text-align:right;"> age </th>
+   <th style="text-align:left;"> colour </th>
+  </tr>
+ </thead>
+<tbody>
+  <tr>
+   <td style="text-align:right;"> 1 </td>
+   <td style="text-align:left;"> m </td>
+   <td style="text-align:right;"> 19 </td>
+   <td style="text-align:left;"> red </td>
+  </tr>
+  <tr>
+   <td style="text-align:right;"> 2 </td>
+   <td style="text-align:left;"> m </td>
+   <td style="text-align:right;"> 22 </td>
+   <td style="text-align:left;"> orange </td>
+  </tr>
+  <tr>
+   <td style="text-align:right;"> 3 </td>
+   <td style="text-align:left;"> NA </td>
+   <td style="text-align:right;"> NA </td>
+   <td style="text-align:left;"> yellow </td>
+  </tr>
+  <tr>
+   <td style="text-align:right;"> 4 </td>
+   <td style="text-align:left;"> nb </td>
+   <td style="text-align:right;"> 19 </td>
+   <td style="text-align:left;"> green </td>
+  </tr>
+  <tr>
+   <td style="text-align:right;"> 5 </td>
+   <td style="text-align:left;"> f </td>
+   <td style="text-align:right;"> 18 </td>
+   <td style="text-align:left;"> blue </td>
+  </tr>
+</tbody>
+</table>
+
 </div>
 
 ## Set Operations
@@ -437,10 +1004,25 @@ new_subjects <- tibble(
 intersect(subject, new_subjects)
 ```
 
-<div data-pagedtable="false">
-  <script data-pagedtable-source type="application/json">
-{"columns":[{"label":["id"],"name":[1],"type":["int"],"align":["right"]},{"label":["gender"],"name":[2],"type":["chr"],"align":["left"]},{"label":["age"],"name":[3],"type":["dbl"],"align":["right"]}],"data":[{"1":"5","2":"f","3":"18"}],"options":{"columns":{"min":{},"max":[10]},"rows":{"min":[10],"max":[10]},"pages":{}}}
-  </script>
+<div class="kable-table">
+
+<table>
+ <thead>
+  <tr>
+   <th style="text-align:right;"> id </th>
+   <th style="text-align:left;"> gender </th>
+   <th style="text-align:right;"> age </th>
+  </tr>
+ </thead>
+<tbody>
+  <tr>
+   <td style="text-align:right;"> 5 </td>
+   <td style="text-align:left;"> f </td>
+   <td style="text-align:right;"> 18 </td>
+  </tr>
+</tbody>
+</table>
+
 </div>
 
 ::: {.warning data-latex=""}
@@ -465,10 +1047,70 @@ base::intersect(subject, new_subjects)
 union(subject, new_subjects)
 ```
 
-<div data-pagedtable="false">
-  <script data-pagedtable-source type="application/json">
-{"columns":[{"label":["id"],"name":[1],"type":["int"],"align":["right"]},{"label":["gender"],"name":[2],"type":["chr"],"align":["left"]},{"label":["age"],"name":[3],"type":["dbl"],"align":["right"]}],"data":[{"1":"1","2":"m","3":"19"},{"1":"2","2":"m","3":"22"},{"1":"3","2":"NA","3":"NA"},{"1":"4","2":"nb","3":"19"},{"1":"5","2":"f","3":"18"},{"1":"4","2":"f","3":"19"},{"1":"6","2":"m","3":"19"},{"1":"7","2":"m","3":"16"},{"1":"8","2":"f","3":"20"},{"1":"9","2":"f","3":"19"}],"options":{"columns":{"min":{},"max":[10]},"rows":{"min":[10],"max":[10]},"pages":{}}}
-  </script>
+<div class="kable-table">
+
+<table>
+ <thead>
+  <tr>
+   <th style="text-align:right;"> id </th>
+   <th style="text-align:left;"> gender </th>
+   <th style="text-align:right;"> age </th>
+  </tr>
+ </thead>
+<tbody>
+  <tr>
+   <td style="text-align:right;"> 1 </td>
+   <td style="text-align:left;"> m </td>
+   <td style="text-align:right;"> 19 </td>
+  </tr>
+  <tr>
+   <td style="text-align:right;"> 2 </td>
+   <td style="text-align:left;"> m </td>
+   <td style="text-align:right;"> 22 </td>
+  </tr>
+  <tr>
+   <td style="text-align:right;"> 3 </td>
+   <td style="text-align:left;"> NA </td>
+   <td style="text-align:right;"> NA </td>
+  </tr>
+  <tr>
+   <td style="text-align:right;"> 4 </td>
+   <td style="text-align:left;"> nb </td>
+   <td style="text-align:right;"> 19 </td>
+  </tr>
+  <tr>
+   <td style="text-align:right;"> 5 </td>
+   <td style="text-align:left;"> f </td>
+   <td style="text-align:right;"> 18 </td>
+  </tr>
+  <tr>
+   <td style="text-align:right;"> 4 </td>
+   <td style="text-align:left;"> f </td>
+   <td style="text-align:right;"> 19 </td>
+  </tr>
+  <tr>
+   <td style="text-align:right;"> 6 </td>
+   <td style="text-align:left;"> m </td>
+   <td style="text-align:right;"> 19 </td>
+  </tr>
+  <tr>
+   <td style="text-align:right;"> 7 </td>
+   <td style="text-align:left;"> m </td>
+   <td style="text-align:right;"> 16 </td>
+  </tr>
+  <tr>
+   <td style="text-align:right;"> 8 </td>
+   <td style="text-align:left;"> f </td>
+   <td style="text-align:right;"> 20 </td>
+  </tr>
+  <tr>
+   <td style="text-align:right;"> 9 </td>
+   <td style="text-align:left;"> f </td>
+   <td style="text-align:right;"> 19 </td>
+  </tr>
+</tbody>
+</table>
+
 </div>
 
 
@@ -510,10 +1152,40 @@ base::union(subject, new_subjects)
 setdiff(subject, new_subjects)
 ```
 
-<div data-pagedtable="false">
-  <script data-pagedtable-source type="application/json">
-{"columns":[{"label":["id"],"name":[1],"type":["int"],"align":["right"]},{"label":["gender"],"name":[2],"type":["chr"],"align":["left"]},{"label":["age"],"name":[3],"type":["dbl"],"align":["right"]}],"data":[{"1":"1","2":"m","3":"19"},{"1":"2","2":"m","3":"22"},{"1":"3","2":"NA","3":"NA"},{"1":"4","2":"nb","3":"19"}],"options":{"columns":{"min":{},"max":[10]},"rows":{"min":[10],"max":[10]},"pages":{}}}
-  </script>
+<div class="kable-table">
+
+<table>
+ <thead>
+  <tr>
+   <th style="text-align:right;"> id </th>
+   <th style="text-align:left;"> gender </th>
+   <th style="text-align:right;"> age </th>
+  </tr>
+ </thead>
+<tbody>
+  <tr>
+   <td style="text-align:right;"> 1 </td>
+   <td style="text-align:left;"> m </td>
+   <td style="text-align:right;"> 19 </td>
+  </tr>
+  <tr>
+   <td style="text-align:right;"> 2 </td>
+   <td style="text-align:left;"> m </td>
+   <td style="text-align:right;"> 22 </td>
+  </tr>
+  <tr>
+   <td style="text-align:right;"> 3 </td>
+   <td style="text-align:left;"> NA </td>
+   <td style="text-align:right;"> NA </td>
+  </tr>
+  <tr>
+   <td style="text-align:right;"> 4 </td>
+   <td style="text-align:left;"> nb </td>
+   <td style="text-align:right;"> 19 </td>
+  </tr>
+</tbody>
+</table>
+
 </div>
 
 Order matters for `setdiff`.
@@ -523,10 +1195,45 @@ Order matters for `setdiff`.
 setdiff(new_subjects, subject)
 ```
 
-<div data-pagedtable="false">
-  <script data-pagedtable-source type="application/json">
-{"columns":[{"label":["id"],"name":[1],"type":["int"],"align":["right"]},{"label":["age"],"name":[2],"type":["dbl"],"align":["right"]},{"label":["gender"],"name":[3],"type":["chr"],"align":["left"]}],"data":[{"1":"4","2":"19","3":"f"},{"1":"6","2":"19","3":"m"},{"1":"7","2":"16","3":"m"},{"1":"8","2":"20","3":"f"},{"1":"9","2":"19","3":"f"}],"options":{"columns":{"min":{},"max":[10]},"rows":{"min":[10],"max":[10]},"pages":{}}}
-  </script>
+<div class="kable-table">
+
+<table>
+ <thead>
+  <tr>
+   <th style="text-align:right;"> id </th>
+   <th style="text-align:right;"> age </th>
+   <th style="text-align:left;"> gender </th>
+  </tr>
+ </thead>
+<tbody>
+  <tr>
+   <td style="text-align:right;"> 4 </td>
+   <td style="text-align:right;"> 19 </td>
+   <td style="text-align:left;"> f </td>
+  </tr>
+  <tr>
+   <td style="text-align:right;"> 6 </td>
+   <td style="text-align:right;"> 19 </td>
+   <td style="text-align:left;"> m </td>
+  </tr>
+  <tr>
+   <td style="text-align:right;"> 7 </td>
+   <td style="text-align:right;"> 16 </td>
+   <td style="text-align:left;"> m </td>
+  </tr>
+  <tr>
+   <td style="text-align:right;"> 8 </td>
+   <td style="text-align:right;"> 20 </td>
+   <td style="text-align:left;"> f </td>
+  </tr>
+  <tr>
+   <td style="text-align:right;"> 9 </td>
+   <td style="text-align:right;"> 19 </td>
+   <td style="text-align:left;"> f </td>
+  </tr>
+</tbody>
+</table>
+
 </div>
 
 ::: {.warning data-latex=""}

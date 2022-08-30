@@ -5,13 +5,14 @@
 
 ## Learning Objectives {#ilo-data}
 
-1. Load [built-in datasets](#builtin) [(video)](https://youtu.be/Z5fK5VGmzlY){class="video"}
-2. [Import data](#import_data) from CSV and Excel files [(video)](https://youtu.be/a7Ra-hnB8l8){class="video"}
-3. Create a [data table](#tables-data) [(video)](https://youtu.be/k-aqhurepb4){class="video"}
-4. Understand the use the [basic data types](#data_types) [(video)](https://youtu.be/jXQrF18Jaac){class="video"}
-5. Understand and use the [basic container types](#containers) (list, vector) [(video)](https://youtu.be/4xU7uKNdoig){class="video"}
-6. Use [vectorized operations](#vectorized_ops) [(video)](https://youtu.be/9I5MdS7UWmI){class="video"}
-7. Be able to [troubleshoot](#Troubleshooting) common data import problems [(video)](https://youtu.be/gcxn4LJ_vAI){class="video"}
+1. Be able to [structure data](#data-structure) for scripting
+2. Load [built-in datasets](#builtin) [(video)](https://youtu.be/Z5fK5VGmzlY){class="video"}
+3. [Import data](#import_data) from CSV and Excel files [(video)](https://youtu.be/a7Ra-hnB8l8){class="video"}
+4. Create a [data table](#tables-data) [(video)](https://youtu.be/k-aqhurepb4){class="video"}
+5. Understand and use the [basic data types](#data_types) [(video)](https://youtu.be/jXQrF18Jaac){class="video"}
+6. Understand and use the [basic container types](#containers) (list, vector) [(video)](https://youtu.be/4xU7uKNdoig){class="video"}
+7. Use [vectorized operations](#vectorized_ops) [(video)](https://youtu.be/9I5MdS7UWmI){class="video"}
+8. Be able to [troubleshoot](#Troubleshooting) common data import problems [(video)](https://youtu.be/gcxn4LJ_vAI){class="video"}
 
 
 
@@ -24,11 +25,82 @@ library(tidyverse)
 library(reprores)
 ```
 
+## Data structure {#data-structure}
+
+You're probably most familiar with data recorded in Excel spreadsheets. These are fine for data entry, but are very prone to error if used for calculations and analysis (see these [horror stories](http://www.eusprig.org/horror-stories.htm)). @broman2018data recommend following several guidelines for less error-prone use of spreadsheets. The paper is well worth reading, but I'll summarise some of the most important guidelines here.
+
+### Be consistent
+
+Use the same names for <a class='glossary' target='_blank' title='' href='https://psyteachr.github.io/glossary/v#variables'>variables</a> in different data files, and the exact same format for <a class='glossary' target='_blank' title='Data that can only take certain values, such as types of pet.' href='https://psyteachr.github.io/glossary/c#categorical'>categorical</a> values. Capitalisation and spaces also matter. For example, do not record group as "A", "a", and "A " in different places (or in the same column); these will be treated by any computational script as three different values.
+
+If you have column names for items you might want to group later, such as a questionnaire with items belonging to one of three subscales, use a consistent naming convention. This will make it easier to reshape data to create subscale scores. For example, use column names like `O_1`, `E_2`, `O_3`, `C_4` rather than `q1`, `q2`, `q3`, `q4`. (Alternatively, you can include a separate table with a column for question number and a corresponding column for the subscale and join it to the reformatted questionnaire data, as we'll learn in Chapter\ \@ref(joins).)
+
+### Choose good names for things
+
+We covered this in Chapter\ \@ref(naming-things) for file names. It is also important to use names for variables and values that make it easy to work with them in R. For example, use column names with only letters, numbers, full stops and underscores so you don't have to quote them. Using camel case is OK, just use a consistent naming scheme so you don't have to keep looking up whether you named a column `SleepTime`, `sleepTime`, `sleep_time` or `sleep.time`.
+
+
+::: {.try data-latex=""}
+
+
+Choose the best column names for a single data file:
+
+* <select class='webex-select'><option value='blank'></option><option value=''>subject.id</option><option value=''>sid</option><option value='answer'>subject_id</option><option value=''>subject ID</option></select>
+* <select class='webex-select'><option value='blank'></option><option value=''>ageMonths</option><option value='answer'>age_months</option><option value=''>Age (in months)</option><option value=''>age</option></select>
+* <select class='webex-select'><option value='blank'></option><option value=''>Birth Year</option><option value='answer'>birth_year</option><option value=''>by</option><option value=''>birth-year</option></select>
+
+:::
+
+### Write dates as YYYY-MM-DD
+
+<div class="right meme"><img src="images/memes/YYYY-MM-DD.png"
+     alt = "Cheerful man sitting behind a card table outdoors with a cup of coffee. A poster is taped to the front of the table that reads: YYYY-MM-DD is the best and only acceptable date format" /></div>
+
+This format is nearly impossible to misinterpret (unlike formats like "01/02/03") and sorts in a sensible order (unlike "January 2, 2003" or "2-1-03").
+
+### No empty cells
+
+I'm not as strict about this one, but I do think that missing values should be either empty cells ("") or `NA` and that this should be consistent across all your data sets. If you use other values, this requires some extra steps at data import (see Section\ \@ref(missing-values) below).
+
+### Put just one thing in a cell
+
+Don't put two pieces of information in the same cell. For example, rather than a column called `id-group` containing subject ID and experimental group (e.g., "001A"), record this info in two columns, `id` and `group`. We'll learn more about <a class='glossary' target='_blank' title='A format for data that maps the meaning onto the structure.' href='https://psyteachr.github.io/glossary/t#tidy-data'>tidy data</a> in Chapter\ \@ref(tidyr).
+
+### Make it a rectangle
+
+While merging cells or putting extra info into cells in a spreadsheet can look nice, it's a nightmare for data import. 
+
+<div class="figure" style="text-align: center">
+<img src="images/data/multirow-excel.png" alt="Data with multiple headers and merged cells can take many extra steps to import." width="100%" />
+<p class="caption">(\#fig:multirow-headers)Data with multiple headers and merged cells can take many extra steps to import.</p>
+</div>
+
+We'll learn more about data formats to better represent data like this in Chapter\ \@ref(tidyr). See this [blog post](https://debruine.github.io/post/multi-row-headers/) for some solutions to deal with data like above.
+
+### Create a data dictionary
+
+You may think all of your column names and factor labels are intuitive, but other researchers and future you will thank you for creating a data dictionary. 
+
+You can create a data dictionary manually, or use an R package to help you make them for data you've imported to R. Crystal Lewis [reviews some of these](https://github.com/Cghlewis/codebook-pkg-comparison){target="_blank"}, like [codebookr](https://brad-cannell.github.io/codebookr/){target="_blank"}.
+
+### No calculations in the raw data files
+
+That's what we're learning R for!
+
+### Do not use font colour or highlighting
+
+There are ways to extract this computationally, but they're complex and annoying to deal with. When you are tempted to use colour to highlight something like outliers, add a column with TRUE/FALSE or text values instead.
+
+::: {.try data-latex=""}
+Find a paper in [Psychological Science](https://journals.sagepub.com/home/pss){target="_blank"} or another journal that encourages data sharing. Find a paper you're interested in that shares data (usually has this badge <img src="images/data/open-data.png" style="height: 1.5em;">) and download the data (usually listed in the "Open Practices" section at the end). Access their data and assess how well they follow each of the guidelines above.
+:::
+
+
 ## Data tables
 
 ### Built-in data {#builtin}
 
-R comes with built-in datasets. Some packages, like tidyr and reprores, also contain data. The `data()` function lists the datasets available in a package.
+R comes with built-in datasets. Some packages, like <code class='package'>tidyr</code> and <code class='package'>reprores</code>, also contain data. The `data()` function lists the datasets available in a package.
 
 
 ```r
@@ -43,10 +115,81 @@ Type the name of a dataset into the console to see the data. Type `?smalldata` i
 smalldata
 ```
 
-<div data-pagedtable="false">
-  <script data-pagedtable-source type="application/json">
-{"columns":[{"label":["id"],"name":[1],"type":["chr"],"align":["left"]},{"label":["group"],"name":[2],"type":["chr"],"align":["left"]},{"label":["pre"],"name":[3],"type":["dbl"],"align":["right"]},{"label":["post"],"name":[4],"type":["dbl"],"align":["right"]}],"data":[{"1":"S01","2":"control","3":"98.46606","4":"106.70508"},{"1":"S02","2":"control","3":"104.39774","4":"89.09030"},{"1":"S03","2":"control","3":"105.13377","4":"123.67230"},{"1":"S04","2":"control","3":"92.42574","4":"70.70178"},{"1":"S05","2":"control","3":"123.53268","4":"124.95526"},{"1":"S06","2":"exp","3":"97.48676","4":"101.61697"},{"1":"S07","2":"exp","3":"87.75594","4":"126.30077"},{"1":"S08","2":"exp","3":"77.15375","4":"72.31229"},{"1":"S09","2":"exp","3":"97.00283","4":"108.80713"},{"1":"S10","2":"exp","3":"102.32338","4":"113.74732"}],"options":{"columns":{"min":{},"max":[10]},"rows":{"min":[10],"max":[10]},"pages":{}}}
-  </script>
+<div class="kable-table">
+
+<table>
+ <thead>
+  <tr>
+   <th style="text-align:left;"> id </th>
+   <th style="text-align:left;"> group </th>
+   <th style="text-align:right;"> pre </th>
+   <th style="text-align:right;"> post </th>
+  </tr>
+ </thead>
+<tbody>
+  <tr>
+   <td style="text-align:left;"> S01 </td>
+   <td style="text-align:left;"> control </td>
+   <td style="text-align:right;"> 98.46606 </td>
+   <td style="text-align:right;"> 106.70508 </td>
+  </tr>
+  <tr>
+   <td style="text-align:left;"> S02 </td>
+   <td style="text-align:left;"> control </td>
+   <td style="text-align:right;"> 104.39774 </td>
+   <td style="text-align:right;"> 89.09030 </td>
+  </tr>
+  <tr>
+   <td style="text-align:left;"> S03 </td>
+   <td style="text-align:left;"> control </td>
+   <td style="text-align:right;"> 105.13377 </td>
+   <td style="text-align:right;"> 123.67230 </td>
+  </tr>
+  <tr>
+   <td style="text-align:left;"> S04 </td>
+   <td style="text-align:left;"> control </td>
+   <td style="text-align:right;"> 92.42574 </td>
+   <td style="text-align:right;"> 70.70178 </td>
+  </tr>
+  <tr>
+   <td style="text-align:left;"> S05 </td>
+   <td style="text-align:left;"> control </td>
+   <td style="text-align:right;"> 123.53268 </td>
+   <td style="text-align:right;"> 124.95526 </td>
+  </tr>
+  <tr>
+   <td style="text-align:left;"> S06 </td>
+   <td style="text-align:left;"> exp </td>
+   <td style="text-align:right;"> 97.48676 </td>
+   <td style="text-align:right;"> 101.61697 </td>
+  </tr>
+  <tr>
+   <td style="text-align:left;"> S07 </td>
+   <td style="text-align:left;"> exp </td>
+   <td style="text-align:right;"> 87.75594 </td>
+   <td style="text-align:right;"> 126.30077 </td>
+  </tr>
+  <tr>
+   <td style="text-align:left;"> S08 </td>
+   <td style="text-align:left;"> exp </td>
+   <td style="text-align:right;"> 77.15375 </td>
+   <td style="text-align:right;"> 72.31229 </td>
+  </tr>
+  <tr>
+   <td style="text-align:left;"> S09 </td>
+   <td style="text-align:left;"> exp </td>
+   <td style="text-align:right;"> 97.00283 </td>
+   <td style="text-align:right;"> 108.80713 </td>
+  </tr>
+  <tr>
+   <td style="text-align:left;"> S10 </td>
+   <td style="text-align:left;"> exp </td>
+   <td style="text-align:right;"> 102.32338 </td>
+   <td style="text-align:right;"> 113.74732 </td>
+  </tr>
+</tbody>
+</table>
+
 </div>
 
 You can also use the `data()` function to load a dataset into your <a class='glossary' target='_blank' title='The interactive workspace where your script runs' href='https://psyteachr.github.io/glossary/g#global-environment'>global environment</a>.
@@ -69,10 +212,81 @@ Let's look at the `smalldata` table that we made above.
 smalldata
 ```
 
-<div data-pagedtable="false">
-  <script data-pagedtable-source type="application/json">
-{"columns":[{"label":["id"],"name":[1],"type":["chr"],"align":["left"]},{"label":["group"],"name":[2],"type":["chr"],"align":["left"]},{"label":["pre"],"name":[3],"type":["dbl"],"align":["right"]},{"label":["post"],"name":[4],"type":["dbl"],"align":["right"]}],"data":[{"1":"S01","2":"control","3":"98.46606","4":"106.70508"},{"1":"S02","2":"control","3":"104.39774","4":"89.09030"},{"1":"S03","2":"control","3":"105.13377","4":"123.67230"},{"1":"S04","2":"control","3":"92.42574","4":"70.70178"},{"1":"S05","2":"control","3":"123.53268","4":"124.95526"},{"1":"S06","2":"exp","3":"97.48676","4":"101.61697"},{"1":"S07","2":"exp","3":"87.75594","4":"126.30077"},{"1":"S08","2":"exp","3":"77.15375","4":"72.31229"},{"1":"S09","2":"exp","3":"97.00283","4":"108.80713"},{"1":"S10","2":"exp","3":"102.32338","4":"113.74732"}],"options":{"columns":{"min":{},"max":[10]},"rows":{"min":[10],"max":[10]},"pages":{}}}
-  </script>
+<div class="kable-table">
+
+<table>
+ <thead>
+  <tr>
+   <th style="text-align:left;"> id </th>
+   <th style="text-align:left;"> group </th>
+   <th style="text-align:right;"> pre </th>
+   <th style="text-align:right;"> post </th>
+  </tr>
+ </thead>
+<tbody>
+  <tr>
+   <td style="text-align:left;"> S01 </td>
+   <td style="text-align:left;"> control </td>
+   <td style="text-align:right;"> 98.46606 </td>
+   <td style="text-align:right;"> 106.70508 </td>
+  </tr>
+  <tr>
+   <td style="text-align:left;"> S02 </td>
+   <td style="text-align:left;"> control </td>
+   <td style="text-align:right;"> 104.39774 </td>
+   <td style="text-align:right;"> 89.09030 </td>
+  </tr>
+  <tr>
+   <td style="text-align:left;"> S03 </td>
+   <td style="text-align:left;"> control </td>
+   <td style="text-align:right;"> 105.13377 </td>
+   <td style="text-align:right;"> 123.67230 </td>
+  </tr>
+  <tr>
+   <td style="text-align:left;"> S04 </td>
+   <td style="text-align:left;"> control </td>
+   <td style="text-align:right;"> 92.42574 </td>
+   <td style="text-align:right;"> 70.70178 </td>
+  </tr>
+  <tr>
+   <td style="text-align:left;"> S05 </td>
+   <td style="text-align:left;"> control </td>
+   <td style="text-align:right;"> 123.53268 </td>
+   <td style="text-align:right;"> 124.95526 </td>
+  </tr>
+  <tr>
+   <td style="text-align:left;"> S06 </td>
+   <td style="text-align:left;"> exp </td>
+   <td style="text-align:right;"> 97.48676 </td>
+   <td style="text-align:right;"> 101.61697 </td>
+  </tr>
+  <tr>
+   <td style="text-align:left;"> S07 </td>
+   <td style="text-align:left;"> exp </td>
+   <td style="text-align:right;"> 87.75594 </td>
+   <td style="text-align:right;"> 126.30077 </td>
+  </tr>
+  <tr>
+   <td style="text-align:left;"> S08 </td>
+   <td style="text-align:left;"> exp </td>
+   <td style="text-align:right;"> 77.15375 </td>
+   <td style="text-align:right;"> 72.31229 </td>
+  </tr>
+  <tr>
+   <td style="text-align:left;"> S09 </td>
+   <td style="text-align:left;"> exp </td>
+   <td style="text-align:right;"> 97.00283 </td>
+   <td style="text-align:right;"> 108.80713 </td>
+  </tr>
+  <tr>
+   <td style="text-align:left;"> S10 </td>
+   <td style="text-align:left;"> exp </td>
+   <td style="text-align:right;"> 102.32338 </td>
+   <td style="text-align:right;"> 113.74732 </td>
+  </tr>
+</tbody>
+</table>
+
 </div>
 
 The function `glimpse()` gives a sideways version of the tibble. This is useful if the table is very wide and you can't see all of the columns. It also tells you the data type of each column in angled brackets after each column name. We'll learn about [data types](#data_types) below.
@@ -204,6 +418,7 @@ demo  <- readr::read_csv("data/demo.csv", col_types = ct)
 For dates, you might need to set the format. See `?strptime` for a list of the codes used to represent different date formats. Above, <code><span><span class='st'>"%d-%b-%y"</span></span></code> means that the dates are formatted like `{day number}-{month abbreviation}-{2-digit year}`. 
 :::
 
+
 We'll learn more about how to fix data import problems in the [troubleshooting](#troubleshooting) section below.
 
 #### Other File Types
@@ -249,6 +464,54 @@ ocean_sav  <- haven::read_sav("data/5factor.sav")
 </div>
 :::
 
+#### Missing Values {#missing-values}
+
+If you represent missing values with anything other than a blank cell or "NA", you need to specify this. Set the argument `na` to a vector of all the values that are used to represent missing data. By default this is set to `c("", "NA")`, so you will also need to change it if you have valid values that really are the word "NA", such as the 2-letter ISO country code for Nigeria.
+
+
+```r
+# make a short CSV string with two types of missing values
+csv_text <- "id, country
+              1, UK
+              2, missing
+              3, 
+              4, NA"
+
+readr::read_csv(csv_text, na = c("", "missing"),
+                show_col_types = FALSE)
+```
+
+<div class="kable-table">
+
+<table>
+ <thead>
+  <tr>
+   <th style="text-align:right;"> id </th>
+   <th style="text-align:left;"> country </th>
+  </tr>
+ </thead>
+<tbody>
+  <tr>
+   <td style="text-align:right;"> 1 </td>
+   <td style="text-align:left;"> UK </td>
+  </tr>
+  <tr>
+   <td style="text-align:right;"> 2 </td>
+   <td style="text-align:left;"> NA </td>
+  </tr>
+  <tr>
+   <td style="text-align:right;"> 3 </td>
+   <td style="text-align:left;"> NA </td>
+  </tr>
+  <tr>
+   <td style="text-align:right;"> 4 </td>
+   <td style="text-align:left;"> NA </td>
+  </tr>
+</tbody>
+</table>
+
+</div>
+
 
 ### Looking at data
 
@@ -271,11 +534,69 @@ Let's look at the `demo_tsv` table that we loaded above. Depending on how wide y
 demo_tsv
 ```
 
-<div data-pagedtable="false">
-  <script data-pagedtable-source type="application/json">
-{"columns":[{"label":["character"],"name":[1],"type":["chr"],"align":["left"]},{"label":["integer"],"name":[2],"type":["dbl"],"align":["right"]},{"label":["double"],"name":[3],"type":["dbl"],"align":["right"]},{"label":["logical"],"name":[4],"type":["lgl"],"align":["right"]},{"label":["date"],"name":[5],"type":["chr"],"align":["left"]}],"data":[{"1":"A","2":"1","3":"1.5","4":"TRUE","5":"05-Sep-21"},{"1":"B","2":"2","3":"2.5","4":"TRUE","5":"04-Sep-21"},{"1":"C","2":"3","3":"3.5","4":"FALSE","5":"03-Sep-21"},{"1":"D","2":"4","3":"4.5","4":"FALSE","5":"02-Sep-21"},{"1":"E","2":"5","3":"5.5","4":"NA","5":"01-Sep-21"},{"1":"F","2":"6","3":"6.5","4":"TRUE","5":"31-Aug-21"}],"options":{"columns":{"min":{},"max":[10]},"rows":{"min":[10],"max":[10]},"pages":{}}}
-  </script>
+<div class="kable-table">
+
+<table>
+ <thead>
+  <tr>
+   <th style="text-align:left;"> character </th>
+   <th style="text-align:right;"> integer </th>
+   <th style="text-align:right;"> double </th>
+   <th style="text-align:left;"> logical </th>
+   <th style="text-align:left;"> date </th>
+  </tr>
+ </thead>
+<tbody>
+  <tr>
+   <td style="text-align:left;"> A </td>
+   <td style="text-align:right;"> 1 </td>
+   <td style="text-align:right;"> 1.5 </td>
+   <td style="text-align:left;"> TRUE </td>
+   <td style="text-align:left;"> 05-Sep-21 </td>
+  </tr>
+  <tr>
+   <td style="text-align:left;"> B </td>
+   <td style="text-align:right;"> 2 </td>
+   <td style="text-align:right;"> 2.5 </td>
+   <td style="text-align:left;"> TRUE </td>
+   <td style="text-align:left;"> 04-Sep-21 </td>
+  </tr>
+  <tr>
+   <td style="text-align:left;"> C </td>
+   <td style="text-align:right;"> 3 </td>
+   <td style="text-align:right;"> 3.5 </td>
+   <td style="text-align:left;"> FALSE </td>
+   <td style="text-align:left;"> 03-Sep-21 </td>
+  </tr>
+  <tr>
+   <td style="text-align:left;"> D </td>
+   <td style="text-align:right;"> 4 </td>
+   <td style="text-align:right;"> 4.5 </td>
+   <td style="text-align:left;"> FALSE </td>
+   <td style="text-align:left;"> 02-Sep-21 </td>
+  </tr>
+  <tr>
+   <td style="text-align:left;"> E </td>
+   <td style="text-align:right;"> 5 </td>
+   <td style="text-align:right;"> 5.5 </td>
+   <td style="text-align:left;"> NA </td>
+   <td style="text-align:left;"> 01-Sep-21 </td>
+  </tr>
+  <tr>
+   <td style="text-align:left;"> F </td>
+   <td style="text-align:right;"> 6 </td>
+   <td style="text-align:right;"> 6.5 </td>
+   <td style="text-align:left;"> TRUE </td>
+   <td style="text-align:left;"> 31-Aug-21 </td>
+  </tr>
+</tbody>
+</table>
+
 </div>
+
+::: {.warning data-latex=""}
+Remember that the way tables are displayed can look different in the interactive interface from the knit version, depending on how df_print is set.
+:::
 
 #### glimpse() 
 
@@ -324,6 +645,197 @@ summary(demo_sav)
 ## 
 ```
 
+There are other packages that can give you a more detailed summary, such as [skimr](https://docs.ropensci.org/skimr/).
+
+
+```r
+skimr::skim(demo)
+```
+
+
+<table style='width: auto;'
+      class='table table-condensed'>
+<caption>(\#tab:unnamed-chunk-8)Data summary</caption>
+<tbody>
+  <tr>
+   <td style="text-align:left;"> Name </td>
+   <td style="text-align:left;"> demo </td>
+  </tr>
+  <tr>
+   <td style="text-align:left;"> Number of rows </td>
+   <td style="text-align:left;"> 6 </td>
+  </tr>
+  <tr>
+   <td style="text-align:left;"> Number of columns </td>
+   <td style="text-align:left;"> 5 </td>
+  </tr>
+  <tr>
+   <td style="text-align:left;"> _______________________ </td>
+   <td style="text-align:left;">  </td>
+  </tr>
+  <tr>
+   <td style="text-align:left;"> Column type frequency: </td>
+   <td style="text-align:left;">  </td>
+  </tr>
+  <tr>
+   <td style="text-align:left;"> character </td>
+   <td style="text-align:left;"> 1 </td>
+  </tr>
+  <tr>
+   <td style="text-align:left;"> Date </td>
+   <td style="text-align:left;"> 1 </td>
+  </tr>
+  <tr>
+   <td style="text-align:left;"> logical </td>
+   <td style="text-align:left;"> 1 </td>
+  </tr>
+  <tr>
+   <td style="text-align:left;"> numeric </td>
+   <td style="text-align:left;"> 2 </td>
+  </tr>
+  <tr>
+   <td style="text-align:left;"> ________________________ </td>
+   <td style="text-align:left;">  </td>
+  </tr>
+  <tr>
+   <td style="text-align:left;"> Group variables </td>
+   <td style="text-align:left;"> None </td>
+  </tr>
+</tbody>
+</table>
+
+
+**Variable type: character**
+
+<table>
+ <thead>
+  <tr>
+   <th style="text-align:left;"> skim_variable </th>
+   <th style="text-align:right;"> n_missing </th>
+   <th style="text-align:right;"> complete_rate </th>
+   <th style="text-align:right;"> min </th>
+   <th style="text-align:right;"> max </th>
+   <th style="text-align:right;"> empty </th>
+   <th style="text-align:right;"> n_unique </th>
+   <th style="text-align:right;"> whitespace </th>
+  </tr>
+ </thead>
+<tbody>
+  <tr>
+   <td style="text-align:left;"> character </td>
+   <td style="text-align:right;"> 0 </td>
+   <td style="text-align:right;"> 1 </td>
+   <td style="text-align:right;"> 1 </td>
+   <td style="text-align:right;"> 1 </td>
+   <td style="text-align:right;"> 0 </td>
+   <td style="text-align:right;"> 6 </td>
+   <td style="text-align:right;"> 0 </td>
+  </tr>
+</tbody>
+</table>
+
+
+**Variable type: Date**
+
+<table>
+ <thead>
+  <tr>
+   <th style="text-align:left;"> skim_variable </th>
+   <th style="text-align:right;"> n_missing </th>
+   <th style="text-align:right;"> complete_rate </th>
+   <th style="text-align:left;"> min </th>
+   <th style="text-align:left;"> max </th>
+   <th style="text-align:left;"> median </th>
+   <th style="text-align:right;"> n_unique </th>
+  </tr>
+ </thead>
+<tbody>
+  <tr>
+   <td style="text-align:left;"> date </td>
+   <td style="text-align:right;"> 0 </td>
+   <td style="text-align:right;"> 1 </td>
+   <td style="text-align:left;"> 2021-08-31 </td>
+   <td style="text-align:left;"> 2021-09-05 </td>
+   <td style="text-align:left;"> 2021-09-02 </td>
+   <td style="text-align:right;"> 6 </td>
+  </tr>
+</tbody>
+</table>
+
+
+**Variable type: logical**
+
+<table>
+ <thead>
+  <tr>
+   <th style="text-align:left;"> skim_variable </th>
+   <th style="text-align:right;"> n_missing </th>
+   <th style="text-align:right;"> complete_rate </th>
+   <th style="text-align:right;"> mean </th>
+   <th style="text-align:left;"> count </th>
+  </tr>
+ </thead>
+<tbody>
+  <tr>
+   <td style="text-align:left;"> logical </td>
+   <td style="text-align:right;"> 1 </td>
+   <td style="text-align:right;"> 0.83 </td>
+   <td style="text-align:right;"> 0.6 </td>
+   <td style="text-align:left;"> TRU: 3, FAL: 2 </td>
+  </tr>
+</tbody>
+</table>
+
+
+**Variable type: numeric**
+
+<table>
+ <thead>
+  <tr>
+   <th style="text-align:left;"> skim_variable </th>
+   <th style="text-align:right;"> n_missing </th>
+   <th style="text-align:right;"> complete_rate </th>
+   <th style="text-align:right;"> mean </th>
+   <th style="text-align:right;"> sd </th>
+   <th style="text-align:right;"> p0 </th>
+   <th style="text-align:right;"> p25 </th>
+   <th style="text-align:right;"> p50 </th>
+   <th style="text-align:right;"> p75 </th>
+   <th style="text-align:right;"> p100 </th>
+   <th style="text-align:left;"> hist </th>
+  </tr>
+ </thead>
+<tbody>
+  <tr>
+   <td style="text-align:left;"> integer </td>
+   <td style="text-align:right;"> 0 </td>
+   <td style="text-align:right;"> 1 </td>
+   <td style="text-align:right;"> 3.5 </td>
+   <td style="text-align:right;"> 1.87 </td>
+   <td style="text-align:right;"> 1.0 </td>
+   <td style="text-align:right;"> 2.25 </td>
+   <td style="text-align:right;"> 3.5 </td>
+   <td style="text-align:right;"> 4.75 </td>
+   <td style="text-align:right;"> 6.0 </td>
+   <td style="text-align:left;"> ▇▃▃▃▃ </td>
+  </tr>
+  <tr>
+   <td style="text-align:left;"> double </td>
+   <td style="text-align:right;"> 0 </td>
+   <td style="text-align:right;"> 1 </td>
+   <td style="text-align:right;"> 4.0 </td>
+   <td style="text-align:right;"> 1.87 </td>
+   <td style="text-align:right;"> 1.5 </td>
+   <td style="text-align:right;"> 2.75 </td>
+   <td style="text-align:right;"> 4.0 </td>
+   <td style="text-align:right;"> 5.25 </td>
+   <td style="text-align:right;"> 6.5 </td>
+   <td style="text-align:left;"> ▇▃▃▃▃ </td>
+  </tr>
+</tbody>
+</table>
+
+
 ### Creating data 
 
 If we are creating a data table from scratch, we can use the `tibble::tibble()` function, and type the data right in. The <code class='package'>tibble</code> package is part of the <a class='glossary' target='_blank' title='A set of R packages that help you create and work with tidy data' href='https://psyteachr.github.io/glossary/t#tidyverse'>tidyverse</a> package that we loaded at the start of this chapter. 
@@ -344,11 +856,37 @@ avatar <- tibble(
 avatar
 ```
 
-<div data-pagedtable="false">
-  <script data-pagedtable-source type="application/json">
-{"columns":[{"label":["name"],"name":[1],"type":["chr"],"align":["left"]},{"label":["bends"],"name":[2],"type":["chr"],"align":["left"]},{"label":["friendly"],"name":[3],"type":["lgl"],"align":["right"]}],"data":[{"1":"Katara","2":"water","3":"TRUE"},{"1":"Toph","2":"earth","3":"TRUE"},{"1":"Sokka","2":"NA","3":"TRUE"}],"options":{"columns":{"min":{},"max":[10]},"rows":{"min":[10],"max":[10]},"pages":{}}}
-  </script>
+<div class="kable-table">
+
+<table>
+ <thead>
+  <tr>
+   <th style="text-align:left;"> name </th>
+   <th style="text-align:left;"> bends </th>
+   <th style="text-align:left;"> friendly </th>
+  </tr>
+ </thead>
+<tbody>
+  <tr>
+   <td style="text-align:left;"> Katara </td>
+   <td style="text-align:left;"> water </td>
+   <td style="text-align:left;"> TRUE </td>
+  </tr>
+  <tr>
+   <td style="text-align:left;"> Toph </td>
+   <td style="text-align:left;"> earth </td>
+   <td style="text-align:left;"> TRUE </td>
+  </tr>
+  <tr>
+   <td style="text-align:left;"> Sokka </td>
+   <td style="text-align:left;"> NA </td>
+   <td style="text-align:left;"> TRUE </td>
+  </tr>
+</tbody>
+</table>
+
 </div>
+
 
 
 ### Writing Data
@@ -894,7 +1432,7 @@ Tabular data becomes especially important for when we talk about <a class='gloss
 
 #### Creating a table
 
-We learned how to create a table by importing a Excel or CSV file, and creating a table from scratch using the `tibble()` function. You can also use the `tibble::tribble()` function to create a table by row, rather than by column. You start by listing the column names, each preceded by a tilde (`~`), then you list the values for each column, row by row, separated by commas (don't forget a comma at the end of each row). This method can be easier for some data, but doesn't let you use shortcuts, like setting all of the values in a column to the same value or a [repeating sequence](#rep_seq).
+We learned how to create a table by importing a CSV or Excel file, and creating a table from scratch using the `tibble()` function. You can also use the `tibble::tribble()` function to create a table by row, rather than by column. You start by listing the column names, each preceded by a tilde (`~`), then you list the values for each column, row by row, separated by commas (don't forget a comma at the end of each row). This method can be easier for some data, but doesn't let you use shortcuts, like setting all of the values in a column to the same value or a [repeating sequence](#rep_seq).
 
 
 ```r
@@ -1126,10 +1664,231 @@ Now `order` is an integer where "missing" is now `NA`, `good` is a logical value
 tidiest
 ```
 
-<div data-pagedtable="false">
-  <script data-pagedtable-source type="application/json">
-{"columns":[{"label":["order"],"name":[1],"type":["int"],"align":["right"]},{"label":["score"],"name":[2],"type":["chr"],"align":["left"]},{"label":["letter"],"name":[3],"type":["chr"],"align":["left"]},{"label":["good"],"name":[4],"type":["lgl"],"align":["right"]},{"label":["min_max"],"name":[5],"type":["chr"],"align":["left"]},{"label":["date"],"name":[6],"type":["date"],"align":["right"]}],"data":[{"1":"1","2":"-1","3":"a","4":"TRUE","5":"1 - 2","6":"2020-01-01"},{"1":"NA","2":"0.72","3":"b","4":"TRUE","5":"2 - 3","6":"2020-01-02"},{"1":"3","2":"-0.62","3":"c","4":"FALSE","5":"3 - 4","6":"2020-01-03"},{"1":"4","2":"2.03","3":"d","4":"TRUE","5":"4 - 5","6":"2020-01-04"},{"1":"5","2":"__NA__","3":"e","4":"TRUE","5":"5 - 6","6":"2020-01-05"},{"1":"6","2":"0.99","3":"f","4":"FALSE","5":"6 - 7","6":"2020-01-06"},{"1":"7","2":"0.03","3":"g","4":"TRUE","5":"7 - 8","6":"2020-01-07"},{"1":"8","2":"0.67","3":"h","4":"TRUE","5":"8 - 9","6":"2020-01-08"},{"1":"9","2":"0.57","3":"i","4":"TRUE","5":"9 - 10","6":"2020-01-09"},{"1":"10","2":"0.9","3":"j","4":"TRUE","5":"10 - 11","6":"2020-01-10"},{"1":"11","2":"-1.55","3":"k","4":"FALSE","5":"11 - 12","6":"2020-01-11"},{"1":"12","2":"__NA__","3":"l","4":"FALSE","5":"12 - 13","6":"2020-01-12"},{"1":"13","2":"0.15","3":"m","4":"TRUE","5":"13 - 14","6":"2020-01-13"},{"1":"14","2":"-0.66","3":"n","4":"TRUE","5":"14 - 15","6":"2020-01-14"},{"1":"15","2":"-0.99","3":"o","4":"TRUE","5":"15 - 16","6":"2020-01-15"},{"1":"16","2":"1.97","3":"p","4":"TRUE","5":"16 - 17","6":"2020-01-16"},{"1":"17","2":"-0.44","3":"q","4":"TRUE","5":"17 - 18","6":"2020-01-17"},{"1":"18","2":"-0.9","3":"r","4":"FALSE","5":"18 - 19","6":"2020-01-18"},{"1":"19","2":"-0.15","3":"s","4":"FALSE","5":"19 - 20","6":"2020-01-19"},{"1":"20","2":"-0.83","3":"t","4":"FALSE","5":"20 - 21","6":"2020-01-20"},{"1":"21","2":"1.99","3":"u","4":"TRUE","5":"21 - 22","6":"2020-01-21"},{"1":"22","2":"0.04","3":"v","4":"FALSE","5":"22 - 23","6":"2020-01-22"},{"1":"23","2":"-0.4","3":"w","4":"FALSE","5":"23 - 24","6":"2020-01-23"},{"1":"24","2":"-0.47","3":"x","4":"FALSE","5":"24 - 25","6":"2020-01-24"},{"1":"25","2":"-0.41","3":"y","4":"TRUE","5":"25 - 26","6":"2020-01-25"},{"1":"26","2":"0.68","3":"z","4":"FALSE","5":"26 - 27","6":"2020-01-26"}],"options":{"columns":{"min":{},"max":[10]},"rows":{"min":[10],"max":[10]},"pages":{}}}
-  </script>
+<div class="kable-table">
+
+<table>
+ <thead>
+  <tr>
+   <th style="text-align:right;"> order </th>
+   <th style="text-align:left;"> score </th>
+   <th style="text-align:left;"> letter </th>
+   <th style="text-align:left;"> good </th>
+   <th style="text-align:left;"> min_max </th>
+   <th style="text-align:left;"> date </th>
+  </tr>
+ </thead>
+<tbody>
+  <tr>
+   <td style="text-align:right;"> 1 </td>
+   <td style="text-align:left;"> -1 </td>
+   <td style="text-align:left;"> a </td>
+   <td style="text-align:left;"> TRUE </td>
+   <td style="text-align:left;"> 1 - 2 </td>
+   <td style="text-align:left;"> 2020-01-01 </td>
+  </tr>
+  <tr>
+   <td style="text-align:right;"> NA </td>
+   <td style="text-align:left;"> 0.72 </td>
+   <td style="text-align:left;"> b </td>
+   <td style="text-align:left;"> TRUE </td>
+   <td style="text-align:left;"> 2 - 3 </td>
+   <td style="text-align:left;"> 2020-01-02 </td>
+  </tr>
+  <tr>
+   <td style="text-align:right;"> 3 </td>
+   <td style="text-align:left;"> -0.62 </td>
+   <td style="text-align:left;"> c </td>
+   <td style="text-align:left;"> FALSE </td>
+   <td style="text-align:left;"> 3 - 4 </td>
+   <td style="text-align:left;"> 2020-01-03 </td>
+  </tr>
+  <tr>
+   <td style="text-align:right;"> 4 </td>
+   <td style="text-align:left;"> 2.03 </td>
+   <td style="text-align:left;"> d </td>
+   <td style="text-align:left;"> TRUE </td>
+   <td style="text-align:left;"> 4 - 5 </td>
+   <td style="text-align:left;"> 2020-01-04 </td>
+  </tr>
+  <tr>
+   <td style="text-align:right;"> 5 </td>
+   <td style="text-align:left;"> NA </td>
+   <td style="text-align:left;"> e </td>
+   <td style="text-align:left;"> TRUE </td>
+   <td style="text-align:left;"> 5 - 6 </td>
+   <td style="text-align:left;"> 2020-01-05 </td>
+  </tr>
+  <tr>
+   <td style="text-align:right;"> 6 </td>
+   <td style="text-align:left;"> 0.99 </td>
+   <td style="text-align:left;"> f </td>
+   <td style="text-align:left;"> FALSE </td>
+   <td style="text-align:left;"> 6 - 7 </td>
+   <td style="text-align:left;"> 2020-01-06 </td>
+  </tr>
+  <tr>
+   <td style="text-align:right;"> 7 </td>
+   <td style="text-align:left;"> 0.03 </td>
+   <td style="text-align:left;"> g </td>
+   <td style="text-align:left;"> TRUE </td>
+   <td style="text-align:left;"> 7 - 8 </td>
+   <td style="text-align:left;"> 2020-01-07 </td>
+  </tr>
+  <tr>
+   <td style="text-align:right;"> 8 </td>
+   <td style="text-align:left;"> 0.67 </td>
+   <td style="text-align:left;"> h </td>
+   <td style="text-align:left;"> TRUE </td>
+   <td style="text-align:left;"> 8 - 9 </td>
+   <td style="text-align:left;"> 2020-01-08 </td>
+  </tr>
+  <tr>
+   <td style="text-align:right;"> 9 </td>
+   <td style="text-align:left;"> 0.57 </td>
+   <td style="text-align:left;"> i </td>
+   <td style="text-align:left;"> TRUE </td>
+   <td style="text-align:left;"> 9 - 10 </td>
+   <td style="text-align:left;"> 2020-01-09 </td>
+  </tr>
+  <tr>
+   <td style="text-align:right;"> 10 </td>
+   <td style="text-align:left;"> 0.9 </td>
+   <td style="text-align:left;"> j </td>
+   <td style="text-align:left;"> TRUE </td>
+   <td style="text-align:left;"> 10 - 11 </td>
+   <td style="text-align:left;"> 2020-01-10 </td>
+  </tr>
+  <tr>
+   <td style="text-align:right;"> 11 </td>
+   <td style="text-align:left;"> -1.55 </td>
+   <td style="text-align:left;"> k </td>
+   <td style="text-align:left;"> FALSE </td>
+   <td style="text-align:left;"> 11 - 12 </td>
+   <td style="text-align:left;"> 2020-01-11 </td>
+  </tr>
+  <tr>
+   <td style="text-align:right;"> 12 </td>
+   <td style="text-align:left;"> NA </td>
+   <td style="text-align:left;"> l </td>
+   <td style="text-align:left;"> FALSE </td>
+   <td style="text-align:left;"> 12 - 13 </td>
+   <td style="text-align:left;"> 2020-01-12 </td>
+  </tr>
+  <tr>
+   <td style="text-align:right;"> 13 </td>
+   <td style="text-align:left;"> 0.15 </td>
+   <td style="text-align:left;"> m </td>
+   <td style="text-align:left;"> TRUE </td>
+   <td style="text-align:left;"> 13 - 14 </td>
+   <td style="text-align:left;"> 2020-01-13 </td>
+  </tr>
+  <tr>
+   <td style="text-align:right;"> 14 </td>
+   <td style="text-align:left;"> -0.66 </td>
+   <td style="text-align:left;"> n </td>
+   <td style="text-align:left;"> TRUE </td>
+   <td style="text-align:left;"> 14 - 15 </td>
+   <td style="text-align:left;"> 2020-01-14 </td>
+  </tr>
+  <tr>
+   <td style="text-align:right;"> 15 </td>
+   <td style="text-align:left;"> -0.99 </td>
+   <td style="text-align:left;"> o </td>
+   <td style="text-align:left;"> TRUE </td>
+   <td style="text-align:left;"> 15 - 16 </td>
+   <td style="text-align:left;"> 2020-01-15 </td>
+  </tr>
+  <tr>
+   <td style="text-align:right;"> 16 </td>
+   <td style="text-align:left;"> 1.97 </td>
+   <td style="text-align:left;"> p </td>
+   <td style="text-align:left;"> TRUE </td>
+   <td style="text-align:left;"> 16 - 17 </td>
+   <td style="text-align:left;"> 2020-01-16 </td>
+  </tr>
+  <tr>
+   <td style="text-align:right;"> 17 </td>
+   <td style="text-align:left;"> -0.44 </td>
+   <td style="text-align:left;"> q </td>
+   <td style="text-align:left;"> TRUE </td>
+   <td style="text-align:left;"> 17 - 18 </td>
+   <td style="text-align:left;"> 2020-01-17 </td>
+  </tr>
+  <tr>
+   <td style="text-align:right;"> 18 </td>
+   <td style="text-align:left;"> -0.9 </td>
+   <td style="text-align:left;"> r </td>
+   <td style="text-align:left;"> FALSE </td>
+   <td style="text-align:left;"> 18 - 19 </td>
+   <td style="text-align:left;"> 2020-01-18 </td>
+  </tr>
+  <tr>
+   <td style="text-align:right;"> 19 </td>
+   <td style="text-align:left;"> -0.15 </td>
+   <td style="text-align:left;"> s </td>
+   <td style="text-align:left;"> FALSE </td>
+   <td style="text-align:left;"> 19 - 20 </td>
+   <td style="text-align:left;"> 2020-01-19 </td>
+  </tr>
+  <tr>
+   <td style="text-align:right;"> 20 </td>
+   <td style="text-align:left;"> -0.83 </td>
+   <td style="text-align:left;"> t </td>
+   <td style="text-align:left;"> FALSE </td>
+   <td style="text-align:left;"> 20 - 21 </td>
+   <td style="text-align:left;"> 2020-01-20 </td>
+  </tr>
+  <tr>
+   <td style="text-align:right;"> 21 </td>
+   <td style="text-align:left;"> 1.99 </td>
+   <td style="text-align:left;"> u </td>
+   <td style="text-align:left;"> TRUE </td>
+   <td style="text-align:left;"> 21 - 22 </td>
+   <td style="text-align:left;"> 2020-01-21 </td>
+  </tr>
+  <tr>
+   <td style="text-align:right;"> 22 </td>
+   <td style="text-align:left;"> 0.04 </td>
+   <td style="text-align:left;"> v </td>
+   <td style="text-align:left;"> FALSE </td>
+   <td style="text-align:left;"> 22 - 23 </td>
+   <td style="text-align:left;"> 2020-01-22 </td>
+  </tr>
+  <tr>
+   <td style="text-align:right;"> 23 </td>
+   <td style="text-align:left;"> -0.4 </td>
+   <td style="text-align:left;"> w </td>
+   <td style="text-align:left;"> FALSE </td>
+   <td style="text-align:left;"> 23 - 24 </td>
+   <td style="text-align:left;"> 2020-01-23 </td>
+  </tr>
+  <tr>
+   <td style="text-align:right;"> 24 </td>
+   <td style="text-align:left;"> -0.47 </td>
+   <td style="text-align:left;"> x </td>
+   <td style="text-align:left;"> FALSE </td>
+   <td style="text-align:left;"> 24 - 25 </td>
+   <td style="text-align:left;"> 2020-01-24 </td>
+  </tr>
+  <tr>
+   <td style="text-align:right;"> 25 </td>
+   <td style="text-align:left;"> -0.41 </td>
+   <td style="text-align:left;"> y </td>
+   <td style="text-align:left;"> TRUE </td>
+   <td style="text-align:left;"> 25 - 26 </td>
+   <td style="text-align:left;"> 2020-01-25 </td>
+  </tr>
+  <tr>
+   <td style="text-align:right;"> 26 </td>
+   <td style="text-align:left;"> 0.68 </td>
+   <td style="text-align:left;"> z </td>
+   <td style="text-align:left;"> FALSE </td>
+   <td style="text-align:left;"> 26 - 27 </td>
+   <td style="text-align:left;"> 2020-01-26 </td>
+  </tr>
+</tbody>
+</table>
+
 </div>
 
 
@@ -1146,6 +1905,10 @@ tidiest
   <tr>
    <td style="text-align:left;"> [base r](https://psyteachr.github.io/glossary/b.html#base-r){class="glossary" target="_blank"} </td>
    <td style="text-align:left;"> The set of R functions that come with a basic installation of R, before you add external packages. </td>
+  </tr>
+  <tr>
+   <td style="text-align:left;"> [categorical](https://psyteachr.github.io/glossary/c.html#categorical){class="glossary" target="_blank"} </td>
+   <td style="text-align:left;"> Data that can only take certain values, such as types of pet. </td>
   </tr>
   <tr>
    <td style="text-align:left;"> [character](https://psyteachr.github.io/glossary/c.html#character){class="glossary" target="_blank"} </td>
@@ -1232,6 +1995,10 @@ tidiest
    <td style="text-align:left;"> A set of R packages that help you create and work with tidy data </td>
   </tr>
   <tr>
+   <td style="text-align:left;"> [variables](https://psyteachr.github.io/glossary/v.html#variables){class="glossary" target="_blank"} </td>
+   <td style="text-align:left;">  </td>
+  </tr>
+  <tr>
    <td style="text-align:left;"> [vector](https://psyteachr.github.io/glossary/v.html#vector){class="glossary" target="_blank"} </td>
    <td style="text-align:left;"> A type of data structure that collects values with the same data type, like T/F values, numbers, or strings. </td>
   </tr>
@@ -1246,5 +2013,9 @@ tidiest
 
 ## Further Resources {#resources-data}
 
+* [Data Organization in Spreadsheets](https://doi.org/10.1080/00031305.2017.1375989) (@broman2018data)
 * [Chapter 11: Data Import](http://r4ds.had.co.nz/data-import.html) in *R for Data Science*
 * [RStudio Data Import Cheatsheet](https://github.com/rstudio/cheatsheets/raw/master/data-import.pdf)
+* [Codebook Package Comparison](https://github.com/Cghlewis/codebook-pkg-comparison)
+* [How to automatically document data with the codebook package to facilitate data reuse](https://doi.org/10.1177/2515245919838783) (@arslan2019automatically)
+* [Skimr](https://docs.ropensci.org/skimr/)
