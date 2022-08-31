@@ -26,7 +26,7 @@ favicon: "images/logos/favicon.ico"
 
 This book provides an overview of skills needed for reproducible and open research using the statistical programming language R and tidyverse packages. It covers reproducible workflows, data visualisation, data tidying and wrangling, archiving, iteration and functions, probability and data simulations.
 
-While this book mainly focusses on technical data skills, reproducible and open research is reason for learning these skills. The following papers provide a great overview of these concepts if you are not already familiar with them.
+While this book mainly focusses on technical data skills, reproducible and open research is the reason for learning these skills. The following papers provide a great overview of these concepts if you are not already familiar with them.
 
 * [Easing into open science: A guide for graduate students and their advisors](https://doi.org/10.1525/collabra.18684) [@kathawalla2021easing]
 * [An open science workflow for more credible, rigorous research](https://psyarxiv.com/wu6sn) [@corker2021open]
@@ -39,7 +39,7 @@ This book is also available in [PDF](reprores-v3.pdf), [ePub](reprores-v3.epub) 
 
 ## Resources {-}
 
-* [Data Skills Videos](https://www.youtube.com/playlist?list=PLA2iRWVwbpTLa6PIJhCyJbB2XrOStHmvD){target="_blank"}
+* [Videos](https://www.youtube.com/playlist?list=PLA2iRWVwbpTLa6PIJhCyJbB2XrOStHmvD){target="_blank"}
     Each chapter has several short video lectures for the main learning outcomes. The videos are captioned and watching with the captioning on is a useful way to learn the jargon of computational reproducibility. If you cannot access YouTube, the videos are available by request. The videos were created in 2020, so a few aspects of the RStudio interface or the book text have changed.
 
 * [reprores](https://github.com/psyteachr/reprores-v3){target="_blank"}
@@ -50,7 +50,7 @@ This book is also available in [PDF](reprores-v3.pdf), [ePub](reprores-v3.epub) 
     ```
 
 * [glossary](https://psyteachr.github.io/glossary){target="_blank"}
-    Coding and statistics both have a lot of specialist terms. Throughout this book, jargon will be linked to the glossary.
+    Coding and statistics both have a lot of specialist terms. Throughout this book, jargon will be linked to the glossary. Each chapter will end with a table of glossary terms relevant to the chapter.
     
 ## How to learn data skills {-}
 
@@ -62,9 +62,13 @@ Learning data skills is kind of like having a gym membership (HT to [Phil McAlee
 Data skills do not require you to memorise lots of code. You will be introduced to many different functions, but the main skill to learn is how to efficiently find the information you need. This will require getting used to the structure of help files and [cheat sheets](https://www.rstudio.com/resources/cheatsheets/){target="_blank"}, learning how to Goggle your problem and choose a helpful solution, and learning how to read error messages.
 
 <div class="right meme"><img src="images/memes/changing-stuff.jpg" 
-     alt="Fake O'Reilly-style book cover, line drawing of a kitten; title: Changing Stuff and Seeing What Happens; top text: How to actually learn any new programming concept" /></a></div>
+     alt="Fake O'Reilly-style book cover, line drawing of a kitten; title: Changing Stuff and Seeing What Happens; top text: How to actually learn any new programming concept" /></div>
 
 Learning to code involves making a **lot** of mistakes. These mistakes are completely essential to the process, so try not to feel too frustrated. Many of the chapter exercises will give you broken code to fix so you get experience seeing what common errors look like. As you become a more experienced coder, you might not make fewer errors, but you'll recover from them much faster.
+
+<div class="meme" style="min-width: 100%; margin: 0.5em 0;"><a href="https://twitter.com/hadleywickham/status/589068687669243905"><img src="images/memes/wickham-shitty-code.png"
+     alt="Hadley Wickham @hadleywickham: The only way to write good code is to write tons of shitty code first. Feeling shame about bad code stops you from getting to good code [3:11 PM · Apr 17, 2015·Echofon; 892 Retweets, 55 Quote Tweets, 1,147 Likes]"/></a></div>
+
 
 ## I found a bug! {-}
 

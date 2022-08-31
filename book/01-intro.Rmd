@@ -5,7 +5,7 @@
 
 ## Learning Objectives {#ilo-intro}
 
-1. Understand the components of the [RStudio IDE](#rstudio_ide) [(video)](https://youtu.be/CbA6ZVlJE78){class="video"}
+1. Understand the [RStudio IDE](#rstudio_ide) [(video)](https://youtu.be/CbA6ZVlJE78){class="video"}
 2. Type commands into the [console](#console) [(video)](https://youtu.be/wbI4c_7y0kE){class="video"}
 3. Understand [coding terms](#coding-terms) and [function syntax](#function_syx) [(video)](https://youtu.be/X5P038N5Q8I){class="video"}
 4. Install a [package](#install-package) [(video)](https://youtu.be/u_pvHnqkVCE){class="video"}
@@ -450,7 +450,10 @@ getdata("data")
 
 ## Getting help {#help}
 
-You will feel like you need a *lot* of help when you're starting to learn. This won't really go away, and it isn't supposed to. Experienced coders are also constantly looking things up; it's impossible to memorise everything. The goal is to learn enough about the structure of R that you can look things up quickly. This is why there is so much specialised jargon in coding; it's easier to google "adding `r glossary("vector", "vectors")` in R" than "adding lists of things that are the same kind of data in R".
+<div class="right meme"><img src="images/memes/code_baby.jpg"
+     alt = "Medieval drawing of a woman labelled 'you' holding a an ugly baby labelled 'your code'. They are looking at each other with dismay. Text at the bottom reads: when you run your code and it doesn't do what you expected it would do" /></div>
+
+You will feel like you need a *lot* of help when you're starting to learn. This won't really go away, and it isn't supposed to. Experienced coders are also constantly looking things up; it's impossible to memorise everything. The goal is to learn enough about the structure of R that you can look things up quickly. This is why there is so much specialised jargon in coding; it's easier to google "`r glossary("concatenate", "concatenating")` `r glossary("vector", "vectors")` in R" than "putting together groups of things that are the same kind of data in R".
 
 ### Function Help
 
@@ -487,6 +490,15 @@ vignette(package = "ggplot2")
 # opens a specific vignette in the Help pane
 vignette("ggplot2-specs", package = "ggplot2")
 ```
+
+### Asking for Help
+
+<div class="meme right" style="min-width:60%;"><img src="images/memes/help-no-photos.png"
+     alt="top left: Geordi from star trek looking sceptical with hand up; top right: photo of a laptop screen with a code error; bottom left: Geordi looking pleased and pointing; bottom right: the error explained in text with formatting" /></div>
+
+If all else fails, you can ask for help. See Appendix\ \@ref(getting-help) for advice on how to share code when asking for help on the class Teams channel or other web-based forums. It also has a section on how to make a `r glossary("reprex")` to make it easier for others to understand and reproduce your problem (and often solve it yourself in the process) . 
+
+TL;DR: copy and paste code that's giving you trouble, please don't send screenshots and definitely not photos of your screen.
 
 
 ## Glossary  {#glossaryintro}
