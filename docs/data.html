@@ -96,16 +96,17 @@
 <li><a class="" href="acknowledgements.html">Acknowledgements</a></li>
 <li class="book-part">Appendices</li>
 <li><a class="" href="installingr.html"><span class="header-section-number">A</span> Installing and Updating</a></li>
-<li><a class="" href="conventions.html"><span class="header-section-number">B</span> Conventions</a></li>
-<li><a class="" href="symbols.html"><span class="header-section-number">C</span> Symbols</a></li>
-<li><a class="" href="datasets.html"><span class="header-section-number">D</span> Datasets</a></li>
-<li><a class="" href="exercises.html"><span class="header-section-number">E</span> Exercises</a></li>
-<li><a class="" href="plotstyle.html"><span class="header-section-number">F</span> Styling Plots</a></li>
-<li><a class="" href="dates-times.html"><span class="header-section-number">G</span> Dates and Times</a></li>
-<li><a class="" href="twitter-hashtags.html"><span class="header-section-number">H</span> Twitter Hashtags</a></li>
-<li><a class="" href="twitter-data.html"><span class="header-section-number">I</span> Twitter Data</a></li>
-<li><a class="" href="webpages.html"><span class="header-section-number">J</span> Webpages</a></li>
-<li><a class="" href="bookrefs.html"><span class="header-section-number">K</span> References</a></li>
+<li><a class="" href="getting-help.html"><span class="header-section-number">B</span> Getting Help</a></li>
+<li><a class="" href="conventions.html"><span class="header-section-number">C</span> Conventions</a></li>
+<li><a class="" href="symbols.html"><span class="header-section-number">D</span> Symbols</a></li>
+<li><a class="" href="datasets.html"><span class="header-section-number">E</span> Datasets</a></li>
+<li><a class="" href="exercises.html"><span class="header-section-number">F</span> Exercises</a></li>
+<li><a class="" href="plotstyle.html"><span class="header-section-number">G</span> Styling Plots</a></li>
+<li><a class="" href="dates-times.html"><span class="header-section-number">H</span> Dates and Times</a></li>
+<li><a class="" href="twitter-hashtags.html"><span class="header-section-number">I</span> Twitter Hashtags</a></li>
+<li><a class="" href="twitter-data.html"><span class="header-section-number">J</span> Twitter Data</a></li>
+<li><a class="" href="webpages.html"><span class="header-section-number">K</span> Webpages</a></li>
+<li><a class="" href="bookrefs.html"><span class="header-section-number">L</span> References</a></li>
 </ul>
 
         <div class="book-extra">
@@ -142,15 +143,37 @@
 <li>Be able to <a href="#Troubleshooting">troubleshoot</a> common data import problems <a href="https://youtu.be/gcxn4LJ_vAI" class="video">(video)</a>
 </li>
 </ol>
+<p>This chapter has a <em>lot</em> of jargon. Becoming familiar with these terms can help you to ask questions more clearly and search for answers online. Keywords are shown in purple; you can view a short definition by hovering over them and access a more detailed definition by clicking on them. All of the defined words are in the <a href="data.html#glossary-data">glossary</a> at the end of this chapter.</p>
 </div>
 <div id="setup-data" class="section level2" number="4.2">
 <h2>
 <span class="header-section-number">4.2</span> Setup<a class="anchor" aria-label="anchor" href="#setup-data"><i class="fas fa-link"></i></a>
 </h2>
+<ol style="list-style-type: decimal">
+<li>Open your <code>reprores-class-notes</code> project</li>
+<li>Create a new R Markdown file called <code>04-data.Rmd</code>
+</li>
+<li>Update the YAML header</li>
+<li>Replace the setup chunk with the one below:</li>
+</ol>
+<div class="verbatim">
+<pre class="sourceCode r"><code class="sourceCode R">```{r setup, include = FALSE}</code></pre>
 <div class="sourceCode" id="cb129"><pre class="downlit sourceCode r">
-<code class="sourceCode R"><span><span class="co"># libraries needed for these examples</span></span>
-<span><span class="kw"><a href="https://rdrr.io/r/base/library.html">library</a></span><span class="op">(</span><span class="va"><a href="https://tidyverse.tidyverse.org">tidyverse</a></span><span class="op">)</span></span>
-<span><span class="kw"><a href="https://rdrr.io/r/base/library.html">library</a></span><span class="op">(</span><span class="va"><a href="https://github.com/psyteachr/reprores-v3">reprores</a></span><span class="op">)</span></span></code></pre></div>
+<code class="sourceCode R"><span><span class="fu">knitr</span><span class="fu">::</span><span class="va"><a href="https://rdrr.io/pkg/knitr/man/opts_chunk.html">opts_chunk</a></span><span class="op">$</span><span class="fu">set</span><span class="op">(</span>echo <span class="op">=</span> <span class="cn">TRUE</span><span class="op">)</span></span>
+<span></span>
+<span><span class="co"># packages needed for this chapter</span></span>
+<span><span class="kw"><a href="https://rdrr.io/r/base/library.html">library</a></span><span class="op">(</span><span class="va"><a href="https://tidyverse.tidyverse.org">tidyverse</a></span><span class="op">)</span>     <span class="co"># loads readr for importing data</span></span>
+<span>                       <span class="co">#   and tibble for creating tables</span></span>
+<span><span class="kw"><a href="https://rdrr.io/r/base/library.html">library</a></span><span class="op">(</span><span class="va"><a href="https://readxl.tidyverse.org">readxl</a></span><span class="op">)</span>        <span class="co"># importing excel files</span></span>
+<span><span class="kw"><a href="https://rdrr.io/r/base/library.html">library</a></span><span class="op">(</span><span class="va"><a href="https://googlesheets4.tidyverse.org">googlesheets4</a></span><span class="op">)</span> <span class="co"># importing google sheets</span></span>
+<span><span class="kw"><a href="https://rdrr.io/r/base/library.html">library</a></span><span class="op">(</span><span class="va"><a href="https://haven.tidyverse.org">haven</a></span><span class="op">)</span>         <span class="co"># importing SPSS files</span></span>
+<span><span class="kw"><a href="https://rdrr.io/r/base/library.html">library</a></span><span class="op">(</span><span class="va"><a href="https://arxiv.org/abs/1403.2805">jsonlite</a></span><span class="op">)</span>      <span class="co"># importing JSON files</span></span>
+<span><span class="kw"><a href="https://rdrr.io/r/base/library.html">library</a></span><span class="op">(</span><span class="va"><a href="https://github.com/leeper/rio">rio</a></span><span class="op">)</span>           <span class="co"># importing and exporting many types of files</span></span>
+<span><span class="kw"><a href="https://rdrr.io/r/base/library.html">library</a></span><span class="op">(</span><span class="va"><a href="https://docs.ropensci.org/skimr/">skimr</a></span><span class="op">)</span>         <span class="co"># summarising datasets</span></span>
+<span><span class="kw"><a href="https://rdrr.io/r/base/library.html">library</a></span><span class="op">(</span><span class="va"><a href="https://github.com/psyteachr/reprores-v3">reprores</a></span><span class="op">)</span>      <span class="co"># class-specific datasets</span></span></code></pre></div>
+<pre class="sourceCode r"><code class="sourceCode R">```</code></pre>
+</div>
+<p>Download the <a href="https://raw.githubusercontent.com/rstudio/cheatsheets/main/data-import.pdf">Data import cheatsheet</a>.</p>
 </div>
 <div id="data-structure" class="section level2" number="4.3">
 <h2>
@@ -162,7 +185,7 @@
 <span class="header-section-number">4.3.1</span> Be consistent<a class="anchor" aria-label="anchor" href="#be-consistent"><i class="fas fa-link"></i></a>
 </h3>
 <p>Use the same names for <a class="glossary" target="_blank" title="" href="https://psyteachr.github.io/glossary/v#variables">variables</a> in different data files, and the exact same format for <a class="glossary" target="_blank" title="Data that can only take certain values, such as types of pet." href="https://psyteachr.github.io/glossary/c#categorical">categorical</a> values. Capitalisation and spaces also matter. For example, do not record group as "A", "a", and "A " in different places (or in the same column); these will be treated by any computational script as three different values.</p>
-<p>If you have column names for items you might want to group later, such as a questionnaire with items belonging to one of three subscales, use a consistent naming convention. This will make it easier to reshape data to create subscale scores. For example, use column names like <code>O_1</code>, <code>E_2</code>, <code>O_3</code>, <code>C_4</code> rather than <code>q1</code>, <code>q2</code>, <code>q3</code>, <code>q4</code>. (Alternatively, you can include a separate table with a column for question number and a corresponding column for the subscale and join it to the reformatted questionnaire data, as we'll learn in Chapter <a href="joins.html#joins">5</a>.)</p>
+<p>If you have column names for items you might want to group later, such as a questionnaire with items belonging to one of three subscales, use a consistent naming convention. This will make it easier to reshape data to create subscale scores, which we will cover in Chapter <a href="tidyr.html#pivot">6.4</a>. For example, use column names like <code>O_1</code>, <code>E_2</code>, <code>O_3</code>, <code>C_4</code> rather than <code>q1</code>, <code>q2</code>, <code>q3</code>, <code>q4</code>. (Alternatively, you can include a separate table with a column for question number and a corresponding column for the subscale and join it to the reformatted questionnaire data, as we'll learn in Chapter <a href="joins.html#joins">5</a>.)</p>
 </div>
 <div id="choose-good-names-for-things" class="section level3" number="4.3.2">
 <h3>
@@ -170,23 +193,23 @@
 </h3>
 <p>We covered this in Chapter <a href="repro.html#naming-things">2.4.3</a> for file names. It is also important to use names for variables and values that make it easy to work with them in R. For example, use column names with only letters, numbers, full stops and underscores so you don't have to quote them. Using camel case is OK, just use a consistent naming scheme so you don't have to keep looking up whether you named a column <code>SleepTime</code>, <code>sleepTime</code>, <code>sleep_time</code> or <code>sleep.time</code>.</p>
 <div class="try">
-<p>Choose the best column names for a single data file:</p>
+<p>Choose the best consistent column names for a single data file:</p>
 <ul>
 <li><select class="webex-select"><option value="blank"></option>
-<option value="">subject.id</option>
 <option value="">sid</option>
+<option value="">subject ID</option>
 <option value="answer">subject_id</option>
-<option value="">subject ID</option></select></li>
+<option value="">subject.id</option></select></li>
 <li><select class="webex-select"><option value="blank"></option>
+<option value="">age</option>
 <option value="">ageMonths</option>
 <option value="answer">age_months</option>
-<option value="">Age (in months)</option>
-<option value="">age</option></select></li>
+<option value="">Age (in months)</option></select></li>
 <li><select class="webex-select"><option value="blank"></option>
-<option value="">Birth Year</option>
 <option value="answer">birth_year</option>
-<option value="">by</option>
-<option value="">birth-year</option></select></li>
+<option value="">Birth Year</option>
+<option value="">birth-year</option>
+<option value="">by</option></select></li>
 </ul>
 </div>
 </div>
@@ -676,10 +699,10 @@ Now you can click on <code>smalldata</code> in the environment pane to open it u
 </tr>
 </tbody>
 </table></div>
-<p>The double colon means that the function on the right comes from the package on the left, so <code><a href="https://readr.tidyverse.org/reference/read_delim.html">readr::read_csv()</a></code> refers to the <code><a href="https://readr.tidyverse.org/reference/read_delim.html">read_csv()</a></code> function in the <code class="package">readr</code> package, and <code><a href="https://readxl.tidyverse.org/reference/read_excel.html">readxl::read_excel()</a></code> refers to the function <code>read_excel()</code> in the <code class="package">readxl</code> package. The function <code><a href="https://rdrr.io/pkg/rio/man/import.html">rio::import()</a></code> from the <code class="package">rio</code> package will read almost any type of data file, including SPSS and Matlab. Check the help with <code><a href="https://rdrr.io/pkg/rio/man/import.html">?rio::import</a></code> to see a full list.</p>
+<p>The double colon means that the function on the right comes from the package on the left, so <code><a href="https://readr.tidyverse.org/reference/read_delim.html">readr::read_csv()</a></code> refers to the <code><a href="https://readr.tidyverse.org/reference/read_delim.html">read_csv()</a></code> function in the <code class="package">readr</code> package, and <code><a href="https://readxl.tidyverse.org/reference/read_excel.html">readxl::read_excel()</a></code> refers to the function <code><a href="https://readxl.tidyverse.org/reference/read_excel.html">read_excel()</a></code> in the <code class="package">readxl</code> package. The function <code><a href="https://rdrr.io/pkg/rio/man/import.html">rio::import()</a></code> from the <code class="package">rio</code> package will read almost any type of data file, including SPSS and Matlab. Check the help with <code><a href="https://rdrr.io/pkg/rio/man/import.html">?rio::import</a></code> to see a full list.</p>
 <p>You can get a directory of data files used in this class for tutorials and exercises with the following code, which will create a directory called "data" in your project directory. Alternatively, you can download a <a href="data/data.zip">zip file of the datasets</a>.</p>
 <div class="sourceCode" id="cb140"><pre class="downlit sourceCode r">
-<code class="sourceCode R"><span><span class="fu">psyteachr</span><span class="fu">::</span><span class="fu">getdata</span><span class="op">(</span><span class="op">)</span></span></code></pre></div>
+<code class="sourceCode R"><span><span class="fu">reprores</span><span class="fu">::</span><span class="fu"><a href="https://rdrr.io/pkg/reprores/man/getdata.html">getdata</a></span><span class="op">(</span><span class="op">)</span></span></code></pre></div>
 <div id="csv-files" class="section level4" number="4.4.2.1">
 <h4>
 <span class="header-section-number">4.4.2.1</span> CSV Files<a class="anchor" aria-label="anchor" href="#csv-files"><i class="fas fa-link"></i></a>
@@ -736,9 +759,7 @@ F,6,6.5,TRUE,31-Aug-21
 <span><span class="va">demo_json</span> <span class="op">&lt;-</span> <span class="fu">jsonlite</span><span class="fu">::</span><span class="fu"><a href="https://rdrr.io/pkg/jsonlite/man/read_json.html">read_json</a></span><span class="op">(</span><span class="st">"data/demo.json"</span><span class="op">)</span></span></code></pre></div>
 <p>You can access Google Sheets directly from R using <code class="package"><a href="https://googlesheets4.tidyverse.org/" target="_blank">googlesheets4</a></code>.</p>
 <div class="sourceCode" id="cb146"><pre class="downlit sourceCode r">
-<code class="sourceCode R"><span><span class="kw"><a href="https://rdrr.io/r/base/library.html">library</a></span><span class="op">(</span><span class="va"><a href="https://googlesheets4.tidyverse.org">googlesheets4</a></span><span class="op">)</span></span>
-<span></span>
-<span><span class="fu"><a href="https://googlesheets4.tidyverse.org/reference/gs4_deauth.html">gs4_deauth</a></span><span class="op">(</span><span class="op">)</span> <span class="co"># skip authorisation for public data</span></span>
+<code class="sourceCode R"><span><span class="fu">googlesheets4</span><span class="fu">::</span><span class="fu"><a href="https://googlesheets4.tidyverse.org/reference/gs4_deauth.html">gs4_deauth</a></span><span class="op">(</span><span class="op">)</span> <span class="co"># skip authorisation for public data</span></span>
 <span></span>
 <span><span class="va">url</span> <span class="op">&lt;-</span> <span class="st">"https://docs.google.com/spreadsheets/d/16dkq0YL0J7fyAwT1pdgj1bNNrheckAU_2-DKuuM6aGI/"</span></span>
 <span></span>
@@ -821,22 +842,20 @@ NA
 </div>
 </div>
 </div>
-<div id="looking-at-data" class="section level3" number="4.4.3">
+<div id="inspecting-data" class="section level3" number="4.4.3">
 <h3>
-<span class="header-section-number">4.4.3</span> Looking at data<a class="anchor" aria-label="anchor" href="#looking-at-data"><i class="fas fa-link"></i></a>
+<span class="header-section-number">4.4.3</span> Inspecting data<a class="anchor" aria-label="anchor" href="#inspecting-data"><i class="fas fa-link"></i></a>
 </h3>
-<p>Now that you've loaded some data, look the upper right hand window of RStudio, under the Environment tab. You will see the objects listed, along with their number of observations (rows) and variables (columns). This is your first check that everything went OK.</p>
-<p>Always, always, always, look at your data once you've created or loaded a table. Also look at it after each step that transforms your table. There are three main ways to look at your table: <code><span><span class="fu"><a target="_blank" href="https://rdrr.io/r/utils/View.html">View</a></span><span class="op">(</span><span class="op">)</span></span></code>, <code><span><span class="fu"><a target="_blank" href="https://rdrr.io/r/base/print.html">print</a></span><span class="op">(</span><span class="op">)</span></span></code>, <code><span><span class="fu">tibble</span><span class="fu">::</span><span class="fu"><a target="_blank" href="https://pillar.r-lib.org/reference/glimpse.html">glimpse</a></span><span class="op">(</span><span class="op">)</span></span></code>.</p>
-<div id="view" class="section level4" number="4.4.3.1">
-<h4>
-<span class="header-section-number">4.4.3.1</span> View()<a class="anchor" aria-label="anchor" href="#view"><i class="fas fa-link"></i></a>
-</h4>
-<p>A familiar way to look at the table is given by <code><span><span class="fu"><a target="_blank" href="https://rdrr.io/r/utils/View.html">View</a></span><span class="op">(</span><span class="op">)</span></span></code> (uppercase 'V'). This command can be useful in the console, but don't ever put this one in a script because it will create an annoying pop-up window when the user runs it. Or you can click on an objects in the <a class="glossary" target="_blank" title='RStudio is arranged with four window "panes".' href="https://psyteachr.github.io/glossary/p#panes">environment pane</a> to open it up in a viewer that looks a bit like Excel. You can close the tab when you're done looking at it; it won't remove the object.</p>
+<div class="right meme">
+<img src="images/memes/data-expanding-brain.png" alt="Expanding brain meme: Skeleton head with tiny brain = Load data in R; Normal-sized brain with sparkles = View data; Brain with a few rays of light shooting out = Summarize data; Brain with lots of rays and sparkles shooting out = Plot data">
 </div>
-<div id="print" class="section level4" number="4.4.3.2">
+<p>Now that you've loaded some data, look the upper right hand window of RStudio, under the Environment tab. You will see the objects listed, along with their number of observations (rows) and variables (columns). This is your first check that everything went OK.</p>
+<p>Always, always, always, inspect your data once you've created or loaded a table and after each step that transforms your table. The quickest and most basic way is to look at your table using <code><a href="https://gganimate.com/reference/gganimate-ggproto.html">View()</a></code> or <code><a href="https://rdrr.io/r/base/print.html">print()</a></code>. You can also use functions like <code><a href="https://pillar.r-lib.org/reference/glimpse.html">tibble::glimpse()</a></code>, <code><a href="https://rdrr.io/r/base/summary.html">summary()</a></code> or <code><a href="https://docs.ropensci.org/skimr/reference/skim.html">skimr::skim()</a></code> to summarise your data. Finally, the best way to really understand your data is to plot it using the skills we learned in Chapter <a href="ggplot.html#ggplot">3</a>.</p>
+<div id="viewing-data" class="section level4" number="4.4.3.1">
 <h4>
-<span class="header-section-number">4.4.3.2</span> print()<a class="anchor" aria-label="anchor" href="#print"><i class="fas fa-link"></i></a>
+<span class="header-section-number">4.4.3.1</span> Viewing data<a class="anchor" aria-label="anchor" href="#viewing-data"><i class="fas fa-link"></i></a>
 </h4>
+<p>A familiar way to look at the table is given by <code><a href="https://gganimate.com/reference/gganimate-ggproto.html">View()</a></code> (uppercase 'V'). This command can be useful in the console, but don't ever put this one in a script because it will create an annoying pop-up window when the user runs it. Or you can click on an objects in the <a class="glossary" target="_blank" title='RStudio is arranged with four window "panes".' href="https://psyteachr.github.io/glossary/p#panes">environment pane</a> to open it up in a viewer that looks a bit like Excel. You can close the tab when you're done looking at it; it won't remove the object.</p>
 <p>The <code><span><span class="fu"><a target="_blank" href="https://rdrr.io/r/base/print.html">print</a></span><span class="op">(</span><span class="op">)</span></span></code> method can be run explicitly, but is more commonly called by just typing the variable name on the blank line. The default is not to print the entire table, but just the first 10 rows.</p>
 <p>Let's look at the <code>demo_tsv</code> table that we loaded above. Depending on how wide your screen is, you might need to click on an arrow at the right of the table to see the last column.</p>
 <div class="sourceCode" id="cb149"><pre class="downlit sourceCode r">
@@ -970,11 +989,11 @@ TRUE
 <p>Remember that the way tables are displayed can look different in the interactive interface from the knit version, depending on how df_print is set.</p>
 </div>
 </div>
-<div id="glimpse" class="section level4" number="4.4.3.3">
+<div id="summarising-data" class="section level4" number="4.4.3.2">
 <h4>
-<span class="header-section-number">4.4.3.3</span> glimpse()<a class="anchor" aria-label="anchor" href="#glimpse"><i class="fas fa-link"></i></a>
+<span class="header-section-number">4.4.3.2</span> Summarising data<a class="anchor" aria-label="anchor" href="#summarising-data"><i class="fas fa-link"></i></a>
 </h4>
-<p>The function <code><span><span class="fu">tibble</span><span class="fu">::</span><span class="fu"><a target="_blank" href="https://pillar.r-lib.org/reference/glimpse.html">glimpse</a></span><span class="op">(</span><span class="op">)</span></span></code> gives a sideways version of the table. This is useful if the table is very wide and you can't see all of the columns. It also tells you the <a class="glossary" target="_blank" title="The kind of data represented by an object." href="https://psyteachr.github.io/glossary/d#data-type">data type</a> of each column in angled brackets after each column name.</p>
+<p>The function <code><a href="https://pillar.r-lib.org/reference/glimpse.html">tibble::glimpse()</a></code> gives a sideways version of the table. This is useful if the table is very wide and you can't see all of the columns. It also tells you the <a class="glossary" target="_blank" title="The kind of data represented by an object." href="https://psyteachr.github.io/glossary/d#data-type">data type</a> of each column in angled brackets after each column name.</p>
 <div class="sourceCode" id="cb150"><pre class="downlit sourceCode r">
 <code class="sourceCode R"><span><span class="fu"><a href="https://pillar.r-lib.org/reference/glimpse.html">glimpse</a></span><span class="op">(</span><span class="va">demo_xls</span><span class="op">)</span></span></code></pre></div>
 <pre><code>## Rows: 6
@@ -984,12 +1003,7 @@ TRUE
 ## $ double    &lt;dbl&gt; 1.5, 2.5, 3.5, 4.5, 5.5, 6.5
 ## $ logical   &lt;lgl&gt; TRUE, TRUE, FALSE, FALSE, NA, TRUE
 ## $ date      &lt;chr&gt; "05-Sep-21", "04-Sep-21", "03-Sep-21", "02-Sep-21", "01-Sep-…</code></pre>
-</div>
-<div id="summary-function" class="section level4" number="4.4.3.4">
-<h4>
-<span class="header-section-number">4.4.3.4</span> summary()<a class="anchor" aria-label="anchor" href="#summary-function"><i class="fas fa-link"></i></a>
-</h4>
-<p>You can get a quick summary of a dataset with the <code><span><span class="fu"><a target="_blank" href="https://rdrr.io/r/base/summary.html">summary</a></span><span class="op">(</span><span class="op">)</span></span></code> function.</p>
+<p>You can get a quick summary of a dataset with the <code><a href="https://rdrr.io/r/base/summary.html">summary()</a></code> function.</p>
 <div class="sourceCode" id="cb152"><pre class="downlit sourceCode r">
 <code class="sourceCode R"><span><span class="fu"><a href="https://rdrr.io/r/base/summary.html">summary</a></span><span class="op">(</span><span class="va">demo_sav</span><span class="op">)</span></span></code></pre></div>
 <pre><code>##   character            integer         double        logical   
@@ -1013,7 +1027,7 @@ TRUE
 <code class="sourceCode R"><span><span class="fu">skimr</span><span class="fu">::</span><span class="fu"><a href="https://docs.ropensci.org/skimr/reference/skim.html">skim</a></span><span class="op">(</span><span class="va">demo</span><span class="op">)</span></span></code></pre></div>
 <div class="inline-table"><table style="width: auto;" class="table table-condensed">
 <caption>
-<span id="tab:unnamed-chunk-8">Table 4.1: </span>Data summary
+<span id="tab:skimr-demo">Table 4.1: </span>Data summary
 </caption>
 <tbody>
 <tr>
@@ -1467,13 +1481,13 @@ Solution
 <span><span class="op">)</span></span>
 <span></span>
 <span><span class="co"># save the data to CSV</span></span>
-<span><span class="fu"><a href="https://rdrr.io/pkg/plotly/man/export.html">export</a></span><span class="op">(</span><span class="va">family</span>, <span class="st">"data/family.csv"</span><span class="op">)</span></span>
+<span><span class="fu"><a href="https://rdrr.io/pkg/rio/man/export.html">export</a></span><span class="op">(</span><span class="va">family</span>, <span class="st">"data/family.csv"</span><span class="op">)</span></span>
 <span></span>
 <span><span class="co"># remove the object from the environment</span></span>
 <span><span class="fu"><a href="https://rdrr.io/r/base/rm.html">remove</a></span><span class="op">(</span><span class="va">family</span><span class="op">)</span></span>
 <span></span>
 <span><span class="co"># load the data</span></span>
-<span><span class="va">family</span> <span class="op">&lt;-</span> <span class="fu">import</span><span class="op">(</span><span class="st">"data/family.csv"</span><span class="op">)</span></span></code></pre></div>
+<span><span class="va">family</span> <span class="op">&lt;-</span> <span class="fu"><a href="https://rdrr.io/pkg/rio/man/import.html">import</a></span><span class="op">(</span><span class="st">"data/family.csv"</span><span class="op">)</span></span></code></pre></div>
 </div>
 </div>
 <p>We'll be working with <a class="glossary" target="_blank" title="Data in a rectangular table format, where each row has an entry for each column." href="https://psyteachr.github.io/glossary/t#tabular-data">tabular data</a> a lot in this class, but tabular data is made up of <a class="glossary" target="_blank" title="A type of data structure that collects values with the same data type, like T/F values, numbers, or strings." href="https://psyteachr.github.io/glossary/v#vector">vectors</a>, which group together data with the same basic <a class="glossary" target="_blank" title="The kind of data represented by an object." href="https://psyteachr.github.io/glossary/d#data-type">data type</a>. The following sections explain some of this terminology to help you understand the functions we'll be learning to process and analyse data.</p>
@@ -1542,7 +1556,7 @@ Figure 4.2: Data types are like the categories when you format cells in Excel.
 ## [1] "logical"</code></pre>
 <div class="info">
 <p>You might also see logical values abbreviated as <code>T</code> and <code>F</code>, or <code>0</code> and <code>1</code>. This can cause some problems down the road, so we will always spell out the whole thing.</p>
-<p>R Markdown headers use YAML format, not R, so the logical values are lowercase true and false.</p>
+<p>R Markdown headers use YAML format, not R, so the logical values are lowercase <code>true</code> and <code>false</code> without quotes.</p>
 </div>
 <p>When you compare two values with an <a class="glossary" target="_blank" title="A symbol that performs some mathematical or comparative process. " href="https://psyteachr.github.io/glossary/o#operator">operator</a>, such as checking to see if 10 is greater than 5, the resulting value is logical.</p>
 <div class="sourceCode" id="cb169"><pre class="downlit sourceCode r">
@@ -1582,7 +1596,7 @@ Figure 4.2: Data types are like the categories when you format cells in Excel.
 ## [1] "double"
 ## [1] "Date"
 ## [1] "POSIXct" "POSIXt"</code></pre>
-<p>See Appendix <a href="dates-times.html#dates-times">G</a> for how to use <code class="package">lubridate</code> to work with dates and times.</p>
+<p>See Appendix <a href="dates-times.html#dates-times">H</a> for how to use <code class="package">lubridate</code> to work with dates and times.</p>
 <div class="try">
 <p>What data types are these:</p>
 <ul>
@@ -1787,7 +1801,7 @@ Solution
 <h4>
 <span class="header-section-number">4.6.1.3</span> Vectorized Operations<a class="anchor" aria-label="anchor" href="#vectorized_ops"><i class="fas fa-link"></i></a>
 </h4>
-<p>R performs calculations on vectors in a special way. Let's look at an example using <span class="math inline">\(z\)</span>-scores. A <span class="math inline">\(z\)</span>-score is a <a class="glossary" target="_blank" title="A score minus the mean" href="https://psyteachr.github.io/glossary/d#deviation-score">deviation score</a>(a score minus a mean) divided by a standard deviation. Let's say we have a set of four IQ scores.</p>
+<p>R performs calculations on vectors in a special way. Let's look at an example using <span class="math inline">\(z\)</span>-scores. A <span class="math inline">\(z\)</span>-score is a <a class="glossary" target="_blank" title="A score minus the mean" href="https://psyteachr.github.io/glossary/d#deviation-score">deviation score</a> divided by a <a class="glossary" target="_blank" title="A descriptive statistic that measures how spread out data are relative to the mean." href="https://psyteachr.github.io/glossary/s#standard-deviation">standard deviation</a>. Let's say we have a set of four IQ scores.</p>
 <div class="sourceCode" id="cb201"><pre class="downlit sourceCode r">
 <code class="sourceCode R"><span><span class="co">## example IQ scores: mu = 100, sigma = 15</span></span>
 <span><span class="va">iq</span> <span class="op">&lt;-</span> <span class="fu"><a href="https://rdrr.io/r/base/c.html">c</a></span><span class="op">(</span><span class="fl">86</span>, <span class="fl">101</span>, <span class="fl">127</span>, <span class="fl">99</span><span class="op">)</span></span></code></pre></div>
@@ -2815,6 +2829,14 @@ RStudio is arranged with four window "panes".
 </tr>
 <tr>
 <td style="text-align:left;">
+<a href="https://psyteachr.github.io/glossary/s.html#standard-deviation" class="glossary" target="_blank">standard deviation</a>
+</td>
+<td style="text-align:left;">
+A descriptive statistic that measures how spread out data are relative to the mean.
+</td>
+</tr>
+<tr>
+<td style="text-align:left;">
 <a href="https://psyteachr.github.io/glossary/t.html#tabular-data" class="glossary" target="_blank">tabular data</a>
 </td>
 <td style="text-align:left;">
@@ -3124,7 +3146,7 @@ function openCity(evt, cityName) {
 <a class="nav-link" href="#data-tables"><span class="header-section-number">4.4</span> Data tables</a><ul class="nav navbar-nav">
 <li><a class="nav-link" href="#builtin"><span class="header-section-number">4.4.1</span> Built-in data</a></li>
 <li><a class="nav-link" href="#import_data"><span class="header-section-number">4.4.2</span> Importing data</a></li>
-<li><a class="nav-link" href="#looking-at-data"><span class="header-section-number">4.4.3</span> Looking at data</a></li>
+<li><a class="nav-link" href="#inspecting-data"><span class="header-section-number">4.4.3</span> Inspecting data</a></li>
 <li><a class="nav-link" href="#creating-data"><span class="header-section-number">4.4.4</span> Creating data</a></li>
 <li><a class="nav-link" href="#writing-data"><span class="header-section-number">4.4.5</span> Writing Data</a></li>
 </ul>
@@ -3165,7 +3187,7 @@ function openCity(evt, cityName) {
 <footer class="bg-primary text-light mt-5"><div class="container"><div class="row">
 
   <div class="col-12 col-md-6 mt-3">
-    <p>"<strong>Data Skills for Reproducible Research</strong>: <br><a href="https://doi.org/10.5281/zenodo.6527194"><img src="https://zenodo.org/badge/DOI/10.5281/zenodo.6527194.svg" alt="DOI: 10.5281/zenodo.6527194"></a>" was written by . It was last built on 2022-08-30.</p>
+    <p>"<strong>Data Skills for Reproducible Research</strong>: <br><a href="https://doi.org/10.5281/zenodo.6527194"><img src="https://zenodo.org/badge/DOI/10.5281/zenodo.6527194.svg" alt="DOI: 10.5281/zenodo.6527194"></a>" was written by . It was last built on 2022-08-31.</p>
   </div>
 
   <div class="col-12 col-md-6 mt-3">

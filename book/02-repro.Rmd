@@ -20,7 +20,7 @@ You will be given instructions in Section\ \@ref(new-project) below to set up a 
 
 For reference, here are the packages we will use in this chapter.
 
-```{r setup-reports, message=FALSE}
+```{r setup-repro, message=FALSE}
 # packages needed for this chapter
 library(tidyverse)  # various data manipulation functions
 library(knitr)      # for table and image display

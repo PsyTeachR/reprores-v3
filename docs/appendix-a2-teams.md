@@ -16,7 +16,8 @@ The particular error that our code threw was
 
 And the code that threw it was
 
-```{r cars, echo = TRUE, eval = FALSE}
+
+```r
 mtcars %>%
   filter(mpg > 20)
 ```
@@ -67,14 +68,16 @@ You can include a very small table with just the basics or a smaller version of 
 
 Which version is easier for you to figure out the solution?
 
-```{r, eval = FALSE}
+
+```r
 # this doesn't work
 no_test_data <- data %>%
   filter(!str_detect(type, "test"))
 ```
 
 
-```{r, eval = FALSE}
+
+```r
 # with a minimal example table
 data <- tribble(
   ~id, ~type, ~x,

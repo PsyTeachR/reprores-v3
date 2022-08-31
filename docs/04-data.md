@@ -15,15 +15,36 @@
 8. Be able to [troubleshoot](#Troubleshooting) common data import problems [(video)](https://youtu.be/gcxn4LJ_vAI){class="video"}
 
 
+This chapter has a *lot* of jargon. Becoming familiar with these terms can help you to ask questions more clearly and search for answers online. Keywords are shown in purple; you can view a short definition by hovering over them and access a more detailed definition by clicking on them. All of the defined words are in the [glossary](#glossary-data) at the end of this chapter. 
+
 
 ## Setup {#setup-data}
 
+1. Open your `reprores-class-notes` project 
+1. Create a new R Markdown file called `04-data.Rmd`
+1. Update the YAML header 
+1. Replace the setup chunk with the one below: 
+
+<div class='verbatim'><pre class='sourceCode r'><code class='sourceCode R'>&#96;&#96;&#96;{r setup, include = FALSE}</code></pre>
 
 ```r
-# libraries needed for these examples
-library(tidyverse)
-library(reprores)
+knitr::opts_chunk$set(echo = TRUE)
+
+# packages needed for this chapter
+library(tidyverse)     # loads readr for importing data
+                       #   and tibble for creating tables
+library(readxl)        # importing excel files
+library(googlesheets4) # importing google sheets
+library(haven)         # importing SPSS files
+library(jsonlite)      # importing JSON files
+library(rio)           # importing and exporting many types of files
+library(skimr)         # summarising datasets
+library(reprores)      # class-specific datasets
 ```
+
+<pre class='sourceCode r'><code class='sourceCode R'>&#96;&#96;&#96;</code></pre></div>
+
+Download the [Data import cheatsheet](https://raw.githubusercontent.com/rstudio/cheatsheets/main/data-import.pdf).
 
 ## Data structure {#data-structure}
 
@@ -33,7 +54,7 @@ You're probably most familiar with data recorded in Excel spreadsheets. These ar
 
 Use the same names for <a class='glossary' target='_blank' title='' href='https://psyteachr.github.io/glossary/v#variables'>variables</a> in different data files, and the exact same format for <a class='glossary' target='_blank' title='Data that can only take certain values, such as types of pet.' href='https://psyteachr.github.io/glossary/c#categorical'>categorical</a> values. Capitalisation and spaces also matter. For example, do not record group as "A", "a", and "A " in different places (or in the same column); these will be treated by any computational script as three different values.
 
-If you have column names for items you might want to group later, such as a questionnaire with items belonging to one of three subscales, use a consistent naming convention. This will make it easier to reshape data to create subscale scores. For example, use column names like `O_1`, `E_2`, `O_3`, `C_4` rather than `q1`, `q2`, `q3`, `q4`. (Alternatively, you can include a separate table with a column for question number and a corresponding column for the subscale and join it to the reformatted questionnaire data, as we'll learn in Chapter\ \@ref(joins).)
+If you have column names for items you might want to group later, such as a questionnaire with items belonging to one of three subscales, use a consistent naming convention. This will make it easier to reshape data to create subscale scores, which we will cover in Chapter\ \@ref(pivot). For example, use column names like `O_1`, `E_2`, `O_3`, `C_4` rather than `q1`, `q2`, `q3`, `q4`. (Alternatively, you can include a separate table with a column for question number and a corresponding column for the subscale and join it to the reformatted questionnaire data, as we'll learn in Chapter\ \@ref(joins).)
 
 ### Choose good names for things
 
@@ -43,11 +64,11 @@ We covered this in Chapter\ \@ref(naming-things) for file names. It is also impo
 ::: {.try data-latex=""}
 
 
-Choose the best column names for a single data file:
+Choose the best consistent column names for a single data file:
 
-* <select class='webex-select'><option value='blank'></option><option value=''>subject.id</option><option value=''>sid</option><option value='answer'>subject_id</option><option value=''>subject ID</option></select>
-* <select class='webex-select'><option value='blank'></option><option value=''>ageMonths</option><option value='answer'>age_months</option><option value=''>Age (in months)</option><option value=''>age</option></select>
-* <select class='webex-select'><option value='blank'></option><option value=''>Birth Year</option><option value='answer'>birth_year</option><option value=''>by</option><option value=''>birth-year</option></select>
+* <select class='webex-select'><option value='blank'></option><option value=''>sid</option><option value=''>subject ID</option><option value='answer'>subject_id</option><option value=''>subject.id</option></select>
+* <select class='webex-select'><option value='blank'></option><option value=''>age</option><option value=''>ageMonths</option><option value='answer'>age_months</option><option value=''>Age (in months)</option></select>
+* <select class='webex-select'><option value='blank'></option><option value='answer'>birth_year</option><option value=''>Birth Year</option><option value=''>birth-year</option><option value=''>by</option></select>
 
 :::
 
@@ -358,7 +379,7 @@ You can get a directory of data files used in this class for tutorials and exerc
 
 
 ```r
-psyteachr::getdata()
+reprores::getdata()
 ```
 
 #### CSV Files
@@ -437,9 +458,7 @@ You can access Google Sheets directly from R using <code class='package'><a href
 
 
 ```r
-library(googlesheets4)
-
-gs4_deauth() # skip authorisation for public data
+googlesheets4::gs4_deauth() # skip authorisation for public data
 
 url <- "https://docs.google.com/spreadsheets/d/16dkq0YL0J7fyAwT1pdgj1bNNrheckAU_2-DKuuM6aGI/"
 
@@ -513,17 +532,18 @@ readr::read_csv(csv_text, na = c("", "missing"),
 </div>
 
 
-### Looking at data
+### Inspecting data
+
+<div class="right meme"><img src="images/memes/data-expanding-brain.png"
+     alt = "Expanding brain meme: Skeleton head with tiny brain = Load data in R; Normal-sized brain with sparkles = View data; Brain with a few rays of light shooting out = Summarize data; Brain with lots of rays and sparkles shooting out = Plot data" /></div>
 
 Now that you've loaded some data, look the upper right hand window of RStudio, under the Environment tab. You will see the objects listed, along with their number of observations (rows) and variables (columns). This is your first check that everything went OK.
 
-Always, always, always, look at your data once you've created or loaded a table. Also look at it after each step that transforms your table. There are three main ways to look at your table: <code><span><span class='fu'><a target='_blank' href='https://rdrr.io/r/utils/View.html'>View</a></span><span class='op'>(</span><span class='op'>)</span></span></code>, <code><span><span class='fu'><a target='_blank' href='https://rdrr.io/r/base/print.html'>print</a></span><span class='op'>(</span><span class='op'>)</span></span></code>, <code><span><span class='fu'>tibble</span><span class='fu'>::</span><span class='fu'><a target='_blank' href='https://pillar.r-lib.org/reference/glimpse.html'>glimpse</a></span><span class='op'>(</span><span class='op'>)</span></span></code>. 
+Always, always, always, inspect your data once you've created or loaded a table and after each step that transforms your table. The quickest and most basic way is to look at your table using  `View()` or `print()`. You can also use functions like `tibble::glimpse()`, `summary()` or `skimr::skim()` to summarise your data. Finally, the best way to really understand your data is to plot it using the skills we learned in Chapter\ \@ref(ggplot).
 
-#### View() 
+#### Viewing data
 
-A familiar way to look at the table is given by <code><span><span class='fu'><a target='_blank' href='https://rdrr.io/r/utils/View.html'>View</a></span><span class='op'>(</span><span class='op'>)</span></span></code> (uppercase 'V'). This command can be useful in the console, but don't ever put this one in a script because it will create an annoying pop-up window when the user runs it. Or you can click on an objects in the  <a class='glossary' target='_blank' title='RStudio is arranged with four window "panes".' href='https://psyteachr.github.io/glossary/p#panes'>environment pane</a> to open it up in a viewer that looks a bit like Excel. You can close the tab when you're done looking at it; it won't remove the object.
-
-#### print() 
+A familiar way to look at the table is given by `View()` (uppercase 'V'). This command can be useful in the console, but don't ever put this one in a script because it will create an annoying pop-up window when the user runs it. Or you can click on an objects in the  <a class='glossary' target='_blank' title='RStudio is arranged with four window "panes".' href='https://psyteachr.github.io/glossary/p#panes'>environment pane</a> to open it up in a viewer that looks a bit like Excel. You can close the tab when you're done looking at it; it won't remove the object.
 
 The <code><span><span class='fu'><a target='_blank' href='https://rdrr.io/r/base/print.html'>print</a></span><span class='op'>(</span><span class='op'>)</span></span></code> method can be run explicitly, but is more commonly called by just typing the variable name on the blank line. The default is not to print the entire table, but just the first 10 rows. 
 
@@ -598,9 +618,9 @@ demo_tsv
 Remember that the way tables are displayed can look different in the interactive interface from the knit version, depending on how df_print is set.
 :::
 
-#### glimpse() 
+#### Summarising data
 
-The function <code><span><span class='fu'>tibble</span><span class='fu'>::</span><span class='fu'><a target='_blank' href='https://pillar.r-lib.org/reference/glimpse.html'>glimpse</a></span><span class='op'>(</span><span class='op'>)</span></span></code> gives a sideways version of the table. This is useful if the table is very wide and you can't see all of the columns. It also tells you the <a class='glossary' target='_blank' title='The kind of data represented by an object.' href='https://psyteachr.github.io/glossary/d#data-type'>data type</a> of each column in angled brackets after each column name. 
+The function `tibble::glimpse()` gives a sideways version of the table. This is useful if the table is very wide and you can't see all of the columns. It also tells you the <a class='glossary' target='_blank' title='The kind of data represented by an object.' href='https://psyteachr.github.io/glossary/d#data-type'>data type</a> of each column in angled brackets after each column name. 
 
 
 ```r
@@ -617,9 +637,7 @@ glimpse(demo_xls)
 ## $ date      <chr> "05-Sep-21", "04-Sep-21", "03-Sep-21", "02-Sep-21", "01-Sep-…
 ```
 
-#### summary() {#summary-function}
-
-You can get a quick summary of a dataset with the <code><span><span class='fu'><a target='_blank' href='https://rdrr.io/r/base/summary.html'>summary</a></span><span class='op'>(</span><span class='op'>)</span></span></code> function.
+You can get a quick summary of a dataset with the `summary()` function.
 
 
 ```r
@@ -655,7 +673,7 @@ skimr::skim(demo)
 
 <table style='width: auto;'
       class='table table-condensed'>
-<caption>(\#tab:unnamed-chunk-8)Data summary</caption>
+<caption>(\#tab:skimr-demo)Data summary</caption>
 <tbody>
   <tr>
    <td style="text-align:left;"> Name </td>
@@ -1045,7 +1063,7 @@ class(FALSE)
 ::: {.info data-latex=""}
 You might also see logical values abbreviated as `T` and `F`, or `0` and `1`. This can cause some problems down the road, so we will always spell out the whole thing.
 
-R Markdown headers use YAML format, not R, so the logical values are lowercase true and false.
+R Markdown headers use YAML format, not R, so the logical values are lowercase `true` and `false` without quotes.
 :::
 
 When you compare two values with an <a class='glossary' target='_blank' title='A symbol that performs some mathematical or comparative process. ' href='https://psyteachr.github.io/glossary/o#operator'>operator</a>, such as checking to see if 10 is greater than 5, the resulting value is logical.
@@ -1109,7 +1127,6 @@ class(datetime)
 ```
 
 See Appendix\ \@ref(dates-times) for how to use <code class='package'>lubridate</code> to work with dates and times.
-
 
 
 
@@ -1326,7 +1343,7 @@ subject_ids[yynn]
 
 #### Vectorized Operations {#vectorized_ops}
 
-R performs calculations on vectors in a special way. Let's look at an example using $z$-scores.  A $z$-score is a <a class='glossary' target='_blank' title='A score minus the mean' href='https://psyteachr.github.io/glossary/d#deviation-score'>deviation score</a>(a score minus a mean) divided by a standard deviation. Let's say we have a set of four IQ scores.
+R performs calculations on vectors in a special way. Let's look at an example using $z$-scores.  A $z$-score is a <a class='glossary' target='_blank' title='A score minus the mean' href='https://psyteachr.github.io/glossary/d#deviation-score'>deviation score</a> divided by a <a class='glossary' target='_blank' title='A descriptive statistic that measures how spread out data are relative to the mean.' href='https://psyteachr.github.io/glossary/s#standard-deviation'>standard deviation</a>. Let's say we have a set of four IQ scores.
 
 
 ```r
@@ -1981,6 +1998,10 @@ tidiest
   <tr>
    <td style="text-align:left;"> [panes](https://psyteachr.github.io/glossary/p.html#panes){class="glossary" target="_blank"} </td>
    <td style="text-align:left;"> RStudio is arranged with four window "panes". </td>
+  </tr>
+  <tr>
+   <td style="text-align:left;"> [standard deviation](https://psyteachr.github.io/glossary/s.html#standard-deviation){class="glossary" target="_blank"} </td>
+   <td style="text-align:left;"> A descriptive statistic that measures how spread out data are relative to the mean. </td>
   </tr>
   <tr>
    <td style="text-align:left;"> [tabular data](https://psyteachr.github.io/glossary/t.html#tabular-data){class="glossary" target="_blank"} </td>

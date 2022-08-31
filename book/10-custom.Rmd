@@ -16,7 +16,7 @@
 1. Replace the setup chunk with the one below
 1. Check that you have all packages installed
 
-```{r setup-data, results = 'hide', warning = FALSE, message = FALSE, verbatim = "r setup, include = FALSE"}
+```{r setup-custom-viz, results = 'hide', warning = FALSE, message = FALSE, verbatim = "r setup, include = FALSE"}
 knitr::opts_chunk$set(echo = TRUE)
 
 # packages needed for this chapter section
@@ -706,7 +706,7 @@ There are so many more options for data visualisation in R than we have time to 
 1. Update the YAML header 
 1. Replace the setup chunk with the one below
 
-```{r setup-data, results = 'hide', warning = FALSE, message = FALSE, verbatim = "r setup, include = FALSE"}
+```{r setup-custom-reports, results = 'hide', warning = FALSE, message = FALSE, verbatim = "r setup, include = FALSE"}
 knitr::opts_chunk$set(echo = TRUE)
 
 # packages needed for this chapter section

@@ -41,7 +41,7 @@ In the next two lectures, we are going to learn more about `r glossary("iteratio
 1. Update the YAML header 
 1. Replace the setup chunk with the one below: 
 
-```{r setup-data, results = 'hide', warning = FALSE, message = FALSE, verbatim = "r setup, include = FALSE"}
+```{r setup-func, results = 'hide', warning = FALSE, message = FALSE, verbatim = "r setup, include = FALSE"}
 knitr::opts_chunk$set(echo = TRUE)
 
 # packages needed for this chapter

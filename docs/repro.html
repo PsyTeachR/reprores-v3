@@ -96,16 +96,17 @@
 <li><a class="" href="acknowledgements.html">Acknowledgements</a></li>
 <li class="book-part">Appendices</li>
 <li><a class="" href="installingr.html"><span class="header-section-number">A</span> Installing and Updating</a></li>
-<li><a class="" href="conventions.html"><span class="header-section-number">B</span> Conventions</a></li>
-<li><a class="" href="symbols.html"><span class="header-section-number">C</span> Symbols</a></li>
-<li><a class="" href="datasets.html"><span class="header-section-number">D</span> Datasets</a></li>
-<li><a class="" href="exercises.html"><span class="header-section-number">E</span> Exercises</a></li>
-<li><a class="" href="plotstyle.html"><span class="header-section-number">F</span> Styling Plots</a></li>
-<li><a class="" href="dates-times.html"><span class="header-section-number">G</span> Dates and Times</a></li>
-<li><a class="" href="twitter-hashtags.html"><span class="header-section-number">H</span> Twitter Hashtags</a></li>
-<li><a class="" href="twitter-data.html"><span class="header-section-number">I</span> Twitter Data</a></li>
-<li><a class="" href="webpages.html"><span class="header-section-number">J</span> Webpages</a></li>
-<li><a class="" href="bookrefs.html"><span class="header-section-number">K</span> References</a></li>
+<li><a class="" href="getting-help.html"><span class="header-section-number">B</span> Getting Help</a></li>
+<li><a class="" href="conventions.html"><span class="header-section-number">C</span> Conventions</a></li>
+<li><a class="" href="symbols.html"><span class="header-section-number">D</span> Symbols</a></li>
+<li><a class="" href="datasets.html"><span class="header-section-number">E</span> Datasets</a></li>
+<li><a class="" href="exercises.html"><span class="header-section-number">F</span> Exercises</a></li>
+<li><a class="" href="plotstyle.html"><span class="header-section-number">G</span> Styling Plots</a></li>
+<li><a class="" href="dates-times.html"><span class="header-section-number">H</span> Dates and Times</a></li>
+<li><a class="" href="twitter-hashtags.html"><span class="header-section-number">I</span> Twitter Hashtags</a></li>
+<li><a class="" href="twitter-data.html"><span class="header-section-number">J</span> Twitter Data</a></li>
+<li><a class="" href="webpages.html"><span class="header-section-number">K</span> Webpages</a></li>
+<li><a class="" href="bookrefs.html"><span class="header-section-number">L</span> References</a></li>
 </ul>
 
         <div class="book-extra">
@@ -144,9 +145,17 @@
 <h2>
 <span class="header-section-number">2.2</span> Setup<a class="anchor" aria-label="anchor" href="#setup-repro"><i class="fas fa-link"></i></a>
 </h2>
+<p>You will be given instructions in Section <a href="repro.html#new-project">2.4.4</a> below to set up a new project where you will keep all of your class notes. Section <a href="repro.html#r-markdown">2.5</a> gives instructions to set up an R Markdown script for this chapter.</p>
+<p>For reference, here are the packages we will use in this chapter.</p>
 <div class="sourceCode" id="cb46"><pre class="downlit sourceCode r">
-<code class="sourceCode R"><span><span class="kw"><a href="https://rdrr.io/r/base/library.html">library</a></span><span class="op">(</span><span class="va"><a href="https://tidyverse.tidyverse.org">tidyverse</a></span><span class="op">)</span></span>
-<span><span class="kw"><a href="https://rdrr.io/r/base/library.html">library</a></span><span class="op">(</span><span class="va"><a href="https://yihui.org/knitr/">knitr</a></span><span class="op">)</span></span></code></pre></div>
+<code class="sourceCode R"><span><span class="co"># packages needed for this chapter</span></span>
+<span><span class="kw"><a href="https://rdrr.io/r/base/library.html">library</a></span><span class="op">(</span><span class="va"><a href="https://tidyverse.tidyverse.org">tidyverse</a></span><span class="op">)</span>  <span class="co"># various data manipulation functions</span></span>
+<span><span class="kw"><a href="https://rdrr.io/r/base/library.html">library</a></span><span class="op">(</span><span class="va"><a href="https://yihui.org/knitr/">knitr</a></span><span class="op">)</span>      <span class="co"># for table and image display</span></span>
+<span><span class="kw"><a href="https://rdrr.io/r/base/library.html">library</a></span><span class="op">(</span><span class="va"><a href="http://haozhu233.github.io/kableExtra/">kableExtra</a></span><span class="op">)</span> <span class="co"># for styling tables</span></span>
+<span><span class="kw"><a href="https://rdrr.io/r/base/library.html">library</a></span><span class="op">(</span><span class="va"><a href="https://github.com/crsh/papaja">papaja</a></span><span class="op">)</span>     <span class="co"># for APA-style tables</span></span>
+<span><span class="kw"><a href="https://rdrr.io/r/base/library.html">library</a></span><span class="op">(</span><span class="va"><a href="https://gt.rstudio.com/">gt</a></span><span class="op">)</span>         <span class="co"># for fancy tables</span></span>
+<span><span class="kw"><a href="https://rdrr.io/r/base/library.html">library</a></span><span class="op">(</span><span class="va"><a href="https://github.com/rstudio/DT">DT</a></span><span class="op">)</span>         <span class="co"># for interactive tables</span></span></code></pre></div>
+<p>Download the <a href="https://www.rstudio.org/links/r_markdown_cheat_sheet">R Markdown Cheat Sheet</a>.</p>
 </div>
 <div id="why-learn-reproducible-reports" class="section level2" number="2.3">
 <h2>
@@ -253,36 +262,39 @@
 <p>Think of other ways to name the files above. Look at some of your own project files and see what you can improve.</p>
 </div>
 </div>
-<div id="start-a-project" class="section level3" number="2.4.4">
+<div id="new-project" class="section level3" number="2.4.4">
 <h3>
-<span class="header-section-number">2.4.4</span> Start a Project<a class="anchor" aria-label="anchor" href="#start-a-project"><i class="fas fa-link"></i></a>
+<span class="header-section-number">2.4.4</span> Start a Project<a class="anchor" aria-label="anchor" href="#new-project"><i class="fas fa-link"></i></a>
 </h3>
-<p>Now that we understand how the file system work and how to name things to make it easier for scripts to access them, we're ready to make our first project.</p>
-<p>First, make a new <a class="glossary" target="_blank" title='A collection or "folder" of files on a computer.' href="https://psyteachr.github.io/glossary/d#directory">directory</a> where you will keep all of your materials for this class. You can set this directory to be the default working directory under the General tab of the Global Options. This means that files will be saved here by default if you aren't working in a project.</p>
-<p>Next, choose <strong><code>New Project...</code></strong> under the <strong><code>File</code></strong> menu to create a new project called <code class="path">02-reports</code>. Make sure you save it inside the directory you just made. RStudio will restart itself and open with this new project directory as the working directory.</p>
+<p>Now that we understand how the file system work and how to name things to make it easier for scripts to access them, we're ready to make our class project.</p>
+<p>First, make a new <a class="glossary" target="_blank" title='A collection or "folder" of files on a computer.' href="https://psyteachr.github.io/glossary/d#directory">directory</a> where you will keep all of your materials for this class (I called mine <code>reprores-2022</code>). You can set this directory to be the default working directory under the General tab of the Global Options. This means that files will be saved here by default if you aren't working in a project.</p>
+<div class="warning">
+<p>It can sometimes cause problems if this directory is in OneDrive or if the full file path has special characters or is <a href="http://handbook.datalad.org/en/latest/intro/filenaming.html" target="_blank">more than 260 characters</a> on some Windows machines.</p>
+</div>
+<p>Next, choose <strong><code>New Project...</code></strong> under the <strong><code>File</code></strong> menu to create a new project called <code class="path">reprores-class-notes</code>. Make sure you save it inside the directory you just made. RStudio will restart itself and open with this new project directory as the working directory.</p>
 <div class="sourceCode" id="cb49"><pre class="downlit sourceCode r">
 <code class="sourceCode R"><span><span class="fu"><a href="https://rdrr.io/pkg/knitr/man/include_graphics.html">include_graphics</a></span><span class="op">(</span><span class="fu"><a href="https://rdrr.io/r/base/c.html">c</a></span><span class="op">(</span><span class="st">"images/repro/new_proj_1.png"</span>,</span>
 <span>                   <span class="st">"images/repro/new_proj_2.png"</span>,</span>
 <span>                   <span class="st">"images/repro/new_proj_3.png"</span><span class="op">)</span><span class="op">)</span></span></code></pre></div>
 <div class="figure" style="text-align: center">
-<span style="display:block;" id="fig:unnamed-chunk-2-1"></span>
+<span style="display:block;" id="fig:unnamed-chunk-1-1"></span>
 <img src="images/repro/new_proj_1.png" alt="Starting a new project." width="100%"><p class="caption">
 Figure 2.1: Starting a new project.
 </p>
 </div>
 <div class="figure" style="text-align: center">
-<span style="display:block;" id="fig:unnamed-chunk-2-2"></span>
+<span style="display:block;" id="fig:unnamed-chunk-1-2"></span>
 <img src="images/repro/new_proj_2.png" alt="Starting a new project." width="100%"><p class="caption">
 Figure 2.2: Starting a new project.
 </p>
 </div>
 <div class="figure" style="text-align: center">
-<span style="display:block;" id="fig:unnamed-chunk-2-3"></span>
+<span style="display:block;" id="fig:unnamed-chunk-1-3"></span>
 <img src="images/repro/new_proj_3.png" alt="Starting a new project." width="100%"><p class="caption">
 Figure 2.3: Starting a new project.
 </p>
 </div>
-<p>Click on the Files tab in the lower right pane to see the contents of the project directory. You will see a file called <code>02-reports.Rproj</code>, which is a file that contains all of the project information.You can double-click on it to open up the project.</p>
+<p>Click on the Files tab in the lower right pane to see the contents of the project directory. You will see a file called <code>reprores-class-notes.Rproj</code>, which is a file that contains all of the project information.You can double-click on it to open up the project.</p>
 <div class="info">
 <p>Depending on your settings, you may also see a directory called <code>.Rproj.user</code>, which contains your specific user settings. You can ignore this and other "invisible" files that start with a full stop.</p>
 </div>
@@ -299,13 +311,13 @@ Figure 2.3: Starting a new project.
 <p>We will use <a class="glossary" target="_blank" title="The R-specific version of markdown: a way to specify formatting, such as headers, paragraphs, lists, bolding, and links, as well as code blocks and inline code." href="https://psyteachr.github.io/glossary/r#r-markdown">R Markdown</a> to create reproducible reports, which enables mixing of text and code. A reproducible script will contain sections of code in code blocks. A code block starts and ends with three backtick symbols in a row, with some information about the code between curly brackets, such as <code>{r chunk-name, echo=FALSE}</code> (this runs the code, but does not show the text of the code block in the compiled document). The text outside of code blocks is written in <a class="glossary" target="_blank" title="A way to specify formatting, such as headers, paragraphs, lists, bolding, and links." href="https://psyteachr.github.io/glossary/m#markdown">markdown</a>, which is a way to specify formatting, such as headers, paragraphs, lists, bolding, and links.</p>
 <div class="figure" style="text-align: center">
 <span style="display:block;" id="fig:img-reproducible-script"></span>
-<img src="images/repro/reproducible_script.png" alt="A reproducible script." width="100%"><p class="caption">
+<img src="images/repro/reproducible_script.png" alt="A screenshot of a script with line numbers, code blocks, and markdown text" width="100%"><p class="caption">
 Figure 2.4: A reproducible script.
 </p>
 </div>
 <p>If you open up a new R Markdown file from a template, you will see an example document with several code blocks in it. To create an HTML or PDF report from an R Markdown (Rmd) document, you compile it. Compiling a document is called <a class="glossary" target="_blank" title="To create an HTML, PDF, or Word document from an R Markdown (Rmd) document" href="https://psyteachr.github.io/glossary/k#knit">knitting</a> in RStudio. There is a button that looks like a ball of yarn with needles through it that you click on to compile your file into a report.</p>
 <div class="try">
-<p>Create a new R Markdown file from the <strong><code>File &gt; New File &gt; R Markdown...</code></strong> menu. Change the title and author, then click the knit button to create an html file.</p>
+<p>Create a new R Markdown file from the <strong><code>File &gt; New File &gt; R Markdown...</code></strong> menu. Change the title and author, save the file as <code>02-repro.Rmd</code>, then click the knit button to create an html file.</p>
 </div>
 <div id="yaml" class="section level3" number="2.5.1">
 <h3>
@@ -736,12 +748,12 @@ ferret
 <span>  <span class="fu"><a href="https://gt.rstudio.com/reference/tab_spanner.html">tab_spanner</a></span><span class="op">(</span>label <span class="op">=</span> <span class="st">"Means"</span>,</span>
 <span>              columns <span class="op">=</span> <span class="fu"><a href="https://rdrr.io/r/base/c.html">c</a></span><span class="op">(</span><span class="va">mean_weight</span>, <span class="va">mean_score</span><span class="op">)</span><span class="op">)</span> <span class="op">|&gt;</span></span>
 <span> <span class="fu"><a href="https://gt.rstudio.com/reference/opt_stylize.html">opt_stylize</a></span><span class="op">(</span>style <span class="op">=</span> <span class="fl">6</span>, color <span class="op">=</span> <span class="st">"blue"</span><span class="op">)</span></span></code></pre></div>
-<div id="ceatgionfl" style="overflow-x:auto;overflow-y:auto;width:auto;height:auto;">
+<div id="jxiruiduve" style="overflow-x:auto;overflow-y:auto;width:auto;height:auto;">
 <style>html {
   font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Oxygen, Ubuntu, Cantarell, 'Helvetica Neue', 'Fira Sans', 'Droid Sans', Arial, sans-serif;
 }
 
-#ceatgionfl .gt_table {
+#jxiruiduve .gt_table {
   display: table;
   border-collapse: collapse;
   margin-left: auto;
@@ -766,7 +778,7 @@ ferret
   border-left-color: #D3D3D3;
 }
 
-#ceatgionfl .gt_heading {
+#jxiruiduve .gt_heading {
   background-color: #FFFFFF;
   text-align: center;
   border-bottom-color: #FFFFFF;
@@ -778,7 +790,7 @@ ferret
   border-right-color: #D3D3D3;
 }
 
-#ceatgionfl .gt_title {
+#jxiruiduve .gt_title {
   color: #333333;
   font-size: 125%;
   font-weight: initial;
@@ -790,7 +802,7 @@ ferret
   border-bottom-width: 0;
 }
 
-#ceatgionfl .gt_subtitle {
+#jxiruiduve .gt_subtitle {
   color: #333333;
   font-size: 85%;
   font-weight: initial;
@@ -802,13 +814,13 @@ ferret
   border-top-width: 0;
 }
 
-#ceatgionfl .gt_bottom_border {
+#jxiruiduve .gt_bottom_border {
   border-bottom-style: solid;
   border-bottom-width: 2px;
   border-bottom-color: #5F5F5F;
 }
 
-#ceatgionfl .gt_col_headings {
+#jxiruiduve .gt_col_headings {
   border-top-style: solid;
   border-top-width: 2px;
   border-top-color: #5F5F5F;
@@ -823,7 +835,7 @@ ferret
   border-right-color: #D3D3D3;
 }
 
-#ceatgionfl .gt_col_heading {
+#jxiruiduve .gt_col_heading {
   color: #FFFFFF;
   background-color: #0076BA;
   font-size: 100%;
@@ -843,7 +855,7 @@ ferret
   overflow-x: hidden;
 }
 
-#ceatgionfl .gt_column_spanner_outer {
+#jxiruiduve .gt_column_spanner_outer {
   color: #FFFFFF;
   background-color: #0076BA;
   font-size: 100%;
@@ -855,15 +867,15 @@ ferret
   padding-right: 4px;
 }
 
-#ceatgionfl .gt_column_spanner_outer:first-child {
+#jxiruiduve .gt_column_spanner_outer:first-child {
   padding-left: 0;
 }
 
-#ceatgionfl .gt_column_spanner_outer:last-child {
+#jxiruiduve .gt_column_spanner_outer:last-child {
   padding-right: 0;
 }
 
-#ceatgionfl .gt_column_spanner {
+#jxiruiduve .gt_column_spanner {
   border-bottom-style: solid;
   border-bottom-width: 2px;
   border-bottom-color: #5F5F5F;
@@ -875,7 +887,7 @@ ferret
   width: 100%;
 }
 
-#ceatgionfl .gt_group_heading {
+#jxiruiduve .gt_group_heading {
   padding-top: 8px;
   padding-bottom: 8px;
   padding-left: 5px;
@@ -900,7 +912,7 @@ ferret
   vertical-align: middle;
 }
 
-#ceatgionfl .gt_empty_group_heading {
+#jxiruiduve .gt_empty_group_heading {
   padding: 0.5px;
   color: #333333;
   background-color: #FFFFFF;
@@ -915,15 +927,15 @@ ferret
   vertical-align: middle;
 }
 
-#ceatgionfl .gt_from_md > :first-child {
+#jxiruiduve .gt_from_md > :first-child {
   margin-top: 0;
 }
 
-#ceatgionfl .gt_from_md > :last-child {
+#jxiruiduve .gt_from_md > :last-child {
   margin-bottom: 0;
 }
 
-#ceatgionfl .gt_row {
+#jxiruiduve .gt_row {
   padding-top: 8px;
   padding-bottom: 8px;
   padding-left: 5px;
@@ -942,7 +954,7 @@ ferret
   overflow-x: hidden;
 }
 
-#ceatgionfl .gt_stub {
+#jxiruiduve .gt_stub {
   color: #333333;
   background-color: #89D3FE;
   font-size: 100%;
@@ -955,7 +967,7 @@ ferret
   padding-right: 5px;
 }
 
-#ceatgionfl .gt_stub_row_group {
+#jxiruiduve .gt_stub_row_group {
   color: #333333;
   background-color: #FFFFFF;
   font-size: 100%;
@@ -969,11 +981,11 @@ ferret
   vertical-align: top;
 }
 
-#ceatgionfl .gt_row_group_first td {
+#jxiruiduve .gt_row_group_first td {
   border-top-width: 2px;
 }
 
-#ceatgionfl .gt_summary_row {
+#jxiruiduve .gt_summary_row {
   color: #333333;
   background-color: #FFFFFF;
   text-transform: inherit;
@@ -983,16 +995,16 @@ ferret
   padding-right: 5px;
 }
 
-#ceatgionfl .gt_first_summary_row {
+#jxiruiduve .gt_first_summary_row {
   border-top-style: solid;
   border-top-color: #5F5F5F;
 }
 
-#ceatgionfl .gt_first_summary_row.thick {
+#jxiruiduve .gt_first_summary_row.thick {
   border-top-width: 2px;
 }
 
-#ceatgionfl .gt_last_summary_row {
+#jxiruiduve .gt_last_summary_row {
   padding-top: 8px;
   padding-bottom: 8px;
   padding-left: 5px;
@@ -1002,7 +1014,7 @@ ferret
   border-bottom-color: #5F5F5F;
 }
 
-#ceatgionfl .gt_grand_summary_row {
+#jxiruiduve .gt_grand_summary_row {
   color: #333333;
   background-color: #D5D5D5;
   text-transform: inherit;
@@ -1012,7 +1024,7 @@ ferret
   padding-right: 5px;
 }
 
-#ceatgionfl .gt_first_grand_summary_row {
+#jxiruiduve .gt_first_grand_summary_row {
   padding-top: 8px;
   padding-bottom: 8px;
   padding-left: 5px;
@@ -1022,11 +1034,11 @@ ferret
   border-top-color: #5F5F5F;
 }
 
-#ceatgionfl .gt_striped {
+#jxiruiduve .gt_striped {
   background-color: #EDF7FC;
 }
 
-#ceatgionfl .gt_table_body {
+#jxiruiduve .gt_table_body {
   border-top-style: solid;
   border-top-width: 2px;
   border-top-color: #5F5F5F;
@@ -1035,7 +1047,7 @@ ferret
   border-bottom-color: #5F5F5F;
 }
 
-#ceatgionfl .gt_footnotes {
+#jxiruiduve .gt_footnotes {
   color: #333333;
   background-color: #FFFFFF;
   border-bottom-style: none;
@@ -1049,7 +1061,7 @@ ferret
   border-right-color: #D3D3D3;
 }
 
-#ceatgionfl .gt_footnote {
+#jxiruiduve .gt_footnote {
   margin: 0px;
   font-size: 90%;
   padding-left: 4px;
@@ -1058,7 +1070,7 @@ ferret
   padding-right: 5px;
 }
 
-#ceatgionfl .gt_sourcenotes {
+#jxiruiduve .gt_sourcenotes {
   color: #333333;
   background-color: #FFFFFF;
   border-bottom-style: none;
@@ -1072,7 +1084,7 @@ ferret
   border-right-color: #D3D3D3;
 }
 
-#ceatgionfl .gt_sourcenote {
+#jxiruiduve .gt_sourcenote {
   font-size: 90%;
   padding-top: 4px;
   padding-bottom: 4px;
@@ -1080,64 +1092,64 @@ ferret
   padding-right: 5px;
 }
 
-#ceatgionfl .gt_left {
+#jxiruiduve .gt_left {
   text-align: left;
 }
 
-#ceatgionfl .gt_center {
+#jxiruiduve .gt_center {
   text-align: center;
 }
 
-#ceatgionfl .gt_right {
+#jxiruiduve .gt_right {
   text-align: right;
   font-variant-numeric: tabular-nums;
 }
 
-#ceatgionfl .gt_font_normal {
+#jxiruiduve .gt_font_normal {
   font-weight: normal;
 }
 
-#ceatgionfl .gt_font_bold {
+#jxiruiduve .gt_font_bold {
   font-weight: bold;
 }
 
-#ceatgionfl .gt_font_italic {
+#jxiruiduve .gt_font_italic {
   font-style: italic;
 }
 
-#ceatgionfl .gt_super {
+#jxiruiduve .gt_super {
   font-size: 65%;
 }
 
-#ceatgionfl .gt_footnote_marks {
+#jxiruiduve .gt_footnote_marks {
   font-style: italic;
   font-weight: normal;
   font-size: 75%;
   vertical-align: 0.4em;
 }
 
-#ceatgionfl .gt_asterisk {
+#jxiruiduve .gt_asterisk {
   font-size: 100%;
   vertical-align: 0;
 }
 
-#ceatgionfl .gt_indent_1 {
+#jxiruiduve .gt_indent_1 {
   text-indent: 5px;
 }
 
-#ceatgionfl .gt_indent_2 {
+#jxiruiduve .gt_indent_2 {
   text-indent: 10px;
 }
 
-#ceatgionfl .gt_indent_3 {
+#jxiruiduve .gt_indent_3 {
   text-indent: 15px;
 }
 
-#ceatgionfl .gt_indent_4 {
+#jxiruiduve .gt_indent_4 {
   text-indent: 20px;
 }
 
-#ceatgionfl .gt_indent_5 {
+#jxiruiduve .gt_indent_5 {
   text-indent: 25px;
 }
 </style>
@@ -1183,15 +1195,15 @@ ferret
 </div>
 <!-- Tab content -->
 <div id="DT" class="tabcontent">
-<p><a href="https://rstudio.github.io/DT/">DT</a> lets you make interactive data tables. It can be tricky to customise, but the defaults are similar to other table functions.</p>
+<p><a href="https://rstudio.github.io/DT/">DT</a> lets you make interactive data tables. Chapter <a href="custom.html#interactive-tables">10.3.3</a> goes into more details about this type of table.</p>
 <div class="sourceCode" id="cb60"><pre class="downlit sourceCode r">
 <code class="sourceCode R"><span><span class="fu">DT</span><span class="fu">::</span><span class="fu"><a href="https://rdrr.io/pkg/DT/man/datatable.html">datatable</a></span><span class="op">(</span><span class="va">summary_table</span>, </span>
 <span>              caption <span class="op">=</span> <span class="st">"Summary statistics for the pets dataset."</span>,</span>
 <span>              colnames <span class="op">=</span> <span class="fu"><a href="https://rdrr.io/r/base/c.html">c</a></span><span class="op">(</span><span class="st">"Pet Type"</span>, <span class="st">"N"</span>, <span class="st">"Weight"</span>, <span class="st">"Score"</span><span class="op">)</span><span class="op">)</span> <span class="op">|&gt;</span></span>
 <span>  <span class="fu">DT</span><span class="fu">::</span><span class="fu"><a href="https://rdrr.io/pkg/DT/man/formatCurrency.html">formatRound</a></span><span class="op">(</span><span class="fu"><a href="https://rdrr.io/r/base/c.html">c</a></span><span class="op">(</span><span class="st">"mean_weight"</span>, <span class="st">"mean_score"</span><span class="op">)</span>,</span>
 <span>                  digits <span class="op">=</span> <span class="fl">2</span><span class="op">)</span></span></code></pre></div>
-<div id="htmlwidget-3c47dd0fab7617369218" style="width:100%;height:auto;" class="datatables html-widget"></div>
-<script type="application/json" data-for="htmlwidget-3c47dd0fab7617369218">{"x":{"filter":"none","vertical":false,"caption":"<caption>Summary statistics for the pets dataset.<\/caption>","data":[["1","2","3"],["cat","dog","ferret"],[300,400,100],[9.3716129083,19.0679737427696,4.78156944173321],[90.2366666666667,99.9825,111.78]],"container":"<table class=\"display\">\n  <thead>\n    <tr>\n      <th> <\/th>\n      <th>Pet Type<\/th>\n      <th>N<\/th>\n      <th>Weight<\/th>\n      <th>Score<\/th>\n    <\/tr>\n  <\/thead>\n<\/table>","options":{"columnDefs":[{"targets":3,"render":"function(data, type, row, meta) {\n    return type !== 'display' ? data : DTWidget.formatRound(data, 2, 3, \",\", \".\", null);\n  }"},{"targets":4,"render":"function(data, type, row, meta) {\n    return type !== 'display' ? data : DTWidget.formatRound(data, 2, 3, \",\", \".\", null);\n  }"},{"className":"dt-right","targets":[2,3,4]},{"orderable":false,"targets":0}],"order":[],"autoWidth":false,"orderClasses":false}},"evals":["options.columnDefs.0.render","options.columnDefs.1.render"],"jsHooks":[]}</script>
+<div id="htmlwidget-045af8de0b5527b123a7" style="width:100%;height:auto;" class="datatables html-widget"></div>
+<script type="application/json" data-for="htmlwidget-045af8de0b5527b123a7">{"x":{"filter":"none","vertical":false,"caption":"<caption>Summary statistics for the pets dataset.<\/caption>","data":[["1","2","3"],["cat","dog","ferret"],[300,400,100],[9.3716129083,19.0679737427696,4.78156944173321],[90.2366666666667,99.9825,111.78]],"container":"<table class=\"display\">\n  <thead>\n    <tr>\n      <th> <\/th>\n      <th>Pet Type<\/th>\n      <th>N<\/th>\n      <th>Weight<\/th>\n      <th>Score<\/th>\n    <\/tr>\n  <\/thead>\n<\/table>","options":{"columnDefs":[{"targets":3,"render":"function(data, type, row, meta) {\n    return type !== 'display' ? data : DTWidget.formatRound(data, 2, 3, \",\", \".\", null);\n  }"},{"targets":4,"render":"function(data, type, row, meta) {\n    return type !== 'display' ? data : DTWidget.formatRound(data, 2, 3, \",\", \".\", null);\n  }"},{"className":"dt-right","targets":[2,3,4]},{"orderable":false,"targets":0}],"order":[],"autoWidth":false,"orderClasses":false}},"evals":["options.columnDefs.0.render","options.columnDefs.1.render"],"jsHooks":[]}</script>
 </div>
 </div>
 <div id="repro-figures" class="section level3" number="2.5.6">
@@ -1214,12 +1226,12 @@ ggplot(pets, aes(pet, score, fill = country)) +
 ```
 
 &lt;div class="figure" style="text-align: center"&gt;
-&lt;img src="02-repro_files/figure-html/unnamed-chunk-6-1.png" alt="Figure 1. Scores by pet type and country." width="100%" /&gt;
-&lt;p class="caption"&gt;(\#fig:unnamed-chunk-6)Figure 1. Scores by pet type and country.&lt;/p&gt;
+&lt;img src="02-repro_files/figure-html/unnamed-chunk-5-1.png" alt="Figure 1. Scores by pet type and country." width="100%" /&gt;
+&lt;p class="caption"&gt;(\#fig:unnamed-chunk-5)Figure 1. Scores by pet type and country.&lt;/p&gt;
 &lt;/div&gt;</code></pre>
 <div class="figure" style="text-align: center">
-<span style="display:block;" id="fig:unnamed-chunk-7"></span>
-<img src="02-repro_files/figure-html/unnamed-chunk-7-1.png" alt="Figure 1. Scores by pet type and country." width="100%"><p class="caption">
+<span style="display:block;" id="fig:unnamed-chunk-6"></span>
+<img src="02-repro_files/figure-html/unnamed-chunk-6-1.png" alt="Figure 1. Scores by pet type and country." width="100%"><p class="caption">
 Figure 2.6: Figure 1. Scores by pet type and country.
 </p>
 </div>
@@ -1770,7 +1782,7 @@ function openCity(evt, cityName) {
 <li><a class="nav-link" href="#file-system"><span class="header-section-number">2.4.1</span> File System</a></li>
 <li><a class="nav-link" href="#working-directory"><span class="header-section-number">2.4.2</span> Working Directory</a></li>
 <li><a class="nav-link" href="#naming-things"><span class="header-section-number">2.4.3</span> Naming Things</a></li>
-<li><a class="nav-link" href="#start-a-project"><span class="header-section-number">2.4.4</span> Start a Project</a></li>
+<li><a class="nav-link" href="#new-project"><span class="header-section-number">2.4.4</span> Start a Project</a></li>
 </ul>
 </li>
 <li>
@@ -1805,7 +1817,7 @@ function openCity(evt, cityName) {
 <footer class="bg-primary text-light mt-5"><div class="container"><div class="row">
 
   <div class="col-12 col-md-6 mt-3">
-    <p>"<strong>Data Skills for Reproducible Research</strong>: <br><a href="https://doi.org/10.5281/zenodo.6527194"><img src="https://zenodo.org/badge/DOI/10.5281/zenodo.6527194.svg" alt="DOI: 10.5281/zenodo.6527194"></a>" was written by . It was last built on 2022-08-30.</p>
+    <p>"<strong>Data Skills for Reproducible Research</strong>: <br><a href="https://doi.org/10.5281/zenodo.6527194"><img src="https://zenodo.org/badge/DOI/10.5281/zenodo.6527194.svg" alt="DOI: 10.5281/zenodo.6527194"></a>" was written by . It was last built on 2022-08-31.</p>
   </div>
 
   <div class="col-12 col-md-6 mt-3">

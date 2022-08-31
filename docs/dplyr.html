@@ -96,16 +96,17 @@
 <li><a class="" href="acknowledgements.html">Acknowledgements</a></li>
 <li class="book-part">Appendices</li>
 <li><a class="" href="installingr.html"><span class="header-section-number">A</span> Installing and Updating</a></li>
-<li><a class="" href="conventions.html"><span class="header-section-number">B</span> Conventions</a></li>
-<li><a class="" href="symbols.html"><span class="header-section-number">C</span> Symbols</a></li>
-<li><a class="" href="datasets.html"><span class="header-section-number">D</span> Datasets</a></li>
-<li><a class="" href="exercises.html"><span class="header-section-number">E</span> Exercises</a></li>
-<li><a class="" href="plotstyle.html"><span class="header-section-number">F</span> Styling Plots</a></li>
-<li><a class="" href="dates-times.html"><span class="header-section-number">G</span> Dates and Times</a></li>
-<li><a class="" href="twitter-hashtags.html"><span class="header-section-number">H</span> Twitter Hashtags</a></li>
-<li><a class="" href="twitter-data.html"><span class="header-section-number">I</span> Twitter Data</a></li>
-<li><a class="" href="webpages.html"><span class="header-section-number">J</span> Webpages</a></li>
-<li><a class="" href="bookrefs.html"><span class="header-section-number">K</span> References</a></li>
+<li><a class="" href="getting-help.html"><span class="header-section-number">B</span> Getting Help</a></li>
+<li><a class="" href="conventions.html"><span class="header-section-number">C</span> Conventions</a></li>
+<li><a class="" href="symbols.html"><span class="header-section-number">D</span> Symbols</a></li>
+<li><a class="" href="datasets.html"><span class="header-section-number">E</span> Datasets</a></li>
+<li><a class="" href="exercises.html"><span class="header-section-number">F</span> Exercises</a></li>
+<li><a class="" href="plotstyle.html"><span class="header-section-number">G</span> Styling Plots</a></li>
+<li><a class="" href="dates-times.html"><span class="header-section-number">H</span> Dates and Times</a></li>
+<li><a class="" href="twitter-hashtags.html"><span class="header-section-number">I</span> Twitter Hashtags</a></li>
+<li><a class="" href="twitter-data.html"><span class="header-section-number">J</span> Twitter Data</a></li>
+<li><a class="" href="webpages.html"><span class="header-section-number">K</span> Webpages</a></li>
+<li><a class="" href="bookrefs.html"><span class="header-section-number">L</span> References</a></li>
 </ul>
 
         <div class="book-extra">
@@ -166,12 +167,27 @@
 <h2>
 <span class="header-section-number">7.2</span> Setup<a class="anchor" aria-label="anchor" href="#setup-dplyr"><i class="fas fa-link"></i></a>
 </h2>
+<ol style="list-style-type: decimal">
+<li>Open your <code>reprores-class-notes</code> project</li>
+<li>Create a new R Markdown file called <code>07-dplyr.Rmd</code>
+</li>
+<li>Update the YAML header</li>
+<li>Replace the setup chunk with the one below:</li>
+</ol>
+<div class="verbatim">
+<pre class="sourceCode r"><code class="sourceCode R">```{r setup, include = FALSE}</code></pre>
 <div class="sourceCode" id="cb301"><pre class="downlit sourceCode r">
-<code class="sourceCode R"><span><span class="co"># libraries needed for these examples</span></span>
-<span><span class="kw"><a href="https://rdrr.io/r/base/library.html">library</a></span><span class="op">(</span><span class="va"><a href="https://tidyverse.tidyverse.org">tidyverse</a></span><span class="op">)</span></span>
-<span><span class="kw"><a href="https://rdrr.io/r/base/library.html">library</a></span><span class="op">(</span><span class="va"><a href="https://lubridate.tidyverse.org">lubridate</a></span><span class="op">)</span></span>
-<span><span class="kw"><a href="https://rdrr.io/r/base/library.html">library</a></span><span class="op">(</span><span class="va"><a href="https://github.com/psyteachr/reprores-v3">reprores</a></span><span class="op">)</span></span>
+<code class="sourceCode R"><span><span class="fu">knitr</span><span class="fu">::</span><span class="va"><a href="https://rdrr.io/pkg/knitr/man/opts_chunk.html">opts_chunk</a></span><span class="op">$</span><span class="fu">set</span><span class="op">(</span>echo <span class="op">=</span> <span class="cn">TRUE</span><span class="op">)</span></span>
+<span></span>
+<span><span class="co"># packages needed for this chapter</span></span>
+<span><span class="kw"><a href="https://rdrr.io/r/base/library.html">library</a></span><span class="op">(</span><span class="va"><a href="https://tidyverse.tidyverse.org">tidyverse</a></span><span class="op">)</span> <span class="co"># loads tidyr for pivot functions and tidy verbs</span></span>
+<span><span class="kw"><a href="https://rdrr.io/r/base/library.html">library</a></span><span class="op">(</span><span class="va"><a href="https://lubridate.tidyverse.org">lubridate</a></span><span class="op">)</span> <span class="co"># handling dates and times</span></span>
+<span><span class="kw"><a href="https://rdrr.io/r/base/library.html">library</a></span><span class="op">(</span><span class="va"><a href="https://github.com/psyteachr/reprores-v3">reprores</a></span><span class="op">)</span>  <span class="co"># class-specific datasets</span></span>
+<span></span>
 <span><span class="fu"><a href="https://rdrr.io/r/base/Random.html">set.seed</a></span><span class="op">(</span><span class="fl">8675309</span><span class="op">)</span> <span class="co"># makes sure random numbers are reproducible</span></span></code></pre></div>
+<pre class="sourceCode r"><code class="sourceCode R">```</code></pre>
+</div>
+<p>Download the <a href="https://raw.githubusercontent.com/rstudio/cheatsheets/main/data-transformation.pdf">Data transformation cheat sheet</a>.</p>
 <div id="data-disgust" class="section level3" number="7.2.1">
 <h3>
 <span class="header-section-number">7.2.1</span> The <code>disgust</code> dataset<a class="anchor" aria-label="anchor" href="#data-disgust"><i class="fas fa-link"></i></a>
@@ -5727,7 +5743,7 @@ function openCity(evt, cityName) {
 <footer class="bg-primary text-light mt-5"><div class="container"><div class="row">
 
   <div class="col-12 col-md-6 mt-3">
-    <p>"<strong>Data Skills for Reproducible Research</strong>: <br><a href="https://doi.org/10.5281/zenodo.6527194"><img src="https://zenodo.org/badge/DOI/10.5281/zenodo.6527194.svg" alt="DOI: 10.5281/zenodo.6527194"></a>" was written by . It was last built on 2022-08-30.</p>
+    <p>"<strong>Data Skills for Reproducible Research</strong>: <br><a href="https://doi.org/10.5281/zenodo.6527194"><img src="https://zenodo.org/badge/DOI/10.5281/zenodo.6527194.svg" alt="DOI: 10.5281/zenodo.6527194"></a>" was written by . It was last built on 2022-08-31.</p>
   </div>
 
   <div class="col-12 col-md-6 mt-3">

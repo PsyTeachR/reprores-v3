@@ -49,19 +49,31 @@
 9. Adjust axes (e.g., flip coordinates, set axis limits)
 
 
-## Setup {#setup_ggplot}
+## Setup {#setup-ggplot}
 
+1. Open your `reprores-class-notes` project 
+1. Create a new R Markdown file called `03-ggplot.Rmd`
+1. Update the YAML header 
+1. Replace the setup chunk with the one below: 
+
+<div class='verbatim'><pre class='sourceCode r'><code class='sourceCode R'>&#96;&#96;&#96;{r setup, include = FALSE}</code></pre>
 
 ```r
-# libraries needed for these graphs
-library(tidyverse)
-library(patchwork) 
-library(plotly)
-library(ggwordcloud)
-library(reprores)
+knitr::opts_chunk$set(echo = TRUE)
+
+# packages needed for this chapter
+library(tidyverse)   # loads ggplot2 for plots
+library(patchwork)   # multi-part plots
+library(plotly)      # interactive plots
+library(ggwordcloud) # word clouds
+library(reprores)    # class-specific datasets
 
 set.seed(30250) # makes sure random numbers are reproducible
 ```
+
+<pre class='sourceCode r'><code class='sourceCode R'>&#96;&#96;&#96;</code></pre></div>
+
+Download the [ggplot2 cheat sheet](https://raw.githubusercontent.com/rstudio/cheatsheets/main/data-visualization.pdf).
 
 ## Common Variable Combinations {#vartypes}
 

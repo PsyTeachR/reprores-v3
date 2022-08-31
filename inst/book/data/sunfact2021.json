@@ -1,0 +1,29 @@
+{
+    "@context": "https://schema.org/",
+    "@type": "Dataset",
+    "name": "Glasgow Sun",
+    "schemaVersion": "Psych-DS 0.1.0",
+    "author": "Lisa DeBruine",
+    "description": "Sunrise and sunset times for every day of the year in Glasgow in 2021.",
+    "license": "CC-BY 4.0",
+    "variableMeasured": [
+        {
+            "@type": "PropertyValue",
+            "name": "Day",
+            "description": "The date in d/m/YYYY format",
+            "dataType": "string"
+        },
+        {
+            "@type": "PropertyValue",
+            "name": "RiseTime",
+            "description": "Sunrise time in decimal hour format",
+            "dataType": "float"
+        },
+        {
+            "@type": "PropertyValue",
+            "name": "SetTime",
+            "description": "Sunset time in decimal hour format",
+            "dataType": "float"
+        }
+    ]
+}

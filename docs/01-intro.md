@@ -11,6 +11,10 @@
 4. Install a [package](#install-package) [(video)](https://youtu.be/u_pvHnqkVCE){class="video"}
 5. Know the methods for getting [help](#help)
 
+## Setup {#setup-intro}
+
+Download the [RStudio IDE cheat sheet](https://raw.githubusercontent.com/rstudio/cheatsheets/main/rstudio-ide.pdf).
+
 
 ## R and RStudio
 
@@ -346,8 +350,8 @@ rnorm(10)
 ```
 
 ```
-##  [1]  1.35049771 -0.15457846  0.50731330 -0.26109818 -0.14830400 -0.07324528
-##  [7] -0.09218453  0.88474904 -0.09053038 -0.01795032
+##  [1] -1.47099356  0.38845836  0.61412779 -0.06893453 -0.17136691  0.32734003
+##  [7] -0.02150295  1.29792484 -0.77938022  0.35010527
 ```
 
 If you want 10 numbers from a normal distribution with a mean of 100:
@@ -358,8 +362,8 @@ rnorm(10, 100)
 ```
 
 ```
-##  [1]  99.60438  99.91480 101.09791 100.85213 100.45695 101.63009 100.03347
-##  [8]  98.98262 100.42713 100.26867
+##  [1] 100.35183  97.84181  98.68213 100.48909  98.92539  99.48784  99.23784
+##  [8] 100.46630 100.66354  99.28667
 ```
 
 This would be an equivalent but less efficient way of calling the function:
@@ -370,8 +374,8 @@ rnorm(n = 10, mean = 100)
 ```
 
 ```
-##  [1]  99.81402  99.71337  97.32637  99.91704  98.95015 101.34876  98.86139
-##  [8] 101.37513 100.26996 101.54477
+##  [1]  99.92975  98.99496 100.14037 100.03435 100.39729 101.07561  98.97568
+##  [8]  99.79178  99.65824  98.39717
 ```
 
 We don't need to name the arguments because R will recognize that we intended to fill in the first and second arguments by their position in the function call. However, if we want to change the default for an argument coming later in the list, then we need to name it. For instance, if we wanted to keep the default `mean = 0` but change the standard deviation to 100, we would do it this way:
@@ -382,8 +386,8 @@ rnorm(10, sd = 100)
 ```
 
 ```
-##  [1] 113.472448  32.474859 235.414151   4.990962  28.488076 -46.896081
-##  [7] 154.719475  18.715254 -34.883350  68.645347
+##  [1]   60.68352 -152.79429  132.75952 -139.60279   42.93388   53.82393
+##  [7]  102.46136  -33.16879  -31.36438  -57.06297
 ```
 
 Some functions give a list of options after an argument; this means the default value is the first option. The usage entry for the <code><span><span class='fu'><a target='_blank' href='https://rdrr.io/r/stats/power.t.test.html'>power.t.test</a></span><span class='op'>(</span><span class='op'>)</span></span></code> function looks like this:
@@ -401,9 +405,9 @@ power.t.test(n = NULL, delta = NULL, sd = 1, sig.level = 0.05,
 
 
 
-* What is the default value for `sd`? <select class='webex-select'><option value='blank'></option><option value=''>NULL</option><option value=''>0.05</option><option value=''>two.sample</option><option value='answer'>1</option></select>
-* What is the default value for `type`? <select class='webex-select'><option value='blank'></option><option value=''>paired</option><option value=''>NULL</option><option value=''>one.sample</option><option value='answer'>two.sample</option></select>
-* Which is equivalent to <code><span><span class='fu'><a target='_blank' href='https://rdrr.io/r/stats/power.t.test.html'>power.t.test</a></span><span class='op'>(</span><span class='fl'>100</span>, <span class='fl'>0.5</span><span class='op'>)</span></span></code>? <div class='webex-radiogroup' id='radio_LIGBMIAKMP'><label><input type="radio" autocomplete="off" name="radio_LIGBMIAKMP" value="answer"></input> <span>power.t.test(delta = 0.5, n = 100)</span></label><label><input type="radio" autocomplete="off" name="radio_LIGBMIAKMP" value=""></input> <span>power.t.test()</span></label><label><input type="radio" autocomplete="off" name="radio_LIGBMIAKMP" value=""></input> <span>power.t.test(100, 0.5, sig.level = 1, sd = 0.05)</span></label><label><input type="radio" autocomplete="off" name="radio_LIGBMIAKMP" value=""></input> <span>power.t.test(n = 100)</span></label></div>
+* What is the default value for `sd`? <select class='webex-select'><option value='blank'></option><option value=''>0.05</option><option value=''>two.sample</option><option value='answer'>1</option><option value=''>NULL</option></select>
+* What is the default value for `type`? <select class='webex-select'><option value='blank'></option><option value=''>one.sample</option><option value='answer'>two.sample</option><option value=''>paired</option><option value=''>NULL</option></select>
+* Which is equivalent to <code><span><span class='fu'><a target='_blank' href='https://rdrr.io/r/stats/power.t.test.html'>power.t.test</a></span><span class='op'>(</span><span class='fl'>100</span>, <span class='fl'>0.5</span><span class='op'>)</span></span></code>? <div class='webex-radiogroup' id='radio_SECJACTPNM'><label><input type="radio" autocomplete="off" name="radio_SECJACTPNM" value=""></input> <span>power.t.test(100, 0.5, sig.level = 1, sd = 0.05)</span></label><label><input type="radio" autocomplete="off" name="radio_SECJACTPNM" value="answer"></input> <span>power.t.test(delta = 0.5, n = 100)</span></label><label><input type="radio" autocomplete="off" name="radio_SECJACTPNM" value=""></input> <span>power.t.test(n = 100)</span></label><label><input type="radio" autocomplete="off" name="radio_SECJACTPNM" value=""></input> <span>power.t.test()</span></label></div>
 
 
 :::

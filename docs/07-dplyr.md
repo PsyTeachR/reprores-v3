@@ -31,15 +31,28 @@
 
 ## Setup {#setup-dplyr}
 
+1. Open your `reprores-class-notes` project 
+1. Create a new R Markdown file called `07-dplyr.Rmd`
+1. Update the YAML header 
+1. Replace the setup chunk with the one below: 
+
+<div class='verbatim'><pre class='sourceCode r'><code class='sourceCode R'>&#96;&#96;&#96;{r setup, include = FALSE}</code></pre>
 
 ```r
-# libraries needed for these examples
-library(tidyverse)
-library(lubridate)
-library(reprores)
+knitr::opts_chunk$set(echo = TRUE)
+
+# packages needed for this chapter
+library(tidyverse) # loads tidyr for pivot functions and tidy verbs
+library(lubridate) # handling dates and times
+library(reprores)  # class-specific datasets
+
 set.seed(8675309) # makes sure random numbers are reproducible
 ```
 
+<pre class='sourceCode r'><code class='sourceCode R'>&#96;&#96;&#96;</code></pre></div>
+
+
+Download the [Data transformation cheat sheet](https://raw.githubusercontent.com/rstudio/cheatsheets/main/data-transformation.pdf).
 
 ### The `disgust` dataset {#data-disgust}
 

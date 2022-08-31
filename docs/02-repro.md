@@ -16,11 +16,22 @@
 
 ## Setup {#setup-repro}
 
+You will be given instructions in Section\ \@ref(new-project) below to set up a new project where you will keep all of your class notes. Section\ \@ref(r-markdown) gives instructions to set up an R Markdown script for this chapter. 
+
+For reference, here are the packages we will use in this chapter.
+
 
 ```r
-library(tidyverse)
-library(knitr)
+# packages needed for this chapter
+library(tidyverse)  # various data manipulation functions
+library(knitr)      # for table and image display
+library(kableExtra) # for styling tables
+library(papaja)     # for APA-style tables
+library(gt)         # for fancy tables
+library(DT)         # for interactive tables
 ```
+
+Download the [R Markdown Cheat Sheet](https://www.rstudio.org/links/r_markdown_cheat_sheet).
 
 ## Why learn reproducible reports?
 
@@ -112,13 +123,17 @@ Here is one way to structure them so that similar files have the same structure 
 Think of other ways to name the files above. Look at some of your own project files and see what you can improve.
 :::
 
-### Start a Project
+### Start a Project {#new-project}
 
-Now that we understand how the file system work and how to name things to make it easier for scripts to access them, we're ready to make our first project. 
+Now that we understand how the file system work and how to name things to make it easier for scripts to access them, we're ready to make our class project. 
 
-First, make a new <a class='glossary' target='_blank' title='A collection or "folder" of files on a computer.' href='https://psyteachr.github.io/glossary/d#directory'>directory</a> where you will keep all of your materials for this class. You can set this directory to be the default working directory under the General tab of the Global Options. This means that files will be saved here by default if you aren't working in a project. 
+First, make a new <a class='glossary' target='_blank' title='A collection or "folder" of files on a computer.' href='https://psyteachr.github.io/glossary/d#directory'>directory</a> where you will keep all of your materials for this class (I called mine `reprores-2022`). You can set this directory to be the default working directory under the General tab of the Global Options. This means that files will be saved here by default if you aren't working in a project. 
 
-Next, choose **`New Project...`** under the **`File`** menu to create a new project called <code class='path'>02-reports</code>. Make sure you save it inside the directory you just made. RStudio will restart itself and open with this new project directory as the working directory. 
+::: {.warning data-latex=""}
+It can sometimes cause problems if this directory is in OneDrive or if the full file path has special characters or is [more than 260 characters](http://handbook.datalad.org/en/latest/intro/filenaming.html){target='_blank'} on some Windows machines.
+:::
+
+Next, choose **`New Project...`** under the **`File`** menu to create a new project called <code class='path'>reprores-class-notes</code>. Make sure you save it inside the directory you just made. RStudio will restart itself and open with this new project directory as the working directory. 
 
 
 ```r
@@ -129,16 +144,17 @@ include_graphics(c("images/repro/new_proj_1.png",
 
 <div class="figure" style="text-align: center">
 <img src="images/repro/new_proj_1.png" alt="Starting a new project." width="100%" />
-<p class="caption">(\#fig:unnamed-chunk-2-1)Starting a new project.</p>
+<p class="caption">(\#fig:unnamed-chunk-1-1)Starting a new project.</p>
 </div><div class="figure" style="text-align: center">
 <img src="images/repro/new_proj_2.png" alt="Starting a new project." width="100%" />
-<p class="caption">(\#fig:unnamed-chunk-2-2)Starting a new project.</p>
+<p class="caption">(\#fig:unnamed-chunk-1-2)Starting a new project.</p>
 </div><div class="figure" style="text-align: center">
 <img src="images/repro/new_proj_3.png" alt="Starting a new project." width="100%" />
-<p class="caption">(\#fig:unnamed-chunk-2-3)Starting a new project.</p>
+<p class="caption">(\#fig:unnamed-chunk-1-3)Starting a new project.</p>
 </div>
 
-Click on the Files tab in the lower right pane to see the contents of the project directory. You will see a file called `02-reports.Rproj`, which is a file that contains all of the project information.You can double-click on it to open up the project. 
+
+Click on the Files tab in the lower right pane to see the contents of the project directory. You will see a file called `reprores-class-notes.Rproj`, which is a file that contains all of the project information.You can double-click on it to open up the project. 
 
 ::: {.info data-latex=""}
 Depending on your settings, you may also see a directory called `.Rproj.user`, which contains your specific user settings. You can ignore this and other "invisible" files that start with a full stop.
@@ -155,14 +171,15 @@ There is a new type of reproducible report format called [quarto](https://quarto
 We will use <a class='glossary' target='_blank' title='The R-specific version of markdown: a way to specify formatting, such as headers, paragraphs, lists, bolding, and links, as well as code blocks and inline code.' href='https://psyteachr.github.io/glossary/r#r-markdown'>R Markdown</a> to create reproducible reports, which enables mixing of text and code. A reproducible script will contain sections of code in code blocks. A code block starts and ends with three backtick symbols in a row, with some information about the code between curly brackets, such as `{r chunk-name, echo=FALSE}` (this runs the code, but does not show the text of the code block in the compiled document). The text outside of code blocks is written in <a class='glossary' target='_blank' title='A way to specify formatting, such as headers, paragraphs, lists, bolding, and links.' href='https://psyteachr.github.io/glossary/m#markdown'>markdown</a>, which is a way to specify formatting, such as headers, paragraphs, lists, bolding, and links.
 
 <div class="figure" style="text-align: center">
-<img src="images/repro/reproducible_script.png" alt="A reproducible script." width="100%" />
+<img src="images/repro/reproducible_script.png" alt="A screenshot of a script with line numbers, code blocks, and markdown text" width="100%" />
 <p class="caption">(\#fig:img-reproducible-script)A reproducible script.</p>
 </div>
+
 
 If you open up a new R Markdown file from a template, you will see an example document with several code blocks in it. To create an HTML or PDF report from an R Markdown (Rmd) document, you compile it.  Compiling a document is called <a class='glossary' target='_blank' title='To create an HTML, PDF, or Word document from an R Markdown (Rmd) document' href='https://psyteachr.github.io/glossary/k#knit'>knitting</a> in RStudio. There is a button that looks like a ball of yarn with needles through it that you click on to compile your file into a report. 
 
 ::: {.try data-latex=""}
-Create a new R Markdown file from the **`File > New File > R Markdown...`** menu. Change the title and author, then click the knit button to create an html file.
+Create a new R Markdown file from the **`File > New File > R Markdown...`** menu. Change the title and author, save the file as `02-repro.Rmd`, then click the knit button to create an html file.
 :::
 
 ### YAML Header {#yaml}
@@ -518,12 +535,12 @@ gt(summary_table, caption = "Summary statistics for the pets dataset.") |>
 ```
 
 ```{=html}
-<div id="ceatgionfl" style="overflow-x:auto;overflow-y:auto;width:auto;height:auto;">
+<div id="jxiruiduve" style="overflow-x:auto;overflow-y:auto;width:auto;height:auto;">
 <style>html {
   font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Oxygen, Ubuntu, Cantarell, 'Helvetica Neue', 'Fira Sans', 'Droid Sans', Arial, sans-serif;
 }
 
-#ceatgionfl .gt_table {
+#jxiruiduve .gt_table {
   display: table;
   border-collapse: collapse;
   margin-left: auto;
@@ -548,7 +565,7 @@ gt(summary_table, caption = "Summary statistics for the pets dataset.") |>
   border-left-color: #D3D3D3;
 }
 
-#ceatgionfl .gt_heading {
+#jxiruiduve .gt_heading {
   background-color: #FFFFFF;
   text-align: center;
   border-bottom-color: #FFFFFF;
@@ -560,7 +577,7 @@ gt(summary_table, caption = "Summary statistics for the pets dataset.") |>
   border-right-color: #D3D3D3;
 }
 
-#ceatgionfl .gt_title {
+#jxiruiduve .gt_title {
   color: #333333;
   font-size: 125%;
   font-weight: initial;
@@ -572,7 +589,7 @@ gt(summary_table, caption = "Summary statistics for the pets dataset.") |>
   border-bottom-width: 0;
 }
 
-#ceatgionfl .gt_subtitle {
+#jxiruiduve .gt_subtitle {
   color: #333333;
   font-size: 85%;
   font-weight: initial;
@@ -584,13 +601,13 @@ gt(summary_table, caption = "Summary statistics for the pets dataset.") |>
   border-top-width: 0;
 }
 
-#ceatgionfl .gt_bottom_border {
+#jxiruiduve .gt_bottom_border {
   border-bottom-style: solid;
   border-bottom-width: 2px;
   border-bottom-color: #5F5F5F;
 }
 
-#ceatgionfl .gt_col_headings {
+#jxiruiduve .gt_col_headings {
   border-top-style: solid;
   border-top-width: 2px;
   border-top-color: #5F5F5F;
@@ -605,7 +622,7 @@ gt(summary_table, caption = "Summary statistics for the pets dataset.") |>
   border-right-color: #D3D3D3;
 }
 
-#ceatgionfl .gt_col_heading {
+#jxiruiduve .gt_col_heading {
   color: #FFFFFF;
   background-color: #0076BA;
   font-size: 100%;
@@ -625,7 +642,7 @@ gt(summary_table, caption = "Summary statistics for the pets dataset.") |>
   overflow-x: hidden;
 }
 
-#ceatgionfl .gt_column_spanner_outer {
+#jxiruiduve .gt_column_spanner_outer {
   color: #FFFFFF;
   background-color: #0076BA;
   font-size: 100%;
@@ -637,15 +654,15 @@ gt(summary_table, caption = "Summary statistics for the pets dataset.") |>
   padding-right: 4px;
 }
 
-#ceatgionfl .gt_column_spanner_outer:first-child {
+#jxiruiduve .gt_column_spanner_outer:first-child {
   padding-left: 0;
 }
 
-#ceatgionfl .gt_column_spanner_outer:last-child {
+#jxiruiduve .gt_column_spanner_outer:last-child {
   padding-right: 0;
 }
 
-#ceatgionfl .gt_column_spanner {
+#jxiruiduve .gt_column_spanner {
   border-bottom-style: solid;
   border-bottom-width: 2px;
   border-bottom-color: #5F5F5F;
@@ -657,7 +674,7 @@ gt(summary_table, caption = "Summary statistics for the pets dataset.") |>
   width: 100%;
 }
 
-#ceatgionfl .gt_group_heading {
+#jxiruiduve .gt_group_heading {
   padding-top: 8px;
   padding-bottom: 8px;
   padding-left: 5px;
@@ -682,7 +699,7 @@ gt(summary_table, caption = "Summary statistics for the pets dataset.") |>
   vertical-align: middle;
 }
 
-#ceatgionfl .gt_empty_group_heading {
+#jxiruiduve .gt_empty_group_heading {
   padding: 0.5px;
   color: #333333;
   background-color: #FFFFFF;
@@ -697,15 +714,15 @@ gt(summary_table, caption = "Summary statistics for the pets dataset.") |>
   vertical-align: middle;
 }
 
-#ceatgionfl .gt_from_md > :first-child {
+#jxiruiduve .gt_from_md > :first-child {
   margin-top: 0;
 }
 
-#ceatgionfl .gt_from_md > :last-child {
+#jxiruiduve .gt_from_md > :last-child {
   margin-bottom: 0;
 }
 
-#ceatgionfl .gt_row {
+#jxiruiduve .gt_row {
   padding-top: 8px;
   padding-bottom: 8px;
   padding-left: 5px;
@@ -724,7 +741,7 @@ gt(summary_table, caption = "Summary statistics for the pets dataset.") |>
   overflow-x: hidden;
 }
 
-#ceatgionfl .gt_stub {
+#jxiruiduve .gt_stub {
   color: #333333;
   background-color: #89D3FE;
   font-size: 100%;
@@ -737,7 +754,7 @@ gt(summary_table, caption = "Summary statistics for the pets dataset.") |>
   padding-right: 5px;
 }
 
-#ceatgionfl .gt_stub_row_group {
+#jxiruiduve .gt_stub_row_group {
   color: #333333;
   background-color: #FFFFFF;
   font-size: 100%;
@@ -751,11 +768,11 @@ gt(summary_table, caption = "Summary statistics for the pets dataset.") |>
   vertical-align: top;
 }
 
-#ceatgionfl .gt_row_group_first td {
+#jxiruiduve .gt_row_group_first td {
   border-top-width: 2px;
 }
 
-#ceatgionfl .gt_summary_row {
+#jxiruiduve .gt_summary_row {
   color: #333333;
   background-color: #FFFFFF;
   text-transform: inherit;
@@ -765,16 +782,16 @@ gt(summary_table, caption = "Summary statistics for the pets dataset.") |>
   padding-right: 5px;
 }
 
-#ceatgionfl .gt_first_summary_row {
+#jxiruiduve .gt_first_summary_row {
   border-top-style: solid;
   border-top-color: #5F5F5F;
 }
 
-#ceatgionfl .gt_first_summary_row.thick {
+#jxiruiduve .gt_first_summary_row.thick {
   border-top-width: 2px;
 }
 
-#ceatgionfl .gt_last_summary_row {
+#jxiruiduve .gt_last_summary_row {
   padding-top: 8px;
   padding-bottom: 8px;
   padding-left: 5px;
@@ -784,7 +801,7 @@ gt(summary_table, caption = "Summary statistics for the pets dataset.") |>
   border-bottom-color: #5F5F5F;
 }
 
-#ceatgionfl .gt_grand_summary_row {
+#jxiruiduve .gt_grand_summary_row {
   color: #333333;
   background-color: #D5D5D5;
   text-transform: inherit;
@@ -794,7 +811,7 @@ gt(summary_table, caption = "Summary statistics for the pets dataset.") |>
   padding-right: 5px;
 }
 
-#ceatgionfl .gt_first_grand_summary_row {
+#jxiruiduve .gt_first_grand_summary_row {
   padding-top: 8px;
   padding-bottom: 8px;
   padding-left: 5px;
@@ -804,11 +821,11 @@ gt(summary_table, caption = "Summary statistics for the pets dataset.") |>
   border-top-color: #5F5F5F;
 }
 
-#ceatgionfl .gt_striped {
+#jxiruiduve .gt_striped {
   background-color: #EDF7FC;
 }
 
-#ceatgionfl .gt_table_body {
+#jxiruiduve .gt_table_body {
   border-top-style: solid;
   border-top-width: 2px;
   border-top-color: #5F5F5F;
@@ -817,7 +834,7 @@ gt(summary_table, caption = "Summary statistics for the pets dataset.") |>
   border-bottom-color: #5F5F5F;
 }
 
-#ceatgionfl .gt_footnotes {
+#jxiruiduve .gt_footnotes {
   color: #333333;
   background-color: #FFFFFF;
   border-bottom-style: none;
@@ -831,7 +848,7 @@ gt(summary_table, caption = "Summary statistics for the pets dataset.") |>
   border-right-color: #D3D3D3;
 }
 
-#ceatgionfl .gt_footnote {
+#jxiruiduve .gt_footnote {
   margin: 0px;
   font-size: 90%;
   padding-left: 4px;
@@ -840,7 +857,7 @@ gt(summary_table, caption = "Summary statistics for the pets dataset.") |>
   padding-right: 5px;
 }
 
-#ceatgionfl .gt_sourcenotes {
+#jxiruiduve .gt_sourcenotes {
   color: #333333;
   background-color: #FFFFFF;
   border-bottom-style: none;
@@ -854,7 +871,7 @@ gt(summary_table, caption = "Summary statistics for the pets dataset.") |>
   border-right-color: #D3D3D3;
 }
 
-#ceatgionfl .gt_sourcenote {
+#jxiruiduve .gt_sourcenote {
   font-size: 90%;
   padding-top: 4px;
   padding-bottom: 4px;
@@ -862,64 +879,64 @@ gt(summary_table, caption = "Summary statistics for the pets dataset.") |>
   padding-right: 5px;
 }
 
-#ceatgionfl .gt_left {
+#jxiruiduve .gt_left {
   text-align: left;
 }
 
-#ceatgionfl .gt_center {
+#jxiruiduve .gt_center {
   text-align: center;
 }
 
-#ceatgionfl .gt_right {
+#jxiruiduve .gt_right {
   text-align: right;
   font-variant-numeric: tabular-nums;
 }
 
-#ceatgionfl .gt_font_normal {
+#jxiruiduve .gt_font_normal {
   font-weight: normal;
 }
 
-#ceatgionfl .gt_font_bold {
+#jxiruiduve .gt_font_bold {
   font-weight: bold;
 }
 
-#ceatgionfl .gt_font_italic {
+#jxiruiduve .gt_font_italic {
   font-style: italic;
 }
 
-#ceatgionfl .gt_super {
+#jxiruiduve .gt_super {
   font-size: 65%;
 }
 
-#ceatgionfl .gt_footnote_marks {
+#jxiruiduve .gt_footnote_marks {
   font-style: italic;
   font-weight: normal;
   font-size: 75%;
   vertical-align: 0.4em;
 }
 
-#ceatgionfl .gt_asterisk {
+#jxiruiduve .gt_asterisk {
   font-size: 100%;
   vertical-align: 0;
 }
 
-#ceatgionfl .gt_indent_1 {
+#jxiruiduve .gt_indent_1 {
   text-indent: 5px;
 }
 
-#ceatgionfl .gt_indent_2 {
+#jxiruiduve .gt_indent_2 {
   text-indent: 10px;
 }
 
-#ceatgionfl .gt_indent_3 {
+#jxiruiduve .gt_indent_3 {
   text-indent: 15px;
 }
 
-#ceatgionfl .gt_indent_4 {
+#jxiruiduve .gt_indent_4 {
   text-indent: 20px;
 }
 
-#ceatgionfl .gt_indent_5 {
+#jxiruiduve .gt_indent_5 {
   text-indent: 25px;
 }
 </style>
@@ -965,7 +982,7 @@ gt(summary_table, caption = "Summary statistics for the pets dataset.") |>
 <!-- Tab content -->
 <div id="DT" class="tabcontent">
 
-[DT](https://rstudio.github.io/DT/) lets you make interactive data tables. It can be tricky to customise, but the defaults are similar to other table functions.
+[DT](https://rstudio.github.io/DT/) lets you make interactive data tables. Chapter\ \@ref(interactive-tables) goes into more details about this type of table.
 
 
 ```r
@@ -977,8 +994,8 @@ DT::datatable(summary_table,
 ```
 
 ```{=html}
-<div id="htmlwidget-3c47dd0fab7617369218" style="width:100%;height:auto;" class="datatables html-widget"></div>
-<script type="application/json" data-for="htmlwidget-3c47dd0fab7617369218">{"x":{"filter":"none","vertical":false,"caption":"<caption>Summary statistics for the pets dataset.<\/caption>","data":[["1","2","3"],["cat","dog","ferret"],[300,400,100],[9.3716129083,19.0679737427696,4.78156944173321],[90.2366666666667,99.9825,111.78]],"container":"<table class=\"display\">\n  <thead>\n    <tr>\n      <th> <\/th>\n      <th>Pet Type<\/th>\n      <th>N<\/th>\n      <th>Weight<\/th>\n      <th>Score<\/th>\n    <\/tr>\n  <\/thead>\n<\/table>","options":{"columnDefs":[{"targets":3,"render":"function(data, type, row, meta) {\n    return type !== 'display' ? data : DTWidget.formatRound(data, 2, 3, \",\", \".\", null);\n  }"},{"targets":4,"render":"function(data, type, row, meta) {\n    return type !== 'display' ? data : DTWidget.formatRound(data, 2, 3, \",\", \".\", null);\n  }"},{"className":"dt-right","targets":[2,3,4]},{"orderable":false,"targets":0}],"order":[],"autoWidth":false,"orderClasses":false}},"evals":["options.columnDefs.0.render","options.columnDefs.1.render"],"jsHooks":[]}</script>
+<div id="htmlwidget-045af8de0b5527b123a7" style="width:100%;height:auto;" class="datatables html-widget"></div>
+<script type="application/json" data-for="htmlwidget-045af8de0b5527b123a7">{"x":{"filter":"none","vertical":false,"caption":"<caption>Summary statistics for the pets dataset.<\/caption>","data":[["1","2","3"],["cat","dog","ferret"],[300,400,100],[9.3716129083,19.0679737427696,4.78156944173321],[90.2366666666667,99.9825,111.78]],"container":"<table class=\"display\">\n  <thead>\n    <tr>\n      <th> <\/th>\n      <th>Pet Type<\/th>\n      <th>N<\/th>\n      <th>Weight<\/th>\n      <th>Score<\/th>\n    <\/tr>\n  <\/thead>\n<\/table>","options":{"columnDefs":[{"targets":3,"render":"function(data, type, row, meta) {\n    return type !== 'display' ? data : DTWidget.formatRound(data, 2, 3, \",\", \".\", null);\n  }"},{"targets":4,"render":"function(data, type, row, meta) {\n    return type !== 'display' ? data : DTWidget.formatRound(data, 2, 3, \",\", \".\", null);\n  }"},{"className":"dt-right","targets":[2,3,4]},{"orderable":false,"targets":0}],"order":[],"autoWidth":false,"orderClasses":false}},"evals":["options.columnDefs.0.render","options.columnDefs.1.render"],"jsHooks":[]}</script>
 ```
 
 </div>
@@ -1004,14 +1021,14 @@ ggplot(pets, aes(pet, score, fill = country)) +
 ```
 
 <div class="figure" style="text-align: center">
-<img src="02-repro_files/figure-html/unnamed-chunk-6-1.png" alt="Figure 1. Scores by pet type and country." width="100%" />
-<p class="caption">(\#fig:unnamed-chunk-6)Figure 1. Scores by pet type and country.</p>
+<img src="02-repro_files/figure-html/unnamed-chunk-5-1.png" alt="Figure 1. Scores by pet type and country." width="100%" />
+<p class="caption">(\#fig:unnamed-chunk-5)Figure 1. Scores by pet type and country.</p>
 </div>
 ````
 
 <div class="figure" style="text-align: center">
-<img src="02-repro_files/figure-html/unnamed-chunk-7-1.png" alt="Figure 1. Scores by pet type and country." width="100%" />
-<p class="caption">(\#fig:unnamed-chunk-7)Figure 1. Scores by pet type and country.</p>
+<img src="02-repro_files/figure-html/unnamed-chunk-6-1.png" alt="Figure 1. Scores by pet type and country." width="100%" />
+<p class="caption">(\#fig:unnamed-chunk-6)Figure 1. Scores by pet type and country.</p>
 </div>
 
 ::: {.info data-latex=""}
@@ -1207,7 +1224,7 @@ By default, the reference section is added to the end of the document. If you wa
 Add in-text citations and a reference list to your report.
 :::
 
-### Custom Templates
+### Custom Templates {#custom-templates}
 
 Some packages provide custom R Markdown templates. `reprores` has a Report template that shows all of the possible options in the YAML header, has bibliography and style files, and explains how to set up linked figures and tables. Because it contains multiple files, RStudio will ask you to create a new folder to keep all of the files in.
 
