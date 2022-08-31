@@ -5,7 +5,7 @@
 
 ## Learning Objectives {#ilo-intro}
 
-1. Understand the components of the [RStudio IDE](#rstudio_ide) [(video)](https://youtu.be/CbA6ZVlJE78){class="video"}
+1. Understand the [RStudio IDE](#rstudio_ide) [(video)](https://youtu.be/CbA6ZVlJE78){class="video"}
 2. Type commands into the [console](#console) [(video)](https://youtu.be/wbI4c_7y0kE){class="video"}
 3. Understand [coding terms](#coding-terms) and [function syntax](#function_syx) [(video)](https://youtu.be/X5P038N5Q8I){class="video"}
 4. Install a [package](#install-package) [(video)](https://youtu.be/u_pvHnqkVCE){class="video"}
@@ -350,8 +350,8 @@ rnorm(10)
 ```
 
 ```
-##  [1] -1.47099356  0.38845836  0.61412779 -0.06893453 -0.17136691  0.32734003
-##  [7] -0.02150295  1.29792484 -0.77938022  0.35010527
+##  [1] -0.3904910 -0.1381635 -0.7593314 -0.4045687 -0.4013214  2.0054098
+##  [7] -0.1142254  0.5915578  0.6943761 -1.9953083
 ```
 
 If you want 10 numbers from a normal distribution with a mean of 100:
@@ -362,8 +362,8 @@ rnorm(10, 100)
 ```
 
 ```
-##  [1] 100.35183  97.84181  98.68213 100.48909  98.92539  99.48784  99.23784
-##  [8] 100.46630 100.66354  99.28667
+##  [1]  98.48829  98.96984 100.44520 100.29931 101.11297 100.08531  99.12447
+##  [8] 100.90521 100.38799 100.78756
 ```
 
 This would be an equivalent but less efficient way of calling the function:
@@ -374,8 +374,8 @@ rnorm(n = 10, mean = 100)
 ```
 
 ```
-##  [1]  99.92975  98.99496 100.14037 100.03435 100.39729 101.07561  98.97568
-##  [8]  99.79178  99.65824  98.39717
+##  [1] 100.38078 101.73240 100.54867  99.95692 100.60686 100.39064 100.74864
+##  [8] 100.76760 100.38174 100.30323
 ```
 
 We don't need to name the arguments because R will recognize that we intended to fill in the first and second arguments by their position in the function call. However, if we want to change the default for an argument coming later in the list, then we need to name it. For instance, if we wanted to keep the default `mean = 0` but change the standard deviation to 100, we would do it this way:
@@ -386,8 +386,8 @@ rnorm(10, sd = 100)
 ```
 
 ```
-##  [1]   60.68352 -152.79429  132.75952 -139.60279   42.93388   53.82393
-##  [7]  102.46136  -33.16879  -31.36438  -57.06297
+##  [1]  128.684153   21.997591   77.442757   53.775709   -1.323737  -76.934590
+##  [7] -253.666227  -43.574221 -175.716691 -119.241014
 ```
 
 Some functions give a list of options after an argument; this means the default value is the first option. The usage entry for the <code><span><span class='fu'><a target='_blank' href='https://rdrr.io/r/stats/power.t.test.html'>power.t.test</a></span><span class='op'>(</span><span class='op'>)</span></span></code> function looks like this:
@@ -405,9 +405,9 @@ power.t.test(n = NULL, delta = NULL, sd = 1, sig.level = 0.05,
 
 
 
-* What is the default value for `sd`? <select class='webex-select'><option value='blank'></option><option value=''>0.05</option><option value=''>two.sample</option><option value='answer'>1</option><option value=''>NULL</option></select>
-* What is the default value for `type`? <select class='webex-select'><option value='blank'></option><option value=''>one.sample</option><option value='answer'>two.sample</option><option value=''>paired</option><option value=''>NULL</option></select>
-* Which is equivalent to <code><span><span class='fu'><a target='_blank' href='https://rdrr.io/r/stats/power.t.test.html'>power.t.test</a></span><span class='op'>(</span><span class='fl'>100</span>, <span class='fl'>0.5</span><span class='op'>)</span></span></code>? <div class='webex-radiogroup' id='radio_SECJACTPNM'><label><input type="radio" autocomplete="off" name="radio_SECJACTPNM" value=""></input> <span>power.t.test(100, 0.5, sig.level = 1, sd = 0.05)</span></label><label><input type="radio" autocomplete="off" name="radio_SECJACTPNM" value="answer"></input> <span>power.t.test(delta = 0.5, n = 100)</span></label><label><input type="radio" autocomplete="off" name="radio_SECJACTPNM" value=""></input> <span>power.t.test(n = 100)</span></label><label><input type="radio" autocomplete="off" name="radio_SECJACTPNM" value=""></input> <span>power.t.test()</span></label></div>
+* What is the default value for `sd`? <select class='webex-select'><option value='blank'></option><option value=''>NULL</option><option value=''>two.sample</option><option value='answer'>1</option><option value=''>0.05</option></select>
+* What is the default value for `type`? <select class='webex-select'><option value='blank'></option><option value=''>NULL</option><option value='answer'>two.sample</option><option value=''>one.sample</option><option value=''>paired</option></select>
+* Which is equivalent to <code><span><span class='fu'><a target='_blank' href='https://rdrr.io/r/stats/power.t.test.html'>power.t.test</a></span><span class='op'>(</span><span class='fl'>100</span>, <span class='fl'>0.5</span><span class='op'>)</span></span></code>? <div class='webex-radiogroup' id='radio_PAUWDOEHEF'><label><input type="radio" autocomplete="off" name="radio_PAUWDOEHEF" value=""></input> <span>power.t.test(n = 100)</span></label><label><input type="radio" autocomplete="off" name="radio_PAUWDOEHEF" value=""></input> <span>power.t.test()</span></label><label><input type="radio" autocomplete="off" name="radio_PAUWDOEHEF" value="answer"></input> <span>power.t.test(delta = 0.5, n = 100)</span></label><label><input type="radio" autocomplete="off" name="radio_PAUWDOEHEF" value=""></input> <span>power.t.test(100, 0.5, sig.level = 1, sd = 0.05)</span></label></div>
 
 
 :::
@@ -539,7 +539,10 @@ getdata("data")
 
 ## Getting help {#help}
 
-You will feel like you need a *lot* of help when you're starting to learn. This won't really go away, and it isn't supposed to. Experienced coders are also constantly looking things up; it's impossible to memorise everything. The goal is to learn enough about the structure of R that you can look things up quickly. This is why there is so much specialised jargon in coding; it's easier to google "adding <a class='glossary' target='_blank' title='A type of data structure that collects values with the same data type, like T/F values, numbers, or strings.' href='https://psyteachr.github.io/glossary/v#vector'>vectors</a> in R" than "adding lists of things that are the same kind of data in R".
+<div class="right meme"><img src="images/memes/code_baby.jpg"
+     alt = "Medieval drawing of a woman labelled 'you' holding a an ugly baby labelled 'your code'. They are looking at each other with dismay. Text at the bottom reads: when you run your code and it doesn't do what you expected it would do" /></div>
+
+You will feel like you need a *lot* of help when you're starting to learn. This won't really go away, and it isn't supposed to. Experienced coders are also constantly looking things up; it's impossible to memorise everything. The goal is to learn enough about the structure of R that you can look things up quickly. This is why there is so much specialised jargon in coding; it's easier to google "<a class='glossary' target='_blank' title='To combine strings or vectors.' href='https://psyteachr.github.io/glossary/c#concatenate'>concatenating</a> <a class='glossary' target='_blank' title='A type of data structure that collects values with the same data type, like T/F values, numbers, or strings.' href='https://psyteachr.github.io/glossary/v#vector'>vectors</a> in R" than "putting together groups of things that are the same kind of data in R".
 
 ### Function Help
 
@@ -579,6 +582,15 @@ vignette(package = "ggplot2")
 vignette("ggplot2-specs", package = "ggplot2")
 ```
 
+### Asking for Help
+
+<div class="meme right" style="min-width:60%;"><img src="images/memes/help-no-photos.png"
+     alt="top left: Geordi from star trek looking sceptical with hand up; top right: photo of a laptop screen with a code error; bottom left: Geordi looking pleased and pointing; bottom right: the error explained in text with formatting" /></div>
+
+If all else fails, you can ask for help. See Appendix\ \@ref(getting-help) for advice on how to share code when asking for help on the class Teams channel or other web-based forums. It also has a section on how to make a <a class='glossary' target='_blank' title='A reproducible example that is the smallest, completely self-contained example of your problem or question.' href='https://psyteachr.github.io/glossary/r#reprex'>reprex</a> to make it easier for others to understand and reproduce your problem (and often solve it yourself in the process) . 
+
+TL;DR: copy and paste code that's giving you trouble, please don't send screenshots and definitely not photos of your screen.
+
 
 ## Glossary  {#glossaryintro}
 
@@ -614,6 +626,10 @@ glossary::book()
   <tr>
    <td style="text-align:left;"> [base r](https://psyteachr.github.io/glossary/b.html#base-r){class="glossary" target="_blank"} </td>
    <td style="text-align:left;"> The set of R functions that come with a basic installation of R, before you add external packages. </td>
+  </tr>
+  <tr>
+   <td style="text-align:left;"> [concatenate](https://psyteachr.github.io/glossary/c.html#concatenate){class="glossary" target="_blank"} </td>
+   <td style="text-align:left;"> To combine strings or vectors. </td>
   </tr>
   <tr>
    <td style="text-align:left;"> [console](https://psyteachr.github.io/glossary/c.html#console){class="glossary" target="_blank"} </td>
@@ -662,6 +678,10 @@ glossary::book()
   <tr>
    <td style="text-align:left;"> [r markdown](https://psyteachr.github.io/glossary/r.html#r-markdown){class="glossary" target="_blank"} </td>
    <td style="text-align:left;"> The R-specific version of markdown: a way to specify formatting, such as headers, paragraphs, lists, bolding, and links, as well as code blocks and inline code. </td>
+  </tr>
+  <tr>
+   <td style="text-align:left;"> [reprex](https://psyteachr.github.io/glossary/r.html#reprex){class="glossary" target="_blank"} </td>
+   <td style="text-align:left;"> A reproducible example that is the smallest, completely self-contained example of your problem or question. </td>
   </tr>
   <tr>
    <td style="text-align:left;"> [reproducible research](https://psyteachr.github.io/glossary/r.html#reproducible-research){class="glossary" target="_blank"} </td>

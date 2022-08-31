@@ -52,7 +52,7 @@ You're probably most familiar with data recorded in Excel spreadsheets. These ar
 
 ### Be consistent
 
-Use the same names for <a class='glossary' target='_blank' title='' href='https://psyteachr.github.io/glossary/v#variables'>variables</a> in different data files, and the exact same format for <a class='glossary' target='_blank' title='Data that can only take certain values, such as types of pet.' href='https://psyteachr.github.io/glossary/c#categorical'>categorical</a> values. Capitalisation and spaces also matter. For example, do not record group as "A", "a", and "A " in different places (or in the same column); these will be treated by any computational script as three different values.
+Use the same names for columns in different data files, and the exact same format for <a class='glossary' target='_blank' title='Data that can only take certain values, such as types of pet.' href='https://psyteachr.github.io/glossary/c#categorical'>categorical</a> values. Capitalisation and spaces also matter. For example, do not record group as "A", "a", and "A " in different places (or in the same column); these will be treated by any computational script as three different values.
 
 If you have column names for items you might want to group later, such as a questionnaire with items belonging to one of three subscales, use a consistent naming convention. This will make it easier to reshape data to create subscale scores, which we will cover in Chapter\ \@ref(pivot). For example, use column names like `O_1`, `E_2`, `O_3`, `C_4` rather than `q1`, `q2`, `q3`, `q4`. (Alternatively, you can include a separate table with a column for question number and a corresponding column for the subscale and join it to the reformatted questionnaire data, as we'll learn in Chapter\ \@ref(joins).)
 
@@ -66,9 +66,9 @@ We covered this in Chapter\ \@ref(naming-things) for file names. It is also impo
 
 Choose the best consistent column names for a single data file:
 
-* <select class='webex-select'><option value='blank'></option><option value=''>sid</option><option value=''>subject ID</option><option value='answer'>subject_id</option><option value=''>subject.id</option></select>
-* <select class='webex-select'><option value='blank'></option><option value=''>age</option><option value=''>ageMonths</option><option value='answer'>age_months</option><option value=''>Age (in months)</option></select>
-* <select class='webex-select'><option value='blank'></option><option value='answer'>birth_year</option><option value=''>Birth Year</option><option value=''>birth-year</option><option value=''>by</option></select>
+* <select class='webex-select'><option value='blank'></option><option value=''>subject.id</option><option value=''>subject ID</option><option value=''>sid</option><option value='answer'>subject_id</option></select>
+* <select class='webex-select'><option value='blank'></option><option value=''>Age (in months)</option><option value=''>age</option><option value='answer'>age_months</option><option value=''>ageMonths</option></select>
+* <select class='webex-select'><option value='blank'></option><option value=''>by</option><option value='answer'>birth_year</option><option value=''>Birth Year</option><option value=''>birth-year</option></select>
 
 :::
 
@@ -2014,10 +2014,6 @@ tidiest
   <tr>
    <td style="text-align:left;"> [tidyverse](https://psyteachr.github.io/glossary/t.html#tidyverse){class="glossary" target="_blank"} </td>
    <td style="text-align:left;"> A set of R packages that help you create and work with tidy data </td>
-  </tr>
-  <tr>
-   <td style="text-align:left;"> [variables](https://psyteachr.github.io/glossary/v.html#variables){class="glossary" target="_blank"} </td>
-   <td style="text-align:left;">  </td>
   </tr>
   <tr>
    <td style="text-align:left;"> [vector](https://psyteachr.github.io/glossary/v.html#vector){class="glossary" target="_blank"} </td>

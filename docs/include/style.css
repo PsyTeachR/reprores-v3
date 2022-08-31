@@ -5,7 +5,7 @@
 }
 .meme {
   display: inline-block;
-  max-width: 33% !important;
+  max-width: 40% !important;
   margin: 0.5em;
 }
 
@@ -17,6 +17,19 @@
 .left {
   float: left;
   margin-left: 0;
+}
+
+@media screen and (max-width: 600px) {
+  .meme {
+    display: block;
+    max-width: 100% !important;
+    margin: 0.5em 0;
+  }
+  
+  .right, .left {
+    float: none;
+    margin: 0.5em 0;
+  }
 }
 
 pre.mcq {

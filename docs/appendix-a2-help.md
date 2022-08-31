@@ -33,17 +33,20 @@ Note that you can select and copy the code above if you wanted to run it yoursel
 
 Copying the code and/or error in RStudio is easy; just highlight the code using the mouse and press Ctrl-C.
 
-If you just paste the code into a Teams channel, the formatting is not so nice; you lose the formatting that allows you to read the code easily.
+If you just paste the code into a Teams channel, the formatting is not so nice; you lose the fixed-width formatting that allows you to read the code easily.
 
 Here are two ways to get your code into Teams, one that is quick and easy but not very flexible, and another that is far more flexible but requires more steps.
 
-### Quick and easy method
+### Backticks
 
 First, if it is just a short function call, a single line, or an error, you can signal that text is meant to appear as code by surrounding it by single backticks---i.e., putting a backtick (\`) right before and right after the text that you want to be formatted as code. Teams will automatically format it for you.
 
-For multi-line code, the easiest and fastest way is just to type three backticks inside your message at the beginning of a line. Any subsequent text you enter will be treated as code. To get to the beginning of a line without submitting your post, press Ctrl-Enter while typing your message. Then type the three backticks, and paste your code right into the grey box that automatically appears. Press Enter twice in a row to get back out of the code entry box. So your message might look like this. 
+For multi-line code, the easiest and fastest way is just to type three backticks inside your message at the beginning of a line. Any subsequent text you enter will be treated as code. To get to the beginning of a line without submitting your post, press Ctrl-Enter while typing your message. Then type the three backticks, and paste your code right into the grey box that automatically appears. Press Enter twice in a row to get back out of the code entry box. So your message might look like this.
 
-![An animation of the instructions to make code blocks in Teams](images/appendices/teams-ticks.gif)
+<div class="figure" style="text-align: center">
+<img src="images/appendices/teams-ticks.gif" alt="An animation of the instructions to make code blocks in Teams" width="100%" />
+<p class="caption">(\#fig:unnamed-chunk-2)An animation of the instructions to make code blocks in Teams</p>
+</div>
 
 ### Code snippets
 
@@ -51,7 +54,7 @@ Before pasting any text, click on the icon that looks like the letter "A" with a
 
 <div class="figure" style="text-align: center">
 <img src="images/appendices/teams-code-snippet.png" alt="A screenshot of the Teams editing interface." width="100%" />
-<p class="caption">(\#fig:unnamed-chunk-2)A screenshot of the Teams editing interface.</p>
+<p class="caption">(\#fig:unnamed-chunk-3)A screenshot of the Teams editing interface.</p>
 </div>
 
 The code icon will open a window where you can paste your code. In the dropdown menu on the top right, select 'R' as the type of code. This will give you syntax highlighting. 
@@ -101,6 +104,9 @@ One of the big benefits to creating a reprex is that you often solve your own pr
 If you really want to go down the rabbit hole, you can create a reproducible example using the [reprex](https://www.tidyverse.org/help/#reprex) package from tidyverse.
 
 ## Screenshots
+
+<div class="meme right" style="min-width:60%;><img src="images/memes/help-no-photos.png"
+     alt="top left: Geordi from star trek looking sceptical with hand up; top right: photo of a laptop screen with a code error; bottom left: Geordi looking pleased and pointing; bottom right: the error explained in text with formatting" /></div>
 
 If you do need to take a screenshot, for example, if something goes wrong during installation, please use the screenshot functions built-in to your computer rather than taking a photo of your screen using your phone.
 

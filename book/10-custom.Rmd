@@ -30,10 +30,12 @@ library(ggbump)      # for bump plots
 library(treemap)     # for treemap plots
 library(ggwordcloud) # for word clouds
 library(tidytext)    # for manipulating text for word clouds
+library(gganimate)   # for animated plots
+
+#install.packages("rnaturalearthhires", repos = "http://packages.ropensci.org", type = "source")
 library(sf)          # for mapping geoms
 library(rnaturalearth) # for map data
 library(rnaturalearthdata) # extra mapping data
-library(gganimate)   # for animated plots
 
 theme_set(theme_light())
 ```

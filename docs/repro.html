@@ -6,7 +6,7 @@
 <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
 <title>Chapter 2 Reproducible Workflows | Data Skills for Reproducible Research</title>
 <meta name="description" content="2.1 Learning Objectives Organise a project (video) Create and compile an Rmarkdown document (video) Edit the YAML header to add table of contents and other options Include a table Include a figure...">
-<meta name="generator" content="bookdown 0.28 with bs4_book()">
+<meta name="generator" content="bookdown 0.27 with bs4_book()">
 <meta property="og:title" content="Chapter 2 Reproducible Workflows | Data Skills for Reproducible Research">
 <meta property="og:type" content="book">
 <meta property="og:url" content="https://psyteachr.github.io/reprores-v3/repro.html">
@@ -21,7 +21,7 @@
 <script src="libs/bootstrap-4.6.0/bootstrap.bundle.min.js"></script><script src="libs/bs3compat-0.4.0/transition.js"></script><script src="libs/bs3compat-0.4.0/tabs.js"></script><script src="libs/bs3compat-0.4.0/bs3compat.js"></script><link href="libs/bs4_book-1.0.0/bs4_book.css" rel="stylesheet">
 <script src="libs/bs4_book-1.0.0/bs4_book.js"></script><script src="libs/kePrint-0.0.1/kePrint.js"></script><link href="libs/lightable-0.0.1/lightable.css" rel="stylesheet">
 <script src="libs/htmlwidgets-1.5.4/htmlwidgets.js"></script><link href="libs/datatables-css-0.0.0/datatables-crosstalk.css" rel="stylesheet">
-<script src="libs/datatables-binding-0.24/datatables.js"></script><link href="libs/dt-core-1.11.3/css/jquery.dataTables.min.css" rel="stylesheet">
+<script src="libs/datatables-binding-0.23/datatables.js"></script><link href="libs/dt-core-1.11.3/css/jquery.dataTables.min.css" rel="stylesheet">
 <link href="libs/dt-core-1.11.3/css/jquery.dataTables.extra.css" rel="stylesheet">
 <script src="libs/dt-core-1.11.3/js/jquery.dataTables.min.js"></script><link href="libs/crosstalk-1.2.0/css/crosstalk.min.css" rel="stylesheet">
 <script src="libs/crosstalk-1.2.0/js/crosstalk.min.js"></script><script src="libs/plotly-binding-4.10.0/plotly.js"></script><script src="libs/typedarray-0.1/typedarray.min.js"></script><link href="libs/plotly-htmlwidgets-css-2.5.1/plotly-htmlwidgets.css" rel="stylesheet">
@@ -97,16 +97,6 @@
 <li class="book-part">Appendices</li>
 <li><a class="" href="installingr.html"><span class="header-section-number">A</span> Installing and Updating</a></li>
 <li><a class="" href="getting-help.html"><span class="header-section-number">B</span> Getting Help</a></li>
-<li><a class="" href="conventions.html"><span class="header-section-number">C</span> Conventions</a></li>
-<li><a class="" href="symbols.html"><span class="header-section-number">D</span> Symbols</a></li>
-<li><a class="" href="datasets.html"><span class="header-section-number">E</span> Datasets</a></li>
-<li><a class="" href="exercises.html"><span class="header-section-number">F</span> Exercises</a></li>
-<li><a class="" href="plotstyle.html"><span class="header-section-number">G</span> Styling Plots</a></li>
-<li><a class="" href="dates-times.html"><span class="header-section-number">H</span> Dates and Times</a></li>
-<li><a class="" href="twitter-hashtags.html"><span class="header-section-number">I</span> Twitter Hashtags</a></li>
-<li><a class="" href="twitter-data.html"><span class="header-section-number">J</span> Twitter Data</a></li>
-<li><a class="" href="webpages.html"><span class="header-section-number">K</span> Webpages</a></li>
-<li><a class="" href="bookrefs.html"><span class="header-section-number">L</span> References</a></li>
 </ul>
 
         <div class="book-extra">
@@ -748,12 +738,12 @@ ferret
 <span>  <span class="fu"><a href="https://gt.rstudio.com/reference/tab_spanner.html">tab_spanner</a></span><span class="op">(</span>label <span class="op">=</span> <span class="st">"Means"</span>,</span>
 <span>              columns <span class="op">=</span> <span class="fu"><a href="https://rdrr.io/r/base/c.html">c</a></span><span class="op">(</span><span class="va">mean_weight</span>, <span class="va">mean_score</span><span class="op">)</span><span class="op">)</span> <span class="op">|&gt;</span></span>
 <span> <span class="fu"><a href="https://gt.rstudio.com/reference/opt_stylize.html">opt_stylize</a></span><span class="op">(</span>style <span class="op">=</span> <span class="fl">6</span>, color <span class="op">=</span> <span class="st">"blue"</span><span class="op">)</span></span></code></pre></div>
-<div id="jxiruiduve" style="overflow-x:auto;overflow-y:auto;width:auto;height:auto;">
+<div id="kngdmdwndp" style="overflow-x:auto;overflow-y:auto;width:auto;height:auto;">
 <style>html {
   font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Oxygen, Ubuntu, Cantarell, 'Helvetica Neue', 'Fira Sans', 'Droid Sans', Arial, sans-serif;
 }
 
-#jxiruiduve .gt_table {
+#kngdmdwndp .gt_table {
   display: table;
   border-collapse: collapse;
   margin-left: auto;
@@ -778,7 +768,7 @@ ferret
   border-left-color: #D3D3D3;
 }
 
-#jxiruiduve .gt_heading {
+#kngdmdwndp .gt_heading {
   background-color: #FFFFFF;
   text-align: center;
   border-bottom-color: #FFFFFF;
@@ -790,7 +780,7 @@ ferret
   border-right-color: #D3D3D3;
 }
 
-#jxiruiduve .gt_title {
+#kngdmdwndp .gt_title {
   color: #333333;
   font-size: 125%;
   font-weight: initial;
@@ -802,7 +792,7 @@ ferret
   border-bottom-width: 0;
 }
 
-#jxiruiduve .gt_subtitle {
+#kngdmdwndp .gt_subtitle {
   color: #333333;
   font-size: 85%;
   font-weight: initial;
@@ -814,13 +804,13 @@ ferret
   border-top-width: 0;
 }
 
-#jxiruiduve .gt_bottom_border {
+#kngdmdwndp .gt_bottom_border {
   border-bottom-style: solid;
   border-bottom-width: 2px;
   border-bottom-color: #5F5F5F;
 }
 
-#jxiruiduve .gt_col_headings {
+#kngdmdwndp .gt_col_headings {
   border-top-style: solid;
   border-top-width: 2px;
   border-top-color: #5F5F5F;
@@ -835,7 +825,7 @@ ferret
   border-right-color: #D3D3D3;
 }
 
-#jxiruiduve .gt_col_heading {
+#kngdmdwndp .gt_col_heading {
   color: #FFFFFF;
   background-color: #0076BA;
   font-size: 100%;
@@ -855,7 +845,7 @@ ferret
   overflow-x: hidden;
 }
 
-#jxiruiduve .gt_column_spanner_outer {
+#kngdmdwndp .gt_column_spanner_outer {
   color: #FFFFFF;
   background-color: #0076BA;
   font-size: 100%;
@@ -867,15 +857,15 @@ ferret
   padding-right: 4px;
 }
 
-#jxiruiduve .gt_column_spanner_outer:first-child {
+#kngdmdwndp .gt_column_spanner_outer:first-child {
   padding-left: 0;
 }
 
-#jxiruiduve .gt_column_spanner_outer:last-child {
+#kngdmdwndp .gt_column_spanner_outer:last-child {
   padding-right: 0;
 }
 
-#jxiruiduve .gt_column_spanner {
+#kngdmdwndp .gt_column_spanner {
   border-bottom-style: solid;
   border-bottom-width: 2px;
   border-bottom-color: #5F5F5F;
@@ -887,7 +877,7 @@ ferret
   width: 100%;
 }
 
-#jxiruiduve .gt_group_heading {
+#kngdmdwndp .gt_group_heading {
   padding-top: 8px;
   padding-bottom: 8px;
   padding-left: 5px;
@@ -912,7 +902,7 @@ ferret
   vertical-align: middle;
 }
 
-#jxiruiduve .gt_empty_group_heading {
+#kngdmdwndp .gt_empty_group_heading {
   padding: 0.5px;
   color: #333333;
   background-color: #FFFFFF;
@@ -927,15 +917,15 @@ ferret
   vertical-align: middle;
 }
 
-#jxiruiduve .gt_from_md > :first-child {
+#kngdmdwndp .gt_from_md > :first-child {
   margin-top: 0;
 }
 
-#jxiruiduve .gt_from_md > :last-child {
+#kngdmdwndp .gt_from_md > :last-child {
   margin-bottom: 0;
 }
 
-#jxiruiduve .gt_row {
+#kngdmdwndp .gt_row {
   padding-top: 8px;
   padding-bottom: 8px;
   padding-left: 5px;
@@ -954,7 +944,7 @@ ferret
   overflow-x: hidden;
 }
 
-#jxiruiduve .gt_stub {
+#kngdmdwndp .gt_stub {
   color: #333333;
   background-color: #89D3FE;
   font-size: 100%;
@@ -967,7 +957,7 @@ ferret
   padding-right: 5px;
 }
 
-#jxiruiduve .gt_stub_row_group {
+#kngdmdwndp .gt_stub_row_group {
   color: #333333;
   background-color: #FFFFFF;
   font-size: 100%;
@@ -981,11 +971,11 @@ ferret
   vertical-align: top;
 }
 
-#jxiruiduve .gt_row_group_first td {
+#kngdmdwndp .gt_row_group_first td {
   border-top-width: 2px;
 }
 
-#jxiruiduve .gt_summary_row {
+#kngdmdwndp .gt_summary_row {
   color: #333333;
   background-color: #FFFFFF;
   text-transform: inherit;
@@ -995,16 +985,16 @@ ferret
   padding-right: 5px;
 }
 
-#jxiruiduve .gt_first_summary_row {
+#kngdmdwndp .gt_first_summary_row {
   border-top-style: solid;
   border-top-color: #5F5F5F;
 }
 
-#jxiruiduve .gt_first_summary_row.thick {
+#kngdmdwndp .gt_first_summary_row.thick {
   border-top-width: 2px;
 }
 
-#jxiruiduve .gt_last_summary_row {
+#kngdmdwndp .gt_last_summary_row {
   padding-top: 8px;
   padding-bottom: 8px;
   padding-left: 5px;
@@ -1014,7 +1004,7 @@ ferret
   border-bottom-color: #5F5F5F;
 }
 
-#jxiruiduve .gt_grand_summary_row {
+#kngdmdwndp .gt_grand_summary_row {
   color: #333333;
   background-color: #D5D5D5;
   text-transform: inherit;
@@ -1024,7 +1014,7 @@ ferret
   padding-right: 5px;
 }
 
-#jxiruiduve .gt_first_grand_summary_row {
+#kngdmdwndp .gt_first_grand_summary_row {
   padding-top: 8px;
   padding-bottom: 8px;
   padding-left: 5px;
@@ -1034,11 +1024,11 @@ ferret
   border-top-color: #5F5F5F;
 }
 
-#jxiruiduve .gt_striped {
+#kngdmdwndp .gt_striped {
   background-color: #EDF7FC;
 }
 
-#jxiruiduve .gt_table_body {
+#kngdmdwndp .gt_table_body {
   border-top-style: solid;
   border-top-width: 2px;
   border-top-color: #5F5F5F;
@@ -1047,7 +1037,7 @@ ferret
   border-bottom-color: #5F5F5F;
 }
 
-#jxiruiduve .gt_footnotes {
+#kngdmdwndp .gt_footnotes {
   color: #333333;
   background-color: #FFFFFF;
   border-bottom-style: none;
@@ -1061,7 +1051,7 @@ ferret
   border-right-color: #D3D3D3;
 }
 
-#jxiruiduve .gt_footnote {
+#kngdmdwndp .gt_footnote {
   margin: 0px;
   font-size: 90%;
   padding-left: 4px;
@@ -1070,7 +1060,7 @@ ferret
   padding-right: 5px;
 }
 
-#jxiruiduve .gt_sourcenotes {
+#kngdmdwndp .gt_sourcenotes {
   color: #333333;
   background-color: #FFFFFF;
   border-bottom-style: none;
@@ -1084,7 +1074,7 @@ ferret
   border-right-color: #D3D3D3;
 }
 
-#jxiruiduve .gt_sourcenote {
+#kngdmdwndp .gt_sourcenote {
   font-size: 90%;
   padding-top: 4px;
   padding-bottom: 4px;
@@ -1092,64 +1082,64 @@ ferret
   padding-right: 5px;
 }
 
-#jxiruiduve .gt_left {
+#kngdmdwndp .gt_left {
   text-align: left;
 }
 
-#jxiruiduve .gt_center {
+#kngdmdwndp .gt_center {
   text-align: center;
 }
 
-#jxiruiduve .gt_right {
+#kngdmdwndp .gt_right {
   text-align: right;
   font-variant-numeric: tabular-nums;
 }
 
-#jxiruiduve .gt_font_normal {
+#kngdmdwndp .gt_font_normal {
   font-weight: normal;
 }
 
-#jxiruiduve .gt_font_bold {
+#kngdmdwndp .gt_font_bold {
   font-weight: bold;
 }
 
-#jxiruiduve .gt_font_italic {
+#kngdmdwndp .gt_font_italic {
   font-style: italic;
 }
 
-#jxiruiduve .gt_super {
+#kngdmdwndp .gt_super {
   font-size: 65%;
 }
 
-#jxiruiduve .gt_footnote_marks {
+#kngdmdwndp .gt_footnote_marks {
   font-style: italic;
   font-weight: normal;
   font-size: 75%;
   vertical-align: 0.4em;
 }
 
-#jxiruiduve .gt_asterisk {
+#kngdmdwndp .gt_asterisk {
   font-size: 100%;
   vertical-align: 0;
 }
 
-#jxiruiduve .gt_indent_1 {
+#kngdmdwndp .gt_indent_1 {
   text-indent: 5px;
 }
 
-#jxiruiduve .gt_indent_2 {
+#kngdmdwndp .gt_indent_2 {
   text-indent: 10px;
 }
 
-#jxiruiduve .gt_indent_3 {
+#kngdmdwndp .gt_indent_3 {
   text-indent: 15px;
 }
 
-#jxiruiduve .gt_indent_4 {
+#kngdmdwndp .gt_indent_4 {
   text-indent: 20px;
 }
 
-#jxiruiduve .gt_indent_5 {
+#kngdmdwndp .gt_indent_5 {
   text-indent: 25px;
 }
 </style>
@@ -1202,8 +1192,8 @@ ferret
 <span>              colnames <span class="op">=</span> <span class="fu"><a href="https://rdrr.io/r/base/c.html">c</a></span><span class="op">(</span><span class="st">"Pet Type"</span>, <span class="st">"N"</span>, <span class="st">"Weight"</span>, <span class="st">"Score"</span><span class="op">)</span><span class="op">)</span> <span class="op">|&gt;</span></span>
 <span>  <span class="fu">DT</span><span class="fu">::</span><span class="fu"><a href="https://rdrr.io/pkg/DT/man/formatCurrency.html">formatRound</a></span><span class="op">(</span><span class="fu"><a href="https://rdrr.io/r/base/c.html">c</a></span><span class="op">(</span><span class="st">"mean_weight"</span>, <span class="st">"mean_score"</span><span class="op">)</span>,</span>
 <span>                  digits <span class="op">=</span> <span class="fl">2</span><span class="op">)</span></span></code></pre></div>
-<div id="htmlwidget-045af8de0b5527b123a7" style="width:100%;height:auto;" class="datatables html-widget"></div>
-<script type="application/json" data-for="htmlwidget-045af8de0b5527b123a7">{"x":{"filter":"none","vertical":false,"caption":"<caption>Summary statistics for the pets dataset.<\/caption>","data":[["1","2","3"],["cat","dog","ferret"],[300,400,100],[9.3716129083,19.0679737427696,4.78156944173321],[90.2366666666667,99.9825,111.78]],"container":"<table class=\"display\">\n  <thead>\n    <tr>\n      <th> <\/th>\n      <th>Pet Type<\/th>\n      <th>N<\/th>\n      <th>Weight<\/th>\n      <th>Score<\/th>\n    <\/tr>\n  <\/thead>\n<\/table>","options":{"columnDefs":[{"targets":3,"render":"function(data, type, row, meta) {\n    return type !== 'display' ? data : DTWidget.formatRound(data, 2, 3, \",\", \".\", null);\n  }"},{"targets":4,"render":"function(data, type, row, meta) {\n    return type !== 'display' ? data : DTWidget.formatRound(data, 2, 3, \",\", \".\", null);\n  }"},{"className":"dt-right","targets":[2,3,4]},{"orderable":false,"targets":0}],"order":[],"autoWidth":false,"orderClasses":false}},"evals":["options.columnDefs.0.render","options.columnDefs.1.render"],"jsHooks":[]}</script>
+<div id="htmlwidget-4b46f85b971c65700568" style="width:100%;height:auto;" class="datatables html-widget"></div>
+<script type="application/json" data-for="htmlwidget-4b46f85b971c65700568">{"x":{"filter":"none","vertical":false,"caption":"<caption>Summary statistics for the pets dataset.<\/caption>","data":[["1","2","3"],["cat","dog","ferret"],[300,400,100],[9.3716129083,19.0679737427696,4.78156944173321],[90.2366666666667,99.9825,111.78]],"container":"<table class=\"display\">\n  <thead>\n    <tr>\n      <th> <\/th>\n      <th>Pet Type<\/th>\n      <th>N<\/th>\n      <th>Weight<\/th>\n      <th>Score<\/th>\n    <\/tr>\n  <\/thead>\n<\/table>","options":{"columnDefs":[{"targets":3,"render":"function(data, type, row, meta) {\n    return type !== 'display' ? data : DTWidget.formatRound(data, 2, 3, \",\", \".\", null);\n  }"},{"targets":4,"render":"function(data, type, row, meta) {\n    return type !== 'display' ? data : DTWidget.formatRound(data, 2, 3, \",\", \".\", null);\n  }"},{"className":"dt-right","targets":[2,3,4]},{"orderable":false,"targets":0}],"order":[],"autoWidth":false,"orderClasses":false}},"evals":["options.columnDefs.0.render","options.columnDefs.1.render"],"jsHooks":[]}</script>
 </div>
 </div>
 <div id="repro-figures" class="section level3" number="2.5.6">
@@ -1830,7 +1820,7 @@ function openCity(evt, cityName) {
     var script = document.createElement("script");
     script.type = "text/javascript";
     var src = "true";
-    if (src === "" || src === "true") src = "https://cdnjs.cloudflare.com/ajax/libs/mathjax/2.7.9/latest.js?config=TeX-MML-AM_CHTML";
+    if (src === "" || src === "true") src = "https://mathjax.rstudio.com/latest/MathJax.js?config=TeX-MML-AM_CHTML";
     if (location.protocol !== "file:")
       if (/^https?:/.test(src))
         src = src.replace(/^https?:/, '');

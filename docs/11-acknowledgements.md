@@ -10,10 +10,10 @@ citation("reprores")
 
 ```
 ## 
-## To cite reprores in publications use:
+## To cite dataskills in publications use:
 ## 
-##   Lisa DeBruine and Dale Barr (2022, Septmeber). Data Skills for
-##   Reproducible Research. R package version 3.0. Zenodo.
+##   Lisa DeBruine and Dale Barr (2021, Septmeber 18). Data Skills for
+##   Reproducible Science. R package version 2.0. Zenodo.
 ##   http://doi.org/10.5281/zenodo.6527194
 ## 
 ## A BibTeX entry for LaTeX users is
@@ -23,10 +23,10 @@ citation("reprores")
 ##     author = {Lisa DeBruine and Dale Barr},
 ##     doi = {10.5281/zenodo.6527194},
 ##     publisher = {Zenodo},
-##     year = {2022},
+##     year = {2021},
 ##     month = {September},
-##     note = {R package version 3.0},
-##     url = {https://psyteachr.github.io/reprores-v3/},
+##     note = {R package version 2.0},
+##     url = {https://psyteachr.github.io/msc-data-skills/},
 ##   }
 ```
 

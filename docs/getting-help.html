@@ -6,7 +6,7 @@
 <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
 <title>B Getting Help | Data Skills for Reproducible Research</title>
 <meta name="description" content="B.1 What is the best way to share R code?  You have run into a problem and need to get help on a forum like our class MS Teams channel. What is the right way to share your code? Please do not...">
-<meta name="generator" content="bookdown 0.28 with bs4_book()">
+<meta name="generator" content="bookdown 0.27 with bs4_book()">
 <meta property="og:title" content="B Getting Help | Data Skills for Reproducible Research">
 <meta property="og:type" content="book">
 <meta property="og:url" content="https://psyteachr.github.io/reprores-v3/getting-help.html">
@@ -21,7 +21,7 @@
 <script src="libs/bootstrap-4.6.0/bootstrap.bundle.min.js"></script><script src="libs/bs3compat-0.4.0/transition.js"></script><script src="libs/bs3compat-0.4.0/tabs.js"></script><script src="libs/bs3compat-0.4.0/bs3compat.js"></script><link href="libs/bs4_book-1.0.0/bs4_book.css" rel="stylesheet">
 <script src="libs/bs4_book-1.0.0/bs4_book.js"></script><script src="libs/kePrint-0.0.1/kePrint.js"></script><link href="libs/lightable-0.0.1/lightable.css" rel="stylesheet">
 <script src="libs/htmlwidgets-1.5.4/htmlwidgets.js"></script><link href="libs/datatables-css-0.0.0/datatables-crosstalk.css" rel="stylesheet">
-<script src="libs/datatables-binding-0.24/datatables.js"></script><link href="libs/dt-core-1.11.3/css/jquery.dataTables.min.css" rel="stylesheet">
+<script src="libs/datatables-binding-0.23/datatables.js"></script><link href="libs/dt-core-1.11.3/css/jquery.dataTables.min.css" rel="stylesheet">
 <link href="libs/dt-core-1.11.3/css/jquery.dataTables.extra.css" rel="stylesheet">
 <script src="libs/dt-core-1.11.3/js/jquery.dataTables.min.js"></script><link href="libs/crosstalk-1.2.0/css/crosstalk.min.css" rel="stylesheet">
 <script src="libs/crosstalk-1.2.0/js/crosstalk.min.js"></script><script src="libs/plotly-binding-4.10.0/plotly.js"></script><script src="libs/typedarray-0.1/typedarray.min.js"></script><link href="libs/plotly-htmlwidgets-css-2.5.1/plotly-htmlwidgets.css" rel="stylesheet">
@@ -97,16 +97,6 @@
 <li class="book-part">Appendices</li>
 <li><a class="" href="installingr.html"><span class="header-section-number">A</span> Installing and Updating</a></li>
 <li><a class="active" href="getting-help.html"><span class="header-section-number">B</span> Getting Help</a></li>
-<li><a class="" href="conventions.html"><span class="header-section-number">C</span> Conventions</a></li>
-<li><a class="" href="symbols.html"><span class="header-section-number">D</span> Symbols</a></li>
-<li><a class="" href="datasets.html"><span class="header-section-number">E</span> Datasets</a></li>
-<li><a class="" href="exercises.html"><span class="header-section-number">F</span> Exercises</a></li>
-<li><a class="" href="plotstyle.html"><span class="header-section-number">G</span> Styling Plots</a></li>
-<li><a class="" href="dates-times.html"><span class="header-section-number">H</span> Dates and Times</a></li>
-<li><a class="" href="twitter-hashtags.html"><span class="header-section-number">I</span> Twitter Hashtags</a></li>
-<li><a class="" href="twitter-data.html"><span class="header-section-number">J</span> Twitter Data</a></li>
-<li><a class="" href="webpages.html"><span class="header-section-number">K</span> Webpages</a></li>
-<li><a class="" href="bookrefs.html"><span class="header-section-number">L</span> References</a></li>
 </ul>
 
         <div class="book-extra">
@@ -137,21 +127,24 @@ Figure B.1: A screenshot of the RStudio IDE showing an error in red.
 <p>The particular error that our code threw was</p>
 <pre><code>Error in mtcars %&gt;% filter(mpg &gt; 20) : could not find function "%&gt;%"</code></pre>
 <p>And the code that threw it was</p>
-<div class="sourceCode" id="cb551"><pre class="downlit sourceCode r">
+<div class="sourceCode" id="cb552"><pre class="downlit sourceCode r">
 <code class="sourceCode R"><span><span class="va">mtcars</span> <span class="op"><a href="https://magrittr.tidyverse.org/reference/pipe.html">%&gt;%</a></span></span>
 <span>  <span class="fu"><a href="https://dplyr.tidyverse.org/reference/filter.html">filter</a></span><span class="op">(</span><span class="va">mpg</span> <span class="op">&gt;</span> <span class="fl">20</span><span class="op">)</span></span></code></pre></div>
 <p>Note that you can select and copy the code above if you wanted to run it yourself, but you could not do that if all you had to rely on was the screenshot.</p>
 <p>Copying the code and/or error in RStudio is easy; just highlight the code using the mouse and press Ctrl-C.</p>
-<p>If you just paste the code into a Teams channel, the formatting is not so nice; you lose the formatting that allows you to read the code easily.</p>
+<p>If you just paste the code into a Teams channel, the formatting is not so nice; you lose the fixed-width formatting that allows you to read the code easily.</p>
 <p>Here are two ways to get your code into Teams, one that is quick and easy but not very flexible, and another that is far more flexible but requires more steps.</p>
-<div id="quick-and-easy-method" class="section level3" number="12.1.1">
+<div id="backticks" class="section level3" number="12.1.1">
 <h3>
-<span class="header-section-number">B.1.1</span> Quick and easy method<a class="anchor" aria-label="anchor" href="#quick-and-easy-method"><i class="fas fa-link"></i></a>
+<span class="header-section-number">B.1.1</span> Backticks<a class="anchor" aria-label="anchor" href="#backticks"><i class="fas fa-link"></i></a>
 </h3>
 <p>First, if it is just a short function call, a single line, or an error, you can signal that text is meant to appear as code by surrounding it by single backticks---i.e., putting a backtick (`) right before and right after the text that you want to be formatted as code. Teams will automatically format it for you.</p>
 <p>For multi-line code, the easiest and fastest way is just to type three backticks inside your message at the beginning of a line. Any subsequent text you enter will be treated as code. To get to the beginning of a line without submitting your post, press Ctrl-Enter while typing your message. Then type the three backticks, and paste your code right into the grey box that automatically appears. Press Enter twice in a row to get back out of the code entry box. So your message might look like this.</p>
-<div class="figure">
-<img src="images/appendices/teams-ticks.gif" alt=""><p class="caption">An animation of the instructions to make code blocks in Teams</p>
+<div class="figure" style="text-align: center">
+<span style="display:block;" id="fig:unnamed-chunk-2"></span>
+<img src="images/appendices/teams-ticks.gif" alt="An animation of the instructions to make code blocks in Teams" width="100%"><p class="caption">
+Figure B.2: An animation of the instructions to make code blocks in Teams
+</p>
 </div>
 </div>
 <div id="code-snippets" class="section level3" number="12.1.2">
@@ -160,9 +153,9 @@ Figure B.1: A screenshot of the RStudio IDE showing an error in red.
 </h3>
 <p>Before pasting any text, click on the icon that looks like the letter "A" with a pencil. This will open up options for text formatting and will allow you to easily create a multi-line post. From those options, select the icon that looks like <code>&lt;/&gt;</code>, which stands for code.</p>
 <div class="figure" style="text-align: center">
-<span style="display:block;" id="fig:unnamed-chunk-2"></span>
+<span style="display:block;" id="fig:unnamed-chunk-3"></span>
 <img src="images/appendices/teams-code-snippet.png" alt="A screenshot of the Teams editing interface." width="100%"><p class="caption">
-Figure B.2: A screenshot of the Teams editing interface.
+Figure B.3: A screenshot of the Teams editing interface.
 </p>
 </div>
 <p>The code icon will open a window where you can paste your code. In the dropdown menu on the top right, select 'R' as the type of code. This will give you syntax highlighting.</p>
@@ -176,12 +169,12 @@ Figure B.2: A screenshot of the Teams editing interface.
 <p>For example, you may have a question about how to figure out how to select rows that contain the value "test" in a certain column, but it isn't working. It's clearer if you can provide a concrete example, but you don't want to have to type out the whole table you're using or all the code that got you to this point in your script.</p>
 <p>You can include a very small table with just the basics or a smaller version of your problem. Make comments at each step about what you expect and what you actually got.</p>
 <p>Which version is easier for you to figure out the solution?</p>
-<div class="sourceCode" id="cb552"><pre class="downlit sourceCode r">
+<div class="sourceCode" id="cb553"><pre class="downlit sourceCode r">
 <code class="sourceCode R"><span><span class="co"># this doesn't work</span></span>
 <span><span class="va">no_test_data</span> <span class="op">&lt;-</span> <span class="va">data</span> <span class="op">|&gt;</span></span>
 <span>  <span class="fu"><a href="https://dplyr.tidyverse.org/reference/filter.html">filter</a></span><span class="op">(</span><span class="op">!</span><span class="fu"><a href="https://stringr.tidyverse.org/reference/str_detect.html">str_detect</a></span><span class="op">(</span><span class="va">type</span>, <span class="st">"test"</span><span class="op">)</span><span class="op">)</span></span></code></pre></div>
 <p>... OR ...</p>
-<div class="sourceCode" id="cb553"><pre class="downlit sourceCode r">
+<div class="sourceCode" id="cb554"><pre class="downlit sourceCode r">
 <code class="sourceCode R"><span><span class="kw"><a href="https://rdrr.io/r/base/library.html">library</a></span><span class="op">(</span><span class="va"><a href="https://tidyverse.tidyverse.org">tidyverse</a></span><span class="op">)</span></span>
 <span></span>
 <span><span class="co"># with a minimal example table</span></span>
@@ -205,6 +198,9 @@ Figure B.2: A screenshot of the Teams editing interface.
 <h2>
 <span class="header-section-number">B.3</span> Screenshots<a class="anchor" aria-label="anchor" href="#screenshots"><i class="fas fa-link"></i></a>
 </h2>
+<div class="meme right" style="min-width:60%;&gt;
+&lt;img src=" images alt="top left: Geordi from star trek looking sceptical with hand up; top right: photo of a laptop screen with a code error; bottom left: Geordi looking pleased and pointing; bottom right: the error explained in text with formatting"></div>
+</div>
 <p>If you do need to take a screenshot, for example, if something goes wrong during installation, please use the screenshot functions built-in to your computer rather than taking a photo of your screen using your phone.</p>
 <div id="taking-a-screenshot-on-windows" class="section level3" number="12.3.1">
 <h3>
@@ -228,6 +224,36 @@ Figure B.2: A screenshot of the Teams editing interface.
 <li>This photo will also automatically save to your desktop.</li>
 </ul>
 </div>
+</div>
+<div class="chapter-nav">
+<div class="prev"><a href="installingr.html"><span class="header-section-number">A</span> Installing and Updating</a></div>
+<div class="empty"></div>
+</div></main><div class="col-md-3 col-lg-2 d-none d-md-block sidebar sidebar-chapter">
+    <nav id="toc" data-toggle="toc" aria-label="On this page"><h2>On this page</h2>
+      <ul class="nav navbar-nav">
+<li><a class="nav-link" href="#getting-help"><span class="header-section-number">B</span> Getting Help</a></li>
+<li>
+<a class="nav-link" href="#what-is-the-best-way-to-share-r-code"><span class="header-section-number">B.1</span> What is the best way to share R code?</a><ul class="nav navbar-nav">
+<li><a class="nav-link" href="#backticks"><span class="header-section-number">B.1.1</span> Backticks</a></li>
+<li><a class="nav-link" href="#code-snippets"><span class="header-section-number">B.1.2</span> Code snippets</a></li>
+</ul>
+</li>
+<li><a class="nav-link" href="#reprex"><span class="header-section-number">B.2</span> Reprex</a></li>
+<li>
+<a class="nav-link" href="#screenshots"><span class="header-section-number">B.3</span> Screenshots</a><ul class="nav navbar-nav">
+<li><a class="nav-link" href="#taking-a-screenshot-on-windows"><span class="header-section-number">B.3.1</span> Taking a screenshot on Windows</a></li>
+<li><a class="nav-link" href="#taking-a-screenshot-on-mac"><span class="header-section-number">B.3.2</span> Taking a screenshot on Mac</a></li>
+</ul>
+</li>
+</ul>
+
+      <div class="book-extra">
+        <ul class="list-unstyled">
+<li><a id="book-source" href="https://github.com/psyteachr/reprores-v3/blob/master/book/appendix-a2-help.Rmd">View source <i class="fab fa-github"></i></a></li>
+          <li><a id="book-edit" href="https://github.com/psyteachr/reprores-v3/edit/master/book/appendix-a2-help.Rmd">Edit this page <i class="fab fa-github"></i></a></li>
+        </ul>
+</div>
+    </nav>
 </div>
 </div>
 <script>
@@ -447,39 +473,10 @@ function openCity(evt, cityName) {
   evt.currentTarget.className += " active";
 } 
 
-</script><div class="chapter-nav">
-<div class="prev"><a href="installingr.html"><span class="header-section-number">A</span> Installing and Updating</a></div>
-<div class="next"><a href="conventions.html"><span class="header-section-number">C</span> Conventions</a></div>
-</div></main><div class="col-md-3 col-lg-2 d-none d-md-block sidebar sidebar-chapter">
-    <nav id="toc" data-toggle="toc" aria-label="On this page"><h2>On this page</h2>
-      <ul class="nav navbar-nav">
-<li><a class="nav-link" href="#getting-help"><span class="header-section-number">B</span> Getting Help</a></li>
-<li>
-<a class="nav-link" href="#what-is-the-best-way-to-share-r-code"><span class="header-section-number">B.1</span> What is the best way to share R code?</a><ul class="nav navbar-nav">
-<li><a class="nav-link" href="#quick-and-easy-method"><span class="header-section-number">B.1.1</span> Quick and easy method</a></li>
-<li><a class="nav-link" href="#code-snippets"><span class="header-section-number">B.1.2</span> Code snippets</a></li>
-</ul>
-</li>
-<li><a class="nav-link" href="#reprex"><span class="header-section-number">B.2</span> Reprex</a></li>
-<li>
-<a class="nav-link" href="#screenshots"><span class="header-section-number">B.3</span> Screenshots</a><ul class="nav navbar-nav">
-<li><a class="nav-link" href="#taking-a-screenshot-on-windows"><span class="header-section-number">B.3.1</span> Taking a screenshot on Windows</a></li>
-<li><a class="nav-link" href="#taking-a-screenshot-on-mac"><span class="header-section-number">B.3.2</span> Taking a screenshot on Mac</a></li>
-</ul>
-</li>
-</ul>
-
-      <div class="book-extra">
-        <ul class="list-unstyled">
-<li><a id="book-source" href="https://github.com/psyteachr/reprores-v3/blob/master/book/appendix-a2-help.Rmd">View source <i class="fab fa-github"></i></a></li>
-          <li><a id="book-edit" href="https://github.com/psyteachr/reprores-v3/edit/master/book/appendix-a2-help.Rmd">Edit this page <i class="fab fa-github"></i></a></li>
-        </ul>
-</div>
-    </nav>
-</div>
+</script>
 
 </div>
-</div> <!-- .container -->
+ <!-- .container -->
 
 <footer class="bg-primary text-light mt-5"><div class="container"><div class="row">
 
@@ -497,7 +494,7 @@ function openCity(evt, cityName) {
     var script = document.createElement("script");
     script.type = "text/javascript";
     var src = "true";
-    if (src === "" || src === "true") src = "https://cdnjs.cloudflare.com/ajax/libs/mathjax/2.7.9/latest.js?config=TeX-MML-AM_CHTML";
+    if (src === "" || src === "true") src = "https://mathjax.rstudio.com/latest/MathJax.js?config=TeX-MML-AM_CHTML";
     if (location.protocol !== "file:")
       if (/^https?:/.test(src))
         src = src.replace(/^https?:/, '');

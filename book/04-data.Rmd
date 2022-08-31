@@ -48,7 +48,7 @@ You're probably most familiar with data recorded in Excel spreadsheets. These ar
 
 ### Be consistent
 
-Use the same names for `r glossary("variables")` in different data files, and the exact same format for `r glossary("categorical")` values. Capitalisation and spaces also matter. For example, do not record group as "A", "a", and "A " in different places (or in the same column); these will be treated by any computational script as three different values.
+Use the same names for columns in different data files, and the exact same format for `r glossary("categorical")` values. Capitalisation and spaces also matter. For example, do not record group as "A", "a", and "A " in different places (or in the same column); these will be treated by any computational script as three different values.
 
 If you have column names for items you might want to group later, such as a questionnaire with items belonging to one of three subscales, use a consistent naming convention. This will make it easier to reshape data to create subscale scores, which we will cover in Chapter\ \@ref(pivot). For example, use column names like `O_1`, `E_2`, `O_3`, `C_4` rather than `q1`, `q2`, `q3`, `q4`. (Alternatively, you can include a separate table with a column for question number and a corresponding column for the subscale and join it to the reformatted questionnaire data, as we'll learn in Chapter\ \@ref(joins).)
 

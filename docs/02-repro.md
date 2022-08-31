@@ -535,12 +535,12 @@ gt(summary_table, caption = "Summary statistics for the pets dataset.") |>
 ```
 
 ```{=html}
-<div id="jxiruiduve" style="overflow-x:auto;overflow-y:auto;width:auto;height:auto;">
+<div id="kngdmdwndp" style="overflow-x:auto;overflow-y:auto;width:auto;height:auto;">
 <style>html {
   font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Oxygen, Ubuntu, Cantarell, 'Helvetica Neue', 'Fira Sans', 'Droid Sans', Arial, sans-serif;
 }
 
-#jxiruiduve .gt_table {
+#kngdmdwndp .gt_table {
   display: table;
   border-collapse: collapse;
   margin-left: auto;
@@ -565,7 +565,7 @@ gt(summary_table, caption = "Summary statistics for the pets dataset.") |>
   border-left-color: #D3D3D3;
 }
 
-#jxiruiduve .gt_heading {
+#kngdmdwndp .gt_heading {
   background-color: #FFFFFF;
   text-align: center;
   border-bottom-color: #FFFFFF;
@@ -577,7 +577,7 @@ gt(summary_table, caption = "Summary statistics for the pets dataset.") |>
   border-right-color: #D3D3D3;
 }
 
-#jxiruiduve .gt_title {
+#kngdmdwndp .gt_title {
   color: #333333;
   font-size: 125%;
   font-weight: initial;
@@ -589,7 +589,7 @@ gt(summary_table, caption = "Summary statistics for the pets dataset.") |>
   border-bottom-width: 0;
 }
 
-#jxiruiduve .gt_subtitle {
+#kngdmdwndp .gt_subtitle {
   color: #333333;
   font-size: 85%;
   font-weight: initial;
@@ -601,13 +601,13 @@ gt(summary_table, caption = "Summary statistics for the pets dataset.") |>
   border-top-width: 0;
 }
 
-#jxiruiduve .gt_bottom_border {
+#kngdmdwndp .gt_bottom_border {
   border-bottom-style: solid;
   border-bottom-width: 2px;
   border-bottom-color: #5F5F5F;
 }
 
-#jxiruiduve .gt_col_headings {
+#kngdmdwndp .gt_col_headings {
   border-top-style: solid;
   border-top-width: 2px;
   border-top-color: #5F5F5F;
@@ -622,7 +622,7 @@ gt(summary_table, caption = "Summary statistics for the pets dataset.") |>
   border-right-color: #D3D3D3;
 }
 
-#jxiruiduve .gt_col_heading {
+#kngdmdwndp .gt_col_heading {
   color: #FFFFFF;
   background-color: #0076BA;
   font-size: 100%;
@@ -642,7 +642,7 @@ gt(summary_table, caption = "Summary statistics for the pets dataset.") |>
   overflow-x: hidden;
 }
 
-#jxiruiduve .gt_column_spanner_outer {
+#kngdmdwndp .gt_column_spanner_outer {
   color: #FFFFFF;
   background-color: #0076BA;
   font-size: 100%;
@@ -654,15 +654,15 @@ gt(summary_table, caption = "Summary statistics for the pets dataset.") |>
   padding-right: 4px;
 }
 
-#jxiruiduve .gt_column_spanner_outer:first-child {
+#kngdmdwndp .gt_column_spanner_outer:first-child {
   padding-left: 0;
 }
 
-#jxiruiduve .gt_column_spanner_outer:last-child {
+#kngdmdwndp .gt_column_spanner_outer:last-child {
   padding-right: 0;
 }
 
-#jxiruiduve .gt_column_spanner {
+#kngdmdwndp .gt_column_spanner {
   border-bottom-style: solid;
   border-bottom-width: 2px;
   border-bottom-color: #5F5F5F;
@@ -674,7 +674,7 @@ gt(summary_table, caption = "Summary statistics for the pets dataset.") |>
   width: 100%;
 }
 
-#jxiruiduve .gt_group_heading {
+#kngdmdwndp .gt_group_heading {
   padding-top: 8px;
   padding-bottom: 8px;
   padding-left: 5px;
@@ -699,7 +699,7 @@ gt(summary_table, caption = "Summary statistics for the pets dataset.") |>
   vertical-align: middle;
 }
 
-#jxiruiduve .gt_empty_group_heading {
+#kngdmdwndp .gt_empty_group_heading {
   padding: 0.5px;
   color: #333333;
   background-color: #FFFFFF;
@@ -714,15 +714,15 @@ gt(summary_table, caption = "Summary statistics for the pets dataset.") |>
   vertical-align: middle;
 }
 
-#jxiruiduve .gt_from_md > :first-child {
+#kngdmdwndp .gt_from_md > :first-child {
   margin-top: 0;
 }
 
-#jxiruiduve .gt_from_md > :last-child {
+#kngdmdwndp .gt_from_md > :last-child {
   margin-bottom: 0;
 }
 
-#jxiruiduve .gt_row {
+#kngdmdwndp .gt_row {
   padding-top: 8px;
   padding-bottom: 8px;
   padding-left: 5px;
@@ -741,7 +741,7 @@ gt(summary_table, caption = "Summary statistics for the pets dataset.") |>
   overflow-x: hidden;
 }
 
-#jxiruiduve .gt_stub {
+#kngdmdwndp .gt_stub {
   color: #333333;
   background-color: #89D3FE;
   font-size: 100%;
@@ -754,7 +754,7 @@ gt(summary_table, caption = "Summary statistics for the pets dataset.") |>
   padding-right: 5px;
 }
 
-#jxiruiduve .gt_stub_row_group {
+#kngdmdwndp .gt_stub_row_group {
   color: #333333;
   background-color: #FFFFFF;
   font-size: 100%;
@@ -768,11 +768,11 @@ gt(summary_table, caption = "Summary statistics for the pets dataset.") |>
   vertical-align: top;
 }
 
-#jxiruiduve .gt_row_group_first td {
+#kngdmdwndp .gt_row_group_first td {
   border-top-width: 2px;
 }
 
-#jxiruiduve .gt_summary_row {
+#kngdmdwndp .gt_summary_row {
   color: #333333;
   background-color: #FFFFFF;
   text-transform: inherit;
@@ -782,16 +782,16 @@ gt(summary_table, caption = "Summary statistics for the pets dataset.") |>
   padding-right: 5px;
 }
 
-#jxiruiduve .gt_first_summary_row {
+#kngdmdwndp .gt_first_summary_row {
   border-top-style: solid;
   border-top-color: #5F5F5F;
 }
 
-#jxiruiduve .gt_first_summary_row.thick {
+#kngdmdwndp .gt_first_summary_row.thick {
   border-top-width: 2px;
 }
 
-#jxiruiduve .gt_last_summary_row {
+#kngdmdwndp .gt_last_summary_row {
   padding-top: 8px;
   padding-bottom: 8px;
   padding-left: 5px;
@@ -801,7 +801,7 @@ gt(summary_table, caption = "Summary statistics for the pets dataset.") |>
   border-bottom-color: #5F5F5F;
 }
 
-#jxiruiduve .gt_grand_summary_row {
+#kngdmdwndp .gt_grand_summary_row {
   color: #333333;
   background-color: #D5D5D5;
   text-transform: inherit;
@@ -811,7 +811,7 @@ gt(summary_table, caption = "Summary statistics for the pets dataset.") |>
   padding-right: 5px;
 }
 
-#jxiruiduve .gt_first_grand_summary_row {
+#kngdmdwndp .gt_first_grand_summary_row {
   padding-top: 8px;
   padding-bottom: 8px;
   padding-left: 5px;
@@ -821,11 +821,11 @@ gt(summary_table, caption = "Summary statistics for the pets dataset.") |>
   border-top-color: #5F5F5F;
 }
 
-#jxiruiduve .gt_striped {
+#kngdmdwndp .gt_striped {
   background-color: #EDF7FC;
 }
 
-#jxiruiduve .gt_table_body {
+#kngdmdwndp .gt_table_body {
   border-top-style: solid;
   border-top-width: 2px;
   border-top-color: #5F5F5F;
@@ -834,7 +834,7 @@ gt(summary_table, caption = "Summary statistics for the pets dataset.") |>
   border-bottom-color: #5F5F5F;
 }
 
-#jxiruiduve .gt_footnotes {
+#kngdmdwndp .gt_footnotes {
   color: #333333;
   background-color: #FFFFFF;
   border-bottom-style: none;
@@ -848,7 +848,7 @@ gt(summary_table, caption = "Summary statistics for the pets dataset.") |>
   border-right-color: #D3D3D3;
 }
 
-#jxiruiduve .gt_footnote {
+#kngdmdwndp .gt_footnote {
   margin: 0px;
   font-size: 90%;
   padding-left: 4px;
@@ -857,7 +857,7 @@ gt(summary_table, caption = "Summary statistics for the pets dataset.") |>
   padding-right: 5px;
 }
 
-#jxiruiduve .gt_sourcenotes {
+#kngdmdwndp .gt_sourcenotes {
   color: #333333;
   background-color: #FFFFFF;
   border-bottom-style: none;
@@ -871,7 +871,7 @@ gt(summary_table, caption = "Summary statistics for the pets dataset.") |>
   border-right-color: #D3D3D3;
 }
 
-#jxiruiduve .gt_sourcenote {
+#kngdmdwndp .gt_sourcenote {
   font-size: 90%;
   padding-top: 4px;
   padding-bottom: 4px;
@@ -879,64 +879,64 @@ gt(summary_table, caption = "Summary statistics for the pets dataset.") |>
   padding-right: 5px;
 }
 
-#jxiruiduve .gt_left {
+#kngdmdwndp .gt_left {
   text-align: left;
 }
 
-#jxiruiduve .gt_center {
+#kngdmdwndp .gt_center {
   text-align: center;
 }
 
-#jxiruiduve .gt_right {
+#kngdmdwndp .gt_right {
   text-align: right;
   font-variant-numeric: tabular-nums;
 }
 
-#jxiruiduve .gt_font_normal {
+#kngdmdwndp .gt_font_normal {
   font-weight: normal;
 }
 
-#jxiruiduve .gt_font_bold {
+#kngdmdwndp .gt_font_bold {
   font-weight: bold;
 }
 
-#jxiruiduve .gt_font_italic {
+#kngdmdwndp .gt_font_italic {
   font-style: italic;
 }
 
-#jxiruiduve .gt_super {
+#kngdmdwndp .gt_super {
   font-size: 65%;
 }
 
-#jxiruiduve .gt_footnote_marks {
+#kngdmdwndp .gt_footnote_marks {
   font-style: italic;
   font-weight: normal;
   font-size: 75%;
   vertical-align: 0.4em;
 }
 
-#jxiruiduve .gt_asterisk {
+#kngdmdwndp .gt_asterisk {
   font-size: 100%;
   vertical-align: 0;
 }
 
-#jxiruiduve .gt_indent_1 {
+#kngdmdwndp .gt_indent_1 {
   text-indent: 5px;
 }
 
-#jxiruiduve .gt_indent_2 {
+#kngdmdwndp .gt_indent_2 {
   text-indent: 10px;
 }
 
-#jxiruiduve .gt_indent_3 {
+#kngdmdwndp .gt_indent_3 {
   text-indent: 15px;
 }
 
-#jxiruiduve .gt_indent_4 {
+#kngdmdwndp .gt_indent_4 {
   text-indent: 20px;
 }
 
-#jxiruiduve .gt_indent_5 {
+#kngdmdwndp .gt_indent_5 {
   text-indent: 25px;
 }
 </style>
@@ -994,8 +994,8 @@ DT::datatable(summary_table,
 ```
 
 ```{=html}
-<div id="htmlwidget-045af8de0b5527b123a7" style="width:100%;height:auto;" class="datatables html-widget"></div>
-<script type="application/json" data-for="htmlwidget-045af8de0b5527b123a7">{"x":{"filter":"none","vertical":false,"caption":"<caption>Summary statistics for the pets dataset.<\/caption>","data":[["1","2","3"],["cat","dog","ferret"],[300,400,100],[9.3716129083,19.0679737427696,4.78156944173321],[90.2366666666667,99.9825,111.78]],"container":"<table class=\"display\">\n  <thead>\n    <tr>\n      <th> <\/th>\n      <th>Pet Type<\/th>\n      <th>N<\/th>\n      <th>Weight<\/th>\n      <th>Score<\/th>\n    <\/tr>\n  <\/thead>\n<\/table>","options":{"columnDefs":[{"targets":3,"render":"function(data, type, row, meta) {\n    return type !== 'display' ? data : DTWidget.formatRound(data, 2, 3, \",\", \".\", null);\n  }"},{"targets":4,"render":"function(data, type, row, meta) {\n    return type !== 'display' ? data : DTWidget.formatRound(data, 2, 3, \",\", \".\", null);\n  }"},{"className":"dt-right","targets":[2,3,4]},{"orderable":false,"targets":0}],"order":[],"autoWidth":false,"orderClasses":false}},"evals":["options.columnDefs.0.render","options.columnDefs.1.render"],"jsHooks":[]}</script>
+<div id="htmlwidget-4b46f85b971c65700568" style="width:100%;height:auto;" class="datatables html-widget"></div>
+<script type="application/json" data-for="htmlwidget-4b46f85b971c65700568">{"x":{"filter":"none","vertical":false,"caption":"<caption>Summary statistics for the pets dataset.<\/caption>","data":[["1","2","3"],["cat","dog","ferret"],[300,400,100],[9.3716129083,19.0679737427696,4.78156944173321],[90.2366666666667,99.9825,111.78]],"container":"<table class=\"display\">\n  <thead>\n    <tr>\n      <th> <\/th>\n      <th>Pet Type<\/th>\n      <th>N<\/th>\n      <th>Weight<\/th>\n      <th>Score<\/th>\n    <\/tr>\n  <\/thead>\n<\/table>","options":{"columnDefs":[{"targets":3,"render":"function(data, type, row, meta) {\n    return type !== 'display' ? data : DTWidget.formatRound(data, 2, 3, \",\", \".\", null);\n  }"},{"targets":4,"render":"function(data, type, row, meta) {\n    return type !== 'display' ? data : DTWidget.formatRound(data, 2, 3, \",\", \".\", null);\n  }"},{"className":"dt-right","targets":[2,3,4]},{"orderable":false,"targets":0}],"order":[],"autoWidth":false,"orderClasses":false}},"evals":["options.columnDefs.0.render","options.columnDefs.1.render"],"jsHooks":[]}</script>
 ```
 
 </div>

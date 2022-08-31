@@ -89,9 +89,9 @@ str(time_parts)
 
 ```
 ## List of 12
-##  $ second : num 57.5
-##  $ minute : int 50
-##  $ hour   : int 14
+##  $ second : num 19.7
+##  $ minute : int 54
+##  $ hour   : int 22
 ##  $ day    : int 31
 ##  $ wday   : num 4
 ##  $ yday   : num 243

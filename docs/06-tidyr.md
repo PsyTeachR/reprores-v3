@@ -1580,6 +1580,7 @@ matmort_wide <- matmort2 |>
 ##  9 Algeria        141   327    216     NA     NA
 ## 10 Angola         221   988     NA     NA    477
 ## # … with 532 more rows
+## # ℹ Use `print(n = ...)` to see more rows
 ```
 
 ::: {.warning data-latex=""}
@@ -1658,6 +1659,7 @@ q <- experimentum_quests |>
 ## # … with 14 more rows, 5 more variables: good <int>, country <chr>, text <chr>,
 ## #   good_borzoi <int>, time <chr>, and abbreviated variable names ¹​session_id,
 ## #   ²​project_id, ³​quest_id, ⁴​user_sex, ⁵​user_status, ⁶​user_age
+## # ℹ Use `print(n = ...)` to see more rows, and `colnames()` to see all variable names
 ```
 
 ::: {.info data-latex=""}

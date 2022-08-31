@@ -997,6 +997,10 @@ ggplot(pets, aes(age, score)) +
   geom_hex(binwidth = c(1, 5))
 ```
 
+```
+## Warning: Computation failed in `stat_binhex()`:
+```
+
 <div class="figure" style="text-align: center">
 <img src="images/overplot-hex-1.png" alt="Hexagonal heatmap of bin counts" width="90%" />
 <p class="caption">(\#fig:overplot-hex)Hexagonal heatmap of bin counts</p>
