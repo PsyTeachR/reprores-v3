@@ -24,13 +24,21 @@
 
 ## Setup {#setup-joins}
 
-```{r libraries, results = 'hide', warning = FALSE, message = FALSE}
-# libraries needed
-library(tidyverse)
-library(reprores)
+1. Open your `reprores-class-notes` project 
+1. Create a new R Markdown file called `05-joins.Rmd`
+1. Update the YAML header 
+1. Replace the setup chunk with the one below: 
+
+```{r setup-data, results = 'hide', warning = FALSE, message = FALSE, verbatim = "r setup, include = FALSE"}
+knitr::opts_chunk$set(echo = TRUE)
+
+# packages needed for this chapter
+library(tidyverse) # loads dplyr for join functions
 ```
 
-## Data
+Download the [Data transformation cheatsheet](https://raw.githubusercontent.com/rstudio/cheatsheets/main/data-transformation.pdf).
+
+## Create Demo Data
 
 First, we'll create two small data tables. 
 

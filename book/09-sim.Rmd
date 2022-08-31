@@ -33,13 +33,21 @@
 6. Calculate power over a range of study parameters
 
 
-## Setup {#setup8}
+## Setup {#setup-sim}
 
-```{r setup, results = 'hide', warning = FALSE, message = FALSE}
-# libraries needed for these examples
-library(tidyverse)
-library(plotly)
-library(faux)
+1. Open your `reprores-class-notes` project 
+1. Create a new R Markdown file called `09-sim.Rmd`
+1. Update the YAML header 
+1. Replace the setup chunk with the one below: 
+
+```{r setup-data, results = 'hide', warning = FALSE, message = FALSE, verbatim = "r setup, include = FALSE"}
+knitr::opts_chunk$set(echo = TRUE)
+
+# packages needed for this chapter
+library(tidyverse) # for data wrangling
+library(faux)      # data simulation
+library(plotly)    # create a 3D plot to visualise correlations
+# MASS::mvrnorm() is used without loading MASS
 
 set.seed(8675309) # makes sure random numbers are reproducible
 ```

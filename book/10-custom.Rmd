@@ -10,10 +10,17 @@
 
 ### Set-up {#setup-custom-viz}
 
-First, create a new project for the work we'll do in this chapter named `r path("10-advanced")`. Second, open and save a new R Markdown document named `visualisations.Rmd`, delete the welcome text and load the required packages for this section. You will probably need to install several new packages.
+1. Open your `reprores-class-notes` project 
+1. Create a new R Markdown file called `10-viz.Rmd`
+1. Update the YAML header 
+1. Replace the setup chunk with the one below
+1. Check that you have all packages installed
 
-```{r setup-custom, message=FALSE, warning = FALSE}
-library(tidyverse)   # data wrangling functions
+```{r setup-data, results = 'hide', warning = FALSE, message = FALSE, verbatim = "r setup, include = FALSE"}
+knitr::opts_chunk$set(echo = TRUE)
+
+# packages needed for this chapter section
+library(tidyverse)   # for data wrangling
 library(ggthemes)    # for themes
 library(patchwork)   # for combining plots
 library(plotly)      # for interactive plots
@@ -30,9 +37,6 @@ library(gganimate)   # for animated plots
 
 theme_set(theme_light())
 ```
-
-You'll need to make a folder called "data" and download data files into it: 
-<a href="https://psyteachr.github.io/reprores-v3/data/survey_data.csv" download>survey_data.csv</a> and <a href="https://psyteachr.github.io/reprores-v3/data/scottish_population.csv" download>scottish_population.csv</a>.
 
 Download the [ggplot2 cheat sheet](https://raw.githubusercontent.com/rstudio/cheatsheets/main/data-visualization.pdf).
 
@@ -697,17 +701,20 @@ There are so many more options for data visualisation in R than we have time to 
 
 ### Set-up {#setup-custom-reports}
 
-Close your visualisation Markdown and open and save an new R Markdown document named `reports.Rmd`, delete the welcome text and load the required packages for this section.
+1. Close the file `10-viz.Rmd`
+1. Create a new R Markdown file called `10-reports.Rmd`
+1. Update the YAML header 
+1. Replace the setup chunk with the one below
 
-```{r setup-reports, message=FALSE}
+```{r setup-data, results = 'hide', warning = FALSE, message = FALSE, verbatim = "r setup, include = FALSE"}
+knitr::opts_chunk$set(echo = TRUE)
+
+# packages needed for this chapter section
 library(tidyverse)     # data wrangling functions
 library(bookdown)      # for chaptered reports
 library(flexdashboard) # for dashboards
 library(DT)            # for interactive tables
 ```
-
-You'll need to make a folder called "data" and download data files into it: 
-<a href="https://psyteachr.github.io/reprores-v3/data/amazon_alexa.csv" download>amazon_alexa.csv</a> and <a href="https://psyteachr.github.io/reprores-v3/data/scottish_population.csv" download>scottish_population.csv</a>.
 
 ### Linked documents
 

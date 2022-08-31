@@ -16,10 +16,21 @@
 
 ## Setup {#setup-repro}
 
-```{r, message=FALSE}
-library(tidyverse)
-library(knitr)
+You will be given instructions in Section\ \@ref(new-project) below to set up a new project where you will keep all of your class notes. Section\ \@ref(r-markdown) gives instructions to set up an R Markdown script for this chapter. 
+
+For reference, here are the packages we will use in this chapter.
+
+```{r setup-reports, message=FALSE}
+# packages needed for this chapter
+library(tidyverse)  # various data manipulation functions
+library(knitr)      # for table and image display
+library(kableExtra) # for styling tables
+library(papaja)     # for APA-style tables
+library(gt)         # for fancy tables
+library(DT)         # for interactive tables
 ```
+
+Download the [R Markdown Cheat Sheet](https://www.rstudio.org/links/r_markdown_cheat_sheet).
 
 ## Why learn reproducible reports?
 
@@ -109,13 +120,17 @@ Here is one way to structure them so that similar files have the same structure 
 Think of other ways to name the files above. Look at some of your own project files and see what you can improve.
 :::
 
-### Start a Project
+### Start a Project {#new-project}
 
-Now that we understand how the file system work and how to name things to make it easier for scripts to access them, we're ready to make our first project. 
+Now that we understand how the file system work and how to name things to make it easier for scripts to access them, we're ready to make our class project. 
 
-First, make a new `r glossary("directory")` where you will keep all of your materials for this class. You can set this directory to be the default working directory under the General tab of the Global Options. This means that files will be saved here by default if you aren't working in a project. 
+First, make a new `r glossary("directory")` where you will keep all of your materials for this class (I called mine `reprores-2022`). You can set this directory to be the default working directory under the General tab of the Global Options. This means that files will be saved here by default if you aren't working in a project. 
 
-Next, choose **`New Project...`** under the **`File`** menu to create a new project called `r path("02-reports")`. Make sure you save it inside the directory you just made. RStudio will restart itself and open with this new project directory as the working directory. 
+::: {.warning data-latex=""}
+It can sometimes cause problems if this directory is in OneDrive or if the full file path has special characters or is [more than 260 characters](http://handbook.datalad.org/en/latest/intro/filenaming.html){target='_blank'} on some Windows machines.
+:::
+
+Next, choose **`New Project...`** under the **`File`** menu to create a new project called `r path("reprores-class-notes")`. Make sure you save it inside the directory you just made. RStudio will restart itself and open with this new project directory as the working directory. 
 
 ```{r, fig.cap="Starting a new project."}
 include_graphics(c("images/repro/new_proj_1.png",
@@ -123,7 +138,8 @@ include_graphics(c("images/repro/new_proj_1.png",
                    "images/repro/new_proj_3.png"))
 ```
 
-Click on the Files tab in the lower right pane to see the contents of the project directory. You will see a file called `02-reports.Rproj`, which is a file that contains all of the project information.You can double-click on it to open up the project. 
+
+Click on the Files tab in the lower right pane to see the contents of the project directory. You will see a file called `reprores-class-notes.Rproj`, which is a file that contains all of the project information.You can double-click on it to open up the project. 
 
 ::: {.info data-latex=""}
 Depending on your settings, you may also see a directory called `.Rproj.user`, which contains your specific user settings. You can ignore this and other "invisible" files that start with a full stop.
@@ -139,14 +155,17 @@ There is a new type of reproducible report format called [quarto](https://quarto
 
 We will use `r glossary("R Markdown")` to create reproducible reports, which enables mixing of text and code. A reproducible script will contain sections of code in code blocks. A code block starts and ends with three backtick symbols in a row, with some information about the code between curly brackets, such as `{r chunk-name, echo=FALSE}` (this runs the code, but does not show the text of the code block in the compiled document). The text outside of code blocks is written in `r glossary("markdown")`, which is a way to specify formatting, such as headers, paragraphs, lists, bolding, and links.
 
-```{r img-reproducible-script, echo=FALSE, fig.cap="A reproducible script."}
+```{r img-reproducible-script, echo=FALSE}
+#| fig.cap: A reproducible script.
+#| fig.alt: A screenshot of a script with line numbers, code blocks, and markdown text
 knitr::include_graphics("images/repro/reproducible_script.png")
 ```
+
 
 If you open up a new R Markdown file from a template, you will see an example document with several code blocks in it. To create an HTML or PDF report from an R Markdown (Rmd) document, you compile it.  Compiling a document is called `r glossary("knit", "knitting")` in RStudio. There is a button that looks like a ball of yarn with needles through it that you click on to compile your file into a report. 
 
 ::: {.try data-latex=""}
-Create a new R Markdown file from the **`File > New File > R Markdown...`** menu. Change the title and author, then click the knit button to create an html file.
+Create a new R Markdown file from the **`File > New File > R Markdown...`** menu. Change the title and author, save the file as `02-repro.Rmd`, then click the knit button to create an html file.
 :::
 
 ### YAML Header {#yaml}
@@ -377,7 +396,7 @@ gt(summary_table, caption = "Summary statistics for the pets dataset.") |>
 <!-- Tab content -->
 <div id="DT" class="tabcontent">
 
-[DT](https://rstudio.github.io/DT/) lets you make interactive data tables. It can be tricky to customise, but the defaults are similar to other table functions.
+[DT](https://rstudio.github.io/DT/) lets you make interactive data tables. Chapter\ \@ref(interactive-tables) goes into more details about this type of table.
 
 ```{r dt-demo}
 DT::datatable(summary_table, 
@@ -603,7 +622,7 @@ By default, the reference section is added to the end of the document. If you wa
 Add in-text citations and a reference list to your report.
 :::
 
-### Custom Templates
+### Custom Templates {#custom-templates}
 
 Some packages provide custom R Markdown templates. `reprores` has a Report template that shows all of the possible options in the YAML header, has bibliography and style files, and explains how to set up linked figures and tables. Because it contains multiple files, RStudio will ask you to create a new folder to keep all of the files in.
 

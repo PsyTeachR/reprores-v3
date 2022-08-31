@@ -11,6 +11,10 @@
 4. Install a [package](#install-package) [(video)](https://youtu.be/u_pvHnqkVCE){class="video"}
 5. Know the methods for getting [help](#help)
 
+## Setup {#setup-intro}
+
+Download the [RStudio IDE cheat sheet](https://raw.githubusercontent.com/rstudio/cheatsheets/main/rstudio-ide.pdf).
+
 
 ## R and RStudio
 
