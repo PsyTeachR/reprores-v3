@@ -1,10 +1,10 @@
-# Customising Visualisations & Reports {#custom}
+# Next Steps {#next}
 
-## Learning Objectives {#ilo-custom}
+## Learning Objectives {#ilo-next}
 
 * Create and customise advanced types of plots
 * Structure data in report, presentation, and dashboard formats
-* Include linked figures, tables, and references
+* Be aware of the ways to continue developing computational reproducibility skills
 
 ## Visualisation {#custom-viz}
 
@@ -716,57 +716,6 @@ library(tidyverse)     # data wrangling functions
 library(bookdown)      # for chaptered reports
 library(flexdashboard) # for dashboards
 library(DT)            # for interactive tables
-```
-
-### Linked documents
-
-If you need to create longer reports with links between sections, you can edit the YAML to use a bookdown format. `bookdown::html_document2` is a useful one that adds figure and table numbers automatically to any figures or tables with a caption and allows you to link to these by reference.
-
-To create links to tables and figures, you need to name the code chunk that created your figures or tables, and then call those names in your inline coding:
-
-```{r, eval = FALSE, verbatim="r my-table"}
-# table code here
-```
-
-```{r, eval = FALSE, verbatim="r my-figure"}
-# figure code here
-```
-
-```
-See Table\ \@ref(tab:my-table) or Figure\ \@ref(fig:my-figure).
-```
-
-::: {.warning data-latex=""}
-The code chunk names can only contain letters, numbers and dashes. If they contain other characters like spaces or underscores, the referencing will not work.
-:::
-
-You can also link to different sections of your report by naming your headings with `{#}`:
-
-```
-# My first heading {#heading-1}
-
-## My second heading {#heading-2}
-
-See Section\ \@ref(heading-1) and Section\ \@ref(heading-2)
-
-```
-The code below shows how to link text to figures or tables in a full report using the built-in `diamonds` dataset - use your `reports.Rmd` to create this document now. You can see the [HTML output here](demos/html_document2.html).
-
-`r hide("Linked document code")`
-
-```{embed, file = "demos/html_document2.Rmd"}
-# readLines("demos/html_document2.Rmd") |> 
-#   paste(collapse = "\n") |>
-#   paste0("<code style='font-size: smaller;'><pre>\n", ., "\n</pre></code>") |>
-#   cat()
-```
-
-`r unhide()`
-
-This format defaults to numbered sections, so set `number_sections: false` in the `r glossary("YAML")` header if you don't want this. If you remove numbered sections, links like `\@ref(conclusion)` will show "??", so you need to use URL link syntax instead, like this:
-
-```
-See the [last section](#conclusion) for concluding remarks.
 ```
 
 

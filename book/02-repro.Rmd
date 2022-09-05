@@ -289,6 +289,37 @@ If you name your objects clearly, you often don't need to add clarifying comment
 
 It's a bit of an art to comment your code well. The best way to develop this skill is to read a lot of other people's code and have others review your code. 
 
+### In-line R {#inline-r}
+
+Now let's analyse the pets data to see if cats are heavier than ferrets. First we'll run the analysis code. Then we'll save any numbers we might want to use in our manuscript to variables and round them appropriately. Finally, we'll use `r hl(glue::glue())` to format a results string.
+
+```{r}
+# analysis
+cat_weight <- filter(pets, pet == "cat") %>% pull(weight)
+ferret_weight <- filter(pets, pet == "ferret") %>% pull(weight)
+weight_test <- t.test(cat_weight, ferret_weight)
+
+# round individual values you want to report
+t <- weight_test$statistic %>% round(2)
+df <- weight_test$parameter %>% round(1)
+p <- weight_test$p.value %>% round(3)
+# handle p-values < .001
+p_symbol <- ifelse(p < .001, "<", "=")
+if (p < .001) p <- .001
+
+# format the results string
+weight_result <- glue::glue("t = {t}, df = {df}, p {p_symbol} {p}")
+```
+
+You can insert the results into a paragraph with inline R code that looks like this: 
+
+<pre><code>Cats were significantly heavier than ferrets (&#96;r weight_result&#96;).</code></pre>
+
+**Rendered text:**  
+Cats were significantly heavier than ferrets (`r weight_result`). 
+
+
+
 ### Tables {#repro-tables}
 
 Next, create a code chunk where you want to display a table of the descriptives (e.g., Participants section of the Methods). We'll use tidyverse functions you will learn in the [data wrangling lectures](#tidyr) to create summary statistics for each group.
@@ -454,34 +485,57 @@ You can also include images that you did not create in R using the typical markd
 
 ![All the Things by [Hyperbole and a Half](http://hyperboleandahalf.blogspot.com/)](images/memes/x-all-the-things.png){style="width: 50%"}
 
-### In-line R {#inline-r}
 
-Now let's analyse the pets data to see if cats are heavier than ferrets. First we'll run the analysis code. Then we'll save any numbers we might want to use in our manuscript to variables and round them appropriately. Finally, we'll use `r hl(glue::glue())` to format a results string.
+### Linked documents
 
-```{r}
-# analysis
-cat_weight <- filter(pets, pet == "cat") %>% pull(weight)
-ferret_weight <- filter(pets, pet == "ferret") %>% pull(weight)
-weight_test <- t.test(cat_weight, ferret_weight)
+If you need to create longer reports with links between sections, you can edit the YAML to use an output format from the `r pkg("bookdown")` package. `bookdown::html_document2` is a useful one that adds figure and table numbers automatically to any figures or tables with a caption and allows you to link to these by reference.
 
-# round individual values you want to report
-t <- weight_test$statistic %>% round(2)
-df <- weight_test$parameter %>% round(1)
-p <- weight_test$p.value %>% round(3)
-# handle p-values < .001
-p_symbol <- ifelse(p < .001, "<", "=")
-if (p < .001) p <- .001
+To create links to tables and figures, you need to name the code chunk that created your figures or tables, and then call those names in your inline coding:
 
-# format the results string
-weight_result <- glue::glue("t = {t}, df = {df}, p {p_symbol} {p}")
+```{r, eval = FALSE, verbatim="r my-table"}
+# table code here
 ```
 
-You can insert the results into a paragraph with inline R code that looks like this: 
+```{r, eval = FALSE, verbatim="r my-figure"}
+# figure code here
+```
 
-<pre><code>Cats were significantly heavier than ferrets (&#96;r weight_result&#96;).</code></pre>
+```
+See Table\ \@ref(tab:my-table) or Figure\ \@ref(fig:my-figure).
+```
 
-**Rendered text:**  
-Cats were significantly heavier than ferrets (`r weight_result`). 
+::: {.warning data-latex=""}
+The code chunk names can only contain letters, numbers and dashes. If they contain other characters like spaces or underscores, the referencing will not work.
+:::
+
+You can also link to different sections of your report by naming your headings with `{#}`:
+
+```
+# My first heading {#heading-1}
+
+## My second heading {#heading-2}
+
+See Section\ \@ref(heading-1) and Section\ \@ref(heading-2)
+
+```
+The code below shows how to link text to figures or tables in a full report using the built-in `diamonds` dataset - use your `reports.Rmd` to create this document now. You can see the [HTML output here](demos/html_document2.html).
+
+`r hide("Linked document code")`
+
+```{embed, file = "demos/html_document2.Rmd"}
+# readLines("demos/html_document2.Rmd") |> 
+#   paste(collapse = "\n") |>
+#   paste0("<code style='font-size: smaller;'><pre>\n", ., "\n</pre></code>") |>
+#   cat()
+```
+
+`r unhide()`
+
+This format defaults to numbered sections, so set `number_sections: false` in the `r glossary("YAML")` header if you don't want this. If you remove numbered sections, links like `\@ref(conclusion)` will show "??", so you need to use URL link syntax instead, like this:
+
+```
+See the [last section](#conclusion) for concluding remarks.
+```
 
 
 ### Bibliography
