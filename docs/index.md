@@ -2,7 +2,7 @@
 title: Data Skills for Reproducible Research
 subtitle: "<br><a href='https://doi.org/10.5281/zenodo.6527194'><img src='https://zenodo.org/badge/DOI/10.5281/zenodo.6527194.svg' alt='DOI: 10.5281/zenodo.6527194'></a>"
 authors: "Lisa DeBruine & Dale Barr"
-date: "2022-08-31"
+date: "2022-09-06"
 site: bookdown::bookdown_site
 documentclass: book
 classoption: oneside # for PDFs
@@ -67,13 +67,13 @@ Data skills do not require you to memorise lots of code. You will be introduced 
 
 Learning to code involves making a **lot** of mistakes. These mistakes are completely essential to the process, so try not to feel too frustrated. Many of the chapter exercises will give you broken code to fix so you get experience seeing what common errors look like. As you become a more experienced coder, you might not make fewer errors, but you'll recover from them much faster.
 
-<div class="meme" style="min-width: 100%; margin: 0.5em 0;"><a href="https://twitter.com/hadleywickham/status/589068687669243905"><img src="images/memes/wickham-shitty-code.png"
-     alt="Hadley Wickham @hadleywickham: The only way to write good code is to write tons of shitty code first. Feeling shame about bad code stops you from getting to good code [3:11 PM · Apr 17, 2015·Echofon; 892 Retweets, 55 Quote Tweets, 1,147 Likes]"/></a></div>
-
 
 ## I found a bug! {-}
 
 This book is a work in progress, so you might find errors. Please help me fix them! The best way is to open an [issue on github](https://github.com/PsyTeachR/reprores-v3/issues){target="_blank"} that describes the error, but you can also [email Lisa](mailto:lisa.debruine@glasgow.ac.uk?subject=reprores).
+
+<div class="meme" style="min-width: 100%; margin: 0.5em 0;"><a href="https://twitter.com/hadleywickham/status/589068687669243905"><img src="images/memes/wickham-shitty-code.png"
+     alt="Hadley Wickham @hadleywickham: The only way to write good code is to write tons of shitty code first. Feeling shame about bad code stops you from getting to good code [3:11 PM · Apr 17, 2015·Echofon; 892 Retweets, 55 Quote Tweets, 1,147 Likes]"/></a></div>
 
 ## Other Resources {-}
 

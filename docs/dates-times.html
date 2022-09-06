@@ -181,16 +181,16 @@
 <span id="cb564-19"><a href="dates-times.html#cb564-19" aria-hidden="true" tabindex="-1"></a></span>
 <span id="cb564-20"><a href="dates-times.html#cb564-20" aria-hidden="true" tabindex="-1"></a><span class="fu">str</span>(time_parts)</span></code></pre></div>
 <pre><code>## List of 12
-##  $ second : num 19.7
-##  $ minute : int 54
-##  $ hour   : int 22
-##  $ day    : int 31
-##  $ wday   : num 4
-##  $ yday   : num 243
-##  $ week   : num 35
-##  $ isoweek: num 35
-##  $ epiweek: num 35
-##  $ month  : num 8
+##  $ second : num 41.5
+##  $ minute : int 40
+##  $ hour   : int 9
+##  $ day    : int 6
+##  $ wday   : num 3
+##  $ yday   : num 249
+##  $ week   : num 36
+##  $ isoweek: num 36
+##  $ epiweek: num 36
+##  $ month  : num 9
 ##  $ year   : num 2022
 ##  $ tz     : chr &quot;GMT&quot;</code></pre>
 <p>The <code>month()</code> and <code>wday()</code> functions can return factor labels.</p>
@@ -224,7 +224,7 @@ Solution
 <h2><span class="header-section-number">H.3</span> Date Arithmetic</h2>
 <p>You can add and subtract dates. For example, you can get the dates two weeks from today by adding <code>weeks(2)</code> to <code>today()</code>. You can probably guess how to add and subtract seconds, minutes, days, months, and years.</p>
 <div class="sourceCode" id="cb570"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb570-1"><a href="dates-times.html#cb570-1" aria-hidden="true" tabindex="-1"></a><span class="fu">today</span>() <span class="sc">+</span> <span class="fu">weeks</span>(<span class="dv">1</span>)</span></code></pre></div>
-<pre><code>## [1] &quot;2022-09-07&quot;</code></pre>
+<pre><code>## [1] &quot;2022-09-13&quot;</code></pre>
 <div class="try">
 <p>What day of the week will your 100th birthday be?</p>
 <div class="webex-solution">
@@ -319,14 +319,14 @@ Solution
 <span id="cb588-6"><a href="dates-times.html#cb588-6" aria-hidden="true" tabindex="-1"></a>  <span class="fu">facet_grid</span>(<span class="sc">~</span>weekday) <span class="sc">+</span></span>
 <span id="cb588-7"><a href="dates-times.html#cb588-7" aria-hidden="true" tabindex="-1"></a>  <span class="fu">scale_fill_manual</span>(<span class="at">values =</span> <span class="fu">rainbow</span>(<span class="dv">7</span>)) <span class="sc">+</span></span>
 <span id="cb588-8"><a href="dates-times.html#cb588-8" aria-hidden="true" tabindex="-1"></a>  <span class="fu">scale_x_continuous</span>(<span class="at">breaks =</span> <span class="fu">seq</span>(<span class="dv">0</span>, <span class="dv">24</span>, <span class="dv">4</span>))</span></code></pre></div>
-<p><img src="appendix-g-dates_files/figure-html/weekday-tweets-1.png" width="100%" style="display: block; margin: auto;" /></p>
+<p><img src="appendix-h-dates_files/figure-html/weekday-tweets-1.png" width="100%" style="display: block; margin: auto;" /></p>
 <p>A nice side-effect of using the lubridate function to get days of the week or months of the year is that the results are an ordered factor, so display correctly in a plot. Let's display the months in Greek (if that's available on your system).</p>
 <div class="sourceCode" id="cb589"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb589-1"><a href="dates-times.html#cb589-1" aria-hidden="true" tabindex="-1"></a>tweets <span class="sc">%&gt;%</span></span>
 <span id="cb589-2"><a href="dates-times.html#cb589-2" aria-hidden="true" tabindex="-1"></a>  <span class="fu">mutate</span>(<span class="at">month =</span> <span class="fu">month</span>(time, <span class="at">label =</span> <span class="cn">TRUE</span>, <span class="at">abbr =</span> <span class="cn">FALSE</span>, <span class="at">locale =</span> <span class="st">&quot;el_GR.UTF-8&quot;</span>)) <span class="sc">%&gt;%</span></span>
 <span id="cb589-3"><a href="dates-times.html#cb589-3" aria-hidden="true" tabindex="-1"></a>  <span class="fu">ggplot</span>(<span class="fu">aes</span>(<span class="at">x =</span> month, <span class="at">fill =</span> month)) <span class="sc">+</span></span>
 <span id="cb589-4"><a href="dates-times.html#cb589-4" aria-hidden="true" tabindex="-1"></a>  <span class="fu">geom_bar</span>(<span class="at">show.legend =</span> <span class="cn">FALSE</span>) <span class="sc">+</span></span>
 <span id="cb589-5"><a href="dates-times.html#cb589-5" aria-hidden="true" tabindex="-1"></a>  <span class="fu">scale_x_discrete</span>(<span class="at">name =</span> <span class="cn">NULL</span>, <span class="at">guide =</span> <span class="fu">guide_axis</span>(<span class="at">n.dodge=</span><span class="dv">2</span>))</span></code></pre></div>
-<p><img src="appendix-g-dates_files/figure-html/month-tweets-1.png" width="100%" style="display: block; margin: auto;" /></p>
+<p><img src="appendix-h-dates_files/figure-html/month-tweets-1.png" width="100%" style="display: block; margin: auto;" /></p>
 
 </div>
 </div>
@@ -572,7 +572,7 @@ function openCity(evt, cityName) {
   <div class="container"><div class="row">
 
   <div class="col-12 col-md-6 mt-3">
-    <p>"<strong>Data Skills for Reproducible Research</strong>: <br><a href='https://doi.org/10.5281/zenodo.6527194'><img src='https://zenodo.org/badge/DOI/10.5281/zenodo.6527194.svg' alt='DOI: 10.5281/zenodo.6527194'></a>" was written by . It was last built on 2022-08-31.</p>
+    <p>"<strong>Data Skills for Reproducible Research</strong>: <br><a href='https://doi.org/10.5281/zenodo.6527194'><img src='https://zenodo.org/badge/DOI/10.5281/zenodo.6527194.svg' alt='DOI: 10.5281/zenodo.6527194'></a>" was written by . It was last built on 2022-09-06.</p>
   </div>
 
   <div class="col-12 col-md-6 mt-3">

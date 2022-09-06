@@ -314,6 +314,38 @@ If you name your objects clearly, you often don't need to add clarifying comment
 
 It's a bit of an art to comment your code well. The best way to develop this skill is to read a lot of other people's code and have others review your code. 
 
+### In-line R {#inline-r}
+
+Now let's analyse the pets data to see if cats are heavier than ferrets. First we'll run the analysis code. Then we'll save any numbers we might want to use in our manuscript to variables and round them appropriately. Finally, we'll use <code><span><span class='fu'>glue</span><span class='fu'>::</span><span class='fu'><a target='_blank' href='https://glue.tidyverse.org/reference/glue.html'>glue</a></span><span class='op'>(</span><span class='op'>)</span></span></code> to format a results string.
+
+
+```r
+# analysis
+cat_weight <- filter(pets, pet == "cat") %>% pull(weight)
+ferret_weight <- filter(pets, pet == "ferret") %>% pull(weight)
+weight_test <- t.test(cat_weight, ferret_weight)
+
+# round individual values you want to report
+t <- weight_test$statistic %>% round(2)
+df <- weight_test$parameter %>% round(1)
+p <- weight_test$p.value %>% round(3)
+# handle p-values < .001
+p_symbol <- ifelse(p < .001, "<", "=")
+if (p < .001) p <- .001
+
+# format the results string
+weight_result <- glue::glue("t = {t}, df = {df}, p {p_symbol} {p}")
+```
+
+You can insert the results into a paragraph with inline R code that looks like this: 
+
+<pre><code>Cats were significantly heavier than ferrets (&#96;r weight_result&#96;).</code></pre>
+
+**Rendered text:**  
+Cats were significantly heavier than ferrets (t = 18.42, df = 180.4, p < 0.001). 
+
+
+
 ### Tables {#repro-tables}
 
 Next, create a code chunk where you want to display a table of the descriptives (e.g., Participants section of the Methods). We'll use tidyverse functions you will learn in the [data wrangling lectures](#tidyr) to create summary statistics for each group.
@@ -535,12 +567,12 @@ gt(summary_table, caption = "Summary statistics for the pets dataset.") |>
 ```
 
 ```{=html}
-<div id="kngdmdwndp" style="overflow-x:auto;overflow-y:auto;width:auto;height:auto;">
+<div id="pxyzclwvzy" style="overflow-x:auto;overflow-y:auto;width:auto;height:auto;">
 <style>html {
   font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Oxygen, Ubuntu, Cantarell, 'Helvetica Neue', 'Fira Sans', 'Droid Sans', Arial, sans-serif;
 }
 
-#kngdmdwndp .gt_table {
+#pxyzclwvzy .gt_table {
   display: table;
   border-collapse: collapse;
   margin-left: auto;
@@ -565,7 +597,7 @@ gt(summary_table, caption = "Summary statistics for the pets dataset.") |>
   border-left-color: #D3D3D3;
 }
 
-#kngdmdwndp .gt_heading {
+#pxyzclwvzy .gt_heading {
   background-color: #FFFFFF;
   text-align: center;
   border-bottom-color: #FFFFFF;
@@ -577,7 +609,7 @@ gt(summary_table, caption = "Summary statistics for the pets dataset.") |>
   border-right-color: #D3D3D3;
 }
 
-#kngdmdwndp .gt_title {
+#pxyzclwvzy .gt_title {
   color: #333333;
   font-size: 125%;
   font-weight: initial;
@@ -589,7 +621,7 @@ gt(summary_table, caption = "Summary statistics for the pets dataset.") |>
   border-bottom-width: 0;
 }
 
-#kngdmdwndp .gt_subtitle {
+#pxyzclwvzy .gt_subtitle {
   color: #333333;
   font-size: 85%;
   font-weight: initial;
@@ -601,13 +633,13 @@ gt(summary_table, caption = "Summary statistics for the pets dataset.") |>
   border-top-width: 0;
 }
 
-#kngdmdwndp .gt_bottom_border {
+#pxyzclwvzy .gt_bottom_border {
   border-bottom-style: solid;
   border-bottom-width: 2px;
   border-bottom-color: #5F5F5F;
 }
 
-#kngdmdwndp .gt_col_headings {
+#pxyzclwvzy .gt_col_headings {
   border-top-style: solid;
   border-top-width: 2px;
   border-top-color: #5F5F5F;
@@ -622,7 +654,7 @@ gt(summary_table, caption = "Summary statistics for the pets dataset.") |>
   border-right-color: #D3D3D3;
 }
 
-#kngdmdwndp .gt_col_heading {
+#pxyzclwvzy .gt_col_heading {
   color: #FFFFFF;
   background-color: #0076BA;
   font-size: 100%;
@@ -642,7 +674,7 @@ gt(summary_table, caption = "Summary statistics for the pets dataset.") |>
   overflow-x: hidden;
 }
 
-#kngdmdwndp .gt_column_spanner_outer {
+#pxyzclwvzy .gt_column_spanner_outer {
   color: #FFFFFF;
   background-color: #0076BA;
   font-size: 100%;
@@ -654,15 +686,15 @@ gt(summary_table, caption = "Summary statistics for the pets dataset.") |>
   padding-right: 4px;
 }
 
-#kngdmdwndp .gt_column_spanner_outer:first-child {
+#pxyzclwvzy .gt_column_spanner_outer:first-child {
   padding-left: 0;
 }
 
-#kngdmdwndp .gt_column_spanner_outer:last-child {
+#pxyzclwvzy .gt_column_spanner_outer:last-child {
   padding-right: 0;
 }
 
-#kngdmdwndp .gt_column_spanner {
+#pxyzclwvzy .gt_column_spanner {
   border-bottom-style: solid;
   border-bottom-width: 2px;
   border-bottom-color: #5F5F5F;
@@ -674,7 +706,7 @@ gt(summary_table, caption = "Summary statistics for the pets dataset.") |>
   width: 100%;
 }
 
-#kngdmdwndp .gt_group_heading {
+#pxyzclwvzy .gt_group_heading {
   padding-top: 8px;
   padding-bottom: 8px;
   padding-left: 5px;
@@ -699,7 +731,7 @@ gt(summary_table, caption = "Summary statistics for the pets dataset.") |>
   vertical-align: middle;
 }
 
-#kngdmdwndp .gt_empty_group_heading {
+#pxyzclwvzy .gt_empty_group_heading {
   padding: 0.5px;
   color: #333333;
   background-color: #FFFFFF;
@@ -714,15 +746,15 @@ gt(summary_table, caption = "Summary statistics for the pets dataset.") |>
   vertical-align: middle;
 }
 
-#kngdmdwndp .gt_from_md > :first-child {
+#pxyzclwvzy .gt_from_md > :first-child {
   margin-top: 0;
 }
 
-#kngdmdwndp .gt_from_md > :last-child {
+#pxyzclwvzy .gt_from_md > :last-child {
   margin-bottom: 0;
 }
 
-#kngdmdwndp .gt_row {
+#pxyzclwvzy .gt_row {
   padding-top: 8px;
   padding-bottom: 8px;
   padding-left: 5px;
@@ -741,7 +773,7 @@ gt(summary_table, caption = "Summary statistics for the pets dataset.") |>
   overflow-x: hidden;
 }
 
-#kngdmdwndp .gt_stub {
+#pxyzclwvzy .gt_stub {
   color: #333333;
   background-color: #89D3FE;
   font-size: 100%;
@@ -754,7 +786,7 @@ gt(summary_table, caption = "Summary statistics for the pets dataset.") |>
   padding-right: 5px;
 }
 
-#kngdmdwndp .gt_stub_row_group {
+#pxyzclwvzy .gt_stub_row_group {
   color: #333333;
   background-color: #FFFFFF;
   font-size: 100%;
@@ -768,11 +800,11 @@ gt(summary_table, caption = "Summary statistics for the pets dataset.") |>
   vertical-align: top;
 }
 
-#kngdmdwndp .gt_row_group_first td {
+#pxyzclwvzy .gt_row_group_first td {
   border-top-width: 2px;
 }
 
-#kngdmdwndp .gt_summary_row {
+#pxyzclwvzy .gt_summary_row {
   color: #333333;
   background-color: #FFFFFF;
   text-transform: inherit;
@@ -782,16 +814,16 @@ gt(summary_table, caption = "Summary statistics for the pets dataset.") |>
   padding-right: 5px;
 }
 
-#kngdmdwndp .gt_first_summary_row {
+#pxyzclwvzy .gt_first_summary_row {
   border-top-style: solid;
   border-top-color: #5F5F5F;
 }
 
-#kngdmdwndp .gt_first_summary_row.thick {
+#pxyzclwvzy .gt_first_summary_row.thick {
   border-top-width: 2px;
 }
 
-#kngdmdwndp .gt_last_summary_row {
+#pxyzclwvzy .gt_last_summary_row {
   padding-top: 8px;
   padding-bottom: 8px;
   padding-left: 5px;
@@ -801,7 +833,7 @@ gt(summary_table, caption = "Summary statistics for the pets dataset.") |>
   border-bottom-color: #5F5F5F;
 }
 
-#kngdmdwndp .gt_grand_summary_row {
+#pxyzclwvzy .gt_grand_summary_row {
   color: #333333;
   background-color: #D5D5D5;
   text-transform: inherit;
@@ -811,7 +843,7 @@ gt(summary_table, caption = "Summary statistics for the pets dataset.") |>
   padding-right: 5px;
 }
 
-#kngdmdwndp .gt_first_grand_summary_row {
+#pxyzclwvzy .gt_first_grand_summary_row {
   padding-top: 8px;
   padding-bottom: 8px;
   padding-left: 5px;
@@ -821,11 +853,11 @@ gt(summary_table, caption = "Summary statistics for the pets dataset.") |>
   border-top-color: #5F5F5F;
 }
 
-#kngdmdwndp .gt_striped {
+#pxyzclwvzy .gt_striped {
   background-color: #EDF7FC;
 }
 
-#kngdmdwndp .gt_table_body {
+#pxyzclwvzy .gt_table_body {
   border-top-style: solid;
   border-top-width: 2px;
   border-top-color: #5F5F5F;
@@ -834,7 +866,7 @@ gt(summary_table, caption = "Summary statistics for the pets dataset.") |>
   border-bottom-color: #5F5F5F;
 }
 
-#kngdmdwndp .gt_footnotes {
+#pxyzclwvzy .gt_footnotes {
   color: #333333;
   background-color: #FFFFFF;
   border-bottom-style: none;
@@ -848,7 +880,7 @@ gt(summary_table, caption = "Summary statistics for the pets dataset.") |>
   border-right-color: #D3D3D3;
 }
 
-#kngdmdwndp .gt_footnote {
+#pxyzclwvzy .gt_footnote {
   margin: 0px;
   font-size: 90%;
   padding-left: 4px;
@@ -857,7 +889,7 @@ gt(summary_table, caption = "Summary statistics for the pets dataset.") |>
   padding-right: 5px;
 }
 
-#kngdmdwndp .gt_sourcenotes {
+#pxyzclwvzy .gt_sourcenotes {
   color: #333333;
   background-color: #FFFFFF;
   border-bottom-style: none;
@@ -871,7 +903,7 @@ gt(summary_table, caption = "Summary statistics for the pets dataset.") |>
   border-right-color: #D3D3D3;
 }
 
-#kngdmdwndp .gt_sourcenote {
+#pxyzclwvzy .gt_sourcenote {
   font-size: 90%;
   padding-top: 4px;
   padding-bottom: 4px;
@@ -879,64 +911,64 @@ gt(summary_table, caption = "Summary statistics for the pets dataset.") |>
   padding-right: 5px;
 }
 
-#kngdmdwndp .gt_left {
+#pxyzclwvzy .gt_left {
   text-align: left;
 }
 
-#kngdmdwndp .gt_center {
+#pxyzclwvzy .gt_center {
   text-align: center;
 }
 
-#kngdmdwndp .gt_right {
+#pxyzclwvzy .gt_right {
   text-align: right;
   font-variant-numeric: tabular-nums;
 }
 
-#kngdmdwndp .gt_font_normal {
+#pxyzclwvzy .gt_font_normal {
   font-weight: normal;
 }
 
-#kngdmdwndp .gt_font_bold {
+#pxyzclwvzy .gt_font_bold {
   font-weight: bold;
 }
 
-#kngdmdwndp .gt_font_italic {
+#pxyzclwvzy .gt_font_italic {
   font-style: italic;
 }
 
-#kngdmdwndp .gt_super {
+#pxyzclwvzy .gt_super {
   font-size: 65%;
 }
 
-#kngdmdwndp .gt_footnote_marks {
+#pxyzclwvzy .gt_footnote_marks {
   font-style: italic;
   font-weight: normal;
   font-size: 75%;
   vertical-align: 0.4em;
 }
 
-#kngdmdwndp .gt_asterisk {
+#pxyzclwvzy .gt_asterisk {
   font-size: 100%;
   vertical-align: 0;
 }
 
-#kngdmdwndp .gt_indent_1 {
+#pxyzclwvzy .gt_indent_1 {
   text-indent: 5px;
 }
 
-#kngdmdwndp .gt_indent_2 {
+#pxyzclwvzy .gt_indent_2 {
   text-indent: 10px;
 }
 
-#kngdmdwndp .gt_indent_3 {
+#pxyzclwvzy .gt_indent_3 {
   text-indent: 15px;
 }
 
-#kngdmdwndp .gt_indent_4 {
+#pxyzclwvzy .gt_indent_4 {
   text-indent: 20px;
 }
 
-#kngdmdwndp .gt_indent_5 {
+#pxyzclwvzy .gt_indent_5 {
   text-indent: 25px;
 }
 </style>
@@ -994,8 +1026,8 @@ DT::datatable(summary_table,
 ```
 
 ```{=html}
-<div id="htmlwidget-4b46f85b971c65700568" style="width:100%;height:auto;" class="datatables html-widget"></div>
-<script type="application/json" data-for="htmlwidget-4b46f85b971c65700568">{"x":{"filter":"none","vertical":false,"caption":"<caption>Summary statistics for the pets dataset.<\/caption>","data":[["1","2","3"],["cat","dog","ferret"],[300,400,100],[9.3716129083,19.0679737427696,4.78156944173321],[90.2366666666667,99.9825,111.78]],"container":"<table class=\"display\">\n  <thead>\n    <tr>\n      <th> <\/th>\n      <th>Pet Type<\/th>\n      <th>N<\/th>\n      <th>Weight<\/th>\n      <th>Score<\/th>\n    <\/tr>\n  <\/thead>\n<\/table>","options":{"columnDefs":[{"targets":3,"render":"function(data, type, row, meta) {\n    return type !== 'display' ? data : DTWidget.formatRound(data, 2, 3, \",\", \".\", null);\n  }"},{"targets":4,"render":"function(data, type, row, meta) {\n    return type !== 'display' ? data : DTWidget.formatRound(data, 2, 3, \",\", \".\", null);\n  }"},{"className":"dt-right","targets":[2,3,4]},{"orderable":false,"targets":0}],"order":[],"autoWidth":false,"orderClasses":false}},"evals":["options.columnDefs.0.render","options.columnDefs.1.render"],"jsHooks":[]}</script>
+<div id="htmlwidget-6a2c3f6622f6585a45c5" style="width:100%;height:auto;" class="datatables html-widget"></div>
+<script type="application/json" data-for="htmlwidget-6a2c3f6622f6585a45c5">{"x":{"filter":"none","vertical":false,"caption":"<caption>Summary statistics for the pets dataset.<\/caption>","data":[["1","2","3"],["cat","dog","ferret"],[300,400,100],[9.3716129083,19.0679737427696,4.78156944173321],[90.2366666666667,99.9825,111.78]],"container":"<table class=\"display\">\n  <thead>\n    <tr>\n      <th> <\/th>\n      <th>Pet Type<\/th>\n      <th>N<\/th>\n      <th>Weight<\/th>\n      <th>Score<\/th>\n    <\/tr>\n  <\/thead>\n<\/table>","options":{"columnDefs":[{"targets":3,"render":"function(data, type, row, meta) {\n    return type !== 'display' ? data : DTWidget.formatRound(data, 2, 3, \",\", \".\", null);\n  }"},{"targets":4,"render":"function(data, type, row, meta) {\n    return type !== 'display' ? data : DTWidget.formatRound(data, 2, 3, \",\", \".\", null);\n  }"},{"className":"dt-right","targets":[2,3,4]},{"orderable":false,"targets":0}],"order":[],"autoWidth":false,"orderClasses":false}},"evals":["options.columnDefs.0.render","options.columnDefs.1.render"],"jsHooks":[]}</script>
 ```
 
 </div>
@@ -1021,14 +1053,14 @@ ggplot(pets, aes(pet, score, fill = country)) +
 ```
 
 <div class="figure" style="text-align: center">
-<img src="02-repro_files/figure-html/unnamed-chunk-5-1.png" alt="Figure 1. Scores by pet type and country." width="100%" />
-<p class="caption">(\#fig:unnamed-chunk-5)Figure 1. Scores by pet type and country.</p>
+<img src="02-repro_files/figure-html/unnamed-chunk-6-1.png" alt="Figure 1. Scores by pet type and country." width="100%" />
+<p class="caption">(\#fig:unnamed-chunk-6)Figure 1. Scores by pet type and country.</p>
 </div>
 ````
 
 <div class="figure" style="text-align: center">
-<img src="02-repro_files/figure-html/unnamed-chunk-6-1.png" alt="Figure 1. Scores by pet type and country." width="100%" />
-<p class="caption">(\#fig:unnamed-chunk-6)Figure 1. Scores by pet type and country.</p>
+<img src="02-repro_files/figure-html/unnamed-chunk-7-1.png" alt="Figure 1. Scores by pet type and country." width="100%" />
+<p class="caption">(\#fig:unnamed-chunk-7)Figure 1. Scores by pet type and country.</p>
 </div>
 
 ::: {.info data-latex=""}
@@ -1045,35 +1077,137 @@ You can also include images that you did not create in R using the typical markd
 
 ![All the Things by [Hyperbole and a Half](http://hyperboleandahalf.blogspot.com/)](images/memes/x-all-the-things.png){style="width: 50%"}
 
-### In-line R {#inline-r}
 
-Now let's analyse the pets data to see if cats are heavier than ferrets. First we'll run the analysis code. Then we'll save any numbers we might want to use in our manuscript to variables and round them appropriately. Finally, we'll use <code><span><span class='fu'>glue</span><span class='fu'>::</span><span class='fu'><a target='_blank' href='https://glue.tidyverse.org/reference/glue.html'>glue</a></span><span class='op'>(</span><span class='op'>)</span></span></code> to format a results string.
+### Linked documents
 
+If you need to create longer reports with links between sections, you can edit the YAML to use an output format from the <code class='package'>bookdown</code> package. `bookdown::html_document2` is a useful one that adds figure and table numbers automatically to any figures or tables with a caption and allows you to link to these by reference.
+
+To create links to tables and figures, you need to name the code chunk that created your figures or tables, and then call those names in your inline coding:
+
+<div class='verbatim'><pre class='sourceCode r'><code class='sourceCode R'>&#96;&#96;&#96;{r my-table}</code></pre>
 
 ```r
-# analysis
-cat_weight <- filter(pets, pet == "cat") %>% pull(weight)
-ferret_weight <- filter(pets, pet == "ferret") %>% pull(weight)
-weight_test <- t.test(cat_weight, ferret_weight)
-
-# round individual values you want to report
-t <- weight_test$statistic %>% round(2)
-df <- weight_test$parameter %>% round(1)
-p <- weight_test$p.value %>% round(3)
-# handle p-values < .001
-p_symbol <- ifelse(p < .001, "<", "=")
-if (p < .001) p <- .001
-
-# format the results string
-weight_result <- glue::glue("t = {t}, df = {df}, p {p_symbol} {p}")
+# table code here
 ```
 
-You can insert the results into a paragraph with inline R code that looks like this: 
+<pre class='sourceCode r'><code class='sourceCode R'>&#96;&#96;&#96;</code></pre></div>
 
-<pre><code>Cats were significantly heavier than ferrets (&#96;r weight_result&#96;).</code></pre>
+<div class='verbatim'><pre class='sourceCode r'><code class='sourceCode R'>&#96;&#96;&#96;{r my-figure}</code></pre>
 
-**Rendered text:**  
-Cats were significantly heavier than ferrets (t = 18.42, df = 180.4, p < 0.001). 
+```r
+# figure code here
+```
+
+<pre class='sourceCode r'><code class='sourceCode R'>&#96;&#96;&#96;</code></pre></div>
+
+```
+See Table\ \@ref(tab:my-table) or Figure\ \@ref(fig:my-figure).
+```
+
+::: {.warning data-latex=""}
+The code chunk names can only contain letters, numbers and dashes. If they contain other characters like spaces or underscores, the referencing will not work.
+:::
+
+You can also link to different sections of your report by naming your headings with `{#}`:
+
+```
+# My first heading {#heading-1}
+
+## My second heading {#heading-2}
+
+See Section\ \@ref(heading-1) and Section\ \@ref(heading-2)
+
+```
+The code below shows how to link text to figures or tables in a full report using the built-in `diamonds` dataset - use your `reports.Rmd` to create this document now. You can see the [HTML output here](demos/html_document2.html).
+
+
+<div class='webex-solution'><button>Linked document code</button>
+
+
+
+````md
+---
+title: "Linked Document Demo"
+output: 
+  bookdown::html_document2:
+    number_sections: true
+---
+
+```{r setup, include=FALSE}
+knitr::opts_chunk$set(echo = FALSE,
+                      message = FALSE,
+                      warning = FALSE)
+library(tidyverse)
+library(kableExtra)
+theme_set(theme_minimal())
+```
+
+Diamond price depends on many features, such as:
+
+- cut (See Table\ \@ref(tab:by-cut))
+- colour (See Table\ \@ref(tab:by-colour))
+- clarity (See Figure\ \@ref(fig:by-clarity))
+- carats (See Figure\ \@ref(fig:by-carat))
+- See section\ \@ref(conclusion) for concluding remarks
+
+## Tables
+
+### Cut
+
+```{r by-cut}
+diamonds %>%
+  group_by(cut) %>%
+  summarise(avg = mean(price),
+            .groups = "drop") %>%
+  kable(digits = 0, 
+        col.names = c("Cut", "Average Price"),
+        caption = "Mean diamond price by cut.") %>%
+  kable_material()
+```
+
+### Colour
+
+```{r by-colour}
+diamonds %>%
+  group_by(color) %>%
+  summarise(avg = mean(price),
+            .groups = "drop") %>%
+  kable(digits = 0, 
+        col.names = c("Cut", "Average Price"),
+        caption = "Mean diamond price by colour.") %>%
+  kable_material()
+```
+
+## Plots
+
+### Clarity
+
+```{r by-clarity, fig.cap = "Diamond price by clarity"}
+ggplot(diamonds, aes(x = clarity, y = price)) +
+  geom_boxplot() 
+```
+
+### Carats
+
+```{r by-carat, fig.cap = "Diamond price by carat"}
+ggplot(diamonds, aes(x = carat, y = price)) +
+  stat_smooth()
+```
+
+### Concluding remarks {#conclusion}
+
+I am not rich enough to worry about any of this.
+````
+
+
+</div>
+
+
+This format defaults to numbered sections, so set `number_sections: false` in the <a class='glossary' target='_blank' title='A structured format for information' href='https://psyteachr.github.io/glossary/y#yaml'>YAML</a> header if you don't want this. If you remove numbered sections, links like `\@ref(conclusion)` will show "??", so you need to use URL link syntax instead, like this:
+
+```
+See the [last section](#conclusion) for concluding remarks.
+```
 
 
 ### Bibliography

@@ -1,6 +1,31 @@
 book_filename: _main
 new_session: yes
 output_dir: ../docs
+rmd_files:
+- index.Rmd
+- 01-intro.Rmd
+- 02-repro.Rmd
+- 03-ggplot.Rmd
+- 04-data.Rmd
+- 05-joins.Rmd
+- 06-tidyr.Rmd
+- 07-dplyr.Rmd
+- 08-func.Rmd
+- 09-sim.Rmd
+- 10-next.Rmd
+- 11-acknowledgements.Rmd
+- appendix-0.Rmd
+- appendix-a-installing-r.Rmd
+- appendix-b-help.Rmd
+- appendix-c-conventions.Rmd
+- appendix-d-symbols.Rmd
+- appendix-e-datasets.Rmd
+- appendix-f-exercises.Rmd
+- appendix-g-plotstyles.Rmd
+- appendix-h-dates.Rmd
+- appendix-i-hashtags.Rmd
+- appendix-j-twitter.Rmd
+- appendix-k-webpage.Rmd
 before_chapter_script:
 - R/webex.R
 - R/psyteachr_setup.R

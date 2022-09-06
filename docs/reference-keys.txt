@@ -11,7 +11,7 @@ tab:kable-demo
 tab:kableExtra-demo
 tab:papaja-demo
 tab:gt-demo
-fig:unnamed-chunk-6
+fig:unnamed-chunk-7
 fig:img-custom-rmd
 fig:plot0
 fig:plot1
@@ -120,7 +120,7 @@ fig:alpha-demo
 fig:shape-demo
 fig:linetype-demo
 fig:unnamed-chunk-5
-fig:unnamed-chunk-7
+fig:unnamed-chunk-6
 fig:unnamed-chunk-8
 tab:unnamed-chunk-12
 tab:unnamed-chunk-13
@@ -168,9 +168,10 @@ yaml
 setup
 structure
 code-chunks
+inline-r
 repro-tables
 repro-figures
-inline-r
+linked-documents
 bibliography
 converting-from-reference-software
 creating-a-bibtex-file
@@ -412,8 +413,8 @@ one-tailed-prediction
 range-of-sample-sizes
 glossary-sim
 resources8
-custom
-ilo-custom
+next
+ilo-next
 custom-viz
 setup-custom-viz
 defaults-1
@@ -431,7 +432,6 @@ animated-plots
 resources-custom
 custom-reports
 setup-custom-reports
-linked-documents
 interactive-tables
 other-formats
 presentations
@@ -526,4 +526,3 @@ change-certain-elements
 example-using-the-styles-above
 level-3-header
 level-4-header
-bookrefs

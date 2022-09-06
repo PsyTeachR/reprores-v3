@@ -92,7 +92,7 @@
 <li><a class="" href="dplyr.html"><span class="header-section-number">7</span> Data Wrangling</a></li>
 <li><a class="" href="func.html"><span class="header-section-number">8</span> Iteration &amp; Functions</a></li>
 <li><a class="" href="sim.html"><span class="header-section-number">9</span> Probability &amp; Simulation</a></li>
-<li><a class="" href="custom.html"><span class="header-section-number">10</span> Customising Visualisations &amp; Reports</a></li>
+<li><a class="" href="next.html"><span class="header-section-number">10</span> Next Steps</a></li>
 <li><a class="" href="acknowledgements.html">Acknowledgements</a></li>
 <li class="book-part">Appendices</li>
 <li><a class="" href="installingr.html"><span class="header-section-number">A</span> Installing and Updating</a></li>
@@ -407,23 +407,23 @@ Figure 1.3: Alter these settings for increased reproducibility.
 <p>If you want 10 random numbers from a normal distribution with mean of 0 and standard deviation, you can just use the defaults.</p>
 <div class="sourceCode" id="cb28"><pre class="downlit sourceCode r">
 <code class="sourceCode R"><span><span class="fu"><a href="https://rdrr.io/r/stats/Normal.html">rnorm</a></span><span class="op">(</span><span class="fl">10</span><span class="op">)</span></span></code></pre></div>
-<pre><code>##  [1] -0.3904910 -0.1381635 -0.7593314 -0.4045687 -0.4013214  2.0054098
-##  [7] -0.1142254  0.5915578  0.6943761 -1.9953083</code></pre>
+<pre><code>##  [1]  0.4766384  1.3327282 -1.0540317 -0.1422172  0.4298022  0.7587216
+##  [7]  0.2598350 -0.2723771  0.9995346 -0.6261068</code></pre>
 <p>If you want 10 numbers from a normal distribution with a mean of 100:</p>
 <div class="sourceCode" id="cb30"><pre class="downlit sourceCode r">
 <code class="sourceCode R"><span><span class="fu"><a href="https://rdrr.io/r/stats/Normal.html">rnorm</a></span><span class="op">(</span><span class="fl">10</span>, <span class="fl">100</span><span class="op">)</span></span></code></pre></div>
-<pre><code>##  [1]  98.48829  98.96984 100.44520 100.29931 101.11297 100.08531  99.12447
-##  [8] 100.90521 100.38799 100.78756</code></pre>
+<pre><code>##  [1] 101.50695  98.97071  99.91943  98.53908  99.93424  99.63969  98.72058
+##  [8] 101.20516 100.62773  99.43911</code></pre>
 <p>This would be an equivalent but less efficient way of calling the function:</p>
 <div class="sourceCode" id="cb32"><pre class="downlit sourceCode r">
 <code class="sourceCode R"><span><span class="fu"><a href="https://rdrr.io/r/stats/Normal.html">rnorm</a></span><span class="op">(</span>n <span class="op">=</span> <span class="fl">10</span>, mean <span class="op">=</span> <span class="fl">100</span><span class="op">)</span></span></code></pre></div>
-<pre><code>##  [1] 100.38078 101.73240 100.54867  99.95692 100.60686 100.39064 100.74864
-##  [8] 100.76760 100.38174 100.30323</code></pre>
+<pre><code>##  [1] 101.39772  99.19762 101.32593 100.18008  98.92354  98.74416 101.52174
+##  [8]  99.55351  98.60415  98.13092</code></pre>
 <p>We don't need to name the arguments because R will recognize that we intended to fill in the first and second arguments by their position in the function call. However, if we want to change the default for an argument coming later in the list, then we need to name it. For instance, if we wanted to keep the default <code>mean = 0</code> but change the standard deviation to 100, we would do it this way:</p>
 <div class="sourceCode" id="cb34"><pre class="downlit sourceCode r">
 <code class="sourceCode R"><span><span class="fu"><a href="https://rdrr.io/r/stats/Normal.html">rnorm</a></span><span class="op">(</span><span class="fl">10</span>, sd <span class="op">=</span> <span class="fl">100</span><span class="op">)</span></span></code></pre></div>
-<pre><code>##  [1]  128.684153   21.997591   77.442757   53.775709   -1.323737  -76.934590
-##  [7] -253.666227  -43.574221 -175.716691 -119.241014</code></pre>
+<pre><code>##  [1]  135.502759  -38.664747   -7.713522  157.738494 -181.553057  104.687099
+##  [7]   66.445005 -231.415037 -110.044096  115.067797</code></pre>
 <p>Some functions give a list of options after an argument; this means the default value is the first option. The usage entry for the <code><span><span class="fu"><a target="_blank" href="https://rdrr.io/r/stats/power.t.test.html">power.t.test</a></span><span class="op">(</span><span class="op">)</span></span></code> function looks like this:</p>
 <div class="sourceCode" id="cb36"><pre class="downlit sourceCode r">
 <code class="sourceCode R"><span><span class="fu"><a href="https://rdrr.io/r/stats/power.t.test.html">power.t.test</a></span><span class="op">(</span>n <span class="op">=</span> <span class="cn">NULL</span>, delta <span class="op">=</span> <span class="cn">NULL</span>, sd <span class="op">=</span> <span class="fl">1</span>, sig.level <span class="op">=</span> <span class="fl">0.05</span>,</span>
@@ -434,20 +434,20 @@ Figure 1.3: Alter these settings for increased reproducibility.
 <div class="try">
 <ul>
 <li>What is the default value for <code>sd</code>? <select class="webex-select"><option value="blank"></option>
-<option value="">NULL</option>
-<option value="">two.sample</option>
+<option value="">0.05</option>
 <option value="answer">1</option>
-<option value="">0.05</option></select>
+<option value="">two.sample</option>
+<option value="">NULL</option></select>
 </li>
 <li>What is the default value for <code>type</code>? <select class="webex-select"><option value="blank"></option>
-<option value="">NULL</option>
 <option value="answer">two.sample</option>
 <option value="">one.sample</option>
-<option value="">paired</option></select>
+<option value="">paired</option>
+<option value="">NULL</option></select>
 </li>
 <li>Which is equivalent to <code><span><span class="fu"><a target="_blank" href="https://rdrr.io/r/stats/power.t.test.html">power.t.test</a></span><span class="op">(</span><span class="fl">100</span>, <span class="fl">0.5</span><span class="op">)</span></span></code>?
-<div id="radio_PAUWDOEHEF" class="webex-radiogroup">
-<label><input type="radio" autocomplete="off" name="radio_PAUWDOEHEF" value=""><span>power.t.test(n = 100)</span></label><label><input type="radio" autocomplete="off" name="radio_PAUWDOEHEF" value=""><span>power.t.test()</span></label><label><input type="radio" autocomplete="off" name="radio_PAUWDOEHEF" value="answer"><span>power.t.test(delta = 0.5, n = 100)</span></label><label><input type="radio" autocomplete="off" name="radio_PAUWDOEHEF" value=""><span>power.t.test(100, 0.5, sig.level = 1, sd = 0.05)</span></label>
+<div id="radio_BBWQHKCUIG" class="webex-radiogroup">
+<label><input type="radio" autocomplete="off" name="radio_BBWQHKCUIG" value=""><span>power.t.test(100, 0.5, sig.level = 1, sd = 0.05)</span></label><label><input type="radio" autocomplete="off" name="radio_BBWQHKCUIG" value="answer"><span>power.t.test(delta = 0.5, n = 100)</span></label><label><input type="radio" autocomplete="off" name="radio_BBWQHKCUIG" value=""><span>power.t.test(n = 100)</span></label><label><input type="radio" autocomplete="off" name="radio_BBWQHKCUIG" value=""><span>power.t.test()</span></label>
 </div>
 </li>
 </ul>
@@ -1140,7 +1140,7 @@ function openCity(evt, cityName) {
 <footer class="bg-primary text-light mt-5"><div class="container"><div class="row">
 
   <div class="col-12 col-md-6 mt-3">
-    <p>"<strong>Data Skills for Reproducible Research</strong>: <br><a href="https://doi.org/10.5281/zenodo.6527194"><img src="https://zenodo.org/badge/DOI/10.5281/zenodo.6527194.svg" alt="DOI: 10.5281/zenodo.6527194"></a>" was written by . It was last built on 2022-08-31.</p>
+    <p>"<strong>Data Skills for Reproducible Research</strong>: <br><a href="https://doi.org/10.5281/zenodo.6527194"><img src="https://zenodo.org/badge/DOI/10.5281/zenodo.6527194.svg" alt="DOI: 10.5281/zenodo.6527194"></a>" was written by . It was last built on 2022-09-06.</p>
   </div>
 
   <div class="col-12 col-md-6 mt-3">
