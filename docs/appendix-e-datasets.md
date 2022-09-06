@@ -5,7 +5,6 @@ You can download a [zip file of the datasets](data/data.zip) or access them from
 * [Amazon Alexa Reviews](data/amazon_alexa.csv) This dataset contains text reviews as well as the 1-5 rating from customers who bought an Alexa device on Amazon.
 * [Country Codes](data/country_codes.csv) Multiple country, subregion, and region codes for 249 countries.
 * [Importing Demo](data/demo.csv) A dataset with five different types of columns, and in five different formats (csv, tsv, xlsx, sav, and json), used to practice importing.
-* [Importing Demo](data/demo.xlsx) A dataset with five different types of columns, and in five different formats (csv, tsv, xlsx, sav, and json), used to practice importing.
 * [Three Domain Disgust Questionnaire (correlations)](data/disgust_cors.csv) Correlations among questions on the Three Domain Disgust Questionnaire (Tybur et al.)
 * [Three Domain Disgust Questionnaire (scores)](data/disgust_scores.csv) A dataset containing subscale scores for to the Three Domain Disgust Questionnaire (Tybur et al.), calculated from [disgust].
 * [Three Domain Disgust Questionnaire (items)](data/disgust.csv) A dataset containing responses to the 21 items in the Three Domain Disgust Questionnaire (Tybur et al.)

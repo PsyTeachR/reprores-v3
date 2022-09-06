@@ -5,6 +5,8 @@ You can download a [zip file of the datasets](data/data.zip) or access them from
 ```{r, echo = FALSE, results='asis'}
 f <- list.files("../R", "data_.*", full.names = T)
 d <- list.files("data", "\\.(csv|xls)", full.names = T)
+d <- d[!grepl("5factor.x", d)]
+d <- d[!grepl("demo.x", d)]
 
 listitems <- lapply(f, function(x) {
     txt <- readLines(x)

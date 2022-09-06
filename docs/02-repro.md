@@ -33,13 +33,13 @@ library(DT)         # for interactive tables
 
 Download the [R Markdown Cheat Sheet](https://www.rstudio.org/links/r_markdown_cheat_sheet).
 
-## Why learn reproducible reports?
+## Why use reproducible reports?
 
 Have you ever worked on a report, creating a summary table for the demographics, making beautiful plots, getting the analysis just right, and copying all the relevant numbers into your manuscript, only to find out that you forgot to exclude a test run and have to redo everything?
 
-A<a class='glossary' target='_blank' title='The extent to which the findings of a study can be repeated in some other context' href='https://psyteachr.github.io/glossary/r#reproducibility'>reproducible</a> report fixes this problem. Although this requires a bit of extra effort at the start, it will more than pay you back by allowing you to update your entire report with the push of a button whenever anything changes.
+A <a class='glossary' target='_blank' title='The extent to which the findings of a study can be repeated in some other context' href='https://psyteachr.github.io/glossary/r#reproducibility'>reproducible</a> report fixes this problem. Although this requires a bit of extra effort at the start, it will more than pay you back by allowing you to update your entire report with the push of a button whenever anything changes.
 
-Studies also show that many, if not most, papers in the scientific literature have reporting errors. For example, more than half of over 250,000 psychology papers published between 1985 and 2013 have at least one value that is statistically incompatible (e.g., a p-value that is not possible given a t-value and degrees of freedom) [@nuijten2016prevalence]. Reproducible reports help avoid transcription and rounding errors.
+Studies also show that many, if not most, papers in the scientific literature have reporting errors. For example, more than half of over 250,000 psychology papers published between 1985 and 2013 have at least one value that is statistically incompatible, such as a p-value that is not possible given a t-value and degrees of freedom [@nuijten2016prevalence]. Reproducible reports help avoid transcription and rounding errors.
 
 We will make reproducible reports following the principles of [literate programming](https://en.wikipedia.org/wiki/Literate_programming). The basic idea is to have the text of the report together in a single document along with the code needed to perform all analyses and generate the tables. The report is then "compiled" from the original format into some other, more portable format, such as HTML or PDF. This is different from traditional cutting and pasting approaches where, for instance, you create a graph in Microsoft Excel or a statistics program like SPSS and then paste it into Microsoft Word.
 
@@ -55,15 +55,15 @@ For example, if Lisa is looking for a file called `report.Rmd`on their Desktop, 
 
 ### Working Directory
 
-Where should you put all of your files? You usually want to have all of your scripts and data files for a single project inside one folder on your computer, the <a class='glossary' target='_blank' title='The filepath where R is currently reading and writing files.' href='https://psyteachr.github.io/glossary/w#working-directory'>working directory</a> for that project. You can organise files in subdirectories inside this main project directory, such as putting all raw data files in a directory called <code class='path'>data</code> and saving any image files to a directory called <code class='path'>images</code>.
+Where should you put all of your files? You usually want to have all of your scripts and data files for a single project inside one folder on your computer, the <a class='glossary' target='_blank' title='The filepath where R is currently reading and writing files.' href='https://psyteachr.github.io/glossary/w#working-directory'>working directory</a> for that project. You can organise files in subdirectories inside this main project directory, such as putting all raw data files in a directory called <code class='path'>data</code> and saving any image files to a directory called <code class='path'>images</code>. 
 
-Your script should only reference files in three locations, using the appropriate format.
+Your script should only reference files in three types of locations, using the appropriate format.
 
-| Where                    | Example                                                          |
-|--------------------------|------------------------------------------------------------------|
-| on the web               | "<https://psyteachr.github.io/reprores-v3/data/5factor.xlsx>" |
-| in the working directory | "5factor.xlsx"                                           |
-| in a subdirectory        | "data/5factor.xlsx"                                      |
+| Where | Example |
+|-------|---------|
+| on the web               | "https://psyteachr.github.io/reprores-v3/data/5factor.xlsx" |
+| in the working directory | "5factor.xlsx" |
+| in a subdirectory        | "data/5factor.xlsx" |
 
 ::: {.warning data-latex=""}
 Never set or change your working directory in a script.
@@ -98,26 +98,27 @@ Name files so that both people and computers can easily find things. Here are so
 -   use underscores (`_`) to separate parts of the file name, and dashes (`-`) to separate words in a section
 -   name files with a pattern that alphabetises in a sensible order and makes it easy for you to find the file you're looking for
 -   prefix a filename with an underscore to move it to the top of the list, or prefix all files with numbers to control their order
+-   use YYYY-MM-DD format for dates so they sort in chronological order
 
 For example, these file names are a mess:
 
--   <code class='path'>report.doc</code>
--   <code class='path'>report final.doc</code>
 -   <code class='path'>Data (Participants) 11-15.xls</code>
--   <code class='path'>Participants Data Nov 12.xls</code>
 -   <code class='path'>final report2.doc</code>
+-   <code class='path'>Participants Data Nov 12.xls</code>
 -   <code class='path'>project notes.txt</code>
 -   <code class='path'>Questionnaire Data November 15.xls</code>
+-   <code class='path'>report.doc</code>
+-   <code class='path'>report final.doc</code>
 
-Here is one way to structure them so that similar files have the same structure and it's easy for a human to scan the list or to use code to find relevant files. See if you can figure out what the last one should be.
+Here is one way to structure them so that similar files have the same structure and it's easy for a human to scan the list or to use code to find relevant files. See if you can figure out what the missing one should be.
 
 -   <code class='path'>_project-notes.txt</code>
--   <code class='path'>report_v1.doc</code>
--   <code class='path'>report_v2.doc</code>
--   <code class='path'>report_v3.doc</code>
 -   <code class='path'>data_participants_2021-11-12.xls</code>
 -   <code class='path'>data_participants_2021-11-15.xls</code>
 -   <select class='webex-select'><option value='blank'></option><option value=''>questionnaire-data_2021-11-15.xls</option><option value=''>data-questionnaire-2021_11_15.xls</option><option value='answer'>data_questionnaire_2021-11-15.xls</option><option value=''>data_2021-11-15_questionnaire.xls</option></select>
+-   <code class='path'>report_v1.doc</code>
+-   <code class='path'>report_v2.doc</code>
+-   <code class='path'>report_v3.doc</code>
 
 ::: {.try data-latex=""}
 Think of other ways to name the files above. Look at some of your own project files and see what you can improve.
@@ -135,22 +136,9 @@ It can sometimes cause problems if this directory is in OneDrive or if the full 
 
 Next, choose **`New Project...`** under the **`File`** menu to create a new project called <code class='path'>reprores-class-notes</code>. Make sure you save it inside the directory you just made. RStudio will restart itself and open with this new project directory as the working directory. 
 
-
-```r
-include_graphics(c("images/repro/new_proj_1.png",
-                   "images/repro/new_proj_2.png",
-                   "images/repro/new_proj_3.png"))
-```
-
 <div class="figure" style="text-align: center">
-<img src="images/repro/new_proj_1.png" alt="Starting a new project." width="100%" />
-<p class="caption">(\#fig:unnamed-chunk-1-1)Starting a new project.</p>
-</div><div class="figure" style="text-align: center">
-<img src="images/repro/new_proj_2.png" alt="Starting a new project." width="100%" />
-<p class="caption">(\#fig:unnamed-chunk-1-2)Starting a new project.</p>
-</div><div class="figure" style="text-align: center">
-<img src="images/repro/new_proj_3.png" alt="Starting a new project." width="100%" />
-<p class="caption">(\#fig:unnamed-chunk-1-3)Starting a new project.</p>
+<img src="images/repro/new_proj_1.png" alt="Starting a new project." width="32%" /><img src="images/repro/new_proj_2.png" alt="Starting a new project." width="32%" /><img src="images/repro/new_proj_3.png" alt="Starting a new project." width="32%" />
+<p class="caption">(\#fig:img-new-proj)Starting a new project.</p>
 </div>
 
 
@@ -197,8 +185,6 @@ output:
       collapsed: false
       smooth_scroll: false
     number_sections: false
-bibliography: refs.bib
-csl: apa.csl
 ---
 ```
 
@@ -294,6 +280,7 @@ pets <- read_csv("https://psyteachr.github.io/reprores/data/pets.csv",
                  show_col_types = FALSE)
 ```
 
+### Comments
 
 You can add comments inside R chunks with the hash symbol (`#`). The R interpreter will ignore characters from the hash to the end of the line.
 
@@ -312,7 +299,20 @@ It's usually good practice to start a code chunk with a comment that explains wh
 
 If you name your objects clearly, you often don't need to add clarifying comments. For example, if I'd named the three objects above `total_pet_n`, `mean_score` and `sd_score`, I would omit the comments.
 
-It's a bit of an art to comment your code well. The best way to develop this skill is to read a lot of other people's code and have others review your code. 
+Another use for comments is to "comment out" a section of code that you don't want to run, but also don't want to delete. For example, you might include the code used to install a package in your script, but you should always comment it out so the script doesn't force a lengthy installation every time it's run. 
+
+
+```r
+# install.packages("dplyr")
+# install.packages("tidyr")
+# install.packages("ggplot2")
+```
+
+::: {.info data-latex=""}
+You can comment or uncomment multiple lines at once by selecting the lines and typing Cmd-shift-C (Mac) or Ctrl-shift-C (Windows).
+:::
+
+It's a bit of an art to comment your code well. The best way to develop this skill is to read a lot of other people's code and have others review your code.
 
 ### In-line R {#inline-r}
 
@@ -567,12 +567,12 @@ gt(summary_table, caption = "Summary statistics for the pets dataset.") |>
 ```
 
 ```{=html}
-<div id="pxyzclwvzy" style="overflow-x:auto;overflow-y:auto;width:auto;height:auto;">
+<div id="hogtvitypv" style="overflow-x:auto;overflow-y:auto;width:auto;height:auto;">
 <style>html {
   font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Oxygen, Ubuntu, Cantarell, 'Helvetica Neue', 'Fira Sans', 'Droid Sans', Arial, sans-serif;
 }
 
-#pxyzclwvzy .gt_table {
+#hogtvitypv .gt_table {
   display: table;
   border-collapse: collapse;
   margin-left: auto;
@@ -597,7 +597,7 @@ gt(summary_table, caption = "Summary statistics for the pets dataset.") |>
   border-left-color: #D3D3D3;
 }
 
-#pxyzclwvzy .gt_heading {
+#hogtvitypv .gt_heading {
   background-color: #FFFFFF;
   text-align: center;
   border-bottom-color: #FFFFFF;
@@ -609,7 +609,7 @@ gt(summary_table, caption = "Summary statistics for the pets dataset.") |>
   border-right-color: #D3D3D3;
 }
 
-#pxyzclwvzy .gt_title {
+#hogtvitypv .gt_title {
   color: #333333;
   font-size: 125%;
   font-weight: initial;
@@ -621,7 +621,7 @@ gt(summary_table, caption = "Summary statistics for the pets dataset.") |>
   border-bottom-width: 0;
 }
 
-#pxyzclwvzy .gt_subtitle {
+#hogtvitypv .gt_subtitle {
   color: #333333;
   font-size: 85%;
   font-weight: initial;
@@ -633,13 +633,13 @@ gt(summary_table, caption = "Summary statistics for the pets dataset.") |>
   border-top-width: 0;
 }
 
-#pxyzclwvzy .gt_bottom_border {
+#hogtvitypv .gt_bottom_border {
   border-bottom-style: solid;
   border-bottom-width: 2px;
   border-bottom-color: #5F5F5F;
 }
 
-#pxyzclwvzy .gt_col_headings {
+#hogtvitypv .gt_col_headings {
   border-top-style: solid;
   border-top-width: 2px;
   border-top-color: #5F5F5F;
@@ -654,7 +654,7 @@ gt(summary_table, caption = "Summary statistics for the pets dataset.") |>
   border-right-color: #D3D3D3;
 }
 
-#pxyzclwvzy .gt_col_heading {
+#hogtvitypv .gt_col_heading {
   color: #FFFFFF;
   background-color: #0076BA;
   font-size: 100%;
@@ -674,7 +674,7 @@ gt(summary_table, caption = "Summary statistics for the pets dataset.") |>
   overflow-x: hidden;
 }
 
-#pxyzclwvzy .gt_column_spanner_outer {
+#hogtvitypv .gt_column_spanner_outer {
   color: #FFFFFF;
   background-color: #0076BA;
   font-size: 100%;
@@ -686,15 +686,15 @@ gt(summary_table, caption = "Summary statistics for the pets dataset.") |>
   padding-right: 4px;
 }
 
-#pxyzclwvzy .gt_column_spanner_outer:first-child {
+#hogtvitypv .gt_column_spanner_outer:first-child {
   padding-left: 0;
 }
 
-#pxyzclwvzy .gt_column_spanner_outer:last-child {
+#hogtvitypv .gt_column_spanner_outer:last-child {
   padding-right: 0;
 }
 
-#pxyzclwvzy .gt_column_spanner {
+#hogtvitypv .gt_column_spanner {
   border-bottom-style: solid;
   border-bottom-width: 2px;
   border-bottom-color: #5F5F5F;
@@ -706,7 +706,7 @@ gt(summary_table, caption = "Summary statistics for the pets dataset.") |>
   width: 100%;
 }
 
-#pxyzclwvzy .gt_group_heading {
+#hogtvitypv .gt_group_heading {
   padding-top: 8px;
   padding-bottom: 8px;
   padding-left: 5px;
@@ -731,7 +731,7 @@ gt(summary_table, caption = "Summary statistics for the pets dataset.") |>
   vertical-align: middle;
 }
 
-#pxyzclwvzy .gt_empty_group_heading {
+#hogtvitypv .gt_empty_group_heading {
   padding: 0.5px;
   color: #333333;
   background-color: #FFFFFF;
@@ -746,15 +746,15 @@ gt(summary_table, caption = "Summary statistics for the pets dataset.") |>
   vertical-align: middle;
 }
 
-#pxyzclwvzy .gt_from_md > :first-child {
+#hogtvitypv .gt_from_md > :first-child {
   margin-top: 0;
 }
 
-#pxyzclwvzy .gt_from_md > :last-child {
+#hogtvitypv .gt_from_md > :last-child {
   margin-bottom: 0;
 }
 
-#pxyzclwvzy .gt_row {
+#hogtvitypv .gt_row {
   padding-top: 8px;
   padding-bottom: 8px;
   padding-left: 5px;
@@ -773,7 +773,7 @@ gt(summary_table, caption = "Summary statistics for the pets dataset.") |>
   overflow-x: hidden;
 }
 
-#pxyzclwvzy .gt_stub {
+#hogtvitypv .gt_stub {
   color: #333333;
   background-color: #89D3FE;
   font-size: 100%;
@@ -786,7 +786,7 @@ gt(summary_table, caption = "Summary statistics for the pets dataset.") |>
   padding-right: 5px;
 }
 
-#pxyzclwvzy .gt_stub_row_group {
+#hogtvitypv .gt_stub_row_group {
   color: #333333;
   background-color: #FFFFFF;
   font-size: 100%;
@@ -800,11 +800,11 @@ gt(summary_table, caption = "Summary statistics for the pets dataset.") |>
   vertical-align: top;
 }
 
-#pxyzclwvzy .gt_row_group_first td {
+#hogtvitypv .gt_row_group_first td {
   border-top-width: 2px;
 }
 
-#pxyzclwvzy .gt_summary_row {
+#hogtvitypv .gt_summary_row {
   color: #333333;
   background-color: #FFFFFF;
   text-transform: inherit;
@@ -814,16 +814,16 @@ gt(summary_table, caption = "Summary statistics for the pets dataset.") |>
   padding-right: 5px;
 }
 
-#pxyzclwvzy .gt_first_summary_row {
+#hogtvitypv .gt_first_summary_row {
   border-top-style: solid;
   border-top-color: #5F5F5F;
 }
 
-#pxyzclwvzy .gt_first_summary_row.thick {
+#hogtvitypv .gt_first_summary_row.thick {
   border-top-width: 2px;
 }
 
-#pxyzclwvzy .gt_last_summary_row {
+#hogtvitypv .gt_last_summary_row {
   padding-top: 8px;
   padding-bottom: 8px;
   padding-left: 5px;
@@ -833,7 +833,7 @@ gt(summary_table, caption = "Summary statistics for the pets dataset.") |>
   border-bottom-color: #5F5F5F;
 }
 
-#pxyzclwvzy .gt_grand_summary_row {
+#hogtvitypv .gt_grand_summary_row {
   color: #333333;
   background-color: #D5D5D5;
   text-transform: inherit;
@@ -843,7 +843,7 @@ gt(summary_table, caption = "Summary statistics for the pets dataset.") |>
   padding-right: 5px;
 }
 
-#pxyzclwvzy .gt_first_grand_summary_row {
+#hogtvitypv .gt_first_grand_summary_row {
   padding-top: 8px;
   padding-bottom: 8px;
   padding-left: 5px;
@@ -853,11 +853,11 @@ gt(summary_table, caption = "Summary statistics for the pets dataset.") |>
   border-top-color: #5F5F5F;
 }
 
-#pxyzclwvzy .gt_striped {
+#hogtvitypv .gt_striped {
   background-color: #EDF7FC;
 }
 
-#pxyzclwvzy .gt_table_body {
+#hogtvitypv .gt_table_body {
   border-top-style: solid;
   border-top-width: 2px;
   border-top-color: #5F5F5F;
@@ -866,7 +866,7 @@ gt(summary_table, caption = "Summary statistics for the pets dataset.") |>
   border-bottom-color: #5F5F5F;
 }
 
-#pxyzclwvzy .gt_footnotes {
+#hogtvitypv .gt_footnotes {
   color: #333333;
   background-color: #FFFFFF;
   border-bottom-style: none;
@@ -880,7 +880,7 @@ gt(summary_table, caption = "Summary statistics for the pets dataset.") |>
   border-right-color: #D3D3D3;
 }
 
-#pxyzclwvzy .gt_footnote {
+#hogtvitypv .gt_footnote {
   margin: 0px;
   font-size: 90%;
   padding-left: 4px;
@@ -889,7 +889,7 @@ gt(summary_table, caption = "Summary statistics for the pets dataset.") |>
   padding-right: 5px;
 }
 
-#pxyzclwvzy .gt_sourcenotes {
+#hogtvitypv .gt_sourcenotes {
   color: #333333;
   background-color: #FFFFFF;
   border-bottom-style: none;
@@ -903,7 +903,7 @@ gt(summary_table, caption = "Summary statistics for the pets dataset.") |>
   border-right-color: #D3D3D3;
 }
 
-#pxyzclwvzy .gt_sourcenote {
+#hogtvitypv .gt_sourcenote {
   font-size: 90%;
   padding-top: 4px;
   padding-bottom: 4px;
@@ -911,64 +911,64 @@ gt(summary_table, caption = "Summary statistics for the pets dataset.") |>
   padding-right: 5px;
 }
 
-#pxyzclwvzy .gt_left {
+#hogtvitypv .gt_left {
   text-align: left;
 }
 
-#pxyzclwvzy .gt_center {
+#hogtvitypv .gt_center {
   text-align: center;
 }
 
-#pxyzclwvzy .gt_right {
+#hogtvitypv .gt_right {
   text-align: right;
   font-variant-numeric: tabular-nums;
 }
 
-#pxyzclwvzy .gt_font_normal {
+#hogtvitypv .gt_font_normal {
   font-weight: normal;
 }
 
-#pxyzclwvzy .gt_font_bold {
+#hogtvitypv .gt_font_bold {
   font-weight: bold;
 }
 
-#pxyzclwvzy .gt_font_italic {
+#hogtvitypv .gt_font_italic {
   font-style: italic;
 }
 
-#pxyzclwvzy .gt_super {
+#hogtvitypv .gt_super {
   font-size: 65%;
 }
 
-#pxyzclwvzy .gt_footnote_marks {
+#hogtvitypv .gt_footnote_marks {
   font-style: italic;
   font-weight: normal;
   font-size: 75%;
   vertical-align: 0.4em;
 }
 
-#pxyzclwvzy .gt_asterisk {
+#hogtvitypv .gt_asterisk {
   font-size: 100%;
   vertical-align: 0;
 }
 
-#pxyzclwvzy .gt_indent_1 {
+#hogtvitypv .gt_indent_1 {
   text-indent: 5px;
 }
 
-#pxyzclwvzy .gt_indent_2 {
+#hogtvitypv .gt_indent_2 {
   text-indent: 10px;
 }
 
-#pxyzclwvzy .gt_indent_3 {
+#hogtvitypv .gt_indent_3 {
   text-indent: 15px;
 }
 
-#pxyzclwvzy .gt_indent_4 {
+#hogtvitypv .gt_indent_4 {
   text-indent: 20px;
 }
 
-#pxyzclwvzy .gt_indent_5 {
+#hogtvitypv .gt_indent_5 {
   text-indent: 25px;
 }
 </style>
@@ -1026,8 +1026,8 @@ DT::datatable(summary_table,
 ```
 
 ```{=html}
-<div id="htmlwidget-6a2c3f6622f6585a45c5" style="width:100%;height:auto;" class="datatables html-widget"></div>
-<script type="application/json" data-for="htmlwidget-6a2c3f6622f6585a45c5">{"x":{"filter":"none","vertical":false,"caption":"<caption>Summary statistics for the pets dataset.<\/caption>","data":[["1","2","3"],["cat","dog","ferret"],[300,400,100],[9.3716129083,19.0679737427696,4.78156944173321],[90.2366666666667,99.9825,111.78]],"container":"<table class=\"display\">\n  <thead>\n    <tr>\n      <th> <\/th>\n      <th>Pet Type<\/th>\n      <th>N<\/th>\n      <th>Weight<\/th>\n      <th>Score<\/th>\n    <\/tr>\n  <\/thead>\n<\/table>","options":{"columnDefs":[{"targets":3,"render":"function(data, type, row, meta) {\n    return type !== 'display' ? data : DTWidget.formatRound(data, 2, 3, \",\", \".\", null);\n  }"},{"targets":4,"render":"function(data, type, row, meta) {\n    return type !== 'display' ? data : DTWidget.formatRound(data, 2, 3, \",\", \".\", null);\n  }"},{"className":"dt-right","targets":[2,3,4]},{"orderable":false,"targets":0}],"order":[],"autoWidth":false,"orderClasses":false}},"evals":["options.columnDefs.0.render","options.columnDefs.1.render"],"jsHooks":[]}</script>
+<div id="htmlwidget-0385476e38ed166e7bb8" style="width:100%;height:auto;" class="datatables html-widget"></div>
+<script type="application/json" data-for="htmlwidget-0385476e38ed166e7bb8">{"x":{"filter":"none","vertical":false,"caption":"<caption>Summary statistics for the pets dataset.<\/caption>","data":[["1","2","3"],["cat","dog","ferret"],[300,400,100],[9.3716129083,19.0679737427696,4.78156944173321],[90.2366666666667,99.9825,111.78]],"container":"<table class=\"display\">\n  <thead>\n    <tr>\n      <th> <\/th>\n      <th>Pet Type<\/th>\n      <th>N<\/th>\n      <th>Weight<\/th>\n      <th>Score<\/th>\n    <\/tr>\n  <\/thead>\n<\/table>","options":{"columnDefs":[{"targets":3,"render":"function(data, type, row, meta) {\n    return type !== 'display' ? data : DTWidget.formatRound(data, 2, 3, \",\", \".\", null);\n  }"},{"targets":4,"render":"function(data, type, row, meta) {\n    return type !== 'display' ? data : DTWidget.formatRound(data, 2, 3, \",\", \".\", null);\n  }"},{"className":"dt-right","targets":[2,3,4]},{"orderable":false,"targets":0}],"order":[],"autoWidth":false,"orderClasses":false}},"evals":["options.columnDefs.0.render","options.columnDefs.1.render"],"jsHooks":[]}</script>
 ```
 
 </div>
@@ -1038,7 +1038,8 @@ Next, create a code chunk where you want to display an image in your document. L
 
 Notice how the figure caption is formatted in the chunk options.
 
-````
+
+<div class='verbatim'><pre class='sourceCode r'><code class='sourceCode R'>&#96;&#96;&#96;{r pet-plot, fig.cap="Figure 1. Scores by pet type and country."}</code></pre>
 
 ```r
 ggplot(pets, aes(pet, score, fill = country)) +
@@ -1047,21 +1048,18 @@ ggplot(pets, aes(pet, score, fill = country)) +
                position = position_dodge(width = 0.9),
                show.legend = FALSE) +
   scale_fill_manual(values = c("orange", "dodgerblue")) +
-  xlab("") +
-  ylab("Score") +
+  labs(x = "", y = "Score") +
   theme(text = element_text(size = 20, family = "Times"))
 ```
 
-<div class="figure" style="text-align: center">
-<img src="02-repro_files/figure-html/unnamed-chunk-6-1.png" alt="Figure 1. Scores by pet type and country." width="100%" />
-<p class="caption">(\#fig:unnamed-chunk-6)Figure 1. Scores by pet type and country.</p>
-</div>
-````
+<pre class='sourceCode r'><code class='sourceCode R'>&#96;&#96;&#96;</code></pre></div>
+
 
 <div class="figure" style="text-align: center">
-<img src="02-repro_files/figure-html/unnamed-chunk-7-1.png" alt="Figure 1. Scores by pet type and country." width="100%" />
-<p class="caption">(\#fig:unnamed-chunk-7)Figure 1. Scores by pet type and country.</p>
+<img src="02-repro_files/figure-html/pet-plot-out-1.png" alt="Figure 1. Scores by pet type and country." width="100%" />
+<p class="caption">(\#fig:pet-plot-out)Figure 1. Scores by pet type and country.</p>
 </div>
+
 
 ::: {.info data-latex=""}
 The last line changes the default text size and font, which can be useful for generating figures that meet a journal's requirements.
@@ -1071,7 +1069,7 @@ The last line changes the default text size and font, which can be useful for ge
 
 You can also include images that you did not create in R using the typical markdown syntax for images: 
 
-```
+``` md
 ![All the Things by [Hyperbole and a Half](http://hyperboleandahalf.blogspot.com/)](images/memes/x-all-the-things.png){style="width: 50%"}
 ```
 

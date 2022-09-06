@@ -542,6 +542,7 @@ ggplot(pets, aes(age, score, color = pet)) +
 ```
 
 <pre class='sourceCode r'><code class='sourceCode R'>&#96;&#96;&#96;</code></pre></div>
+
 <div class="figure" style="text-align: center">
 <img src="images/fig-chunk-example1-out-1.png" alt="10x3 inches at 100% width centre aligned." width="100%" />
 <p class="caption">(\#fig:fig-chunk-example1-out)10x3 inches at 100% width centre aligned.</p>
@@ -995,10 +996,6 @@ Use `geomhex()` to create a hexagonal heatmap of bin counts. Adjust the `binwidt
 ```r
 ggplot(pets, aes(age, score)) +
   geom_hex(binwidth = c(1, 5))
-```
-
-```
-## Warning: Computation failed in `stat_binhex()`:
 ```
 
 <div class="figure" style="text-align: center">

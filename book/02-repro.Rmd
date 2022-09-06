@@ -32,13 +32,13 @@ library(DT)         # for interactive tables
 
 Download the [R Markdown Cheat Sheet](https://www.rstudio.org/links/r_markdown_cheat_sheet).
 
-## Why learn reproducible reports?
+## Why use reproducible reports?
 
 Have you ever worked on a report, creating a summary table for the demographics, making beautiful plots, getting the analysis just right, and copying all the relevant numbers into your manuscript, only to find out that you forgot to exclude a test run and have to redo everything?
 
-A`r glossary("reproducibility", "reproducible")` report fixes this problem. Although this requires a bit of extra effort at the start, it will more than pay you back by allowing you to update your entire report with the push of a button whenever anything changes.
+A `r glossary("reproducibility", "reproducible")` report fixes this problem. Although this requires a bit of extra effort at the start, it will more than pay you back by allowing you to update your entire report with the push of a button whenever anything changes.
 
-Studies also show that many, if not most, papers in the scientific literature have reporting errors. For example, more than half of over 250,000 psychology papers published between 1985 and 2013 have at least one value that is statistically incompatible (e.g., a p-value that is not possible given a t-value and degrees of freedom) [@nuijten2016prevalence]. Reproducible reports help avoid transcription and rounding errors.
+Studies also show that many, if not most, papers in the scientific literature have reporting errors. For example, more than half of over 250,000 psychology papers published between 1985 and 2013 have at least one value that is statistically incompatible, such as a p-value that is not possible given a t-value and degrees of freedom [@nuijten2016prevalence]. Reproducible reports help avoid transcription and rounding errors.
 
 We will make reproducible reports following the principles of [literate programming](https://en.wikipedia.org/wiki/Literate_programming). The basic idea is to have the text of the report together in a single document along with the code needed to perform all analyses and generate the tables. The report is then "compiled" from the original format into some other, more portable format, such as HTML or PDF. This is different from traditional cutting and pasting approaches where, for instance, you create a graph in Microsoft Excel or a statistics program like SPSS and then paste it into Microsoft Word.
 
@@ -54,15 +54,15 @@ For example, if Lisa is looking for a file called `report.Rmd`on their Desktop, 
 
 ### Working Directory
 
-Where should you put all of your files? You usually want to have all of your scripts and data files for a single project inside one folder on your computer, the `r glossary("working directory")` for that project. You can organise files in subdirectories inside this main project directory, such as putting all raw data files in a directory called `r path("data")` and saving any image files to a directory called `r path("images")`.
+Where should you put all of your files? You usually want to have all of your scripts and data files for a single project inside one folder on your computer, the `r glossary("working directory")` for that project. You can organise files in subdirectories inside this main project directory, such as putting all raw data files in a directory called `r path("data")` and saving any image files to a directory called `r path("images")`. 
 
-Your script should only reference files in three locations, using the appropriate format.
+Your script should only reference files in three types of locations, using the appropriate format.
 
-| Where                    | Example                                                          |
-|--------------------------|------------------------------------------------------------------|
-| on the web               | "<https://psyteachr.github.io/reprores-v3/data/5factor.xlsx>" |
-| in the working directory | "5factor.xlsx"                                           |
-| in a subdirectory        | "data/5factor.xlsx"                                      |
+| Where | Example |
+|-------|---------|
+| on the web               | "https://psyteachr.github.io/reprores-v3/data/5factor.xlsx" |
+| in the working directory | "5factor.xlsx" |
+| in a subdirectory        | "data/5factor.xlsx" |
 
 ::: {.warning data-latex=""}
 Never set or change your working directory in a script.
@@ -95,26 +95,27 @@ Name files so that both people and computers can easily find things. Here are so
 -   use underscores (`_`) to separate parts of the file name, and dashes (`-`) to separate words in a section
 -   name files with a pattern that alphabetises in a sensible order and makes it easy for you to find the file you're looking for
 -   prefix a filename with an underscore to move it to the top of the list, or prefix all files with numbers to control their order
+-   use YYYY-MM-DD format for dates so they sort in chronological order
 
 For example, these file names are a mess:
 
--   `r path("report.doc")`
--   `r path("report final.doc")`
 -   `r path("Data (Participants) 11-15.xls")`
--   `r path("Participants Data Nov 12.xls")`
 -   `r path("final report2.doc")`
+-   `r path("Participants Data Nov 12.xls")`
 -   `r path("project notes.txt")`
 -   `r path("Questionnaire Data November 15.xls")`
+-   `r path("report.doc")`
+-   `r path("report final.doc")`
 
-Here is one way to structure them so that similar files have the same structure and it's easy for a human to scan the list or to use code to find relevant files. See if you can figure out what the last one should be.
+Here is one way to structure them so that similar files have the same structure and it's easy for a human to scan the list or to use code to find relevant files. See if you can figure out what the missing one should be.
 
 -   `r path("_project-notes.txt")`
--   `r path("report_v1.doc")`
--   `r path("report_v2.doc")`
--   `r path("report_v3.doc")`
 -   `r path("data_participants_2021-11-12.xls")`
 -   `r path("data_participants_2021-11-15.xls")`
 -   `r mcq(c("questionnaire-data_2021-11-15.xls", "data-questionnaire-2021_11_15.xls", answer = "data_questionnaire_2021-11-15.xls", "data_2021-11-15_questionnaire.xls"))`
+-   `r path("report_v1.doc")`
+-   `r path("report_v2.doc")`
+-   `r path("report_v3.doc")`
 
 ::: {.try data-latex=""}
 Think of other ways to name the files above. Look at some of your own project files and see what you can improve.
@@ -132,7 +133,8 @@ It can sometimes cause problems if this directory is in OneDrive or if the full 
 
 Next, choose **`New Project...`** under the **`File`** menu to create a new project called `r path("reprores-class-notes")`. Make sure you save it inside the directory you just made. RStudio will restart itself and open with this new project directory as the working directory. 
 
-```{r, fig.cap="Starting a new project."}
+```{r img-new-proj, echo = FALSE, out.width = "32%", fig.show = "hold"}
+#| fig.cap="Starting a new project."
 include_graphics(c("images/repro/new_proj_1.png",
                    "images/repro/new_proj_2.png",
                    "images/repro/new_proj_3.png"))
@@ -183,8 +185,6 @@ output:
       collapsed: false
       smooth_scroll: false
     number_sections: false
-bibliography: refs.bib
-csl: apa.csl
 ---
 ```
 
@@ -270,6 +270,7 @@ pets <- read_csv("https://psyteachr.github.io/reprores/data/pets.csv",
                  show_col_types = FALSE)
 ```
 
+### Comments
 
 You can add comments inside R chunks with the hash symbol (`#`). The R interpreter will ignore characters from the hash to the end of the line.
 
@@ -287,7 +288,19 @@ It's usually good practice to start a code chunk with a comment that explains wh
 
 If you name your objects clearly, you often don't need to add clarifying comments. For example, if I'd named the three objects above `total_pet_n`, `mean_score` and `sd_score`, I would omit the comments.
 
-It's a bit of an art to comment your code well. The best way to develop this skill is to read a lot of other people's code and have others review your code. 
+Another use for comments is to "comment out" a section of code that you don't want to run, but also don't want to delete. For example, you might include the code used to install a package in your script, but you should always comment it out so the script doesn't force a lengthy installation every time it's run. 
+
+```{r}
+# install.packages("dplyr")
+# install.packages("tidyr")
+# install.packages("ggplot2")
+```
+
+::: {.info data-latex=""}
+You can comment or uncomment multiple lines at once by selecting the lines and typing Cmd-shift-C (Mac) or Ctrl-shift-C (Windows).
+:::
+
+It's a bit of an art to comment your code well. The best way to develop this skill is to read a lot of other people's code and have others review your code.
 
 ### In-line R {#inline-r}
 
@@ -445,31 +458,32 @@ Next, create a code chunk where you want to display an image in your document. L
 
 Notice how the figure caption is formatted in the chunk options.
 
-````
-```{r, fig.cap="Figure 1. Scores by pet type and country."}
-ggplot(pets, aes(pet, score, fill = country)) +
-  geom_violin(alpha = 0.5) +
-  geom_boxplot(width = 0.25, 
-               position = position_dodge(width = 0.9),
-               show.legend = FALSE) +
-  scale_fill_manual(values = c("orange", "dodgerblue")) +
-  xlab("") +
-  ylab("Score") +
-  theme(text = element_text(size = 20, family = "Times"))
-```
-````
 
-```{r, fig.cap="Figure 1. Scores by pet type and country.", echo=F}
+```{r pet-plot, eval = FALSE, verbatim = 'r pet-plot, fig.cap="Figure 1. Scores by pet type and country."'}
+#| fig.cap: "Figure 1. Scores by pet type and country."
 ggplot(pets, aes(pet, score, fill = country)) +
   geom_violin(alpha = 0.5) +
   geom_boxplot(width = 0.25, 
                position = position_dodge(width = 0.9),
                show.legend = FALSE) +
   scale_fill_manual(values = c("orange", "dodgerblue")) +
-  xlab("") +
-  ylab("Score") +
+  labs(x = "", y = "Score") +
   theme(text = element_text(size = 20, family = "Times"))
 ```
+
+
+```{r pet-plot-out, echo = FALSE}
+#| fig.cap: "Figure 1. Scores by pet type and country."
+ggplot(pets, aes(pet, score, fill = country)) +
+  geom_violin(alpha = 0.5) +
+  geom_boxplot(width = 0.25, 
+               position = position_dodge(width = 0.9),
+               show.legend = FALSE) +
+  scale_fill_manual(values = c("orange", "dodgerblue")) +
+  labs(x = "", y = "Score") +
+  theme(text = element_text(size = 20, family = "Times"))
+```
+
 
 ::: {.info data-latex=""}
 The last line changes the default text size and font, which can be useful for generating figures that meet a journal's requirements.
@@ -479,7 +493,7 @@ The last line changes the default text size and font, which can be useful for ge
 
 You can also include images that you did not create in R using the typical markdown syntax for images: 
 
-```
+``` md
 ![All the Things by [Hyperbole and a Half](http://hyperboleandahalf.blogspot.com/)](images/memes/x-all-the-things.png){style="width: 50%"}
 ```
 

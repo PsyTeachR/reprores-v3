@@ -87,6 +87,8 @@ Mostly, however, you will be typing into the script editor window (either into a
 
 One simple way to learn about the R console is to use it as a calculator. Enter the lines of code below and see if your results match. Be prepared to make lots of typos (at first).
 
+The first grey box below shows the code you should type; you can click on the clipboard in the upper right of this box to copy all of the contents, but it's better if you practice typing commands at first. The second grey box shows the output of the code in the first box; you can always identify output boxes by the two hashes (`##`) before each line.
+
 ```{r calc1}
 1 + 1
 ```
@@ -99,9 +101,13 @@ The R console remembers a history of the commands you typed in the past. Use the
 
 You can break up mathematical expressions over multiple lines; R waits for a complete expression before processing it.
 
+::: {.info data-latex=""}
+Lines that start with a hash (`#`) are `r glossary("comment", "comments")` and are not run. We'll learn more about comments in Chapter\ \@ref(comments).
+:::
+
 ```{r calc3}
-## here comes a long expression
-## let's break it over multiple lines
+# here comes a long expression
+# let's break it over multiple lines
 1 + 2 + 3 + 4 + 5 + 6 +
     7 + 8 + 9 +
     10
@@ -131,6 +137,8 @@ cat(africa) # cat() prints the string
 
 ## Coding Terms {#coding-terms}
 
+You will encounter a lot of jargon while learning R. This specialised vocabulary can help you to communicate more efficiently about coding and statistics and to search for solutions to problems.
+
 ### Objects {#vars}
 
 Often you want to store the result of some computation for later use.  You can store it in an `r glossary("object")` (also sometimes called a `r glossary("variable")`). An object in R:
@@ -156,7 +164,33 @@ The following are not valid objects:
 * `song data`
 * `song-data`
 
-Use the `r glossary("assignment operator") `<-` to assign the value on the right to the object named on the left.
+::: {.try data-latex=""}
+Which of the following are valid object names?
+
+* `r torf("T")` `slender_man`  
+* `r torf("F")` `copy pasta`  
+* `r torf("T")` `DOGE`  
+* `r torf("F")` `(╯°□°）╯︵ ┻━┻`  
+* `r torf("T")` `ErMahGerd`  
+* `r torf("F")` `34Rule`  
+* `r torf("F")` `panik-kalm-panik`  
+* `r torf("F")` `👀`  
+* `r torf("T")` `I_am_once_again_asking_you_for_your_support`  
+* `r torf("T")` `.this.is.fine.`  
+* `r torf("F")` `_is_this_a_pigeon_`  
+:::
+
+::: {.tinfo data-latex=""}
+Technically, you can name a variable anything if you surround the name with backticks, but this can cause some hard-to-debug problems, so don't do this until you're a confident coder.
+
+```{r nonono}
+`- Is this a bad name?` <- TRUE
+```
+:::
+
+### Assignment
+
+Use the `r glossary("assignment operator")` `<-` to assign the value on the right to the object named on the left.
 
 ```{r assignment}
 ## use the assignment operator '<-'
@@ -168,8 +202,11 @@ Now that we have set `x` to a value, we can do something with it:
 
 ```{r var-demo}
 x * 2
+```
 
-## R evaluates the expression and stores the result in the object boring_calculation
+We can also get R to evaluate an expression and store the result in an object.
+
+```{r var-demo-store}
 boring_calculation <- 2 + 2
 ```
 
@@ -182,19 +219,20 @@ boring_calculation
 Once an object is assigned a value, its value doesn't change unless you reassign the object, even if the objects you used to calculate it change. Predict what the code below does and test yourself:
 
 ```{r}
-this_year <- 2019
-my_birth_year <- 1976
-my_age <- this_year - my_birth_year
-this_year <- 2020
+this_year <- 2022
+birth_year <- 2000
+age <- this_year - birth_year
+this_year <- 2023
 ```
 
 ::: {.try data-latex=""}
 After all the code above is run:
 
-* `this_year` = `r mcq(c(43, 44, 1976, 2019, answer = 2020))`
-* `my_birth_year` = `r mcq(c(43, 44, answer = 1976, 2019, 2020))`
-* `my_age` = `r mcq(c(answer = 43, 44, 1976, 2019, 2020))`
+* `this_year` = `r mcq(c(22, 23, 2000, 2022, answer = 2023))`
+* `birth_year` = `r mcq(c(22, 23, answer = 2000, 2022, 2023))`
+* `age` = `r mcq(c(answer = 22, 23, 2000, 2022, 2023))`
 :::
+
 
 
 ### The environment
@@ -256,7 +294,7 @@ For example, `sd` is a function that returns the `r glossary("standard deviation
 function_name(argument1, argument2 = "value")
 ```
 
-The arguments in parentheses can be named (e.g., `argument1 = 10`) or you can skip the names if you put them in the exact same order that they're defined in the function. You can check this by typing `?sd` (or whatever function name you're looking up) into the console and the Help pane will show you the default order under **Usage**. You can skip arguments that have a default value specified.
+The arguments in parentheses can be named (e.g., `argument1 = 10`) or you can skip the names if you put them in the exact same order that they're defined in the function. You can check this by typing `?sd` (or whatever function name you're looking up) into the console and the Help pane will show you the argument order under **Usage**. You can skip arguments that have a `r glossary("default value")` specified.
 
 Most functions return a value, but may also produce side effects like printing to the console.
 
@@ -296,7 +334,7 @@ We don't need to name the arguments because R will recognize that we intended to
 rnorm(10, sd = 100)
 ```
 
-Some functions give a list of options after an argument; this means the default value is the first option. The usage entry for the `r hl(power.t.test())` function looks like this:
+Some functions give a list of options after an argument; this means the default value is the first option. The usage entry for the `power.t.test()` function looks like this:
 
 ```{r, eval = FALSE}
 power.t.test(n = NULL, delta = NULL, sd = 1, sig.level = 0.05,
@@ -343,7 +381,7 @@ There is an important distinction between **installing** a package and **loading
 
 ### Installing a package 
 
-<div class="meme right"><img src="images/memes/pokemon.gif" /></div>
+<div class="meme right"><img src="images/memes/pokemon.gif" alt="Pikachu and Eevee from Pokemon waving and high-five-ing" /></div>
 
 This is done using `r hl(install.packages())`. This is like installing an app on your phone: you only have to do it once and the app will remain installed until you remove it. For instance, if you want to use PokemonGo on your phone, you install it once from the App Store or Play Store, and you don't have to re-install it each time you want to use it. Once you launch the app, it will run in the background until you close it or restart your phone. Likewise, when you install a package, the package will be available (but not *loaded*) every time you open up R.
 
@@ -358,7 +396,7 @@ Install the `r pkg("beepr")` package on your system. This package plays sounds, 
 install.packages("beepr")
 ```
 
-If you don't already have packages like `r pkg("audio")` installed, it will also install these `r` glossary("dependency", "dependencies", )` for you. If you don't get an error message at the end, the installation was successful. 
+If you don't already have packages like `r pkg("audio")` installed, it will also install these `r glossary("dependency", "dependencies")` for you. If you don't get an error message at the end, the installation was successful. 
 
 ::: {.dangerous data-latex=""}
 Never install a package from inside a script. Only do this from the console pane.
@@ -391,20 +429,21 @@ You can use the convention `package::function()` to indicate in which add-on pac
 
 `r pkg("tidyverse")`is a meta-package that loads several packages we'll be using in almost every script:
 
-- `r pkg("ggplot2")`, for data visualisation (Chapter\ \@ref(ggplot))
-- `r pkg("readr")`, for data import (Chapter\ \@ref(data))
-- `r pkg("tibble")`, for tables (Chapter\ \@ref(data))
-- `r pkg("tidyr")`, for data tidying (Chapter\ \@ref(tidyr))
-- `r pkg("dplyr")`, for data manipulation (Chapter\ \@ref(dplyr))
-- `r pkg("purrr")`, for repeating things (Chapter\ \@ref(func))
-- `r pkg("stringr")`, for `r glossary("string", "strings")`
-- `r pkg("forcats")`, for `r glossary("factor", "factors")`
+- `r pkg("ggplot2")` for data visualisation (Chapter\ \@ref(ggplot))
+- `r pkg("readr")` for data import (Chapter\ \@ref(data))
+- `r pkg("tibble")` for tables (Chapter\ \@ref(data))
+- `r pkg("tidyr")` for data tidying (Chapter\ \@ref(tidyr))
+- `r pkg("dplyr")` for data manipulation (Chapters\ \@ref(joins) and\ \@ref(dplyr))
+- `r pkg("purrr")` for repeating things (Chapter\ \@ref(func))
+- `r pkg("stringr")` for `r glossary("string", "strings")`
+- `r pkg("forcats")` for `r glossary("factor", "factors")`
 
 ### Install from GitHub
 
 Many R packages are not yet on `r glossary("CRAN")` because they are still in development. Increasingly, datasets and code for papers are available as packages you can download from github. You'll need to install the `r pkg("devtools")` package to be able to install packages from github. Check if you have a package installed by trying to load it (e.g., if you don't have devtools installed, `r hl(library(devtools))` will display an error message) or by searching for it in the packages tab in the lower right pane. All listed packages are installed; all checked packages are currently loaded.
 
-```{r img-packages, echo=FALSE, out.width='100%', fig.cap="Check installed and loaded packages in the packages tab in the lower right pane."}
+```{r img-packages, echo=FALSE, out.width='100%'}
+#| fig.cap="Check installed and loaded packages in the packages tab in the lower right pane."
 knitr::include_graphics("images/intro/packages.png")
 ```
 

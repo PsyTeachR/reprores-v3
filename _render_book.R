@@ -9,6 +9,18 @@ zipfile <- "book/exercises/exercises.zip"
 if (file.exists(zipfile)) file.remove(zipfile)
 zip(zipfile, c(f.zip), flags = "-j")
 
+# zip data files
+datazip <- "book/data/data.zip"
+if (file.exists(datazip)) file.remove(datazip)
+tweetzip <- "book/data/tweets.zip"
+if (file.exists(tweetzip)) file.remove(tweetzip)
+
+d.zip <- list.files("book/data", "*", full.names = TRUE)
+zip(datazip, c(d.zip), flags = "-j")
+
+t.zip <- list.files("book/data/tweets", "*", full.names = TRUE)
+zip(tweetzip, c(t.zip), flags = "-j")
+
 # render the book ----
 
 ## make PDF ----
@@ -41,7 +53,7 @@ browseURL(
   xfun::in_dir("book", bookdown::render_book("index.Rmd", "bookdown::bs4_book"))
 )
 
-# browseURL(xfun::in_dir("book", bookdown::preview_chapter("01-intro.Rmd", output = "bookdown::bs4_book")))
+browseURL(xfun::in_dir("book", bookdown::preview_chapter("01-intro.Rmd", output = "bookdown::bs4_book")))
 
 # copies dir
 R.utils::copyDirectory(

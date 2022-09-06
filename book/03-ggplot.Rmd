@@ -397,6 +397,7 @@ You can change defaults for any single image using `r glossary("chunk")` options
 ggplot(pets, aes(age, score, color = pet)) +
   geom_smooth(formula = y~x, method = lm)
 ```
+
 ```{r fig-chunk-example1-out, fig.width=10, fig.height=3, out.width="100%", fig.align="center", fig.cap="10x3 inches at 100% width centre aligned.", echo = FALSE}
 ggplot(pets, aes(age, score, color = pet)) +
   geom_smooth(formula = y~x, method = lm)
