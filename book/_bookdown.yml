@@ -16,7 +16,6 @@ rmd_files:
 - 11-acknowledgements.Rmd
 - appendix-0.Rmd
 - appendix-a-installing-r.Rmd
-- appendix-b-help.Rmd
 - appendix-c-conventions.Rmd
 - appendix-d-symbols.Rmd
 - appendix-e-datasets.Rmd
@@ -26,6 +25,7 @@ rmd_files:
 - appendix-i-hashtags.Rmd
 - appendix-j-twitter.Rmd
 - appendix-k-webpage.Rmd
+- appendix-b-help.Rmd
 before_chapter_script:
 - R/webex.R
 - R/psyteachr_setup.R
