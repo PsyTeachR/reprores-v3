@@ -66,9 +66,9 @@ We covered this in Chapter\ \@ref(naming-things) for file names. It is also impo
 
 Choose the best consistent column names for a single data file:
 
-* <select class='webex-select'><option value='blank'></option><option value=''>subject.id</option><option value=''>subject ID</option><option value='answer'>subject_id</option><option value=''>sid</option></select>
-* <select class='webex-select'><option value='blank'></option><option value='answer'>age_months</option><option value=''>ageMonths</option><option value=''>age</option><option value=''>Age (in months)</option></select>
-* <select class='webex-select'><option value='blank'></option><option value=''>by</option><option value=''>Birth Year</option><option value=''>birth-year</option><option value='answer'>birth_year</option></select>
+* <select class='webex-select'><option value='blank'></option><option value=''>sid</option><option value=''>subject.id</option><option value=''>subject ID</option><option value='answer'>subject_id</option></select>
+* <select class='webex-select'><option value='blank'></option><option value=''>Age (in months)</option><option value=''>ageMonths</option><option value='answer'>age_months</option><option value=''>age</option></select>
+* <select class='webex-select'><option value='blank'></option><option value=''>by</option><option value=''>birth-year</option><option value=''>Birth Year</option><option value='answer'>birth_year</option></select>
 
 :::
 

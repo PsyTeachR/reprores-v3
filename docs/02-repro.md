@@ -567,12 +567,12 @@ gt(summary_table, caption = "Summary statistics for the pets dataset.") |>
 ```
 
 ```{=html}
-<div id="hogtvitypv" style="overflow-x:auto;overflow-y:auto;width:auto;height:auto;">
+<div id="yfneiiaqzw" style="overflow-x:auto;overflow-y:auto;width:auto;height:auto;">
 <style>html {
   font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Oxygen, Ubuntu, Cantarell, 'Helvetica Neue', 'Fira Sans', 'Droid Sans', Arial, sans-serif;
 }
 
-#hogtvitypv .gt_table {
+#yfneiiaqzw .gt_table {
   display: table;
   border-collapse: collapse;
   margin-left: auto;
@@ -597,7 +597,7 @@ gt(summary_table, caption = "Summary statistics for the pets dataset.") |>
   border-left-color: #D3D3D3;
 }
 
-#hogtvitypv .gt_heading {
+#yfneiiaqzw .gt_heading {
   background-color: #FFFFFF;
   text-align: center;
   border-bottom-color: #FFFFFF;
@@ -609,7 +609,7 @@ gt(summary_table, caption = "Summary statistics for the pets dataset.") |>
   border-right-color: #D3D3D3;
 }
 
-#hogtvitypv .gt_title {
+#yfneiiaqzw .gt_title {
   color: #333333;
   font-size: 125%;
   font-weight: initial;
@@ -621,7 +621,7 @@ gt(summary_table, caption = "Summary statistics for the pets dataset.") |>
   border-bottom-width: 0;
 }
 
-#hogtvitypv .gt_subtitle {
+#yfneiiaqzw .gt_subtitle {
   color: #333333;
   font-size: 85%;
   font-weight: initial;
@@ -633,13 +633,13 @@ gt(summary_table, caption = "Summary statistics for the pets dataset.") |>
   border-top-width: 0;
 }
 
-#hogtvitypv .gt_bottom_border {
+#yfneiiaqzw .gt_bottom_border {
   border-bottom-style: solid;
   border-bottom-width: 2px;
   border-bottom-color: #5F5F5F;
 }
 
-#hogtvitypv .gt_col_headings {
+#yfneiiaqzw .gt_col_headings {
   border-top-style: solid;
   border-top-width: 2px;
   border-top-color: #5F5F5F;
@@ -654,7 +654,7 @@ gt(summary_table, caption = "Summary statistics for the pets dataset.") |>
   border-right-color: #D3D3D3;
 }
 
-#hogtvitypv .gt_col_heading {
+#yfneiiaqzw .gt_col_heading {
   color: #FFFFFF;
   background-color: #0076BA;
   font-size: 100%;
@@ -674,7 +674,7 @@ gt(summary_table, caption = "Summary statistics for the pets dataset.") |>
   overflow-x: hidden;
 }
 
-#hogtvitypv .gt_column_spanner_outer {
+#yfneiiaqzw .gt_column_spanner_outer {
   color: #FFFFFF;
   background-color: #0076BA;
   font-size: 100%;
@@ -686,15 +686,15 @@ gt(summary_table, caption = "Summary statistics for the pets dataset.") |>
   padding-right: 4px;
 }
 
-#hogtvitypv .gt_column_spanner_outer:first-child {
+#yfneiiaqzw .gt_column_spanner_outer:first-child {
   padding-left: 0;
 }
 
-#hogtvitypv .gt_column_spanner_outer:last-child {
+#yfneiiaqzw .gt_column_spanner_outer:last-child {
   padding-right: 0;
 }
 
-#hogtvitypv .gt_column_spanner {
+#yfneiiaqzw .gt_column_spanner {
   border-bottom-style: solid;
   border-bottom-width: 2px;
   border-bottom-color: #5F5F5F;
@@ -706,7 +706,7 @@ gt(summary_table, caption = "Summary statistics for the pets dataset.") |>
   width: 100%;
 }
 
-#hogtvitypv .gt_group_heading {
+#yfneiiaqzw .gt_group_heading {
   padding-top: 8px;
   padding-bottom: 8px;
   padding-left: 5px;
@@ -731,7 +731,7 @@ gt(summary_table, caption = "Summary statistics for the pets dataset.") |>
   vertical-align: middle;
 }
 
-#hogtvitypv .gt_empty_group_heading {
+#yfneiiaqzw .gt_empty_group_heading {
   padding: 0.5px;
   color: #333333;
   background-color: #FFFFFF;
@@ -746,15 +746,15 @@ gt(summary_table, caption = "Summary statistics for the pets dataset.") |>
   vertical-align: middle;
 }
 
-#hogtvitypv .gt_from_md > :first-child {
+#yfneiiaqzw .gt_from_md > :first-child {
   margin-top: 0;
 }
 
-#hogtvitypv .gt_from_md > :last-child {
+#yfneiiaqzw .gt_from_md > :last-child {
   margin-bottom: 0;
 }
 
-#hogtvitypv .gt_row {
+#yfneiiaqzw .gt_row {
   padding-top: 8px;
   padding-bottom: 8px;
   padding-left: 5px;
@@ -773,7 +773,7 @@ gt(summary_table, caption = "Summary statistics for the pets dataset.") |>
   overflow-x: hidden;
 }
 
-#hogtvitypv .gt_stub {
+#yfneiiaqzw .gt_stub {
   color: #333333;
   background-color: #89D3FE;
   font-size: 100%;
@@ -786,7 +786,7 @@ gt(summary_table, caption = "Summary statistics for the pets dataset.") |>
   padding-right: 5px;
 }
 
-#hogtvitypv .gt_stub_row_group {
+#yfneiiaqzw .gt_stub_row_group {
   color: #333333;
   background-color: #FFFFFF;
   font-size: 100%;
@@ -800,11 +800,11 @@ gt(summary_table, caption = "Summary statistics for the pets dataset.") |>
   vertical-align: top;
 }
 
-#hogtvitypv .gt_row_group_first td {
+#yfneiiaqzw .gt_row_group_first td {
   border-top-width: 2px;
 }
 
-#hogtvitypv .gt_summary_row {
+#yfneiiaqzw .gt_summary_row {
   color: #333333;
   background-color: #FFFFFF;
   text-transform: inherit;
@@ -814,16 +814,16 @@ gt(summary_table, caption = "Summary statistics for the pets dataset.") |>
   padding-right: 5px;
 }
 
-#hogtvitypv .gt_first_summary_row {
+#yfneiiaqzw .gt_first_summary_row {
   border-top-style: solid;
   border-top-color: #5F5F5F;
 }
 
-#hogtvitypv .gt_first_summary_row.thick {
+#yfneiiaqzw .gt_first_summary_row.thick {
   border-top-width: 2px;
 }
 
-#hogtvitypv .gt_last_summary_row {
+#yfneiiaqzw .gt_last_summary_row {
   padding-top: 8px;
   padding-bottom: 8px;
   padding-left: 5px;
@@ -833,7 +833,7 @@ gt(summary_table, caption = "Summary statistics for the pets dataset.") |>
   border-bottom-color: #5F5F5F;
 }
 
-#hogtvitypv .gt_grand_summary_row {
+#yfneiiaqzw .gt_grand_summary_row {
   color: #333333;
   background-color: #D5D5D5;
   text-transform: inherit;
@@ -843,7 +843,7 @@ gt(summary_table, caption = "Summary statistics for the pets dataset.") |>
   padding-right: 5px;
 }
 
-#hogtvitypv .gt_first_grand_summary_row {
+#yfneiiaqzw .gt_first_grand_summary_row {
   padding-top: 8px;
   padding-bottom: 8px;
   padding-left: 5px;
@@ -853,11 +853,11 @@ gt(summary_table, caption = "Summary statistics for the pets dataset.") |>
   border-top-color: #5F5F5F;
 }
 
-#hogtvitypv .gt_striped {
+#yfneiiaqzw .gt_striped {
   background-color: #EDF7FC;
 }
 
-#hogtvitypv .gt_table_body {
+#yfneiiaqzw .gt_table_body {
   border-top-style: solid;
   border-top-width: 2px;
   border-top-color: #5F5F5F;
@@ -866,7 +866,7 @@ gt(summary_table, caption = "Summary statistics for the pets dataset.") |>
   border-bottom-color: #5F5F5F;
 }
 
-#hogtvitypv .gt_footnotes {
+#yfneiiaqzw .gt_footnotes {
   color: #333333;
   background-color: #FFFFFF;
   border-bottom-style: none;
@@ -880,7 +880,7 @@ gt(summary_table, caption = "Summary statistics for the pets dataset.") |>
   border-right-color: #D3D3D3;
 }
 
-#hogtvitypv .gt_footnote {
+#yfneiiaqzw .gt_footnote {
   margin: 0px;
   font-size: 90%;
   padding-left: 4px;
@@ -889,7 +889,7 @@ gt(summary_table, caption = "Summary statistics for the pets dataset.") |>
   padding-right: 5px;
 }
 
-#hogtvitypv .gt_sourcenotes {
+#yfneiiaqzw .gt_sourcenotes {
   color: #333333;
   background-color: #FFFFFF;
   border-bottom-style: none;
@@ -903,7 +903,7 @@ gt(summary_table, caption = "Summary statistics for the pets dataset.") |>
   border-right-color: #D3D3D3;
 }
 
-#hogtvitypv .gt_sourcenote {
+#yfneiiaqzw .gt_sourcenote {
   font-size: 90%;
   padding-top: 4px;
   padding-bottom: 4px;
@@ -911,64 +911,64 @@ gt(summary_table, caption = "Summary statistics for the pets dataset.") |>
   padding-right: 5px;
 }
 
-#hogtvitypv .gt_left {
+#yfneiiaqzw .gt_left {
   text-align: left;
 }
 
-#hogtvitypv .gt_center {
+#yfneiiaqzw .gt_center {
   text-align: center;
 }
 
-#hogtvitypv .gt_right {
+#yfneiiaqzw .gt_right {
   text-align: right;
   font-variant-numeric: tabular-nums;
 }
 
-#hogtvitypv .gt_font_normal {
+#yfneiiaqzw .gt_font_normal {
   font-weight: normal;
 }
 
-#hogtvitypv .gt_font_bold {
+#yfneiiaqzw .gt_font_bold {
   font-weight: bold;
 }
 
-#hogtvitypv .gt_font_italic {
+#yfneiiaqzw .gt_font_italic {
   font-style: italic;
 }
 
-#hogtvitypv .gt_super {
+#yfneiiaqzw .gt_super {
   font-size: 65%;
 }
 
-#hogtvitypv .gt_footnote_marks {
+#yfneiiaqzw .gt_footnote_marks {
   font-style: italic;
   font-weight: normal;
   font-size: 75%;
   vertical-align: 0.4em;
 }
 
-#hogtvitypv .gt_asterisk {
+#yfneiiaqzw .gt_asterisk {
   font-size: 100%;
   vertical-align: 0;
 }
 
-#hogtvitypv .gt_indent_1 {
+#yfneiiaqzw .gt_indent_1 {
   text-indent: 5px;
 }
 
-#hogtvitypv .gt_indent_2 {
+#yfneiiaqzw .gt_indent_2 {
   text-indent: 10px;
 }
 
-#hogtvitypv .gt_indent_3 {
+#yfneiiaqzw .gt_indent_3 {
   text-indent: 15px;
 }
 
-#hogtvitypv .gt_indent_4 {
+#yfneiiaqzw .gt_indent_4 {
   text-indent: 20px;
 }
 
-#hogtvitypv .gt_indent_5 {
+#yfneiiaqzw .gt_indent_5 {
   text-indent: 25px;
 }
 </style>
@@ -1026,8 +1026,8 @@ DT::datatable(summary_table,
 ```
 
 ```{=html}
-<div id="htmlwidget-0385476e38ed166e7bb8" style="width:100%;height:auto;" class="datatables html-widget"></div>
-<script type="application/json" data-for="htmlwidget-0385476e38ed166e7bb8">{"x":{"filter":"none","vertical":false,"caption":"<caption>Summary statistics for the pets dataset.<\/caption>","data":[["1","2","3"],["cat","dog","ferret"],[300,400,100],[9.3716129083,19.0679737427696,4.78156944173321],[90.2366666666667,99.9825,111.78]],"container":"<table class=\"display\">\n  <thead>\n    <tr>\n      <th> <\/th>\n      <th>Pet Type<\/th>\n      <th>N<\/th>\n      <th>Weight<\/th>\n      <th>Score<\/th>\n    <\/tr>\n  <\/thead>\n<\/table>","options":{"columnDefs":[{"targets":3,"render":"function(data, type, row, meta) {\n    return type !== 'display' ? data : DTWidget.formatRound(data, 2, 3, \",\", \".\", null);\n  }"},{"targets":4,"render":"function(data, type, row, meta) {\n    return type !== 'display' ? data : DTWidget.formatRound(data, 2, 3, \",\", \".\", null);\n  }"},{"className":"dt-right","targets":[2,3,4]},{"orderable":false,"targets":0}],"order":[],"autoWidth":false,"orderClasses":false}},"evals":["options.columnDefs.0.render","options.columnDefs.1.render"],"jsHooks":[]}</script>
+<div id="htmlwidget-84638571ee34f2bc75e4" style="width:100%;height:auto;" class="datatables html-widget"></div>
+<script type="application/json" data-for="htmlwidget-84638571ee34f2bc75e4">{"x":{"filter":"none","vertical":false,"caption":"<caption>Summary statistics for the pets dataset.<\/caption>","data":[["1","2","3"],["cat","dog","ferret"],[300,400,100],[9.3716129083,19.0679737427696,4.78156944173321],[90.2366666666667,99.9825,111.78]],"container":"<table class=\"display\">\n  <thead>\n    <tr>\n      <th> <\/th>\n      <th>Pet Type<\/th>\n      <th>N<\/th>\n      <th>Weight<\/th>\n      <th>Score<\/th>\n    <\/tr>\n  <\/thead>\n<\/table>","options":{"columnDefs":[{"targets":3,"render":"function(data, type, row, meta) {\n    return type !== 'display' ? data : DTWidget.formatRound(data, 2, 3, \",\", \".\", null);\n  }"},{"targets":4,"render":"function(data, type, row, meta) {\n    return type !== 'display' ? data : DTWidget.formatRound(data, 2, 3, \",\", \".\", null);\n  }"},{"className":"dt-right","targets":[2,3,4]},{"orderable":false,"targets":0}],"order":[],"autoWidth":false,"orderClasses":false}},"evals":["options.columnDefs.0.render","options.columnDefs.1.render"],"jsHooks":[]}</script>
 ```
 
 </div>
@@ -1208,9 +1208,9 @@ See the [last section](#conclusion) for concluding remarks.
 ```
 
 
-### Bibliography
+## Bibliography
 
-There are several ways to do in-text references and automatically generate a [bibliography](https://bookdown.org/yihui/rmarkdown-cookbook/bibliography.html){target="_blank"} in R Markdown. Markdown files need to link to a BibTex file (a plain text file with references in a specific format) that contains the references you need to cite. You specify the name of this file in the YAML header, like `bibliography: refs.bib` and cite references in text using an at symbol and a shortname, like `[@tidyverse]`. You can also include a "csl" style file to format your references in, for example, APA style.
+There are several ways to do in-text references and automatically generate a [bibliography](https://bookdown.org/yihui/rmarkdown-cookbook/bibliography.html){target="_blank"} in R Markdown. Markdown files need to link to a BibTex or JSON file (a plain text file with references in a specific format) that contains the references you need to cite. You specify the name of this file in the YAML header, like `bibliography: refs.bib` and cite references in text using an at symbol and a shortname, like `[@tidyverse]`. You can also include a Citation Style Language (.csl) file to format your references in, for example, APA style.
 
 ```
 ---
@@ -1223,19 +1223,57 @@ bibliography: refs.bib
 csl: apa.csl
 ```
 
-#### Converting from reference software
+### Converting from reference software
 
-Most reference software like EndNote, Zotero or Mendeley have exporting options that can export to BibTeX format. You just need to check the shortnames in the resulting file.
+Most reference software like EndNote or Zotero has exporting options that can export to BibTeX format. You just need to check the shortnames in the resulting file.
 
-#### Creating a BibTeX File
+::: {.warning data-latex=""}
+Please start using a reference manager consistently through your research career. It will make your life so much easier. Zotero is probably the best one.
+:::
 
-Most reference software like EndNote, Zotero or Mendeley have exporting options that can export to BibTeX format. You just need to check the shortnames in the resulting file.
+1. If you don't already have one, set up a [Zotero](https://www.zotero.org/){target="_blank"} account  
+2. Add the [connector for your web browser](https://www.zotero.org/download/){target="_blank"} (if you're on a computer you can add browser extensions to)  
+3. Navigate to [Easing Into Open Science](https://doi.org/10.1525/collabra.18684){target="_blank"} and add this reference to your library with the browser connector  
+4. Go to your library and make a new collection called "Open Research" (click on the + icon after **`My Library`**)  
+5. Drag the reference to Easing Into Open Science into this collection  
+6. Export this collection as BibTex  
 
-You can also make a BibTeX file and add references manually. In RStudio, go to **`File`** > **`New File...`** > **`Text File`** and save the file as "bibliography.bib".
+<div class="figure" style="text-align: center">
+<img src="images/repro/zotero.png" alt="Export a bibliography file from Zotero" width="100%" />
+<p class="caption">(\#fig:zotero)Export a bibliography file from Zotero</p>
+</div>
 
-Next, add the line `bibliography: bibliography.bib` to your YAML header.
+The exported file should look like this:
 
-#### Adding references {#citations}
+
+```bib
+
+@article{kathawalla_easing_2021,
+	title = {Easing {Into} {Open} {Science}: {A} {Guide} for {Graduate} {Students} and {Their} {Advisors}},
+	volume = {7},
+	issn = {2474-7394},
+	shorttitle = {Easing {Into} {Open} {Science}},
+	url = {https://doi.org/10.1525/collabra.18684},
+	doi = {10.1525/collabra.18684},
+	abstract = {This article provides a roadmap to assist graduate students and their advisors to engage in open science practices. We suggest eight open science practices that novice graduate students could begin adopting today. The topics we cover include journal clubs, project workflow, preprints, reproducible code, data sharing, transparent writing, preregistration, and registered reports. To address concerns about not knowing how to engage in open science practices, we provide a difficulty rating of each behavior (easy, medium, difficult), present them in order of suggested adoption, and follow the format of what, why, how, and worries. We give graduate students ideas on how to approach conversations with their advisors/collaborators, ideas on how to integrate open science practices within the graduate school framework, and specific resources on how to engage with each behavior. We emphasize that engaging in open science behaviors need not be an all or nothing approach, but rather graduate students can engage with any number of the behaviors outlined.},
+	number = {1},
+	urldate = {2022-09-07},
+	journal = {Collabra: Psychology},
+	author = {Kathawalla, Ummul-Kiram and Silverstein, Priya and Syed, Moin},
+	month = jan,
+	year = {2021},
+	pages = {18684},
+}
+```
+
+
+### Creating a BibTeX File
+
+You can also add references manually. In RStudio, go to **`File`** > **`New File...`** > **`Text File`** and save the file as "refs.bib".
+
+Next, add the line `bibliography: refs.bib` to your YAML header.
+
+### Adding references {#citations}
 
 You can add references to a journal article in the following format:
 
@@ -1273,40 +1311,15 @@ citation(package="ggplot2") %>% toBibtex()
 ```
 
 
-[Google Scholar](https://scholar.google.com/) entries have a BibTeX citation option. This is usually the easiest way to get the relevant values, although you have to add the DOI yourself. You can keep the suggested shortname or change it to something that makes more sense to you.
+[Google Scholar](https://scholar.google.com/) entries have a BibTeX citation option. This is usually the easiest way to get the relevant values if you can't add a citation through the Zotero browser connector, although you have to add the DOI yourself. You can keep the suggested shortname or change it to something that makes more sense to you.
 
-<img src="images/present/google-scholar.png" width="100%" style="display: block; margin: auto;" />
+<div class="figure" style="text-align: center">
+<img src="images/present/google-scholar.png" alt="Get BibTex citations from Google Scholar." width="100%" />
+<p class="caption">(\#fig:google-scholar)Get BibTex citations from Google Scholar.</p>
+</div>
 
 
-Some journal websites also let you download citations in bibtex format. For example, go to the publisher's page for [Equivalence Testing for Psychological Research: A Tutorial](https://journals.sagepub.com/doi/abs/10.1177/2515245918770963){target="_blank"}, click on the Cite button (in the sidebar or under the bottom Explore More menu), choose BibTeX format, and download the citation. You can open up the file in a text editor and copy the text. It should look like this:
-
-```
-@article{doi:10.1177/2515245918770963,
-author = {Daniël Lakens and Anne M. Scheel and Peder M. Isager},
-title ={Equivalence Testing for Psychological Research: A Tutorial},
-journal = {Advances in Methods and Practices in Psychological Science},
-volume = {1},
-number = {2},
-pages = {259-269},
-year = {2018},
-doi = {10.1177/2515245918770963},
-
-URL = { 
-        https://doi.org/10.1177/2515245918770963
-    
-},
-eprint = { 
-        https://doi.org/10.1177/2515245918770963
-    
-}
-,
-    abstract = { Psychologists must be able to test both for the presence of an effect and for the absence of an effect. In addition to testing against zero, researchers can use the two one-sided tests (TOST) procedure to test for equivalence and reject the presence of a smallest effect size of interest (SESOI). The TOST procedure can be used to determine if an observed effect is surprisingly small, given that a true effect at least as extreme as the SESOI exists. We explain a range of approaches to determine the SESOI in psychological science and provide detailed examples of how equivalence tests should be performed and reported. Equivalence tests are an important extension of the statistical tools psychologists currently use and enable researchers to falsify predictions about the presence, and declare the absence, of meaningful effects. }
-}
-```
-
-Paste the reference into your bibliography.bib file. Change `doi:10.1177/2515245918770963` in the first line of the reference to a shortname you will use to cite the reference in your manuscript. We'll use `TOSTtutorial`.
-
-#### Citing references {#references}
+### Citing references {#references}
 
 You can cite references in text like this: 
 
@@ -1319,18 +1332,18 @@ This tutorial uses several R packages [@tidyverse;@rmarkdown].
 Put a minus in front of the @ if you just want the year:
 
 ```
-Lakens, Scheel and Isengar [-@TOSTtutorial] wrote a tutorial explaining how to test for the absence of an effect.
+Kathawalla and colleagues [-@kathawalla_easing_2021] explain how to introduce open research practices into your postgraduate studies.
 ```
 
-Lakens, Scheel and Isengar [-@TOSTtutorial] wrote a tutorial explaining how to test for the absence of an effect.
+Kathawalla and colleagues [-@kathawalla_easing_2021] explain how to introduce open research practices into your postgraduate studies.
 
-#### Uncited references
+### Uncited references
 
 If you want to add an item to the reference section without citing, it, add it to the YAML header like this:
 
 ```
 nocite: |
-  @ref1, @ref2, @ref3
+  @kathawalla_easing_2021, @broman2018data, @nordmann2022data
 ```
 
 Or add all of the items in the .bib file like this:
@@ -1339,15 +1352,15 @@ Or add all of the items in the .bib file like this:
 nocite: '@*'
 ```
 
-#### Citation Styles
+### Citation Styles
 
 You can search a [list of style files](https://www.zotero.org/styles){target="_blank"} for various journals and download a file that will format your bibliography for a specific journal's style. You'll need to add the line `csl: filename.csl` to your YAML header. 
 
 ::: {.try data-latex=""}
-Add some citations to your bibliography.bib file, reference them in your text, and render your manuscript to see the automatically generated reference section. Try a few different citation style files.
+Add some citations to your refs.bib file, reference them in your text, and render your manuscript to see the automatically generated reference section. Try a few different citation style files.
 :::
 
-#### Reference Section
+### Reference Section
 
 By default, the reference section is added to the end of the document. If you want to change the position (e.g., to add figures and tables after the references), include `<div id="refs"></div>` where you want the references. 
 
@@ -1356,13 +1369,13 @@ By default, the reference section is added to the end of the document. If you wa
 Add in-text citations and a reference list to your report.
 :::
 
-### Custom Templates {#custom-templates}
+## Custom Templates {#custom-templates}
 
 Some packages provide custom R Markdown templates. `reprores` has a Report template that shows all of the possible options in the YAML header, has bibliography and style files, and explains how to set up linked figures and tables. Because it contains multiple files, RStudio will ask you to create a new folder to keep all of the files in.
 
 <div class="figure" style="text-align: center">
-<img src="images/custom-rmd.png" alt="The custom R markdown temlate from reprores." width="50%" />
-<p class="caption">(\#fig:img-custom-rmd)The custom R markdown temlate from reprores.</p>
+<img src="images/custom-rmd.png" alt="The custom R markdown template from reprores." width="75%" />
+<p class="caption">(\#fig:img-custom-rmd)The custom R markdown template from reprores.</p>
 </div>
 
 ::: {.try data-latex=""}

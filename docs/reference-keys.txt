@@ -10,6 +10,8 @@ tab:kableExtra-demo
 tab:papaja-demo
 tab:gt-demo
 fig:pet-plot-out
+fig:zotero
+fig:google-scholar
 fig:img-custom-rmd
 fig:plot0
 fig:plot1

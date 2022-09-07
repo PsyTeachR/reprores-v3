@@ -1,1 +1,3 @@
-# References {- #bookrefs}
+# References {-}
+
+<div id="refs"></div>
