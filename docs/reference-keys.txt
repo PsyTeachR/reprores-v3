@@ -3,7 +3,6 @@ fig:img-rstudio
 fig:img-repro
 fig:img-packages
 fig:img-new-proj
-fig:img-reproducible-script
 fig:img-bootswatch
 tab:kable-demo
 tab:kableExtra-demo
@@ -17,9 +16,13 @@ fig:plot0
 fig:plot1
 fig:plot2
 fig:hist
+fig:layers
 fig:ggplot-empty
-fig:ggplot-labels
+fig:ggplot-aes
 fig:ggplot-geom
+fig:ggplot-color
+fig:ggplot-labels
+fig:ggplot-theme
 fig:barplot
 fig:density
 fig:density-grouped
@@ -30,9 +33,6 @@ fig:colplot-statsum
 fig:boxplot
 fig:violin
 fig:geom-crossbar
-fig:geom-errorbar
-fig:geom-linerange
-fig:geom-pointrange
 fig:vertint-statssum
 fig:scatter
 fig:smooth
@@ -178,8 +178,8 @@ linked-documents
 bibliography
 converting-from-reference-software
 creating-a-bibtex-file
-citations
 references
+citations
 uncited-references
 citation-styles
 reference-section

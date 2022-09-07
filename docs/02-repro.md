@@ -158,10 +158,44 @@ There is a new type of reproducible report format called [quarto](https://quarto
 
 We will use <a class='glossary' target='_blank' title='The R-specific version of markdown: a way to specify formatting, such as headers, paragraphs, lists, bolding, and links, as well as code blocks and inline code.' href='https://psyteachr.github.io/glossary/r#r-markdown'>R Markdown</a> to create reproducible reports, which enables mixing of text and code. A reproducible script will contain sections of code in code blocks. A code block starts and ends with three backtick symbols in a row, with some information about the code between curly brackets, such as `{r chunk-name, echo=FALSE}` (this runs the code, but does not show the text of the code block in the compiled document). The text outside of code blocks is written in <a class='glossary' target='_blank' title='A way to specify formatting, such as headers, paragraphs, lists, bolding, and links.' href='https://psyteachr.github.io/glossary/m#markdown'>markdown</a>, which is a way to specify formatting, such as headers, paragraphs, lists, bolding, and links.
 
-<div class="figure" style="text-align: center">
-<img src="images/repro/reproducible_script.png" alt="A screenshot of a script with line numbers, code blocks, and markdown text" width="100%" />
-<p class="caption">(\#fig:img-reproducible-script)A reproducible script.</p>
-</div>
+
+````md
+---
+title: "Reproducible Script"
+author: "Lisa DeBruine"
+output: html_document
+---
+
+```{r setup, include=FALSE}
+knitr::opts_chunk$set(echo = TRUE)
+library(tidyverse)
+```
+
+## Simulate Data
+
+Here we will simulate data from a study with two conditions. 
+The mean in condition A is 0 and the mean in condition B is 1.
+
+```{r simulate}
+n <- 100
+
+data <- data.frame(
+  id = 1:n,
+  condition = c("A", "B") |> rep(each = n/2),
+  dv = c(rnorm(n/2, 0), rnorm(n/2, 1))
+)
+```
+
+## Plot Data
+
+```{r condition-plot, echo = FALSE}
+ggplot(data, aes(condition, dv)) +
+  geom_violin(trim = FALSE) +
+  geom_boxplot(width = 0.25,
+               aes(fill = condition),
+               show.legend = FALSE)
+```
+````
 
 
 If you open up a new R Markdown file from a template, you will see an example document with several code blocks in it. To create an HTML or PDF report from an R Markdown (Rmd) document, you compile it.  Compiling a document is called <a class='glossary' target='_blank' title='To create an HTML, PDF, or Word document from an R Markdown (Rmd) document' href='https://psyteachr.github.io/glossary/k#knit'>knitting</a> in RStudio. There is a button that looks like a ball of yarn with needles through it that you click on to compile your file into a report. 
@@ -412,7 +446,6 @@ The table above is OK, but it could be more reader-friendly by changing the colu
   <button class="tablinks" onclick="openCity(event, 'kableExtra')">kableExtra</button>
   <button class="tablinks" onclick="openCity(event, 'papaja')">papaja</button>
   <button class="tablinks" onclick="openCity(event, 'gt')">gt</button>
-  <button class="tablinks" onclick="openCity(event, 'DT')">DT</button>
 </div>
 
 <!-- Tab content -->
@@ -567,12 +600,12 @@ gt(summary_table, caption = "Summary statistics for the pets dataset.") |>
 ```
 
 ```{=html}
-<div id="yfneiiaqzw" style="overflow-x:auto;overflow-y:auto;width:auto;height:auto;">
+<div id="jpztboljda" style="overflow-x:auto;overflow-y:auto;width:auto;height:auto;">
 <style>html {
   font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Oxygen, Ubuntu, Cantarell, 'Helvetica Neue', 'Fira Sans', 'Droid Sans', Arial, sans-serif;
 }
 
-#yfneiiaqzw .gt_table {
+#jpztboljda .gt_table {
   display: table;
   border-collapse: collapse;
   margin-left: auto;
@@ -597,7 +630,7 @@ gt(summary_table, caption = "Summary statistics for the pets dataset.") |>
   border-left-color: #D3D3D3;
 }
 
-#yfneiiaqzw .gt_heading {
+#jpztboljda .gt_heading {
   background-color: #FFFFFF;
   text-align: center;
   border-bottom-color: #FFFFFF;
@@ -609,7 +642,7 @@ gt(summary_table, caption = "Summary statistics for the pets dataset.") |>
   border-right-color: #D3D3D3;
 }
 
-#yfneiiaqzw .gt_title {
+#jpztboljda .gt_title {
   color: #333333;
   font-size: 125%;
   font-weight: initial;
@@ -621,7 +654,7 @@ gt(summary_table, caption = "Summary statistics for the pets dataset.") |>
   border-bottom-width: 0;
 }
 
-#yfneiiaqzw .gt_subtitle {
+#jpztboljda .gt_subtitle {
   color: #333333;
   font-size: 85%;
   font-weight: initial;
@@ -633,13 +666,13 @@ gt(summary_table, caption = "Summary statistics for the pets dataset.") |>
   border-top-width: 0;
 }
 
-#yfneiiaqzw .gt_bottom_border {
+#jpztboljda .gt_bottom_border {
   border-bottom-style: solid;
   border-bottom-width: 2px;
   border-bottom-color: #5F5F5F;
 }
 
-#yfneiiaqzw .gt_col_headings {
+#jpztboljda .gt_col_headings {
   border-top-style: solid;
   border-top-width: 2px;
   border-top-color: #5F5F5F;
@@ -654,7 +687,7 @@ gt(summary_table, caption = "Summary statistics for the pets dataset.") |>
   border-right-color: #D3D3D3;
 }
 
-#yfneiiaqzw .gt_col_heading {
+#jpztboljda .gt_col_heading {
   color: #FFFFFF;
   background-color: #0076BA;
   font-size: 100%;
@@ -674,7 +707,7 @@ gt(summary_table, caption = "Summary statistics for the pets dataset.") |>
   overflow-x: hidden;
 }
 
-#yfneiiaqzw .gt_column_spanner_outer {
+#jpztboljda .gt_column_spanner_outer {
   color: #FFFFFF;
   background-color: #0076BA;
   font-size: 100%;
@@ -686,15 +719,15 @@ gt(summary_table, caption = "Summary statistics for the pets dataset.") |>
   padding-right: 4px;
 }
 
-#yfneiiaqzw .gt_column_spanner_outer:first-child {
+#jpztboljda .gt_column_spanner_outer:first-child {
   padding-left: 0;
 }
 
-#yfneiiaqzw .gt_column_spanner_outer:last-child {
+#jpztboljda .gt_column_spanner_outer:last-child {
   padding-right: 0;
 }
 
-#yfneiiaqzw .gt_column_spanner {
+#jpztboljda .gt_column_spanner {
   border-bottom-style: solid;
   border-bottom-width: 2px;
   border-bottom-color: #5F5F5F;
@@ -706,7 +739,7 @@ gt(summary_table, caption = "Summary statistics for the pets dataset.") |>
   width: 100%;
 }
 
-#yfneiiaqzw .gt_group_heading {
+#jpztboljda .gt_group_heading {
   padding-top: 8px;
   padding-bottom: 8px;
   padding-left: 5px;
@@ -731,7 +764,7 @@ gt(summary_table, caption = "Summary statistics for the pets dataset.") |>
   vertical-align: middle;
 }
 
-#yfneiiaqzw .gt_empty_group_heading {
+#jpztboljda .gt_empty_group_heading {
   padding: 0.5px;
   color: #333333;
   background-color: #FFFFFF;
@@ -746,15 +779,15 @@ gt(summary_table, caption = "Summary statistics for the pets dataset.") |>
   vertical-align: middle;
 }
 
-#yfneiiaqzw .gt_from_md > :first-child {
+#jpztboljda .gt_from_md > :first-child {
   margin-top: 0;
 }
 
-#yfneiiaqzw .gt_from_md > :last-child {
+#jpztboljda .gt_from_md > :last-child {
   margin-bottom: 0;
 }
 
-#yfneiiaqzw .gt_row {
+#jpztboljda .gt_row {
   padding-top: 8px;
   padding-bottom: 8px;
   padding-left: 5px;
@@ -773,7 +806,7 @@ gt(summary_table, caption = "Summary statistics for the pets dataset.") |>
   overflow-x: hidden;
 }
 
-#yfneiiaqzw .gt_stub {
+#jpztboljda .gt_stub {
   color: #333333;
   background-color: #89D3FE;
   font-size: 100%;
@@ -786,7 +819,7 @@ gt(summary_table, caption = "Summary statistics for the pets dataset.") |>
   padding-right: 5px;
 }
 
-#yfneiiaqzw .gt_stub_row_group {
+#jpztboljda .gt_stub_row_group {
   color: #333333;
   background-color: #FFFFFF;
   font-size: 100%;
@@ -800,11 +833,11 @@ gt(summary_table, caption = "Summary statistics for the pets dataset.") |>
   vertical-align: top;
 }
 
-#yfneiiaqzw .gt_row_group_first td {
+#jpztboljda .gt_row_group_first td {
   border-top-width: 2px;
 }
 
-#yfneiiaqzw .gt_summary_row {
+#jpztboljda .gt_summary_row {
   color: #333333;
   background-color: #FFFFFF;
   text-transform: inherit;
@@ -814,16 +847,16 @@ gt(summary_table, caption = "Summary statistics for the pets dataset.") |>
   padding-right: 5px;
 }
 
-#yfneiiaqzw .gt_first_summary_row {
+#jpztboljda .gt_first_summary_row {
   border-top-style: solid;
   border-top-color: #5F5F5F;
 }
 
-#yfneiiaqzw .gt_first_summary_row.thick {
+#jpztboljda .gt_first_summary_row.thick {
   border-top-width: 2px;
 }
 
-#yfneiiaqzw .gt_last_summary_row {
+#jpztboljda .gt_last_summary_row {
   padding-top: 8px;
   padding-bottom: 8px;
   padding-left: 5px;
@@ -833,7 +866,7 @@ gt(summary_table, caption = "Summary statistics for the pets dataset.") |>
   border-bottom-color: #5F5F5F;
 }
 
-#yfneiiaqzw .gt_grand_summary_row {
+#jpztboljda .gt_grand_summary_row {
   color: #333333;
   background-color: #D5D5D5;
   text-transform: inherit;
@@ -843,7 +876,7 @@ gt(summary_table, caption = "Summary statistics for the pets dataset.") |>
   padding-right: 5px;
 }
 
-#yfneiiaqzw .gt_first_grand_summary_row {
+#jpztboljda .gt_first_grand_summary_row {
   padding-top: 8px;
   padding-bottom: 8px;
   padding-left: 5px;
@@ -853,11 +886,11 @@ gt(summary_table, caption = "Summary statistics for the pets dataset.") |>
   border-top-color: #5F5F5F;
 }
 
-#yfneiiaqzw .gt_striped {
+#jpztboljda .gt_striped {
   background-color: #EDF7FC;
 }
 
-#yfneiiaqzw .gt_table_body {
+#jpztboljda .gt_table_body {
   border-top-style: solid;
   border-top-width: 2px;
   border-top-color: #5F5F5F;
@@ -866,7 +899,7 @@ gt(summary_table, caption = "Summary statistics for the pets dataset.") |>
   border-bottom-color: #5F5F5F;
 }
 
-#yfneiiaqzw .gt_footnotes {
+#jpztboljda .gt_footnotes {
   color: #333333;
   background-color: #FFFFFF;
   border-bottom-style: none;
@@ -880,7 +913,7 @@ gt(summary_table, caption = "Summary statistics for the pets dataset.") |>
   border-right-color: #D3D3D3;
 }
 
-#yfneiiaqzw .gt_footnote {
+#jpztboljda .gt_footnote {
   margin: 0px;
   font-size: 90%;
   padding-left: 4px;
@@ -889,7 +922,7 @@ gt(summary_table, caption = "Summary statistics for the pets dataset.") |>
   padding-right: 5px;
 }
 
-#yfneiiaqzw .gt_sourcenotes {
+#jpztboljda .gt_sourcenotes {
   color: #333333;
   background-color: #FFFFFF;
   border-bottom-style: none;
@@ -903,7 +936,7 @@ gt(summary_table, caption = "Summary statistics for the pets dataset.") |>
   border-right-color: #D3D3D3;
 }
 
-#yfneiiaqzw .gt_sourcenote {
+#jpztboljda .gt_sourcenote {
   font-size: 90%;
   padding-top: 4px;
   padding-bottom: 4px;
@@ -911,64 +944,64 @@ gt(summary_table, caption = "Summary statistics for the pets dataset.") |>
   padding-right: 5px;
 }
 
-#yfneiiaqzw .gt_left {
+#jpztboljda .gt_left {
   text-align: left;
 }
 
-#yfneiiaqzw .gt_center {
+#jpztboljda .gt_center {
   text-align: center;
 }
 
-#yfneiiaqzw .gt_right {
+#jpztboljda .gt_right {
   text-align: right;
   font-variant-numeric: tabular-nums;
 }
 
-#yfneiiaqzw .gt_font_normal {
+#jpztboljda .gt_font_normal {
   font-weight: normal;
 }
 
-#yfneiiaqzw .gt_font_bold {
+#jpztboljda .gt_font_bold {
   font-weight: bold;
 }
 
-#yfneiiaqzw .gt_font_italic {
+#jpztboljda .gt_font_italic {
   font-style: italic;
 }
 
-#yfneiiaqzw .gt_super {
+#jpztboljda .gt_super {
   font-size: 65%;
 }
 
-#yfneiiaqzw .gt_footnote_marks {
+#jpztboljda .gt_footnote_marks {
   font-style: italic;
   font-weight: normal;
   font-size: 75%;
   vertical-align: 0.4em;
 }
 
-#yfneiiaqzw .gt_asterisk {
+#jpztboljda .gt_asterisk {
   font-size: 100%;
   vertical-align: 0;
 }
 
-#yfneiiaqzw .gt_indent_1 {
+#jpztboljda .gt_indent_1 {
   text-indent: 5px;
 }
 
-#yfneiiaqzw .gt_indent_2 {
+#jpztboljda .gt_indent_2 {
   text-indent: 10px;
 }
 
-#yfneiiaqzw .gt_indent_3 {
+#jpztboljda .gt_indent_3 {
   text-indent: 15px;
 }
 
-#yfneiiaqzw .gt_indent_4 {
+#jpztboljda .gt_indent_4 {
   text-indent: 20px;
 }
 
-#yfneiiaqzw .gt_indent_5 {
+#jpztboljda .gt_indent_5 {
   text-indent: 25px;
 }
 </style>
@@ -1010,27 +1043,6 @@ gt(summary_table, caption = "Summary statistics for the pets dataset.") |>
 
 </div>
 
-
-<!-- Tab content -->
-<div id="DT" class="tabcontent">
-
-[DT](https://rstudio.github.io/DT/) lets you make interactive data tables. Chapter\ \@ref(interactive-tables) goes into more details about this type of table.
-
-
-```r
-DT::datatable(summary_table, 
-              caption = "Summary statistics for the pets dataset.",
-              colnames = c("Pet Type", "N", "Weight", "Score")) |>
-  DT::formatRound(c("mean_weight", "mean_score"),
-                  digits = 2)
-```
-
-```{=html}
-<div id="htmlwidget-84638571ee34f2bc75e4" style="width:100%;height:auto;" class="datatables html-widget"></div>
-<script type="application/json" data-for="htmlwidget-84638571ee34f2bc75e4">{"x":{"filter":"none","vertical":false,"caption":"<caption>Summary statistics for the pets dataset.<\/caption>","data":[["1","2","3"],["cat","dog","ferret"],[300,400,100],[9.3716129083,19.0679737427696,4.78156944173321],[90.2366666666667,99.9825,111.78]],"container":"<table class=\"display\">\n  <thead>\n    <tr>\n      <th> <\/th>\n      <th>Pet Type<\/th>\n      <th>N<\/th>\n      <th>Weight<\/th>\n      <th>Score<\/th>\n    <\/tr>\n  <\/thead>\n<\/table>","options":{"columnDefs":[{"targets":3,"render":"function(data, type, row, meta) {\n    return type !== 'display' ? data : DTWidget.formatRound(data, 2, 3, \",\", \".\", null);\n  }"},{"targets":4,"render":"function(data, type, row, meta) {\n    return type !== 'display' ? data : DTWidget.formatRound(data, 2, 3, \",\", \".\", null);\n  }"},{"className":"dt-right","targets":[2,3,4]},{"orderable":false,"targets":0}],"order":[],"autoWidth":false,"orderClasses":false}},"evals":["options.columnDefs.0.render","options.columnDefs.1.render"],"jsHooks":[]}</script>
-```
-
-</div>
 
 ### Images {#repro-figures}
 
@@ -1273,7 +1285,7 @@ You can also add references manually. In RStudio, go to **`File`** > **`New File
 
 Next, add the line `bibliography: refs.bib` to your YAML header.
 
-### Adding references {#citations}
+### Adding references {#references}
 
 You can add references to a journal article in the following format:
 
@@ -1319,7 +1331,7 @@ citation(package="ggplot2") %>% toBibtex()
 </div>
 
 
-### Citing references {#references}
+### Citing references {#citations}
 
 You can cite references in text like this: 
 

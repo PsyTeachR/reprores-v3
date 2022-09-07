@@ -20,12 +20,12 @@
 <link href="libs/bootstrap-4.6.0/bootstrap.min.css" rel="stylesheet">
 <script src="libs/bootstrap-4.6.0/bootstrap.bundle.min.js"></script><script src="libs/bs3compat-0.4.0/transition.js"></script><script src="libs/bs3compat-0.4.0/tabs.js"></script><script src="libs/bs3compat-0.4.0/bs3compat.js"></script><link href="libs/bs4_book-1.0.0/bs4_book.css" rel="stylesheet">
 <script src="libs/bs4_book-1.0.0/bs4_book.js"></script><script src="libs/kePrint-0.0.1/kePrint.js"></script><link href="libs/lightable-0.0.1/lightable.css" rel="stylesheet">
-<script src="libs/htmlwidgets-1.5.4/htmlwidgets.js"></script><link href="libs/datatables-css-0.0.0/datatables-crosstalk.css" rel="stylesheet">
+<script src="libs/htmlwidgets-1.5.4/htmlwidgets.js"></script><script src="libs/plotly-binding-4.10.0/plotly.js"></script><script src="libs/typedarray-0.1/typedarray.min.js"></script><link href="libs/crosstalk-1.2.0/css/crosstalk.min.css" rel="stylesheet">
+<script src="libs/crosstalk-1.2.0/js/crosstalk.min.js"></script><link href="libs/plotly-htmlwidgets-css-2.5.1/plotly-htmlwidgets.css" rel="stylesheet">
+<script src="libs/plotly-main-2.5.1/plotly-latest.min.js"></script><link href="libs/datatables-css-0.0.0/datatables-crosstalk.css" rel="stylesheet">
 <script src="libs/datatables-binding-0.24/datatables.js"></script><link href="libs/dt-core-1.11.3/css/jquery.dataTables.min.css" rel="stylesheet">
 <link href="libs/dt-core-1.11.3/css/jquery.dataTables.extra.css" rel="stylesheet">
-<script src="libs/dt-core-1.11.3/js/jquery.dataTables.min.js"></script><link href="libs/crosstalk-1.2.0/css/crosstalk.min.css" rel="stylesheet">
-<script src="libs/crosstalk-1.2.0/js/crosstalk.min.js"></script><script src="libs/plotly-binding-4.10.0/plotly.js"></script><script src="libs/typedarray-0.1/typedarray.min.js"></script><link href="libs/plotly-htmlwidgets-css-2.5.1/plotly-htmlwidgets.css" rel="stylesheet">
-<script src="libs/plotly-main-2.5.1/plotly-latest.min.js"></script><!-- Global site tag (gtag.js) - Google Analytics --><script async src="https://www.googletagmanager.com/gtag/js?id=G-6NP3MF25W3"></script><script>
+<script src="libs/dt-core-1.11.3/js/jquery.dataTables.min.js"></script><!-- Global site tag (gtag.js) - Google Analytics --><script async src="https://www.googletagmanager.com/gtag/js?id=G-6NP3MF25W3"></script><script>
       window.dataLayer = window.dataLayer || [];
       function gtag(){dataLayer.push(arguments);}
       gtag('js', new Date());
@@ -201,13 +201,13 @@
 <option value="">subject ID</option>
 <option value="answer">subject_id</option></select></li>
 <li><select class="webex-select"><option value="blank"></option>
-<option value="">Age (in months)</option>
-<option value="">ageMonths</option>
 <option value="answer">age_months</option>
-<option value="">age</option></select></li>
+<option value="">age</option>
+<option value="">Age (in months)</option>
+<option value="">ageMonths</option></select></li>
 <li><select class="webex-select"><option value="blank"></option>
-<option value="">by</option>
 <option value="">birth-year</option>
+<option value="">by</option>
 <option value="">Birth Year</option>
 <option value="answer">birth_year</option></select></li>
 </ul>
@@ -449,7 +449,7 @@ exp
 <div class="sourceCode" id="cb140"><pre class="downlit sourceCode r">
 <code class="sourceCode R"><span><span class="co"># loads smalldata into the environment</span></span>
 <span><span class="fu"><a href="https://rdrr.io/r/utils/data.html">data</a></span><span class="op">(</span><span class="st">"smalldata"</span><span class="op">)</span></span></code></pre></div>
-<p>Always, always, always, look at your data once you've created or loaded a table. Also look at it after each step that transforms your table. There are three main ways to look at your tibble: <code><a href="https://rdrr.io/r/base/print.html">print()</a></code>, <code><a href="https://pillar.r-lib.org/reference/glimpse.html">glimpse()</a></code>, and <code><a href="https://rdrr.io/r/utils/View.html">View()</a></code>.</p>
+<p>Always, always, always, look at your data once you've created or loaded a table. Also look at it after each step that transforms your table. There are three main ways to look at your tibble: <code><a href="https://rdrr.io/r/base/print.html">print()</a></code>, <code><a href="https://pillar.r-lib.org/reference/glimpse.html">glimpse()</a></code>, and <code><a href="https://gganimate.com/reference/gganimate-ggproto.html">View()</a></code>.</p>
 <p>The <code><a href="https://rdrr.io/r/base/print.html">print()</a></code> method can be run explicitly, but is more commonly called by just typing the variable name on the blank line. The default is not to print the entire table, but just the first 10 rows. It's rare to print your data in a script; that is something you usually are doing for a sanity check, and you should just do it in the console.</p>
 <p>Let's look at the <code>smalldata</code> table that we made above.</p>
 <div class="sourceCode" id="cb141"><pre class="downlit sourceCode r">
@@ -623,7 +623,7 @@ exp
 ## $ group &lt;chr&gt; "control", "control", "control", "control", "control", "exp", "e…
 ## $ pre   &lt;dbl&gt; 98.46606, 104.39774, 105.13377, 92.42574, 123.53268, 97.48676, 8…
 ## $ post  &lt;dbl&gt; 106.70508, 89.09030, 123.67230, 70.70178, 124.95526, 101.61697, …</code></pre>
-<p>The other way to look at the table is a more graphical spreadsheet-like version given by <code><a href="https://rdrr.io/r/utils/View.html">View()</a></code> (capital 'V'). It can be useful in the console, but don't ever put this one in a script because it will create an annoying pop-up window when the user runs it.
+<p>The other way to look at the table is a more graphical spreadsheet-like version given by <code><a href="https://gganimate.com/reference/gganimate-ggproto.html">View()</a></code> (capital 'V'). It can be useful in the console, but don't ever put this one in a script because it will create an annoying pop-up window when the user runs it.
 Now you can click on <code>smalldata</code> in the environment pane to open it up in a viewer that looks a bit like Excel.</p>
 <p>You can get a quick summary of a dataset with the <code><a href="https://rdrr.io/r/base/summary.html">summary()</a></code> function.</p>
 <div class="sourceCode" id="cb144"><pre class="downlit sourceCode r">
@@ -850,12 +850,12 @@ NA
 <img src="images/memes/data-expanding-brain.png" alt="Expanding brain meme: Skeleton head with tiny brain = Load data in R; Normal-sized brain with sparkles = View data; Brain with a few rays of light shooting out = Summarize data; Brain with lots of rays and sparkles shooting out = Plot data">
 </div>
 <p>Now that you've loaded some data, look the upper right hand window of RStudio, under the Environment tab. You will see the objects listed, along with their number of observations (rows) and variables (columns). This is your first check that everything went OK.</p>
-<p>Always, always, always, inspect your data once you've created or loaded a table and after each step that transforms your table. The quickest and most basic way is to look at your table using <code><a href="https://rdrr.io/r/utils/View.html">View()</a></code> or <code><a href="https://rdrr.io/r/base/print.html">print()</a></code>. You can also use functions like <code><a href="https://pillar.r-lib.org/reference/glimpse.html">tibble::glimpse()</a></code>, <code><a href="https://rdrr.io/r/base/summary.html">summary()</a></code> or <code><a href="https://docs.ropensci.org/skimr/reference/skim.html">skimr::skim()</a></code> to summarise your data. Finally, the best way to really understand your data is to plot it using the skills we learned in Chapter <a href="ggplot.html#ggplot">3</a>.</p>
+<p>Always, always, always, inspect your data once you've created or loaded a table and after each step that transforms your table. The quickest and most basic way is to look at your table using <code><a href="https://gganimate.com/reference/gganimate-ggproto.html">View()</a></code> or <code><a href="https://rdrr.io/r/base/print.html">print()</a></code>. You can also use functions like <code><a href="https://pillar.r-lib.org/reference/glimpse.html">tibble::glimpse()</a></code>, <code><a href="https://rdrr.io/r/base/summary.html">summary()</a></code> or <code><a href="https://docs.ropensci.org/skimr/reference/skim.html">skimr::skim()</a></code> to summarise your data. Finally, the best way to really understand your data is to plot it using the skills we learned in Chapter <a href="ggplot.html#ggplot">3</a>.</p>
 <div id="viewing-data" class="section level4" number="4.4.3.1">
 <h4>
 <span class="header-section-number">4.4.3.1</span> Viewing data<a class="anchor" aria-label="anchor" href="#viewing-data"><i class="fas fa-link"></i></a>
 </h4>
-<p>A familiar way to look at the table is given by <code><a href="https://rdrr.io/r/utils/View.html">View()</a></code> (uppercase 'V'). This command can be useful in the console, but don't ever put this one in a script because it will create an annoying pop-up window when the user runs it. Or you can click on an objects in the <a class="glossary" target="_blank" title='RStudio is arranged with four window "panes".' href="https://psyteachr.github.io/glossary/p#panes">environment pane</a> to open it up in a viewer that looks a bit like Excel. You can close the tab when you're done looking at it; it won't remove the object.</p>
+<p>A familiar way to look at the table is given by <code><a href="https://gganimate.com/reference/gganimate-ggproto.html">View()</a></code> (uppercase 'V'). This command can be useful in the console, but don't ever put this one in a script because it will create an annoying pop-up window when the user runs it. Or you can click on an objects in the <a class="glossary" target="_blank" title='RStudio is arranged with four window "panes".' href="https://psyteachr.github.io/glossary/p#panes">environment pane</a> to open it up in a viewer that looks a bit like Excel. You can close the tab when you're done looking at it; it won't remove the object.</p>
 <p>The <code><span><span class="fu"><a target="_blank" href="https://rdrr.io/r/base/print.html">print</a></span><span class="op">(</span><span class="op">)</span></span></code> method can be run explicitly, but is more commonly called by just typing the variable name on the blank line. The default is not to print the entire table, but just the first 10 rows.</p>
 <p>Let's look at the <code>demo_tsv</code> table that we loaded above. Depending on how wide your screen is, you might need to click on an arrow at the right of the table to see the last column.</p>
 <div class="sourceCode" id="cb157"><pre class="downlit sourceCode r">

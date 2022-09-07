@@ -8,27 +8,7 @@
 ### Basic {-}
 
 1. Understand what types of graphs are best for [different types of data](#vartypes) [(video)](https://youtu.be/tOFQFPRgZ3M){class="video"}
-    + 1 discrete
-    + 1 continuous
-    + 2 discrete
-    + 2 continuous
-    + 1 discrete, 1 continuous
-    + 3 continuous
 2. Create common types of graphs with ggplot2 [(video)](https://youtu.be/kKlQupjD__g){class="video"}
-    + [`geom_bar()`](#geom_bar)
-    + [`geom_density()`](#geom_density)
-    + [`geom_freqpoly()`](#geom_freqpoly)
-    + [`geom_histogram()`](#geom_histogram)
-    + [`geom_col()`](#geom_col)
-    + [`geom_boxplot()`](#geom_boxplot)
-    + [`geom_violin()`](#geom_violin)
-    + [Vertical Intervals](#vertical_intervals)
-        + `geom_crossbar()`
-        + `geom_errorbar()`
-        + `geom_linerange()`
-        + `geom_pointrange()`
-    + [`geom_point()`](#geom_point)
-    + [`geom_smooth()`](#geom_smooth)
 3. Set custom [size](#custom-size),
               [labels](#custom-labels), 
               [colours](#custom-colours), and
@@ -41,11 +21,6 @@
 6. Add lines to graphs
 7. Deal with [overlapping data](#overlap)
 8. Create less common types of graphs
-    + [`geom_tile()`](#geom_tile)
-    + [`geom_density2d()`](#geom_density2d)
-    + [`geom_bin2d()`](#geom_bin2d)
-    + [`geom_hex()`](#geom_hex)
-    + [`geom_count()`](#geom_count)
 9. Adjust axes (e.g., flip coordinates, set axis limits)
 
 
@@ -65,7 +40,6 @@ knitr::opts_chunk$set(echo = TRUE)
 library(tidyverse)   # loads ggplot2 for plots
 library(patchwork)   # multi-part plots
 library(plotly)      # interactive plots
-library(ggwordcloud) # word clouds
 library(reprores)    # class-specific datasets
 
 set.seed(30250) # makes sure random numbers are reproducible
@@ -117,7 +91,17 @@ Before you read ahead, come up with an example of each type of variable combinat
 
 ## Basic Plots
 
-R has some basic plotting functions, but they're difficult to use and aesthetically not very nice. They can be useful to have a quick look at data while you're working on a script, though. The function `plot()` usually defaults to a sensible type of plot, depending on whether the arguments `x` and `y` are categorical, continuous, or missing.
+R has some basic plotting functions, but they're difficult to use and aesthetically not very nice without a fair amount of expertise. They can be useful to have a quick look at data while you're working on a script, though. The function `plot()` usually defaults to a sensible type of plot, depending on whether the arguments `x` and `y` are categorical, continuous, or missing.
+
+<!-- Tab links -->
+<div class="tab">
+  <button class="tablinks" onclick="openCity(event, 'catx')">Categorical X</button>
+  <button class="tablinks" onclick="openCity(event, 'catxy')">Categorical X and Y</button>
+  <button class="tablinks" onclick="openCity(event, 'contxy')">Continuous X and Y</button>
+</div>
+
+<!-- Tab content -->
+<div id="catx" class="tabcontent">
 
 
 ```r
@@ -129,6 +113,9 @@ plot(x = pets$pet)
 <p class="caption">(\#fig:plot0)plot() with categorical x</p>
 </div>
 
+</div>
+<div id="catxy" class="tabcontent">
+
 
 ```r
 plot(x = pets$pet, y = pets$score)
@@ -139,6 +126,9 @@ plot(x = pets$pet, y = pets$score)
 <p class="caption">(\#fig:plot1)plot() with categorical x and continuous y</p>
 </div>
 
+</div>
+<div id="contxy" class="tabcontent">
+
 
 ```r
 plot(x = pets$age, y = pets$weight)
@@ -148,6 +138,10 @@ plot(x = pets$age, y = pets$weight)
 <img src="03-ggplot_files/figure-html/plot2-1.png" alt="plot() with continuous x and y" width="100%" />
 <p class="caption">(\#fig:plot2)plot() with continuous x and y</p>
 </div>
+
+</div>
+
+
 The function `hist()` creates a quick histogram so you can see the distribution of your data. You can adjust how many columns are plotted with the argument `breaks`.
 
 
@@ -162,9 +156,31 @@ hist(pets$score, breaks = 20)
 
 ## GGplots
 
-While the functions above are nice for quick visualisations, it's hard to make pretty, publication-ready plots. The package `ggplot2` (loaded with `tidyverse`) is one of the most common packages for creating beautiful visualisations.
+While the functions above are nice for quick visualisations, it's hard to make pretty, publication-ready plots. The package <code class='package'>ggplot2</code> (loaded with `tidyverse`) is one of the most common packages for creating beautiful visualisations.
 
-`ggplot2` creates plots using a "grammar of graphics" where you add <a class='glossary' target='_blank' title='The geometric style in which data are displayed, such as boxplot, density, or histogram.' href='https://psyteachr.github.io/glossary/g#geom'>geoms</a> in layers. It can be complex to understand, but it's very powerful once you have a mental model of how it works. 
+`ggplot2` creates plots using a "grammar of graphics" where you add <a class='glossary' target='_blank' title='The geometric style in which data are displayed, such as boxplot, density, or histogram.' href='https://psyteachr.github.io/glossary/g#geom'>geoms</a> in layers. It can be complex to understand at first, but it's very powerful once you have a mental model of how it works. 
+
+A grammar of graphics (the "gg" in "ggplot") is a standardised way to describe the components of a graphic. <code class='package'>ggplot2</code> uses a layered grammar of graphics, in which plots are built up in a series of layers. It may be helpful to think about any picture as having multiple elements that sit semi-transparently over each other. A good analogy is old Disney movies where artists would create a background and then add moveable elements on top of the background via transparencies.
+
+Figure\ \@ref(fig:layers) displays the evolution of a simple plot using this layered approach. First, the plot space is built (layer 1); the variables are specified (layer 2); the type of visualisation (known as a geom) that is desired for these variables is specified (layer 3) - in this case geom_violin() is called to visualise the distribution; the colours are customised (layer 4); the axis labels and ranges are edited for readability (layer 5); and a theme is applied to change the overall appearance of the plot  and the legend position is customised (layer 6).
+
+<div class="figure" style="text-align: center">
+<img src="03-ggplot_files/figure-html/layers-1.png" alt="Evolution of a layered plot" width="100%" />
+<p class="caption">(\#fig:layers)Evolution of a layered plot</p>
+</div>
+
+<!-- Tab links -->
+<div class="tab">
+  <button class="tablinks" onclick="openCity(event, 'layer1')">Layer 1</button>
+  <button class="tablinks" onclick="openCity(event, 'layer2')">Layer 2</button>
+  <button class="tablinks" onclick="openCity(event, 'layer3')">Layer 3</button>
+  <button class="tablinks" onclick="openCity(event, 'layer4')">Layer 4</button>
+  <button class="tablinks" onclick="openCity(event, 'layer5')">Layer 5</button>
+  <button class="tablinks" onclick="openCity(event, 'layer6')">Layer 6</button>
+</div>
+
+<!-- Tab content -->
+<div id="layer1" class="tabcontent">
 
 Let's start with a totally empty plot layer created by the `ggplot()` function with no arguments.
 
@@ -178,6 +194,9 @@ ggplot()
 <p class="caption">(\#fig:ggplot-empty)A plot base created by ggplot()</p>
 </div>
 
+</div>
+<div id="layer2" class="tabcontent">
+
 The first argument to `ggplot()` is the `data` table you want to plot. Let's use the `pets` data we loaded above. The second argument is the `mapping` for which columns in your data table correspond to which properties of the plot, such as the `x`-axis, the `y`-axis, line `colour` or `linetype`, point `shape`, or object `fill`. These mappings are specified by the `aes()` function. Just adding this to the `ggplot` function creates the labels and ranges for the `x` and `y` axes. They usually have sensible default values, given your data, but we'll learn how to change them later.
 
 
@@ -186,29 +205,27 @@ mapping <- aes(x = pet,
                y = score, 
                colour = country, 
                fill = country)
+
 ggplot(data = pets, mapping = mapping)
 ```
 
 <div class="figure" style="text-align: center">
-<img src="03-ggplot_files/figure-html/ggplot-labels-1.png" alt="Empty ggplot with x and y labels" width="100%" />
-<p class="caption">(\#fig:ggplot-labels)Empty ggplot with x and y labels</p>
+<img src="03-ggplot_files/figure-html/ggplot-aes-1.png" alt="Empty ggplot with x and y labels" width="100%" />
+<p class="caption">(\#fig:ggplot-aes)Empty ggplot with x and y labels</p>
 </div>
 ::: {.info data-latex=""}
 People usually omit the argument names and just put the `aes()` function directly as the second argument to `ggplot`. They also usually omit `x` and `y` as argument names to `aes()` (but you have to name the other properties). 
 :::
 
-Next we can add "geoms", or plot styles. You literally add them with the `+` symbol. You can also add other plot attributes, such as labels, or change the theme and base font size.
+</div>
+<div id="layer3" class="tabcontent">
+
+Next we can add "geoms", or plot styles. You literally add them with the `+` symbol. You can customise the appearance of a geom with arguments like `alpha` (sets transparency).
 
 
 ```r
 ggplot(pets, aes(pet, score, colour = country, fill = country)) +
-  geom_violin(alpha = 0.5) +
-  labs(x = "Pet type",
-       y = "Score on an Important Test",
-       colour = "Country of Origin",
-       fill = "Country of Origin",
-       title = "My first plot!") +
-  theme_bw(base_size = 15)
+  geom_violin(alpha = 0.5)
 ```
 
 <div class="figure" style="text-align: center">
@@ -216,6 +233,75 @@ ggplot(pets, aes(pet, score, colour = country, fill = country)) +
 <p class="caption">(\#fig:ggplot-geom)Violin plot with country represented by colour.</p>
 </div>
 
+</div>
+<div id="layer4" class="tabcontent">
+
+The `scale_*` functions help you to customise the aesthetics.
+
+
+```r
+ggplot(pets, aes(pet, score, colour = country, fill = country)) +
+  geom_violin(alpha = 0.5) +
+  scale_fill_manual(values = c("orange", "orchid")) +
+  scale_colour_manual(values = c("orange", "orchid"))
+```
+
+<div class="figure" style="text-align: center">
+<img src="03-ggplot_files/figure-html/ggplot-color-1.png" alt="Customised colours." width="100%" />
+<p class="caption">(\#fig:ggplot-color)Customised colours.</p>
+</div>
+
+</div>
+<div id="layer5" class="tabcontent">
+
+Further customise the image by setting the y-axis breaks and limits, and editing the labels.
+
+
+```r
+ggplot(pets, aes(pet, score, colour = country, fill = country)) +
+  geom_violin(alpha = 0.5) +
+  scale_fill_manual(values = c("orange", "orchid")) +
+  scale_colour_manual(values = c("orange", "orchid")) +
+  scale_y_continuous(breaks = c(50, 100, 150)) +
+  coord_cartesian(ylim = c(50, 150)) +
+  labs(x = "Pet type",
+       y = "Score on an Important Test",
+       colour = "Country of Origin",
+       fill = "Country of Origin")
+```
+
+<div class="figure" style="text-align: center">
+<img src="03-ggplot_files/figure-html/ggplot-labels-1.png" alt="Customised axis labels." width="100%" />
+<p class="caption">(\#fig:ggplot-labels)Customised axis labels.</p>
+</div>
+
+</div>
+<div id="layer6" class="tabcontent">
+
+Finally, change the theme and base font size and customise the legend position.
+
+
+```r
+ggplot(pets, aes(pet, score, colour = country, fill = country)) +
+  geom_violin(alpha = 0.5) +
+  scale_fill_manual(values = c("orange", "orchid")) +
+  scale_colour_manual(values = c("orange", "orchid")) +
+  scale_y_continuous(breaks = c(50, 100, 150)) +
+  coord_cartesian(ylim = c(50, 150)) +
+  labs(x = "Pet type",
+       y = "Score on an Important Test",
+       colour = "Country of Origin",
+       fill = "Country of Origin") +
+  theme_minimal(base_size = 13) +
+  theme(legend.position = c(.83, .17))
+```
+
+<div class="figure" style="text-align: center">
+<img src="03-ggplot_files/figure-html/ggplot-theme-1.png" alt="Customised theme and legend position." width="100%" />
+<p class="caption">(\#fig:ggplot-theme)Customised theme and legend position.</p>
+</div>
+
+</div>
 
 ## Common Plot Types
 
@@ -284,7 +370,7 @@ ggplot(pets, aes(score, color = pet)) +
 </div>
 
 ::: {.try data-latex=""}
-Try changing the `binwidth` argument to 10 and 1. How do you figure out the right value?
+Try changing the `binwidth` argument to 10 or 1. How do you figure out the right value?
 :::
 
 ### Histogram {#geom_histogram}
@@ -294,7 +380,9 @@ Histograms are also good for one continuous variable, and work well if you don't
 
 ```r
 ggplot(pets, aes(score)) +
-  geom_histogram(binwidth = 5, fill = "white", color = "black")
+  geom_histogram(binwidth = 5, 
+                 fill = "white", 
+                 color = "black")
 ```
 
 <div class="figure" style="text-align: center">
@@ -311,7 +399,8 @@ If you show grouped histograms, you also probably want to change the default `po
 
 ```r
 ggplot(pets, aes(score, fill=pet)) +
-  geom_histogram(binwidth = 5, alpha = 0.5, 
+  geom_histogram(binwidth = 5, 
+                 alpha = 0.5, 
                  position = "dodge")
 ```
 
@@ -332,7 +421,8 @@ Column plots are the worst way to represent grouped continuous data, but also on
 ```r
 ggplot(pets, aes(pet, score, fill=pet)) +
   stat_summary(fun = mean, geom = "col", alpha = 0.5) + 
-  stat_summary(fun.data = mean_se, geom = "errorbar",
+  stat_summary(fun.data = mean_se, 
+               geom = "errorbar",
                width = 0.25) +
   coord_cartesian(ylim = c(80, 120))
 ```
@@ -369,7 +459,8 @@ Violin pots are like sideways, mirrored density plots. They give even more infor
 ```r
 ggplot(pets, aes(pet, score, fill=pet)) +
   geom_violin(draw_quantiles = .5,
-              trim = FALSE, alpha = 0.5,)
+              trim = FALSE, 
+              alpha = 0.5)
 ```
 
 <div class="figure" style="text-align: center">
@@ -403,42 +494,17 @@ The trick above can be useful if you want to represent the same data in differen
 
 
 ```r
-gg + geom_crossbar()
+cb <- gg + geom_crossbar() + ggtitle("geom_crossbar()")
+eb <- gg + geom_errorbar() + ggtitle("geom_errorbar()")
+lr <- gg + geom_linerange() + ggtitle("geom_linerange()")
+pr <- gg + geom_pointrange() + ggtitle("geom_pointrange()")
+
+cb + eb + lr + pr # combine with patchwork package
 ```
 
 <div class="figure" style="text-align: center">
-<img src="03-ggplot_files/figure-html/geom-crossbar-1.png" alt="geom_crossbar()" width="100%" />
-<p class="caption">(\#fig:geom-crossbar)geom_crossbar()</p>
-</div>
-
-
-```r
-gg + geom_errorbar()
-```
-
-<div class="figure" style="text-align: center">
-<img src="03-ggplot_files/figure-html/geom-errorbar-1.png" alt="geom_errorbar()" width="100%" />
-<p class="caption">(\#fig:geom-errorbar)geom_errorbar()</p>
-</div>
-
-
-```r
-gg + geom_linerange()
-```
-
-<div class="figure" style="text-align: center">
-<img src="03-ggplot_files/figure-html/geom-linerange-1.png" alt="geom_linerange()" width="100%" />
-<p class="caption">(\#fig:geom-linerange)geom_linerange()</p>
-</div>
-
-
-```r
-gg + geom_pointrange()
-```
-
-<div class="figure" style="text-align: center">
-<img src="03-ggplot_files/figure-html/geom-pointrange-1.png" alt="geom_pointrange()" width="100%" />
-<p class="caption">(\#fig:geom-pointrange)geom_pointrange()</p>
+<img src="03-ggplot_files/figure-html/geom-crossbar-1.png" alt="Four different styles of vertical interval" width="100%" />
+<p class="caption">(\#fig:geom-crossbar)Four different styles of vertical interval</p>
 </div>
 
 
@@ -465,7 +531,7 @@ Scatter plots are a good way to represent the relationship between two continuou
 
 
 ```r
-ggplot(pets, aes(age, score, color = pet)) +
+ggplot(pets, aes(weight, score, color = pet)) +
   geom_point()
 ```
 
@@ -480,7 +546,7 @@ You often want to represent the relationship as a single line.
 
 
 ```r
-ggplot(pets, aes(age, score, color = pet)) +
+ggplot(pets, aes(weight, score, color = pet)) +
   geom_smooth(formula = y ~ x, method="lm")
 ```
 
@@ -492,6 +558,10 @@ ggplot(pets, aes(age, score, color = pet)) +
 ::: {.try data-latex=""}
 What are some other options for the `method` argument to `geom_smooth`? When might you want to use them?
 :::
+
+
+<div class='webex-solution'><button>Bonus: Non-Linear Plots</button>
+
 
 ::: {.info data-latex=""}
 You can plot functions other than the linear `y ~ x`. The code below creates a data table where `x` is 101 values between -10 and 10. and `y` is `x` squared plus `3*x` plus `1`. You'll probably recognise this from algebra as the quadratic equation. You can set the `formula` argument in `geom_smooth` to a quadratic formula (`y ~ x + I(x^2)`) to fit a quadratic function to the data.
@@ -515,6 +585,10 @@ ggplot(quad, aes(x, y)) +
 </div>
 :::
 
+
+</div>
+
+
 ## Customisation
 
 ### Size and Position {#custom-size}
@@ -534,10 +608,10 @@ knitr::opts_chunk$set(
 
 You can change defaults for any single image using <a class='glossary' target='_blank' title='A section of code in an R Markdown file' href='https://psyteachr.github.io/glossary/c#chunk'>chunk</a> options.
 
-<div class='verbatim'><pre class='sourceCode r'><code class='sourceCode R'>&#96;&#96;&#96;{r fig-pet1, fig.width=10, fig.height=3, out.width="100%", fig.align="center", fig.cap="10x3 inches at 100% width centre aligned."}</code></pre>
+<div class='verbatim'><pre class='sourceCode r'><code class='sourceCode R'>&#96;&#96;&#96;{r fig-pet1, fig.width=10, fig.height=3, out.width="100%", fig.align="center"}</code></pre>
 
 ```r
-ggplot(pets, aes(age, score, color = pet)) +
+ggplot(pets, aes(weight, score, color = pet)) +
   geom_smooth(formula = y~x, method = lm)
 ```
 
@@ -548,10 +622,10 @@ ggplot(pets, aes(age, score, color = pet)) +
 <p class="caption">(\#fig:fig-chunk-example1-out)10x3 inches at 100% width centre aligned.</p>
 </div>
 
-<div class='verbatim'><pre class='sourceCode r'><code class='sourceCode R'>&#96;&#96;&#96;{r fig-pet2, fig.width=5, fig.height=3, out.width="50%", fig.align="left", fig.cap="5x3 inches at 50% width aligned left."}</code></pre>
+<div class='verbatim'><pre class='sourceCode r'><code class='sourceCode R'>&#96;&#96;&#96;{r fig-pet2, fig.width=5, fig.height=3, out.width="50%", fig.align="left"}</code></pre>
 
 ```r
-ggplot(pets, aes(age, score, color = pet)) +
+ggplot(pets, aes(weight, score, color = pet)) +
   geom_smooth(formula = y~x, method = lm)
 ```
 
@@ -568,10 +642,10 @@ You can set custom titles and axis labels in a few different ways.
 
 
 ```r
-ggplot(pets, aes(age, score, color = pet)) +
+ggplot(pets, aes(weight, score, color = pet)) +
   geom_smooth(formula = y ~ x, method="lm") +
-  labs(title = "Pet Score with Age",
-       x = "Age (in Years)",
+  labs(title = "Pet Score by Weight and Type",
+       x = "Weight (in kg)",
        y = "Pet Score",
        color = "Pet Type")
 ```
@@ -583,10 +657,10 @@ ggplot(pets, aes(age, score, color = pet)) +
 
 
 ```r
-ggplot(pets, aes(age, score, color = pet)) +
+ggplot(pets, aes(weight, score, color = pet)) +
   geom_smooth(formula = y ~ x, method="lm") +
-  ggtitle("Pet Score with Age") +
-  xlab("Age (in Years)") +
+  ggtitle("Pet Score by Weight and Type") +
+  xlab("Weight (in kg)") +
   ylab("Pet Score")
 ```
 
@@ -599,17 +673,17 @@ The functions <code><span><span class='fu'>labs</span><span class='op'>(</span><
 
 
 ```r
-ggplot(pets, aes(age, score, color = pet)) +
+ggplot(pets, aes(weight, score, color = pet)) +
   geom_smooth(formula = y ~ x, method="lm") +
-  ggtitle("Pet Score with Age") +
-  scale_x_continuous(name = "Age (in Years)", 
-                     breaks = 0:16,
+  ggtitle("Pet Score by Weight and Type") +
+  scale_x_continuous(name = "Weight (in kg)", 
+                     breaks = seq(0, 26, 2),
                      minor_breaks = NULL, 
-                     trans = "reverse",
                      position = "top") +
   scale_y_continuous(name = "Pet Score", 
                      n.breaks = 16, 
-                     limits = c(0, 150)) +
+                     trans = "reverse",
+                     limits = c(150, 0)) +
   scale_color_discrete(name = "Pet Type", 
                        labels = c("Dogs", "Cats", "Ferrets"), 
                        type = c("purple", "green", "orange"))
@@ -649,7 +723,7 @@ GGplot comes with several additional themes and the ability to fully customise y
 
 
 ```r
-ggplot(pets, aes(age, score, color = pet)) +
+ggplot(pets, aes(weight, score, color = pet)) +
   geom_smooth(formula = y ~ x, method="lm") +
   theme_minimal(base_size = 18)
 ```
@@ -682,7 +756,7 @@ vampire_theme <- theme_dark() +
 
 theme_set(vampire_theme)
 
-ggplot(pets, aes(age, score, color = pet)) +
+ggplot(pets, aes(weight, score, color = pet)) +
   geom_smooth(formula = y ~ x, method="lm")
 ```
 

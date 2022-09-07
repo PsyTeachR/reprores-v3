@@ -1,0 +1,35 @@
+---
+title: "Reproducible Script"
+author: "Lisa DeBruine"
+output: html_document
+---
+
+```{r setup, include=FALSE}
+knitr::opts_chunk$set(echo = TRUE)
+library(tidyverse)
+```
+
+## Simulate Data
+
+Here we will simulate data from a study with two conditions. 
+The mean in condition A is 0 and the mean in condition B is 1.
+
+```{r simulate}
+n <- 100
+
+data <- data.frame(
+  id = 1:n,
+  condition = c("A", "B") |> rep(each = n/2),
+  dv = c(rnorm(n/2, 0), rnorm(n/2, 1))
+)
+```
+
+## Plot Data
+
+```{r condition-plot, echo = FALSE}
+ggplot(data, aes(condition, dv)) +
+  geom_violin(trim = FALSE) +
+  geom_boxplot(width = 0.25,
+               aes(fill = condition),
+               show.legend = FALSE)
+```

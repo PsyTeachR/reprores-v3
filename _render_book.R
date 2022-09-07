@@ -53,7 +53,7 @@ browseURL(
   xfun::in_dir("book", bookdown::render_book("index.Rmd", "bookdown::bs4_book"))
 )
 
-#browseURL(xfun::in_dir("book", bookdown::preview_chapter("01-intro.Rmd", output = "bookdown::bs4_book")))
+#browseURL(xfun::in_dir("book", bookdown::preview_chapter("03-ggplot.Rmd", output = "bookdown::bs4_book")))
 
 # copies dir
 R.utils::copyDirectory(

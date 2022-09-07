@@ -157,10 +157,8 @@ There is a new type of reproducible report format called [quarto](https://quarto
 
 We will use `r glossary("R Markdown")` to create reproducible reports, which enables mixing of text and code. A reproducible script will contain sections of code in code blocks. A code block starts and ends with three backtick symbols in a row, with some information about the code between curly brackets, such as `{r chunk-name, echo=FALSE}` (this runs the code, but does not show the text of the code block in the compiled document). The text outside of code blocks is written in `r glossary("markdown")`, which is a way to specify formatting, such as headers, paragraphs, lists, bolding, and links.
 
-```{r img-reproducible-script, echo=FALSE}
-#| fig.cap: A reproducible script.
-#| fig.alt: A screenshot of a script with line numbers, code blocks, and markdown text
-knitr::include_graphics("images/repro/reproducible_script.png")
+```{embed, file = "demos/repro.Rmd"}
+
 ```
 
 
@@ -363,7 +361,6 @@ The table above is OK, but it could be more reader-friendly by changing the colu
   <button class="tablinks" onclick="openCity(event, 'kableExtra')">kableExtra</button>
   <button class="tablinks" onclick="openCity(event, 'papaja')">papaja</button>
   <button class="tablinks" onclick="openCity(event, 'gt')">gt</button>
-  <button class="tablinks" onclick="openCity(event, 'DT')">DT</button>
 </div>
 
 <!-- Tab content -->
@@ -436,21 +433,6 @@ gt(summary_table, caption = "Summary statistics for the pets dataset.") |>
 
 </div>
 
-
-<!-- Tab content -->
-<div id="DT" class="tabcontent">
-
-[DT](https://rstudio.github.io/DT/) lets you make interactive data tables. Chapter\ \@ref(interactive-tables) goes into more details about this type of table.
-
-```{r dt-demo}
-DT::datatable(summary_table, 
-              caption = "Summary statistics for the pets dataset.",
-              colnames = c("Pet Type", "N", "Weight", "Score")) |>
-  DT::formatRound(c("mean_weight", "mean_score"),
-                  digits = 2)
-```
-
-</div>
 
 ### Images {#repro-figures}
 
@@ -600,7 +582,7 @@ You can also add references manually. In RStudio, go to **`File`** > **`New File
 
 Next, add the line `bibliography: refs.bib` to your YAML header.
 
-### Adding references {#citations}
+### Adding references {#references}
 
 You can add references to a journal article in the following format:
 
@@ -633,7 +615,7 @@ knitr::include_graphics("images/present/google-scholar.png")
 ```
 
 
-### Citing references {#references}
+### Citing references {#citations}
 
 You can cite references in text like this: 
 
