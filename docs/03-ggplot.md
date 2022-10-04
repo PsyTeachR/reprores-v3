@@ -896,7 +896,7 @@ ggplot(pets, aes(pet, score, fill = pet)) +
 <p class="caption">(\#fig:facet-wrap)Facetted plot, facetting by country.</p>
 </div>
 
-::: {.warn}
+::: {.warning}
 You can't just use unquoted column names for the `facets` argument; you have to specify them using the `vars()` function. You may see a common shortcut notation using the tilde that is equivalent: `facet_wrap(~country)`.
 :::
 

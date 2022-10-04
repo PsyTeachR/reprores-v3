@@ -718,7 +718,7 @@ ggplot(pets, aes(pet, score, fill = pet)) +
 
 ```
 
-::: {.warn}
+::: {.warning}
 You can't just use unquoted column names for the `facets` argument; you have to specify them using the `vars()` function. You may see a common shortcut notation using the tilde that is equivalent: `facet_wrap(~country)`.
 :::
 
