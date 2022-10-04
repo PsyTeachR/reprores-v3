@@ -946,14 +946,6 @@ Figure 3.38: Facetted plot, facetting by country.
 <code class="sourceCode R"><span><span class="fu"><a href="https://ggplot2.tidyverse.org/reference/ggplot.html">ggplot</a></span><span class="op">(</span><span class="va">pets</span>, <span class="fu"><a href="https://ggplot2.tidyverse.org/reference/aes.html">aes</a></span><span class="op">(</span><span class="va">pet</span>, <span class="va">score</span>, fill <span class="op">=</span> <span class="va">pet</span><span class="op">)</span><span class="op">)</span> <span class="op">+</span></span>
 <span>  <span class="fu"><a href="https://ggplot2.tidyverse.org/reference/geom_violin.html">geom_violin</a></span><span class="op">(</span>show.legend <span class="op">=</span> <span class="cn">FALSE</span><span class="op">)</span> <span class="op">+</span> </span>
 <span>  <span class="fu"><a href="https://ggplot2.tidyverse.org/reference/facet_wrap.html">facet_wrap</a></span><span class="op">(</span>facets <span class="op">=</span> <span class="fu"><a href="https://ggplot2.tidyverse.org/reference/vars.html">vars</a></span><span class="op">(</span><span class="va">age</span><span class="op">)</span>, nrow <span class="op">=</span> <span class="fl">3</span><span class="op">)</span></span></code></pre></div>
-<pre><code>## Warning: Groups with fewer than two data points have been dropped.
-## Groups with fewer than two data points have been dropped.</code></pre>
-<pre><code>## Warning in max(data$density): no non-missing arguments to max; returning -Inf</code></pre>
-<pre><code>## Warning: Computation failed in `stat_ydensity()`:
-## replacement has 1 row, data has 0</code></pre>
-<pre><code>## Warning: Groups with fewer than two data points have been dropped.
-## Groups with fewer than two data points have been dropped.
-## Groups with fewer than two data points have been dropped.</code></pre>
 <div class="figure" style="text-align: center">
 <span style="display:block;" id="fig:facet-wrap2"></span>
 <img src="images/facet-wrap2-1.png" alt="Facetted plot, facetting by age" width="90%"><p class="caption">

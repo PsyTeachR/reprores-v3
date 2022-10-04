@@ -724,7 +724,7 @@ You can't just use unquoted column names for the `facets` argument; you have to 
 
 If you have many levels, the plots will "wrap" around. The function makes a best guess at what will look good, but you can also specify how many rows or columns the resulting plot should have by setting the arguments `ncol` or `nrow`. 
 
-```{r facet-wrap2, fig.cap="Facetted plot, facetting by age"}
+```{r facet-wrap2, fig.cap="Facetted plot, facetting by age", warning=FALSE}
 
 ggplot(pets, aes(pet, score, fill = pet)) +
   geom_violin(show.legend = FALSE) + 

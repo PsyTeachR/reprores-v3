@@ -909,26 +909,6 @@ ggplot(pets, aes(pet, score, fill = pet)) +
   facet_wrap(facets = vars(age), nrow = 3)
 ```
 
-```
-## Warning: Groups with fewer than two data points have been dropped.
-## Groups with fewer than two data points have been dropped.
-```
-
-```
-## Warning in max(data$density): no non-missing arguments to max; returning -Inf
-```
-
-```
-## Warning: Computation failed in `stat_ydensity()`:
-## replacement has 1 row, data has 0
-```
-
-```
-## Warning: Groups with fewer than two data points have been dropped.
-## Groups with fewer than two data points have been dropped.
-## Groups with fewer than two data points have been dropped.
-```
-
 <div class="figure" style="text-align: center">
 <img src="images/facet-wrap2-1.png" alt="Facetted plot, facetting by age" width="90%" />
 <p class="caption">(\#fig:facet-wrap2)Facetted plot, facetting by age</p>
