@@ -67,18 +67,24 @@ my_dir <- paste("my", "project", "directory", sep = "/")
 
 ## Install a package
 
-Install the CRAN package called "fortunes". Run the code to do this and include it in the code chunk below, but comment it out. It is bad practice to write a script that installs a package without the user having the option to cancel. Also, some packages take a long time to load, so you won't want to install them every time you run a script.
+Install the CRAN package called "cowsay". Run the code to do this and include it in the code chunk below, but comment it out. It is bad practice to write a script that installs a package without the user having the option to cancel. Also, some packages take a long time to load, so you won't want to install them every time you run a script.
 
 ```{r Q6}
 # comment out the installation code
-# install.packages("fortunes")
+# install.packages("cowsay")
 ```
 
 
 The code below has an error and won't run. Fix the code.
 
 ```{r Q7}
-# alternatively, you could load the library first: library(fortunes)
+cowsay::say()
+```
 
-fortunes::fortune()
+```{r Q8}
+cowsay::say(by = "pumpkin")
+```
+
+```{r Q9}
+cowsay::say(by_color = "blue")
 ```

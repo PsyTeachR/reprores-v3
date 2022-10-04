@@ -13,7 +13,7 @@
               [labels](#custom-labels), 
               [colours](#custom-colours), and
               [themes](#themes) [(video)](https://youtu.be/6pHuCbOh86s){class="video"}
-4. [Combine plots](combo_plots) on the same plot, as facets, or as a grid using patchwork [(video)](https://youtu.be/AnqlfuU-VZk){class="video"}
+4. [Combine plots](#combo_plots) on the same plot, as facets, or as a grid using patchwork [(video)](https://youtu.be/AnqlfuU-VZk){class="video"}
 5. [Save plots](#ggsave) as an image file [(video)](https://youtu.be/f1Y53mjEli0){class="video"}
     
 ### Intermediate {-}
@@ -705,6 +705,49 @@ ggplot(sample_n(pets, 50), aes(age, weight, colour = pet)) +
   geom_smooth(formula = y ~ x, method="lm")
 
 ```
+
+### Facets
+
+You may want to replicate your plot for each level of a categorical variable. The `facet` functions make this easy. If you have a single category to facet over, such as country, you can use `facet_wrap()`, which makes a plot for each level.
+
+```{r facet-wrap, fig.cap="Facetted plot, facetting by country."}
+
+ggplot(pets, aes(pet, score, fill = pet)) +
+  geom_violin(show.legend = FALSE) + 
+  facet_wrap(facets = vars(country))
+
+```
+
+::: {.warn}
+You can't just use unquoted column names for the `facets` argument; you have to specify them using the `vars()` function. You may see a common shortcut notation using the tilde that is equivalent: `facet_wrap(~country)`.
+:::
+
+If you have many levels, the plots will "wrap" around. The function makes a best guess at what will look good, but you can also specify how many rows or columns the resulting plot should have by setting the arguments `ncol` or `nrow`. 
+
+```{r facet-wrap2, fig.cap="Facetted plot, facetting by age"}
+
+ggplot(pets, aes(pet, score, fill = pet)) +
+  geom_violin(show.legend = FALSE) + 
+  facet_wrap(facets = vars(age), nrow = 3)
+
+```
+
+If you want to make sub-plots for crossed factors, you can use `facet_grid()`
+
+```{r facet-grid, fig.cap="Facetted plot"}
+
+ggplot(pets, aes(weight, score)) +
+  geom_point(alpha = 0.5) +
+  geom_smooth(formula = y ~ x, method="lm") + 
+  facet_grid(rows = vars(pet), cols = vars(country))
+  # facet_grid(pet~country) # an alternative shortcut way to specify the rows and columns
+
+```
+
+::: {.try}
+Look at the help for `facet_grid()` and see what happens when you change the default values of arguments such as `margin`, `scales`, `as.table` and `switch`. 
+:::
+
 
 ### Grid of plots {#plot_grid}
 

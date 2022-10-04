@@ -13,7 +13,7 @@
               [labels](#custom-labels), 
               [colours](#custom-colours), and
               [themes](#themes) [(video)](https://youtu.be/6pHuCbOh86s){class="video"}
-4. [Combine plots](combo_plots) on the same plot, as facets, or as a grid using patchwork [(video)](https://youtu.be/AnqlfuU-VZk){class="video"}
+4. [Combine plots](#combo_plots) on the same plot, as facets, or as a grid using patchwork [(video)](https://youtu.be/AnqlfuU-VZk){class="video"}
 5. [Save plots](#ggsave) as an image file [(video)](https://youtu.be/f1Y53mjEli0){class="video"}
     
 ### Intermediate {-}
@@ -879,6 +879,84 @@ ggplot(sample_n(pets, 50), aes(age, weight, colour = pet)) +
 <img src="images/scatter-line-1.png" alt="Scatter-line plot" width="90%" />
 <p class="caption">(\#fig:scatter-line)Scatter-line plot</p>
 </div>
+
+### Facets
+
+You may want to replicate your plot for each level of a categorical variable. The `facet` functions make this easy. If you have a single category to facet over, such as country, you can use `facet_wrap()`, which makes a plot for each level.
+
+
+```r
+ggplot(pets, aes(pet, score, fill = pet)) +
+  geom_violin(show.legend = FALSE) + 
+  facet_wrap(facets = vars(country))
+```
+
+<div class="figure" style="text-align: center">
+<img src="images/facet-wrap-1.png" alt="Facetted plot, facetting by country." width="90%" />
+<p class="caption">(\#fig:facet-wrap)Facetted plot, facetting by country.</p>
+</div>
+
+::: {.warn}
+You can't just use unquoted column names for the `facets` argument; you have to specify them using the `vars()` function. You may see a common shortcut notation using the tilde that is equivalent: `facet_wrap(~country)`.
+:::
+
+If you have many levels, the plots will "wrap" around. The function makes a best guess at what will look good, but you can also specify how many rows or columns the resulting plot should have by setting the arguments `ncol` or `nrow`. 
+
+
+```r
+ggplot(pets, aes(pet, score, fill = pet)) +
+  geom_violin(show.legend = FALSE) + 
+  facet_wrap(facets = vars(age), nrow = 3)
+```
+
+```
+## Warning: Groups with fewer than two data points have been dropped.
+## Groups with fewer than two data points have been dropped.
+```
+
+```
+## Warning in max(data$density): no non-missing arguments to max; returning -Inf
+```
+
+```
+## Warning: Computation failed in `stat_ydensity()`:
+## replacement has 1 row, data has 0
+```
+
+```
+## Warning: Groups with fewer than two data points have been dropped.
+## Groups with fewer than two data points have been dropped.
+## Groups with fewer than two data points have been dropped.
+```
+
+<div class="figure" style="text-align: center">
+<img src="images/facet-wrap2-1.png" alt="Facetted plot, facetting by age" width="90%" />
+<p class="caption">(\#fig:facet-wrap2)Facetted plot, facetting by age</p>
+</div>
+
+If you want to make sub-plots for crossed factors, you can use `facet_grid()`
+
+
+```r
+ggplot(pets, aes(weight, score)) +
+  geom_point(alpha = 0.5) +
+  geom_smooth(formula = y ~ x, method="lm") + 
+  facet_grid(rows = vars(pet), cols = vars(country))
+```
+
+<div class="figure" style="text-align: center">
+<img src="images/facet-grid-1.png" alt="Facetted plot" width="90%" />
+<p class="caption">(\#fig:facet-grid)Facetted plot</p>
+</div>
+
+```r
+  # facet_grid(pet~country) # an alternative shortcut way to specify the rows and columns
+```
+
+::: {.try}
+Look at the help for `facet_grid()` and see what happens when you change the default values of arguments such as `margin`, `scales`, `as.table` and `switch`. 
+:::
+
 
 ### Grid of plots {#plot_grid}
 

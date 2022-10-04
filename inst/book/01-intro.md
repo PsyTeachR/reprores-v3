@@ -5,11 +5,15 @@
 
 ## Learning Objectives {#ilo-intro}
 
-1. Understand the components of the [RStudio IDE](#rstudio_ide) [(video)](https://youtu.be/CbA6ZVlJE78){class="video"}
+1. Understand the [RStudio IDE](#rstudio_ide) [(video)](https://youtu.be/CbA6ZVlJE78){class="video"}
 2. Type commands into the [console](#console) [(video)](https://youtu.be/wbI4c_7y0kE){class="video"}
 3. Understand [coding terms](#coding-terms) and [function syntax](#function_syx) [(video)](https://youtu.be/X5P038N5Q8I){class="video"}
 4. Install a [package](#install-package) [(video)](https://youtu.be/u_pvHnqkVCE){class="video"}
 5. Know the methods for getting [help](#help)
+
+## Setup {#setup-intro}
+
+Download the [RStudio IDE cheat sheet](https://raw.githubusercontent.com/rstudio/cheatsheets/main/rstudio-ide.pdf).
 
 
 ## R and RStudio
@@ -86,6 +90,8 @@ Mostly, however, you will be typing into the script editor window (either into a
 
 One simple way to learn about the R console is to use it as a calculator. Enter the lines of code below and see if your results match. Be prepared to make lots of typos (at first).
 
+The first grey box below shows the code you should type; you can click on the clipboard in the upper right of this box to copy all of the contents, but it's better if you practice typing commands at first. The second grey box shows the output of the code in the first box; you can always identify output boxes by the two hashes (`##`) before each line.
+
 
 ```r
 1 + 1
@@ -108,10 +114,14 @@ The R console remembers a history of the commands you typed in the past. Use the
 
 You can break up mathematical expressions over multiple lines; R waits for a complete expression before processing it.
 
+::: {.info data-latex=""}
+Lines that start with a hash (`#`) are <a class='glossary' target='_blank' title=' Comments are text that R will not run as code. You can annotate .R files or chunks in R Markdown files with comments by prefacing each line of the comment with one or more hash symbols (#).' href='https://psyteachr.github.io/glossary/c#comment'>comments</a> and are not run. We'll learn more about comments in Chapter\ \@ref(comments).
+:::
+
 
 ```r
-## here comes a long expression
-## let's break it over multiple lines
+# here comes a long expression
+# let's break it over multiple lines
 1 + 2 + 3 + 4 + 5 + 6 +
     7 + 8 + 9 +
     10
@@ -163,6 +173,8 @@ cat(africa) # cat() prints the string
 
 ## Coding Terms {#coding-terms}
 
+You will encounter a lot of jargon while learning R. This specialised vocabulary can help you to communicate more efficiently about coding and statistics and to search for solutions to problems.
+
 ### Objects {#vars}
 
 Often you want to store the result of some computation for later use.  You can store it in an <a class='glossary' target='_blank' title='A word that identifies and stores the value of some data for later use.' href='https://psyteachr.github.io/glossary/o#object'>object</a> (also sometimes called a <a class='glossary' target='_blank' title='(coding): A word that identifies and stores the value of some data for later use; (stats): An attribute or characteristic of an observation that you can measure, count, or describe' href='https://psyteachr.github.io/glossary/v#variable'>variable</a>). An object in R:
@@ -188,7 +200,34 @@ The following are not valid objects:
 * `song data`
 * `song-data`
 
-Use the <a class='glossary' target='_blank' title='The symbol <-, which functions like = and assigns the value on the right to the object on the left' href='https://psyteachr.github.io/glossary/a#assignment-operator'>assignment operator</a><-` to assign the value on the right to the object named on the left.
+::: {.try data-latex=""}
+Which of the following are valid object names?
+
+* <select class='webex-select'><option value='blank'></option><option value='answer'>TRUE</option><option value=''>FALSE</option></select> `slender_man`  
+* <select class='webex-select'><option value='blank'></option><option value=''>TRUE</option><option value='answer'>FALSE</option></select> `copy pasta`  
+* <select class='webex-select'><option value='blank'></option><option value='answer'>TRUE</option><option value=''>FALSE</option></select> `DOGE`  
+* <select class='webex-select'><option value='blank'></option><option value=''>TRUE</option><option value='answer'>FALSE</option></select> `(╯°□°）╯︵ ┻━┻`  
+* <select class='webex-select'><option value='blank'></option><option value='answer'>TRUE</option><option value=''>FALSE</option></select> `ErMahGerd`  
+* <select class='webex-select'><option value='blank'></option><option value=''>TRUE</option><option value='answer'>FALSE</option></select> `34Rule`  
+* <select class='webex-select'><option value='blank'></option><option value=''>TRUE</option><option value='answer'>FALSE</option></select> `panik-kalm-panik`  
+* <select class='webex-select'><option value='blank'></option><option value=''>TRUE</option><option value='answer'>FALSE</option></select> `👀`  
+* <select class='webex-select'><option value='blank'></option><option value='answer'>TRUE</option><option value=''>FALSE</option></select> `I_am_once_again_asking_you_for_your_support`  
+* <select class='webex-select'><option value='blank'></option><option value='answer'>TRUE</option><option value=''>FALSE</option></select> `.this.is.fine.`  
+* <select class='webex-select'><option value='blank'></option><option value=''>TRUE</option><option value='answer'>FALSE</option></select> `_is_this_a_pigeon_`  
+:::
+
+::: {.tinfo data-latex=""}
+Technically, you can name a variable anything if you surround the name with backticks, but this can cause some hard-to-debug problems, so don't do this until you're a confident coder.
+
+
+```r
+`- Is this a bad name?` <- TRUE
+```
+:::
+
+### Assignment
+
+Use the <a class='glossary' target='_blank' title='The symbol <-, which functions like = and assigns the value on the right to the object on the left' href='https://psyteachr.github.io/glossary/a#assignment-operator'>assignment operator</a> `<-` to assign the value on the right to the object named on the left.
 
 
 ```r
@@ -202,13 +241,17 @@ Now that we have set `x` to a value, we can do something with it:
 
 ```r
 x * 2
-
-## R evaluates the expression and stores the result in the object boring_calculation
-boring_calculation <- 2 + 2
 ```
 
 ```
 ## [1] 10
+```
+
+We can also get R to evaluate an expression and store the result in an object.
+
+
+```r
+boring_calculation <- 2 + 2
 ```
 
 Note that it doesn't print the result back at you when it's stored. To view the result, just type the object name on a blank line.
@@ -226,19 +269,20 @@ Once an object is assigned a value, its value doesn't change unless you reassign
 
 
 ```r
-this_year <- 2019
-my_birth_year <- 1976
-my_age <- this_year - my_birth_year
-this_year <- 2020
+this_year <- 2022
+birth_year <- 2000
+age <- this_year - birth_year
+this_year <- 2023
 ```
 
 ::: {.try data-latex=""}
 After all the code above is run:
 
-* `this_year` = <select class='webex-select'><option value='blank'></option><option value=''>43</option><option value=''>44</option><option value=''>1976</option><option value=''>2019</option><option value='answer'>2020</option></select>
-* `my_birth_year` = <select class='webex-select'><option value='blank'></option><option value=''>43</option><option value=''>44</option><option value='answer'>1976</option><option value=''>2019</option><option value=''>2020</option></select>
-* `my_age` = <select class='webex-select'><option value='blank'></option><option value='answer'>43</option><option value=''>44</option><option value=''>1976</option><option value=''>2019</option><option value=''>2020</option></select>
+* `this_year` = <select class='webex-select'><option value='blank'></option><option value=''>22</option><option value=''>23</option><option value=''>2000</option><option value=''>2022</option><option value='answer'>2023</option></select>
+* `birth_year` = <select class='webex-select'><option value='blank'></option><option value=''>22</option><option value=''>23</option><option value='answer'>2000</option><option value=''>2022</option><option value=''>2023</option></select>
+* `age` = <select class='webex-select'><option value='blank'></option><option value='answer'>22</option><option value=''>23</option><option value=''>2000</option><option value=''>2022</option><option value=''>2023</option></select>
 :::
+
 
 
 ### The environment
@@ -316,7 +360,7 @@ For example, `sd` is a function that returns the <a class='glossary' target='_bl
 function_name(argument1, argument2 = "value")
 ```
 
-The arguments in parentheses can be named (e.g., `argument1 = 10`) or you can skip the names if you put them in the exact same order that they're defined in the function. You can check this by typing `?sd` (or whatever function name you're looking up) into the console and the Help pane will show you the default order under **Usage**. You can skip arguments that have a default value specified.
+The arguments in parentheses can be named (e.g., `argument1 = 10`) or you can skip the names if you put them in the exact same order that they're defined in the function. You can check this by typing `?sd` (or whatever function name you're looking up) into the console and the Help pane will show you the argument order under **Usage**. You can skip arguments that have a <a class='glossary' target='_blank' title='A value that a function uses for an argument if it is skipped.' href='https://psyteachr.github.io/glossary/d#default-value'>default value</a> specified.
 
 Most functions return a value, but may also produce side effects like printing to the console.
 
@@ -346,8 +390,8 @@ rnorm(10)
 ```
 
 ```
-##  [1]  1.35049771 -0.15457846  0.50731330 -0.26109818 -0.14830400 -0.07324528
-##  [7] -0.09218453  0.88474904 -0.09053038 -0.01795032
+##  [1]  1.0776361 -1.5428004 -1.0694126  0.4656785  0.2716471  1.6077680
+##  [7] -1.3126246 -0.7284652  0.2781463 -0.4458766
 ```
 
 If you want 10 numbers from a normal distribution with a mean of 100:
@@ -358,8 +402,8 @@ rnorm(10, 100)
 ```
 
 ```
-##  [1]  99.60438  99.91480 101.09791 100.85213 100.45695 101.63009 100.03347
-##  [8]  98.98262 100.42713 100.26867
+##  [1] 100.46196  98.86046 100.19352  98.78103 100.48892 100.12980  99.81721
+##  [8] 100.27994  99.78089 101.32672
 ```
 
 This would be an equivalent but less efficient way of calling the function:
@@ -370,8 +414,8 @@ rnorm(n = 10, mean = 100)
 ```
 
 ```
-##  [1]  99.81402  99.71337  97.32637  99.91704  98.95015 101.34876  98.86139
-##  [8] 101.37513 100.26996 101.54477
+##  [1] 100.16626  99.45014 100.76694  98.43625 100.91983  98.14420 101.21891
+##  [8] 102.08515  99.16165 101.25589
 ```
 
 We don't need to name the arguments because R will recognize that we intended to fill in the first and second arguments by their position in the function call. However, if we want to change the default for an argument coming later in the list, then we need to name it. For instance, if we wanted to keep the default `mean = 0` but change the standard deviation to 100, we would do it this way:
@@ -382,11 +426,11 @@ rnorm(10, sd = 100)
 ```
 
 ```
-##  [1] 113.472448  32.474859 235.414151   4.990962  28.488076 -46.896081
-##  [7] 154.719475  18.715254 -34.883350  68.645347
+##  [1] -104.708496 -121.343579   69.986104   -9.516204    7.198781 -195.764591
+##  [7]  -38.231374   38.747884  -58.830097 -133.046854
 ```
 
-Some functions give a list of options after an argument; this means the default value is the first option. The usage entry for the <code><span><span class='fu'><a target='_blank' href='https://rdrr.io/r/stats/power.t.test.html'>power.t.test</a></span><span class='op'>(</span><span class='op'>)</span></span></code> function looks like this:
+Some functions give a list of options after an argument; this means the default value is the first option. The usage entry for the `power.t.test()` function looks like this:
 
 
 ```r
@@ -401,9 +445,9 @@ power.t.test(n = NULL, delta = NULL, sd = 1, sig.level = 0.05,
 
 
 
-* What is the default value for `sd`? <select class='webex-select'><option value='blank'></option><option value=''>NULL</option><option value=''>0.05</option><option value=''>two.sample</option><option value='answer'>1</option></select>
-* What is the default value for `type`? <select class='webex-select'><option value='blank'></option><option value=''>paired</option><option value=''>NULL</option><option value=''>one.sample</option><option value='answer'>two.sample</option></select>
-* Which is equivalent to <code><span><span class='fu'><a target='_blank' href='https://rdrr.io/r/stats/power.t.test.html'>power.t.test</a></span><span class='op'>(</span><span class='fl'>100</span>, <span class='fl'>0.5</span><span class='op'>)</span></span></code>? <div class='webex-radiogroup' id='radio_LIGBMIAKMP'><label><input type="radio" autocomplete="off" name="radio_LIGBMIAKMP" value="answer"></input> <span>power.t.test(delta = 0.5, n = 100)</span></label><label><input type="radio" autocomplete="off" name="radio_LIGBMIAKMP" value=""></input> <span>power.t.test()</span></label><label><input type="radio" autocomplete="off" name="radio_LIGBMIAKMP" value=""></input> <span>power.t.test(100, 0.5, sig.level = 1, sd = 0.05)</span></label><label><input type="radio" autocomplete="off" name="radio_LIGBMIAKMP" value=""></input> <span>power.t.test(n = 100)</span></label></div>
+* What is the default value for `sd`? <select class='webex-select'><option value='blank'></option><option value='answer'>1</option><option value=''>two.sample</option><option value=''>NULL</option><option value=''>0.05</option></select>
+* What is the default value for `type`? <select class='webex-select'><option value='blank'></option><option value=''>one.sample</option><option value=''>NULL</option><option value=''>paired</option><option value='answer'>two.sample</option></select>
+* Which is equivalent to <code><span><span class='fu'><a target='_blank' href='https://rdrr.io/r/stats/power.t.test.html'>power.t.test</a></span><span class='op'>(</span><span class='fl'>100</span>, <span class='fl'>0.5</span><span class='op'>)</span></span></code>? <div class='webex-radiogroup' id='radio_SUVVAMCMNR'><label><input type="radio" autocomplete="off" name="radio_SUVVAMCMNR" value=""></input> <span>power.t.test()</span></label><label><input type="radio" autocomplete="off" name="radio_SUVVAMCMNR" value=""></input> <span>power.t.test(n = 100)</span></label><label><input type="radio" autocomplete="off" name="radio_SUVVAMCMNR" value="answer"></input> <span>power.t.test(delta = 0.5, n = 100)</span></label><label><input type="radio" autocomplete="off" name="radio_SUVVAMCMNR" value=""></input> <span>power.t.test(100, 0.5, sig.level = 1, sd = 0.05)</span></label></div>
 
 
 :::
@@ -421,7 +465,7 @@ There is an important distinction between **installing** a package and **loading
 
 ### Installing a package 
 
-<div class="meme right"><img src="images/memes/pokemon.gif" /></div>
+<div class="meme right"><img src="images/memes/pokemon.gif" alt="Pikachu and Eevee from Pokemon waving and high-five-ing" /></div>
 
 This is done using <code><span><span class='fu'><a target='_blank' href='https://rdrr.io/r/utils/install.packages.html'>install.packages</a></span><span class='op'>(</span><span class='op'>)</span></span></code>. This is like installing an app on your phone: you only have to do it once and the app will remain installed until you remove it. For instance, if you want to use PokemonGo on your phone, you install it once from the App Store or Play Store, and you don't have to re-install it each time you want to use it. Once you launch the app, it will run in the background until you close it or restart your phone. Likewise, when you install a package, the package will be available (but not *loaded*) every time you open up R.
 
@@ -437,7 +481,7 @@ Install the <code class='package'>beepr</code> package on your system. This pack
 install.packages("beepr")
 ```
 
-If you don't already have packages like <code class='package'>audio</code> installed, it will also install these `r` glossary("dependency", "dependencies", )` for you. If you don't get an error message at the end, the installation was successful. 
+If you don't already have packages like <code class='package'>audio</code> installed, it will also install these <a class='glossary' target='_blank' title='' href='https://psyteachr.github.io/glossary/d#dependency'>dependencies</a> for you. If you don't get an error message at the end, the installation was successful. 
 
 ::: {.dangerous data-latex=""}
 Never install a package from inside a script. Only do this from the console pane.
@@ -472,14 +516,14 @@ You can use the convention `package::function()` to indicate in which add-on pac
 
 <code class='package'>tidyverse</code>is a meta-package that loads several packages we'll be using in almost every script:
 
-- <code class='package'>ggplot2</code>, for data visualisation (Chapter\ \@ref(ggplot))
-- <code class='package'>readr</code>, for data import (Chapter\ \@ref(data))
-- <code class='package'>tibble</code>, for tables (Chapter\ \@ref(data))
-- <code class='package'>tidyr</code>, for data tidying (Chapter\ \@ref(tidyr))
-- <code class='package'>dplyr</code>, for data manipulation (Chapter\ \@ref(dplyr))
-- <code class='package'>purrr</code>, for repeating things (Chapter\ \@ref(func))
-- <code class='package'>stringr</code>, for <a class='glossary' target='_blank' title='A piece of text inside of quotes.' href='https://psyteachr.github.io/glossary/s#string'>strings</a>
-- <code class='package'>forcats</code>, for <a class='glossary' target='_blank' title='A data type where a specific set of values are stored with labels; An explanatory variable manipulated by the experimenter' href='https://psyteachr.github.io/glossary/f#factor'>factors</a>
+- <code class='package'>ggplot2</code> for data visualisation (Chapter\ \@ref(ggplot))
+- <code class='package'>readr</code> for data import (Chapter\ \@ref(data))
+- <code class='package'>tibble</code> for tables (Chapter\ \@ref(data))
+- <code class='package'>tidyr</code> for data tidying (Chapter\ \@ref(tidyr))
+- <code class='package'>dplyr</code> for data manipulation (Chapters\ \@ref(joins) and\ \@ref(dplyr))
+- <code class='package'>purrr</code> for repeating things (Chapter\ \@ref(func))
+- <code class='package'>stringr</code> for <a class='glossary' target='_blank' title='A piece of text inside of quotes.' href='https://psyteachr.github.io/glossary/s#string'>strings</a>
+- <code class='package'>forcats</code> for <a class='glossary' target='_blank' title='A data type where a specific set of values are stored with labels; An explanatory variable manipulated by the experimenter' href='https://psyteachr.github.io/glossary/f#factor'>factors</a>
 
 ### Install from GitHub
 
@@ -535,7 +579,10 @@ getdata("data")
 
 ## Getting help {#help}
 
-You will feel like you need a *lot* of help when you're starting to learn. This won't really go away, and it isn't supposed to. Experienced coders are also constantly looking things up; it's impossible to memorise everything. The goal is to learn enough about the structure of R that you can look things up quickly. This is why there is so much specialised jargon in coding; it's easier to google "adding <a class='glossary' target='_blank' title='A type of data structure that collects values with the same data type, like T/F values, numbers, or strings.' href='https://psyteachr.github.io/glossary/v#vector'>vectors</a> in R" than "adding lists of things that are the same kind of data in R".
+<div class="right meme"><img src="images/memes/code_baby.jpg"
+     alt = "Medieval drawing of a woman labelled 'you' holding a an ugly baby labelled 'your code'. They are looking at each other with dismay. Text at the bottom reads: when you run your code and it doesn't do what you expected it would do" /></div>
+
+You will feel like you need a *lot* of help when you're starting to learn. This won't really go away, and it isn't supposed to. Experienced coders are also constantly looking things up; it's impossible to memorise everything. The goal is to learn enough about the structure of R that you can look things up quickly. This is why there is so much specialised jargon in coding; it's easier to google "<a class='glossary' target='_blank' title='To combine strings or vectors.' href='https://psyteachr.github.io/glossary/c#concatenate'>concatenating</a> <a class='glossary' target='_blank' title='A type of data structure that collects values with the same data type, like T/F values, numbers, or strings.' href='https://psyteachr.github.io/glossary/v#vector'>vectors</a> in R" than "putting together groups of things that are the same kind of data in R".
 
 ### Function Help
 
@@ -575,6 +622,15 @@ vignette(package = "ggplot2")
 vignette("ggplot2-specs", package = "ggplot2")
 ```
 
+### Asking for Help
+
+<div class="meme right" style="min-width:60%;"><img src="images/memes/help-no-photos.png"
+     alt="top left: Geordi from star trek looking sceptical with hand up; top right: photo of a laptop screen with a code error; bottom left: Geordi looking pleased and pointing; bottom right: the error explained in text with formatting" /></div>
+
+If all else fails, you can ask for help. See Appendix\ \@ref(getting-help) for advice on how to share code when asking for help on the class Teams channel or other web-based forums. It also has a section on how to make a <a class='glossary' target='_blank' title='A reproducible example that is the smallest, completely self-contained example of your problem or question.' href='https://psyteachr.github.io/glossary/r#reprex'>reprex</a> to make it easier for others to understand and reproduce your problem (and often solve it yourself in the process) . 
+
+TL;DR: copy and paste code that's giving you trouble, please don't send screenshots and definitely not photos of your screen.
+
 
 ## Glossary  {#glossaryintro}
 
@@ -612,12 +668,28 @@ glossary::book()
    <td style="text-align:left;"> The set of R functions that come with a basic installation of R, before you add external packages. </td>
   </tr>
   <tr>
+   <td style="text-align:left;"> [comment](https://psyteachr.github.io/glossary/c.html#comment){class="glossary" target="_blank"} </td>
+   <td style="text-align:left;"> Comments are text that R will not run as code. You can annotate .R files or chunks in R Markdown files with comments by prefacing each line of the comment with one or more hash symbols (#). </td>
+  </tr>
+  <tr>
+   <td style="text-align:left;"> [concatenate](https://psyteachr.github.io/glossary/c.html#concatenate){class="glossary" target="_blank"} </td>
+   <td style="text-align:left;"> To combine strings or vectors. </td>
+  </tr>
+  <tr>
    <td style="text-align:left;"> [console](https://psyteachr.github.io/glossary/c.html#console){class="glossary" target="_blank"} </td>
    <td style="text-align:left;"> The pane in RStudio where you can type in commands and view output messages. </td>
   </tr>
   <tr>
    <td style="text-align:left;"> [cran](https://psyteachr.github.io/glossary/c.html#cran){class="glossary" target="_blank"} </td>
    <td style="text-align:left;"> The Comprehensive R Archive Network: a network of ftp and web servers around the world that store identical, up-to-date, versions of code and documentation for R. </td>
+  </tr>
+  <tr>
+   <td style="text-align:left;"> [default value](https://psyteachr.github.io/glossary/d.html#default-value){class="glossary" target="_blank"} </td>
+   <td style="text-align:left;"> A value that a function uses for an argument if it is skipped. </td>
+  </tr>
+  <tr>
+   <td style="text-align:left;"> [dependency](https://psyteachr.github.io/glossary/d.html#dependency){class="glossary" target="_blank"} </td>
+   <td style="text-align:left;">  </td>
   </tr>
   <tr>
    <td style="text-align:left;"> [escape](https://psyteachr.github.io/glossary/e.html#escape){class="glossary" target="_blank"} </td>
@@ -658,6 +730,10 @@ glossary::book()
   <tr>
    <td style="text-align:left;"> [r markdown](https://psyteachr.github.io/glossary/r.html#r-markdown){class="glossary" target="_blank"} </td>
    <td style="text-align:left;"> The R-specific version of markdown: a way to specify formatting, such as headers, paragraphs, lists, bolding, and links, as well as code blocks and inline code. </td>
+  </tr>
+  <tr>
+   <td style="text-align:left;"> [reprex](https://psyteachr.github.io/glossary/r.html#reprex){class="glossary" target="_blank"} </td>
+   <td style="text-align:left;"> A reproducible example that is the smallest, completely self-contained example of your problem or question. </td>
   </tr>
   <tr>
    <td style="text-align:left;"> [reproducible research](https://psyteachr.github.io/glossary/r.html#reproducible-research){class="glossary" target="_blank"} </td>

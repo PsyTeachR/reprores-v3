@@ -600,12 +600,12 @@ gt(summary_table, caption = "Summary statistics for the pets dataset.") |>
 ```
 
 ```{=html}
-<div id="jpztboljda" style="overflow-x:auto;overflow-y:auto;width:auto;height:auto;">
+<div id="unjtlddltl" style="overflow-x:auto;overflow-y:auto;width:auto;height:auto;">
 <style>html {
   font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Oxygen, Ubuntu, Cantarell, 'Helvetica Neue', 'Fira Sans', 'Droid Sans', Arial, sans-serif;
 }
 
-#jpztboljda .gt_table {
+#unjtlddltl .gt_table {
   display: table;
   border-collapse: collapse;
   margin-left: auto;
@@ -630,7 +630,7 @@ gt(summary_table, caption = "Summary statistics for the pets dataset.") |>
   border-left-color: #D3D3D3;
 }
 
-#jpztboljda .gt_heading {
+#unjtlddltl .gt_heading {
   background-color: #FFFFFF;
   text-align: center;
   border-bottom-color: #FFFFFF;
@@ -642,7 +642,7 @@ gt(summary_table, caption = "Summary statistics for the pets dataset.") |>
   border-right-color: #D3D3D3;
 }
 
-#jpztboljda .gt_title {
+#unjtlddltl .gt_title {
   color: #333333;
   font-size: 125%;
   font-weight: initial;
@@ -654,7 +654,7 @@ gt(summary_table, caption = "Summary statistics for the pets dataset.") |>
   border-bottom-width: 0;
 }
 
-#jpztboljda .gt_subtitle {
+#unjtlddltl .gt_subtitle {
   color: #333333;
   font-size: 85%;
   font-weight: initial;
@@ -666,13 +666,13 @@ gt(summary_table, caption = "Summary statistics for the pets dataset.") |>
   border-top-width: 0;
 }
 
-#jpztboljda .gt_bottom_border {
+#unjtlddltl .gt_bottom_border {
   border-bottom-style: solid;
   border-bottom-width: 2px;
   border-bottom-color: #5F5F5F;
 }
 
-#jpztboljda .gt_col_headings {
+#unjtlddltl .gt_col_headings {
   border-top-style: solid;
   border-top-width: 2px;
   border-top-color: #5F5F5F;
@@ -687,7 +687,7 @@ gt(summary_table, caption = "Summary statistics for the pets dataset.") |>
   border-right-color: #D3D3D3;
 }
 
-#jpztboljda .gt_col_heading {
+#unjtlddltl .gt_col_heading {
   color: #FFFFFF;
   background-color: #0076BA;
   font-size: 100%;
@@ -707,7 +707,7 @@ gt(summary_table, caption = "Summary statistics for the pets dataset.") |>
   overflow-x: hidden;
 }
 
-#jpztboljda .gt_column_spanner_outer {
+#unjtlddltl .gt_column_spanner_outer {
   color: #FFFFFF;
   background-color: #0076BA;
   font-size: 100%;
@@ -719,15 +719,15 @@ gt(summary_table, caption = "Summary statistics for the pets dataset.") |>
   padding-right: 4px;
 }
 
-#jpztboljda .gt_column_spanner_outer:first-child {
+#unjtlddltl .gt_column_spanner_outer:first-child {
   padding-left: 0;
 }
 
-#jpztboljda .gt_column_spanner_outer:last-child {
+#unjtlddltl .gt_column_spanner_outer:last-child {
   padding-right: 0;
 }
 
-#jpztboljda .gt_column_spanner {
+#unjtlddltl .gt_column_spanner {
   border-bottom-style: solid;
   border-bottom-width: 2px;
   border-bottom-color: #5F5F5F;
@@ -739,7 +739,7 @@ gt(summary_table, caption = "Summary statistics for the pets dataset.") |>
   width: 100%;
 }
 
-#jpztboljda .gt_group_heading {
+#unjtlddltl .gt_group_heading {
   padding-top: 8px;
   padding-bottom: 8px;
   padding-left: 5px;
@@ -764,7 +764,7 @@ gt(summary_table, caption = "Summary statistics for the pets dataset.") |>
   vertical-align: middle;
 }
 
-#jpztboljda .gt_empty_group_heading {
+#unjtlddltl .gt_empty_group_heading {
   padding: 0.5px;
   color: #333333;
   background-color: #FFFFFF;
@@ -779,15 +779,15 @@ gt(summary_table, caption = "Summary statistics for the pets dataset.") |>
   vertical-align: middle;
 }
 
-#jpztboljda .gt_from_md > :first-child {
+#unjtlddltl .gt_from_md > :first-child {
   margin-top: 0;
 }
 
-#jpztboljda .gt_from_md > :last-child {
+#unjtlddltl .gt_from_md > :last-child {
   margin-bottom: 0;
 }
 
-#jpztboljda .gt_row {
+#unjtlddltl .gt_row {
   padding-top: 8px;
   padding-bottom: 8px;
   padding-left: 5px;
@@ -806,7 +806,7 @@ gt(summary_table, caption = "Summary statistics for the pets dataset.") |>
   overflow-x: hidden;
 }
 
-#jpztboljda .gt_stub {
+#unjtlddltl .gt_stub {
   color: #333333;
   background-color: #89D3FE;
   font-size: 100%;
@@ -819,7 +819,7 @@ gt(summary_table, caption = "Summary statistics for the pets dataset.") |>
   padding-right: 5px;
 }
 
-#jpztboljda .gt_stub_row_group {
+#unjtlddltl .gt_stub_row_group {
   color: #333333;
   background-color: #FFFFFF;
   font-size: 100%;
@@ -833,11 +833,11 @@ gt(summary_table, caption = "Summary statistics for the pets dataset.") |>
   vertical-align: top;
 }
 
-#jpztboljda .gt_row_group_first td {
+#unjtlddltl .gt_row_group_first td {
   border-top-width: 2px;
 }
 
-#jpztboljda .gt_summary_row {
+#unjtlddltl .gt_summary_row {
   color: #333333;
   background-color: #FFFFFF;
   text-transform: inherit;
@@ -847,16 +847,16 @@ gt(summary_table, caption = "Summary statistics for the pets dataset.") |>
   padding-right: 5px;
 }
 
-#jpztboljda .gt_first_summary_row {
+#unjtlddltl .gt_first_summary_row {
   border-top-style: solid;
   border-top-color: #5F5F5F;
 }
 
-#jpztboljda .gt_first_summary_row.thick {
+#unjtlddltl .gt_first_summary_row.thick {
   border-top-width: 2px;
 }
 
-#jpztboljda .gt_last_summary_row {
+#unjtlddltl .gt_last_summary_row {
   padding-top: 8px;
   padding-bottom: 8px;
   padding-left: 5px;
@@ -866,7 +866,7 @@ gt(summary_table, caption = "Summary statistics for the pets dataset.") |>
   border-bottom-color: #5F5F5F;
 }
 
-#jpztboljda .gt_grand_summary_row {
+#unjtlddltl .gt_grand_summary_row {
   color: #333333;
   background-color: #D5D5D5;
   text-transform: inherit;
@@ -876,7 +876,7 @@ gt(summary_table, caption = "Summary statistics for the pets dataset.") |>
   padding-right: 5px;
 }
 
-#jpztboljda .gt_first_grand_summary_row {
+#unjtlddltl .gt_first_grand_summary_row {
   padding-top: 8px;
   padding-bottom: 8px;
   padding-left: 5px;
@@ -886,11 +886,11 @@ gt(summary_table, caption = "Summary statistics for the pets dataset.") |>
   border-top-color: #5F5F5F;
 }
 
-#jpztboljda .gt_striped {
+#unjtlddltl .gt_striped {
   background-color: #EDF7FC;
 }
 
-#jpztboljda .gt_table_body {
+#unjtlddltl .gt_table_body {
   border-top-style: solid;
   border-top-width: 2px;
   border-top-color: #5F5F5F;
@@ -899,7 +899,7 @@ gt(summary_table, caption = "Summary statistics for the pets dataset.") |>
   border-bottom-color: #5F5F5F;
 }
 
-#jpztboljda .gt_footnotes {
+#unjtlddltl .gt_footnotes {
   color: #333333;
   background-color: #FFFFFF;
   border-bottom-style: none;
@@ -913,7 +913,7 @@ gt(summary_table, caption = "Summary statistics for the pets dataset.") |>
   border-right-color: #D3D3D3;
 }
 
-#jpztboljda .gt_footnote {
+#unjtlddltl .gt_footnote {
   margin: 0px;
   font-size: 90%;
   padding-left: 4px;
@@ -922,7 +922,7 @@ gt(summary_table, caption = "Summary statistics for the pets dataset.") |>
   padding-right: 5px;
 }
 
-#jpztboljda .gt_sourcenotes {
+#unjtlddltl .gt_sourcenotes {
   color: #333333;
   background-color: #FFFFFF;
   border-bottom-style: none;
@@ -936,7 +936,7 @@ gt(summary_table, caption = "Summary statistics for the pets dataset.") |>
   border-right-color: #D3D3D3;
 }
 
-#jpztboljda .gt_sourcenote {
+#unjtlddltl .gt_sourcenote {
   font-size: 90%;
   padding-top: 4px;
   padding-bottom: 4px;
@@ -944,64 +944,64 @@ gt(summary_table, caption = "Summary statistics for the pets dataset.") |>
   padding-right: 5px;
 }
 
-#jpztboljda .gt_left {
+#unjtlddltl .gt_left {
   text-align: left;
 }
 
-#jpztboljda .gt_center {
+#unjtlddltl .gt_center {
   text-align: center;
 }
 
-#jpztboljda .gt_right {
+#unjtlddltl .gt_right {
   text-align: right;
   font-variant-numeric: tabular-nums;
 }
 
-#jpztboljda .gt_font_normal {
+#unjtlddltl .gt_font_normal {
   font-weight: normal;
 }
 
-#jpztboljda .gt_font_bold {
+#unjtlddltl .gt_font_bold {
   font-weight: bold;
 }
 
-#jpztboljda .gt_font_italic {
+#unjtlddltl .gt_font_italic {
   font-style: italic;
 }
 
-#jpztboljda .gt_super {
+#unjtlddltl .gt_super {
   font-size: 65%;
 }
 
-#jpztboljda .gt_footnote_marks {
+#unjtlddltl .gt_footnote_marks {
   font-style: italic;
   font-weight: normal;
   font-size: 75%;
   vertical-align: 0.4em;
 }
 
-#jpztboljda .gt_asterisk {
+#unjtlddltl .gt_asterisk {
   font-size: 100%;
   vertical-align: 0;
 }
 
-#jpztboljda .gt_indent_1 {
+#unjtlddltl .gt_indent_1 {
   text-indent: 5px;
 }
 
-#jpztboljda .gt_indent_2 {
+#unjtlddltl .gt_indent_2 {
   text-indent: 10px;
 }
 
-#jpztboljda .gt_indent_3 {
+#unjtlddltl .gt_indent_3 {
   text-indent: 15px;
 }
 
-#jpztboljda .gt_indent_4 {
+#unjtlddltl .gt_indent_4 {
   text-indent: 20px;
 }
 
-#jpztboljda .gt_indent_5 {
+#unjtlddltl .gt_indent_5 {
   text-indent: 25px;
 }
 </style>

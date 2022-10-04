@@ -20,12 +20,12 @@
 <link href="libs/bootstrap-4.6.0/bootstrap.min.css" rel="stylesheet">
 <script src="libs/bootstrap-4.6.0/bootstrap.bundle.min.js"></script><script src="libs/bs3compat-0.4.0/transition.js"></script><script src="libs/bs3compat-0.4.0/tabs.js"></script><script src="libs/bs3compat-0.4.0/bs3compat.js"></script><link href="libs/bs4_book-1.0.0/bs4_book.css" rel="stylesheet">
 <script src="libs/bs4_book-1.0.0/bs4_book.js"></script><script src="libs/kePrint-0.0.1/kePrint.js"></script><link href="libs/lightable-0.0.1/lightable.css" rel="stylesheet">
-<script src="libs/htmlwidgets-1.5.4/htmlwidgets.js"></script><link href="libs/datatables-css-0.0.0/datatables-crosstalk.css" rel="stylesheet">
-<script src="libs/datatables-binding-0.24/datatables.js"></script><link href="libs/dt-core-1.11.3/css/jquery.dataTables.min.css" rel="stylesheet">
+<script src="libs/htmlwidgets-1.5.4/htmlwidgets.js"></script><script src="libs/plotly-binding-4.10.0/plotly.js"></script><script src="libs/typedarray-0.1/typedarray.min.js"></script><link href="libs/crosstalk-1.2.0/css/crosstalk.min.css" rel="stylesheet">
+<script src="libs/crosstalk-1.2.0/js/crosstalk.min.js"></script><link href="libs/plotly-htmlwidgets-css-2.5.1/plotly-htmlwidgets.css" rel="stylesheet">
+<script src="libs/plotly-main-2.5.1/plotly-latest.min.js"></script><link href="libs/datatables-css-0.0.0/datatables-crosstalk.css" rel="stylesheet">
+<script src="libs/datatables-binding-0.25/datatables.js"></script><link href="libs/dt-core-1.11.3/css/jquery.dataTables.min.css" rel="stylesheet">
 <link href="libs/dt-core-1.11.3/css/jquery.dataTables.extra.css" rel="stylesheet">
-<script src="libs/dt-core-1.11.3/js/jquery.dataTables.min.js"></script><link href="libs/crosstalk-1.2.0/css/crosstalk.min.css" rel="stylesheet">
-<script src="libs/crosstalk-1.2.0/js/crosstalk.min.js"></script><script src="libs/plotly-binding-4.10.0/plotly.js"></script><script src="libs/typedarray-0.1/typedarray.min.js"></script><link href="libs/plotly-htmlwidgets-css-2.5.1/plotly-htmlwidgets.css" rel="stylesheet">
-<script src="libs/plotly-main-2.5.1/plotly-latest.min.js"></script><!-- Global site tag (gtag.js) - Google Analytics --><script async src="https://www.googletagmanager.com/gtag/js?id=G-6NP3MF25W3"></script><script>
+<script src="libs/dt-core-1.11.3/js/jquery.dataTables.min.js"></script><!-- Global site tag (gtag.js) - Google Analytics --><script async src="https://www.googletagmanager.com/gtag/js?id=G-6NP3MF25W3"></script><script>
       window.dataLayer = window.dataLayer || [];
       function gtag(){dataLayer.push(arguments);}
       gtag('js', new Date());
@@ -92,8 +92,9 @@
 <li><a class="" href="dplyr.html"><span class="header-section-number">7</span> Data Wrangling</a></li>
 <li><a class="" href="func.html"><span class="header-section-number">8</span> Iteration &amp; Functions</a></li>
 <li><a class="" href="sim.html"><span class="header-section-number">9</span> Probability &amp; Simulation</a></li>
-<li><a class="" href="custom.html"><span class="header-section-number">10</span> Customising Visualisations &amp; Reports</a></li>
-<li><a class="" href="acknowledgements.html">Acknowledgements</a></li>
+<li><a class="" href="next.html"><span class="header-section-number">10</span> Next Steps</a></li>
+<li><a class="" href="licencecitation.html">Licence/Citation</a></li>
+<li><a class="" href="references-1.html">References</a></li>
 <li class="book-part">Appendices</li>
 <li><a class="" href="installingr.html"><span class="header-section-number">A</span> Installing and Updating</a></li>
 <li><a class="" href="conventions.html"><span class="header-section-number">B</span> Conventions</a></li>
@@ -105,7 +106,7 @@
 <li><a class="" href="twitter-hashtags.html"><span class="header-section-number">H</span> Twitter Hashtags</a></li>
 <li><a class="" href="twitter-data.html"><span class="header-section-number">I</span> Twitter Data</a></li>
 <li><a class="" href="webpages.html"><span class="header-section-number">J</span> Webpages</a></li>
-<li><a class="" href="bookrefs.html"><span class="header-section-number">K</span> References</a></li>
+<li><a class="" href="getting-help.html"><span class="header-section-number">K</span> Getting Help</a></li>
 </ul>
 
         <div class="book-extra">
@@ -158,18 +159,31 @@
 <h2>
 <span class="header-section-number">5.2</span> Setup<a class="anchor" aria-label="anchor" href="#setup-joins"><i class="fas fa-link"></i></a>
 </h2>
-<div class="sourceCode" id="cb230"><pre class="downlit sourceCode r">
-<code class="sourceCode R"><span><span class="co"># libraries needed</span></span>
-<span><span class="kw"><a href="https://rdrr.io/r/base/library.html">library</a></span><span class="op">(</span><span class="va"><a href="https://tidyverse.tidyverse.org">tidyverse</a></span><span class="op">)</span></span>
-<span><span class="kw"><a href="https://rdrr.io/r/base/library.html">library</a></span><span class="op">(</span><span class="va"><a href="https://github.com/psyteachr/reprores-v3">reprores</a></span><span class="op">)</span></span></code></pre></div>
+<ol style="list-style-type: decimal">
+<li>Open your <code>reprores-class-notes</code> project</li>
+<li>Create a new R Markdown file called <code>05-joins.Rmd</code>
+</li>
+<li>Update the YAML header</li>
+<li>Replace the setup chunk with the one below:</li>
+</ol>
+<div class="verbatim">
+<pre class="sourceCode r"><code class="sourceCode R">```{r setup, include = FALSE}</code></pre>
+<div class="sourceCode" id="cb246"><pre class="downlit sourceCode r">
+<code class="sourceCode R"><span><span class="fu">knitr</span><span class="fu">::</span><span class="va"><a href="https://rdrr.io/pkg/knitr/man/opts_chunk.html">opts_chunk</a></span><span class="op">$</span><span class="fu">set</span><span class="op">(</span>echo <span class="op">=</span> <span class="cn">TRUE</span><span class="op">)</span></span>
+<span></span>
+<span><span class="co"># packages needed for this chapter</span></span>
+<span><span class="kw"><a href="https://rdrr.io/r/base/library.html">library</a></span><span class="op">(</span><span class="va"><a href="https://tidyverse.tidyverse.org">tidyverse</a></span><span class="op">)</span> <span class="co"># loads dplyr for join functions</span></span></code></pre></div>
+<pre class="sourceCode r"><code class="sourceCode R">```</code></pre>
 </div>
-<div id="data-1" class="section level2" number="5.3">
+<p>Download the <a href="https://raw.githubusercontent.com/rstudio/cheatsheets/main/data-transformation.pdf">Data transformation cheatsheet</a>.</p>
+</div>
+<div id="create-demo-data" class="section level2" number="5.3">
 <h2>
-<span class="header-section-number">5.3</span> Data<a class="anchor" aria-label="anchor" href="#data-1"><i class="fas fa-link"></i></a>
+<span class="header-section-number">5.3</span> Create Demo Data<a class="anchor" aria-label="anchor" href="#create-demo-data"><i class="fas fa-link"></i></a>
 </h2>
 <p>First, we'll create two small data tables.</p>
 <p><code>subject</code> has id, gender and age for subjects 1-5. Age and gender are missing for subject 3.</p>
-<div class="sourceCode" id="cb231"><pre class="downlit sourceCode r">
+<div class="sourceCode" id="cb247"><pre class="downlit sourceCode r">
 <code class="sourceCode R"><span><span class="va">subject</span> <span class="op">&lt;-</span> <span class="fu"><a href="https://tibble.tidyverse.org/reference/tibble.html">tibble</a></span><span class="op">(</span></span>
 <span>  id <span class="op">=</span> <span class="fl">1</span><span class="op">:</span><span class="fl">5</span>,</span>
 <span>  gender <span class="op">=</span> <span class="fu"><a href="https://rdrr.io/r/base/c.html">c</a></span><span class="op">(</span><span class="st">"m"</span>, <span class="st">"m"</span>, <span class="cn">NA</span>, <span class="st">"nb"</span>, <span class="st">"f"</span><span class="op">)</span>,</span>
@@ -246,7 +260,7 @@ f
 </tbody>
 </table></div>
 <p><code>exp</code> has subject id and the score from an experiment. Some subjects are missing, some completed twice, and some are not in the subject table.</p>
-<div class="sourceCode" id="cb232"><pre class="downlit sourceCode r">
+<div class="sourceCode" id="cb248"><pre class="downlit sourceCode r">
 <code class="sourceCode R"><span><span class="va">exp</span> <span class="op">&lt;-</span> <span class="fu"><a href="https://tibble.tidyverse.org/reference/tibble.html">tibble</a></span><span class="op">(</span></span>
 <span>  id <span class="op">=</span> <span class="fu"><a href="https://rdrr.io/r/base/c.html">c</a></span><span class="op">(</span><span class="fl">2</span>, <span class="fl">3</span>, <span class="fl">4</span>, <span class="fl">4</span>, <span class="fl">5</span>, <span class="fl">5</span>, <span class="fl">6</span>, <span class="fl">6</span>, <span class="fl">7</span><span class="op">)</span>,</span>
 <span>  score <span class="op">=</span> <span class="fu"><a href="https://rdrr.io/r/base/c.html">c</a></span><span class="op">(</span><span class="fl">10</span>, <span class="fl">18</span>, <span class="fl">21</span>, <span class="fl">23</span>, <span class="fl">9</span>, <span class="fl">11</span>, <span class="fl">11</span>, <span class="fl">12</span>, <span class="fl">3</span><span class="op">)</span></span>
@@ -369,7 +383,7 @@ Figure 5.1: Left Join
 </div>
 </div>
 <p>A <code>left_join</code> keeps all the data from the first (left) table and joins anything that matches from the second (right) table. If the right table has more than one match for a row in the right table, there will be more than one row in the joined table (see ids 4 and 5).</p>
-<div class="sourceCode" id="cb233"><pre class="downlit sourceCode r">
+<div class="sourceCode" id="cb249"><pre class="downlit sourceCode r">
 <code class="sourceCode R"><span><span class="fu"><a href="https://dplyr.tidyverse.org/reference/mutate-joins.html">left_join</a></span><span class="op">(</span><span class="va">subject</span>, <span class="va">exp</span>, by <span class="op">=</span> <span class="st">"id"</span><span class="op">)</span></span></code></pre></div>
 <div class="kable-table">
 <div class="inline-table"><table class="table table-sm">
@@ -498,7 +512,7 @@ Figure 5.2: Left Join (reversed)
 </div>
 </div>
 <p>The order of tables is swapped here, so the result is all rows from the <code>exp</code> table joined to any matching rows from the <code>subject</code> table.</p>
-<div class="sourceCode" id="cb234"><pre class="downlit sourceCode r">
+<div class="sourceCode" id="cb250"><pre class="downlit sourceCode r">
 <code class="sourceCode R"><span><span class="fu"><a href="https://dplyr.tidyverse.org/reference/mutate-joins.html">left_join</a></span><span class="op">(</span><span class="va">exp</span>, <span class="va">subject</span>, by <span class="op">=</span> <span class="st">"id"</span><span class="op">)</span></span></code></pre></div>
 <div class="kable-table">
 <div class="inline-table"><table class="table table-sm">
@@ -660,7 +674,7 @@ Figure 5.3: Right Join
 </div>
 </div>
 <p>A <code>right_join</code> keeps all the data from the second (right) table and joins anything that matches from the first (left) table.</p>
-<div class="sourceCode" id="cb235"><pre class="downlit sourceCode r">
+<div class="sourceCode" id="cb251"><pre class="downlit sourceCode r">
 <code class="sourceCode R"><span><span class="fu"><a href="https://dplyr.tidyverse.org/reference/mutate-joins.html">right_join</a></span><span class="op">(</span><span class="va">subject</span>, <span class="va">exp</span>, by <span class="op">=</span> <span class="st">"id"</span><span class="op">)</span></span></code></pre></div>
 <div class="kable-table">
 <div class="inline-table"><table class="table table-sm">
@@ -825,7 +839,7 @@ Figure 5.4: Inner Join
 </div>
 </div>
 <p>An <code>inner_join</code> returns all the rows that have a match in the other table.</p>
-<div class="sourceCode" id="cb236"><pre class="downlit sourceCode r">
+<div class="sourceCode" id="cb252"><pre class="downlit sourceCode r">
 <code class="sourceCode R"><span><span class="fu"><a href="https://dplyr.tidyverse.org/reference/mutate-joins.html">inner_join</a></span><span class="op">(</span><span class="va">subject</span>, <span class="va">exp</span>, by <span class="op">=</span> <span class="st">"id"</span><span class="op">)</span></span></code></pre></div>
 <div class="kable-table">
 <div class="inline-table"><table class="table table-sm">
@@ -945,7 +959,7 @@ Figure 5.5: Full Join
 </div>
 </div>
 <p>A <code>full_join</code> lets you join up rows in two tables while keeping all of the information from both tables. If a row doesn't have a match in the other table, the other table's column values are set to <code>NA</code>.</p>
-<div class="sourceCode" id="cb237"><pre class="downlit sourceCode r">
+<div class="sourceCode" id="cb253"><pre class="downlit sourceCode r">
 <code class="sourceCode R"><span><span class="fu"><a href="https://dplyr.tidyverse.org/reference/mutate-joins.html">full_join</a></span><span class="op">(</span><span class="va">subject</span>, <span class="va">exp</span>, by <span class="op">=</span> <span class="st">"id"</span><span class="op">)</span></span></code></pre></div>
 <div class="kable-table">
 <div class="inline-table"><table class="table table-sm">
@@ -1127,7 +1141,7 @@ Figure 5.6: Semi Join
 </div>
 </div>
 <p>A <code>semi_join</code> returns all rows from the left table where there are matching values in the right table, keeping just columns from the left table.</p>
-<div class="sourceCode" id="cb238"><pre class="downlit sourceCode r">
+<div class="sourceCode" id="cb254"><pre class="downlit sourceCode r">
 <code class="sourceCode R"><span><span class="fu"><a href="https://dplyr.tidyverse.org/reference/filter-joins.html">semi_join</a></span><span class="op">(</span><span class="va">subject</span>, <span class="va">exp</span>, by <span class="op">=</span> <span class="st">"id"</span><span class="op">)</span></span></code></pre></div>
 <div class="kable-table">
 <div class="inline-table"><table class="table table-sm">
@@ -1202,7 +1216,7 @@ Figure 5.7: Semi Join (Reversed)
 </div>
 </div>
 <p>Order matters in a semi join.</p>
-<div class="sourceCode" id="cb239"><pre class="downlit sourceCode r">
+<div class="sourceCode" id="cb255"><pre class="downlit sourceCode r">
 <code class="sourceCode R"><span><span class="fu"><a href="https://dplyr.tidyverse.org/reference/filter-joins.html">semi_join</a></span><span class="op">(</span><span class="va">exp</span>, <span class="va">subject</span>, by <span class="op">=</span> <span class="st">"id"</span><span class="op">)</span></span></code></pre></div>
 <div class="kable-table">
 <div class="inline-table"><table class="table table-sm">
@@ -1280,7 +1294,7 @@ Figure 5.8: Anti Join
 </div>
 </div>
 <p>An <code>anti_join</code> return all rows from the left table where there are <em>not</em> matching values in the right table, keeping just columns from the left table.</p>
-<div class="sourceCode" id="cb240"><pre class="downlit sourceCode r">
+<div class="sourceCode" id="cb256"><pre class="downlit sourceCode r">
 <code class="sourceCode R"><span><span class="fu"><a href="https://dplyr.tidyverse.org/reference/filter-joins.html">anti_join</a></span><span class="op">(</span><span class="va">subject</span>, <span class="va">exp</span>, by <span class="op">=</span> <span class="st">"id"</span><span class="op">)</span></span></code></pre></div>
 <div class="kable-table">
 <div class="inline-table"><table class="table table-sm">
@@ -1317,7 +1331,7 @@ Figure 5.9: Anti Join (Reversed)
 </div>
 </div>
 <p>Order matters in an anti join.</p>
-<div class="sourceCode" id="cb241"><pre class="downlit sourceCode r">
+<div class="sourceCode" id="cb257"><pre class="downlit sourceCode r">
 <code class="sourceCode R"><span><span class="fu"><a href="https://dplyr.tidyverse.org/reference/filter-joins.html">anti_join</a></span><span class="op">(</span><span class="va">exp</span>, <span class="va">subject</span>, by <span class="op">=</span> <span class="st">"id"</span><span class="op">)</span></span></code></pre></div>
 <div class="kable-table">
 <div class="inline-table"><table class="table table-sm">
@@ -1370,7 +1384,7 @@ score
 </h3>
 <p>You can combine the rows of two tables with <code>bind_rows</code>.</p>
 <p>Here we'll add subject data for subjects 6-9 and bind that to the original subject table.</p>
-<div class="sourceCode" id="cb242"><pre class="downlit sourceCode r">
+<div class="sourceCode" id="cb258"><pre class="downlit sourceCode r">
 <code class="sourceCode R"><span><span class="va">new_subjects</span> <span class="op">&lt;-</span> <span class="fu"><a href="https://tibble.tidyverse.org/reference/tibble.html">tibble</a></span><span class="op">(</span></span>
 <span>  id <span class="op">=</span> <span class="fl">6</span><span class="op">:</span><span class="fl">9</span>,</span>
 <span>  gender <span class="op">=</span> <span class="fu"><a href="https://rdrr.io/r/base/c.html">c</a></span><span class="op">(</span><span class="st">"nb"</span>, <span class="st">"m"</span>, <span class="st">"f"</span>, <span class="st">"f"</span><span class="op">)</span>,</span>
@@ -1496,7 +1510,7 @@ f
 </div>
 <p>The columns just have to have the same names, they don't have to be in the same order. Any columns that differ between the two tables will just have <code>NA</code> values for entries from the other table.</p>
 <p>If a row is duplicated between the two tables (like id 5 below), the row will also be duplicated in the resulting table. If your tables have the exact same columns, you can use <code><a href="https://generics.r-lib.org/reference/setops.html">union()</a></code> (see below) to avoid duplicates.</p>
-<div class="sourceCode" id="cb243"><pre class="downlit sourceCode r">
+<div class="sourceCode" id="cb259"><pre class="downlit sourceCode r">
 <code class="sourceCode R"><span><span class="va">new_subjects</span> <span class="op">&lt;-</span> <span class="fu"><a href="https://tibble.tidyverse.org/reference/tibble.html">tibble</a></span><span class="op">(</span></span>
 <span>  id <span class="op">=</span> <span class="fl">5</span><span class="op">:</span><span class="fl">9</span>,</span>
 <span>  age <span class="op">=</span> <span class="fu"><a href="https://rdrr.io/r/base/c.html">c</a></span><span class="op">(</span><span class="fl">18</span>, <span class="fl">19</span>, <span class="fl">16</span>, <span class="fl">20</span>, <span class="fl">19</span><span class="op">)</span>,</span>
@@ -1671,7 +1685,7 @@ f
 <span class="header-section-number">5.6.2</span> bind_cols()<a class="anchor" aria-label="anchor" href="#bind_cols"><i class="fas fa-link"></i></a>
 </h3>
 <p>You can merge two tables with the same number of rows using <code>bind_cols</code>. This is only useful if the two tables have their rows in the exact same order. The only advantage over a left join is when the tables don't have any IDs to join by and you have to rely solely on their order.</p>
-<div class="sourceCode" id="cb244"><pre class="downlit sourceCode r">
+<div class="sourceCode" id="cb260"><pre class="downlit sourceCode r">
 <code class="sourceCode R"><span><span class="va">new_info</span> <span class="op">&lt;-</span> <span class="fu"><a href="https://tibble.tidyverse.org/reference/tibble.html">tibble</a></span><span class="op">(</span></span>
 <span>  colour <span class="op">=</span> <span class="fu"><a href="https://rdrr.io/r/base/c.html">c</a></span><span class="op">(</span><span class="st">"red"</span>, <span class="st">"orange"</span>, <span class="st">"yellow"</span>, <span class="st">"green"</span>, <span class="st">"blue"</span><span class="op">)</span></span>
 <span><span class="op">)</span></span>
@@ -1779,7 +1793,7 @@ blue
 <span class="header-section-number">5.7.1</span> intersect()<a class="anchor" aria-label="anchor" href="#intersect"><i class="fas fa-link"></i></a>
 </h3>
 <p><code><a href="https://generics.r-lib.org/reference/setops.html">intersect()</a></code> returns all rows in two tables that match exactly. The columns don't have to be in the same order.</p>
-<div class="sourceCode" id="cb245"><pre class="downlit sourceCode r">
+<div class="sourceCode" id="cb261"><pre class="downlit sourceCode r">
 <code class="sourceCode R"><span><span class="va">new_subjects</span> <span class="op">&lt;-</span> <span class="fu"><a href="https://tibble.tidyverse.org/reference/tibble.html">tibble</a></span><span class="op">(</span></span>
 <span>  id <span class="op">=</span> <span class="fu"><a href="https://rdrr.io/r/base/seq.html">seq</a></span><span class="op">(</span><span class="fl">4</span>, <span class="fl">9</span><span class="op">)</span>,</span>
 <span>  age <span class="op">=</span> <span class="fu"><a href="https://rdrr.io/r/base/c.html">c</a></span><span class="op">(</span><span class="fl">19</span>, <span class="fl">18</span>, <span class="fl">19</span>, <span class="fl">16</span>, <span class="fl">20</span>, <span class="fl">19</span><span class="op">)</span>,</span>
@@ -1815,7 +1829,7 @@ f
 </div>
 <div class="warning">
 <p>If you've forgotten to load dplyr or the tidyverse, <a class="glossary" target="_blank" title="The set of R functions that come with a basic installation of R, before you add external packages." href="https://psyteachr.github.io/glossary/b#base-r">base R</a> also has an <code><a href="https://generics.r-lib.org/reference/setops.html">intersect()</a></code> function. The error message can be confusing and looks something like this:</p>
-<div class="sourceCode" id="cb246"><pre class="downlit sourceCode r">
+<div class="sourceCode" id="cb262"><pre class="downlit sourceCode r">
 <code class="sourceCode R"><span><span class="fu">base</span><span class="fu">::</span><span class="fu"><a href="https://rdrr.io/r/base/sets.html">intersect</a></span><span class="op">(</span><span class="va">subject</span>, <span class="va">new_subjects</span><span class="op">)</span></span></code></pre></div>
 <pre><code>## list()</code></pre>
 </div>
@@ -1825,7 +1839,7 @@ f
 <span class="header-section-number">5.7.2</span> union()<a class="anchor" aria-label="anchor" href="#union"><i class="fas fa-link"></i></a>
 </h3>
 <p><code><a href="https://generics.r-lib.org/reference/setops.html">union()</a></code> returns all the rows from both tables, removing duplicate rows.</p>
-<div class="sourceCode" id="cb248"><pre class="downlit sourceCode r">
+<div class="sourceCode" id="cb264"><pre class="downlit sourceCode r">
 <code class="sourceCode R"><span><span class="fu"><a href="https://generics.r-lib.org/reference/setops.html">union</a></span><span class="op">(</span><span class="va">subject</span>, <span class="va">new_subjects</span><span class="op">)</span></span></code></pre></div>
 <div class="kable-table">
 <div class="inline-table"><table class="table table-sm">
@@ -1956,7 +1970,7 @@ f
 </div>
 <div class="warning">
 <p>If you've forgotten to load dplyr or the tidyverse, <a class="glossary" target="_blank" title="The set of R functions that come with a basic installation of R, before you add external packages." href="https://psyteachr.github.io/glossary/b#base-r">base R</a> also has a <code><a href="https://generics.r-lib.org/reference/setops.html">union()</a></code> function. You usually won't get an error message, but the output won't be what you expect.</p>
-<div class="sourceCode" id="cb249"><pre class="downlit sourceCode r">
+<div class="sourceCode" id="cb265"><pre class="downlit sourceCode r">
 <code class="sourceCode R"><span><span class="fu">base</span><span class="fu">::</span><span class="fu"><a href="https://rdrr.io/r/base/sets.html">union</a></span><span class="op">(</span><span class="va">subject</span>, <span class="va">new_subjects</span><span class="op">)</span></span></code></pre></div>
 <pre><code>## [[1]]
 ## [1] 1 2 3 4 5
@@ -1982,7 +1996,7 @@ f
 <span class="header-section-number">5.7.3</span> setdiff()<a class="anchor" aria-label="anchor" href="#setdiff"><i class="fas fa-link"></i></a>
 </h3>
 <p><code>setdiff</code> returns rows that are in the first table, but not in the second table.</p>
-<div class="sourceCode" id="cb251"><pre class="downlit sourceCode r">
+<div class="sourceCode" id="cb267"><pre class="downlit sourceCode r">
 <code class="sourceCode R"><span><span class="fu"><a href="https://generics.r-lib.org/reference/setops.html">setdiff</a></span><span class="op">(</span><span class="va">subject</span>, <span class="va">new_subjects</span><span class="op">)</span></span></code></pre></div>
 <div class="kable-table">
 <div class="inline-table"><table class="table table-sm">
@@ -2046,7 +2060,7 @@ nb
 </table></div>
 </div>
 <p>Order matters for <code>setdiff</code>.</p>
-<div class="sourceCode" id="cb252"><pre class="downlit sourceCode r">
+<div class="sourceCode" id="cb268"><pre class="downlit sourceCode r">
 <code class="sourceCode R"><span><span class="fu"><a href="https://generics.r-lib.org/reference/setops.html">setdiff</a></span><span class="op">(</span><span class="va">new_subjects</span>, <span class="va">subject</span><span class="op">)</span></span></code></pre></div>
 <div class="kable-table">
 <div class="inline-table"><table class="table table-sm">
@@ -2122,7 +2136,7 @@ f
 </div>
 <div class="warning">
 <p>If you've forgotten to load dplyr or the tidyverse, <a class="glossary" target="_blank" title="The set of R functions that come with a basic installation of R, before you add external packages." href="https://psyteachr.github.io/glossary/b#base-r">base R</a> also has a <code><a href="https://generics.r-lib.org/reference/setops.html">setdiff()</a></code> function. You usually won't get an error message, but the output might not be what you expect because the base R <code><a href="https://generics.r-lib.org/reference/setops.html">setdiff()</a></code> expects columns to be in the same order, so id 5 here registers as different between the two tables.</p>
-<div class="sourceCode" id="cb253"><pre class="downlit sourceCode r">
+<div class="sourceCode" id="cb269"><pre class="downlit sourceCode r">
 <code class="sourceCode R"><span><span class="fu">base</span><span class="fu">::</span><span class="fu"><a href="https://rdrr.io/r/base/sets.html">setdiff</a></span><span class="op">(</span><span class="va">subject</span>, <span class="va">new_subjects</span><span class="op">)</span></span></code></pre></div>
 <pre><code>## $id
 ## [1] 1 2 3 4 5
@@ -2431,7 +2445,7 @@ function openCity(evt, cityName) {
 <li><a class="nav-link" href="#joins"><span class="header-section-number">5</span> Data Relations</a></li>
 <li><a class="nav-link" href="#ilo-joins"><span class="header-section-number">5.1</span> Learning Objectives</a></li>
 <li><a class="nav-link" href="#setup-joins"><span class="header-section-number">5.2</span> Setup</a></li>
-<li><a class="nav-link" href="#data-1"><span class="header-section-number">5.3</span> Data</a></li>
+<li><a class="nav-link" href="#create-demo-data"><span class="header-section-number">5.3</span> Create Demo Data</a></li>
 <li>
 <a class="nav-link" href="#mutating-joins"><span class="header-section-number">5.4</span> Mutating Joins</a><ul class="nav navbar-nav">
 <li><a class="nav-link" href="#left_join"><span class="header-section-number">5.4.1</span> left_join()</a></li>
@@ -2478,7 +2492,7 @@ function openCity(evt, cityName) {
 <footer class="bg-primary text-light mt-5"><div class="container"><div class="row">
 
   <div class="col-12 col-md-6 mt-3">
-    <p>"<strong>Data Skills for Reproducible Research</strong>: <br><a href="https://doi.org/10.5281/zenodo.6527194"><img src="https://zenodo.org/badge/DOI/10.5281/zenodo.6527194.svg" alt="DOI: 10.5281/zenodo.6527194"></a>" was written by . It was last built on 2022-08-30.</p>
+    <p>"<strong>Data Skills for Reproducible Research</strong>: <br><a href="https://doi.org/10.5281/zenodo.6527194"><img src="https://zenodo.org/badge/DOI/10.5281/zenodo.6527194.svg" alt="DOI: 10.5281/zenodo.6527194"></a>" was written by . It was last built on 2022-10-04.</p>
   </div>
 
   <div class="col-12 col-md-6 mt-3">

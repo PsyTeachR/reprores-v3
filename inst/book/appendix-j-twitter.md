@@ -12,7 +12,7 @@ library(lubridate)   # for handling dates and times
 
 ### Export Data
 
-You can export your organisations' twitter data from <https://analytics.twitter.com/>. Go to the Tweets tab, choose a time period, and export the last month's data by day (or use the files from the [class data](data/data.zip)).
+You can export your organisations' twitter data from <https://analytics.twitter.com/>. Go to the Tweets tab, choose a time period, and export the last month's data by day (or use the files from the [class data](data/tweets.zip)) and open the zip file in your `data` directory.
 
 ### Import Data
 
@@ -96,10 +96,50 @@ long_tweets <- daily_tweets %>%
 head(long_tweets)
 ```
 
-<div data-pagedtable="false">
-  <script data-pagedtable-source type="application/json">
-{"columns":[{"label":["Date"],"name":[1],"type":["date"],"align":["right"]},{"label":["engage_type"],"name":[2],"type":["chr"],"align":["left"]},{"label":["n"],"name":[3],"type":["dbl"],"align":["right"]}],"data":[{"1":"2021-08-01","2":"likes","3":"2"},{"1":"2021-08-01","2":"retweets","3":"0"},{"1":"2021-08-01","2":"replies","3":"0"},{"1":"2021-08-02","2":"likes","3":"3"},{"1":"2021-08-02","2":"retweets","3":"0"},{"1":"2021-08-02","2":"replies","3":"2"}],"options":{"columns":{"min":{},"max":[10]},"rows":{"min":[10],"max":[10]},"pages":{}}}
-  </script>
+<div class="kable-table">
+
+<table>
+ <thead>
+  <tr>
+   <th style="text-align:left;"> Date </th>
+   <th style="text-align:left;"> engage_type </th>
+   <th style="text-align:right;"> n </th>
+  </tr>
+ </thead>
+<tbody>
+  <tr>
+   <td style="text-align:left;"> 2021-08-01 </td>
+   <td style="text-align:left;"> likes </td>
+   <td style="text-align:right;"> 2 </td>
+  </tr>
+  <tr>
+   <td style="text-align:left;"> 2021-08-01 </td>
+   <td style="text-align:left;"> retweets </td>
+   <td style="text-align:right;"> 0 </td>
+  </tr>
+  <tr>
+   <td style="text-align:left;"> 2021-08-01 </td>
+   <td style="text-align:left;"> replies </td>
+   <td style="text-align:right;"> 0 </td>
+  </tr>
+  <tr>
+   <td style="text-align:left;"> 2021-08-02 </td>
+   <td style="text-align:left;"> likes </td>
+   <td style="text-align:right;"> 3 </td>
+  </tr>
+  <tr>
+   <td style="text-align:left;"> 2021-08-02 </td>
+   <td style="text-align:left;"> retweets </td>
+   <td style="text-align:right;"> 0 </td>
+  </tr>
+  <tr>
+   <td style="text-align:left;"> 2021-08-02 </td>
+   <td style="text-align:left;"> replies </td>
+   <td style="text-align:right;"> 2 </td>
+  </tr>
+</tbody>
+</table>
+
 </div>
 
 Now we can plot the number of engagements per day by engagement type by making the line colour determined by the value of the `engage_type` column. 
@@ -185,10 +225,67 @@ likes_by_month <- all_daily_tweets %>%
 likes_by_month
 ```
 
-<div data-pagedtable="false">
-  <script data-pagedtable-source type="application/json">
-{"columns":[{"label":["month"],"name":[1],"type":["ord"],"align":["right"]},{"label":["total_likes"],"name":[2],"type":["dbl"],"align":["right"]}],"data":[{"1":"Jan","2":"1981"},{"1":"Feb","2":"1603"},{"1":"Mar","2":"2238"},{"1":"Apr","2":"2912"},{"1":"May","2":"2083"},{"1":"Jun","2":"2303"},{"1":"Jul","2":"1534"},{"1":"Aug","2":"3535"},{"1":"Sep","2":"2480"},{"1":"Oct","2":"2196"},{"1":"Nov","2":"2497"},{"1":"Dec","2":"1679"}],"options":{"columns":{"min":{},"max":[10]},"rows":{"min":[10],"max":[10]},"pages":{}}}
-  </script>
+<div class="kable-table">
+
+<table>
+ <thead>
+  <tr>
+   <th style="text-align:left;"> month </th>
+   <th style="text-align:right;"> total_likes </th>
+  </tr>
+ </thead>
+<tbody>
+  <tr>
+   <td style="text-align:left;"> Jan </td>
+   <td style="text-align:right;"> 1981 </td>
+  </tr>
+  <tr>
+   <td style="text-align:left;"> Feb </td>
+   <td style="text-align:right;"> 1603 </td>
+  </tr>
+  <tr>
+   <td style="text-align:left;"> Mar </td>
+   <td style="text-align:right;"> 2238 </td>
+  </tr>
+  <tr>
+   <td style="text-align:left;"> Apr </td>
+   <td style="text-align:right;"> 2912 </td>
+  </tr>
+  <tr>
+   <td style="text-align:left;"> May </td>
+   <td style="text-align:right;"> 2083 </td>
+  </tr>
+  <tr>
+   <td style="text-align:left;"> Jun </td>
+   <td style="text-align:right;"> 2303 </td>
+  </tr>
+  <tr>
+   <td style="text-align:left;"> Jul </td>
+   <td style="text-align:right;"> 1534 </td>
+  </tr>
+  <tr>
+   <td style="text-align:left;"> Aug </td>
+   <td style="text-align:right;"> 3535 </td>
+  </tr>
+  <tr>
+   <td style="text-align:left;"> Sep </td>
+   <td style="text-align:right;"> 2480 </td>
+  </tr>
+  <tr>
+   <td style="text-align:left;"> Oct </td>
+   <td style="text-align:right;"> 2196 </td>
+  </tr>
+  <tr>
+   <td style="text-align:left;"> Nov </td>
+   <td style="text-align:right;"> 2497 </td>
+  </tr>
+  <tr>
+   <td style="text-align:left;"> Dec </td>
+   <td style="text-align:right;"> 1679 </td>
+  </tr>
+</tbody>
+</table>
+
 </div>
 
 
@@ -345,7 +442,7 @@ https://t.co/FhR4DR38OU
 
 ### Word Cloud
 
-Or you can make a word cloud of the top words they tweet about. (You'll learn how to do this in Chapter\ \@ref(custom)).
+Or you can make a word cloud of the top words they tweet about. (You'll learn how to do this in Chapter\ \@ref(word-clouds).)
 
 <img src="appendix-j-twitter_files/figure-html/unnamed-chunk-14-1.png" width="100%" style="display: block; margin: auto;" />
 
@@ -391,10 +488,114 @@ Check a few random rows to make sure you did everything correctly.
 slice_sample(sun_tweets, n = 10)
 ```
 
-<div data-pagedtable="false">
-  <script data-pagedtable-source type="application/json">
-{"columns":[{"label":["time"],"name":[1],"type":["dttm"],"align":["right"]},{"label":["Day"],"name":[2],"type":["date"],"align":["right"]},{"label":["hour"],"name":[3],"type":["fct"],"align":["left"]},{"label":["tweet_time"],"name":[4],"type":["dbl"],"align":["right"]},{"label":["RiseTime"],"name":[5],"type":["dbl"],"align":["right"]},{"label":["SetTime"],"name":[6],"type":["dbl"],"align":["right"]},{"label":["timeofday"],"name":[7],"type":["chr"],"align":["left"]}],"data":[{"1":"2021-01-07 18:39:00","2":"2021-01-07","3":"18","4":"18.650000","5":"8.687","6":"16.063","7":"night"},{"1":"2021-10-14 14:05:00","2":"2021-10-14","3":"14","4":"14.083333","5":"6.744","6":"17.304","7":"day"},{"1":"2021-01-17 01:26:00","2":"2021-01-17","3":"1","4":"1.433333","5":"8.531","6":"16.349","7":"night"},{"1":"2021-08-07 08:57:00","2":"2021-08-07","3":"8","4":"8.950000","5":"4.564","6":"20.139","7":"day"},{"1":"2021-06-29 06:40:00","2":"2021-06-29","3":"6","4":"6.666667","5":"3.612","6":"21.032","7":"day"},{"1":"2021-04-20 15:35:00","2":"2021-04-20","3":"15","4":"15.583333","5":"4.986","6":"19.531","7":"day"},{"1":"2021-05-24 20:23:00","2":"2021-05-24","3":"20","4":"20.383333","5":"3.851","6":"20.595","7":"day"},{"1":"2021-07-31 10:12:00","2":"2021-07-31","3":"10","4":"10.200000","5":"4.348","6":"20.377","7":"day"},{"1":"2021-04-20 16:25:00","2":"2021-04-20","3":"16","4":"16.416667","5":"4.986","6":"19.531","7":"day"},{"1":"2021-06-26 08:42:00","2":"2021-06-26","3":"8","4":"8.700000","5":"3.581","6":"21.045","7":"day"}],"options":{"columns":{"min":{},"max":[10]},"rows":{"min":[10],"max":[10]},"pages":{}}}
-  </script>
+<div class="kable-table">
+
+<table>
+ <thead>
+  <tr>
+   <th style="text-align:left;"> time </th>
+   <th style="text-align:left;"> Day </th>
+   <th style="text-align:left;"> hour </th>
+   <th style="text-align:right;"> tweet_time </th>
+   <th style="text-align:right;"> RiseTime </th>
+   <th style="text-align:right;"> SetTime </th>
+   <th style="text-align:left;"> timeofday </th>
+  </tr>
+ </thead>
+<tbody>
+  <tr>
+   <td style="text-align:left;"> 2021-04-20 16:57:00 </td>
+   <td style="text-align:left;"> 2021-04-20 </td>
+   <td style="text-align:left;"> 16 </td>
+   <td style="text-align:right;"> 16.950000 </td>
+   <td style="text-align:right;"> 4.986 </td>
+   <td style="text-align:right;"> 19.531 </td>
+   <td style="text-align:left;"> day </td>
+  </tr>
+  <tr>
+   <td style="text-align:left;"> 2021-03-17 16:08:00 </td>
+   <td style="text-align:left;"> 2021-03-17 </td>
+   <td style="text-align:left;"> 16 </td>
+   <td style="text-align:right;"> 16.133333 </td>
+   <td style="text-align:right;"> 6.428 </td>
+   <td style="text-align:right;"> 18.399 </td>
+   <td style="text-align:left;"> day </td>
+  </tr>
+  <tr>
+   <td style="text-align:left;"> 2021-08-04 20:16:00 </td>
+   <td style="text-align:left;"> 2021-08-04 </td>
+   <td style="text-align:left;"> 20 </td>
+   <td style="text-align:right;"> 20.266667 </td>
+   <td style="text-align:right;"> 4.470 </td>
+   <td style="text-align:right;"> 20.244 </td>
+   <td style="text-align:left;"> night </td>
+  </tr>
+  <tr>
+   <td style="text-align:left;"> 2021-10-25 08:40:00 </td>
+   <td style="text-align:left;"> 2021-10-25 </td>
+   <td style="text-align:left;"> 8 </td>
+   <td style="text-align:right;"> 8.666667 </td>
+   <td style="text-align:right;"> 7.118 </td>
+   <td style="text-align:right;"> 16.868 </td>
+   <td style="text-align:left;"> day </td>
+  </tr>
+  <tr>
+   <td style="text-align:left;"> 2021-09-09 21:49:00 </td>
+   <td style="text-align:left;"> 2021-09-09 </td>
+   <td style="text-align:left;"> 21 </td>
+   <td style="text-align:right;"> 21.816667 </td>
+   <td style="text-align:right;"> 5.613 </td>
+   <td style="text-align:right;"> 18.807 </td>
+   <td style="text-align:left;"> night </td>
+  </tr>
+  <tr>
+   <td style="text-align:left;"> 2021-08-10 09:02:00 </td>
+   <td style="text-align:left;"> 2021-08-10 </td>
+   <td style="text-align:left;"> 9 </td>
+   <td style="text-align:right;"> 9.033333 </td>
+   <td style="text-align:right;"> 4.658 </td>
+   <td style="text-align:right;"> 20.030 </td>
+   <td style="text-align:left;"> day </td>
+  </tr>
+  <tr>
+   <td style="text-align:left;"> 2021-01-13 21:42:00 </td>
+   <td style="text-align:left;"> 2021-01-13 </td>
+   <td style="text-align:left;"> 21 </td>
+   <td style="text-align:right;"> 21.700000 </td>
+   <td style="text-align:right;"> 8.605 </td>
+   <td style="text-align:right;"> 16.228 </td>
+   <td style="text-align:left;"> night </td>
+  </tr>
+  <tr>
+   <td style="text-align:left;"> 2021-08-28 13:58:00 </td>
+   <td style="text-align:left;"> 2021-08-28 </td>
+   <td style="text-align:left;"> 13 </td>
+   <td style="text-align:right;"> 13.966667 </td>
+   <td style="text-align:right;"> 5.232 </td>
+   <td style="text-align:right;"> 19.318 </td>
+   <td style="text-align:left;"> day </td>
+  </tr>
+  <tr>
+   <td style="text-align:left;"> 2021-08-09 22:24:00 </td>
+   <td style="text-align:left;"> 2021-08-09 </td>
+   <td style="text-align:left;"> 22 </td>
+   <td style="text-align:right;"> 22.400000 </td>
+   <td style="text-align:right;"> 4.627 </td>
+   <td style="text-align:right;"> 20.067 </td>
+   <td style="text-align:left;"> night </td>
+  </tr>
+  <tr>
+   <td style="text-align:left;"> 2021-11-26 13:50:00 </td>
+   <td style="text-align:left;"> 2021-11-26 </td>
+   <td style="text-align:left;"> 13 </td>
+   <td style="text-align:right;"> 13.833333 </td>
+   <td style="text-align:right;"> 8.193 </td>
+   <td style="text-align:right;"> 15.910 </td>
+   <td style="text-align:left;"> day </td>
+  </tr>
+</tbody>
+</table>
+
 </div>
 
 Plot the `hour` along the x-axis and set the fill and colour by `timeofday`. Use `scale_*_manual()` functions to set custom colours for day and night.

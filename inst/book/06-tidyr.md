@@ -25,14 +25,26 @@
 
 ## Setup {#setup-tidyr}
 
+1. Open your `reprores-class-notes` project 
+1. Create a new R Markdown file called `06-tidyr.Rmd`
+1. Update the YAML header 
+1. Replace the setup chunk with the one below: 
+
+<div class='verbatim'><pre class='sourceCode r'><code class='sourceCode R'>&#96;&#96;&#96;{r setup, include = FALSE}</code></pre>
 
 ```r
-# libraries needed
-library(tidyverse)
-library(reprores)
+knitr::opts_chunk$set(echo = TRUE)
+
+# packages needed for this chapter
+library(tidyverse) # loads tidyr for pivot functions and tidy verbs
+library(reprores)  # class-specific datasets
 
 set.seed(8675309) # makes sure random numbers are reproducible
 ```
+
+<pre class='sourceCode r'><code class='sourceCode R'>&#96;&#96;&#96;</code></pre></div>
+
+Download the [Data tidying cheat sheet](https://raw.githubusercontent.com/rstudio/cheatsheets/main/tidyr.pdf).
 
 ## Tidy Data {#tidy-data}
 
@@ -1190,7 +1202,7 @@ personality_reshaped <- personality |>
 
 ### Load Data 
 
-Get data on infant and maternal mortality rates from the reprores package. If you don't have the package, you can download them here:
+Get data on infant and maternal mortality rates from the <code class='package'>reprores</code> package. If you don't have the package, you can download them here:
 
 * [infant mortality](https://psyteachr.github.io/reprores/data/infmort.csv)  
 * [maternal mortality](https://psyteachr.github.io/reprores/data/matmort.xls)  

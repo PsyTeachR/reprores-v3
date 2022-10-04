@@ -390,8 +390,8 @@ rnorm(10)
 ```
 
 ```
-##  [1]  1.36915071 -0.52249875  1.52987198 -1.15550086 -2.48983989  0.02715158
-##  [7] -0.12933548  0.35790825 -1.53524971  1.65323523
+##  [1]  1.0776361 -1.5428004 -1.0694126  0.4656785  0.2716471  1.6077680
+##  [7] -1.3126246 -0.7284652  0.2781463 -0.4458766
 ```
 
 If you want 10 numbers from a normal distribution with a mean of 100:
@@ -402,8 +402,8 @@ rnorm(10, 100)
 ```
 
 ```
-##  [1] 100.47279 102.24291  99.09208 100.81950  99.38132 100.41614  99.03202
-##  [8] 101.13144  98.87303  99.19437
+##  [1] 100.46196  98.86046 100.19352  98.78103 100.48892 100.12980  99.81721
+##  [8] 100.27994  99.78089 101.32672
 ```
 
 This would be an equivalent but less efficient way of calling the function:
@@ -414,8 +414,8 @@ rnorm(n = 10, mean = 100)
 ```
 
 ```
-##  [1] 100.21499  98.80225 100.40324  99.04775  99.69542 100.95335  99.05811
-##  [8] 100.03049  99.64425 100.95763
+##  [1] 100.16626  99.45014 100.76694  98.43625 100.91983  98.14420 101.21891
+##  [8] 102.08515  99.16165 101.25589
 ```
 
 We don't need to name the arguments because R will recognize that we intended to fill in the first and second arguments by their position in the function call. However, if we want to change the default for an argument coming later in the list, then we need to name it. For instance, if we wanted to keep the default `mean = 0` but change the standard deviation to 100, we would do it this way:
@@ -426,8 +426,8 @@ rnorm(10, sd = 100)
 ```
 
 ```
-##  [1] -102.02527  -98.04928  -41.16034   79.68347  -62.45727   37.00988
-##  [7]  -22.44341   78.81657 -285.20586  -16.66918
+##  [1] -104.708496 -121.343579   69.986104   -9.516204    7.198781 -195.764591
+##  [7]  -38.231374   38.747884  -58.830097 -133.046854
 ```
 
 Some functions give a list of options after an argument; this means the default value is the first option. The usage entry for the `power.t.test()` function looks like this:
@@ -445,9 +445,9 @@ power.t.test(n = NULL, delta = NULL, sd = 1, sig.level = 0.05,
 
 
 
-* What is the default value for `sd`? <select class='webex-select'><option value='blank'></option><option value=''>two.sample</option><option value=''>NULL</option><option value=''>0.05</option><option value='answer'>1</option></select>
-* What is the default value for `type`? <select class='webex-select'><option value='blank'></option><option value=''>paired</option><option value='answer'>two.sample</option><option value=''>one.sample</option><option value=''>NULL</option></select>
-* Which is equivalent to <code><span><span class='fu'><a target='_blank' href='https://rdrr.io/r/stats/power.t.test.html'>power.t.test</a></span><span class='op'>(</span><span class='fl'>100</span>, <span class='fl'>0.5</span><span class='op'>)</span></span></code>? <div class='webex-radiogroup' id='radio_GIJMEKONEZ'><label><input type="radio" autocomplete="off" name="radio_GIJMEKONEZ" value=""></input> <span>power.t.test()</span></label><label><input type="radio" autocomplete="off" name="radio_GIJMEKONEZ" value="answer"></input> <span>power.t.test(delta = 0.5, n = 100)</span></label><label><input type="radio" autocomplete="off" name="radio_GIJMEKONEZ" value=""></input> <span>power.t.test(100, 0.5, sig.level = 1, sd = 0.05)</span></label><label><input type="radio" autocomplete="off" name="radio_GIJMEKONEZ" value=""></input> <span>power.t.test(n = 100)</span></label></div>
+* What is the default value for `sd`? <select class='webex-select'><option value='blank'></option><option value='answer'>1</option><option value=''>two.sample</option><option value=''>NULL</option><option value=''>0.05</option></select>
+* What is the default value for `type`? <select class='webex-select'><option value='blank'></option><option value=''>one.sample</option><option value=''>NULL</option><option value=''>paired</option><option value='answer'>two.sample</option></select>
+* Which is equivalent to <code><span><span class='fu'><a target='_blank' href='https://rdrr.io/r/stats/power.t.test.html'>power.t.test</a></span><span class='op'>(</span><span class='fl'>100</span>, <span class='fl'>0.5</span><span class='op'>)</span></span></code>? <div class='webex-radiogroup' id='radio_SUVVAMCMNR'><label><input type="radio" autocomplete="off" name="radio_SUVVAMCMNR" value=""></input> <span>power.t.test()</span></label><label><input type="radio" autocomplete="off" name="radio_SUVVAMCMNR" value=""></input> <span>power.t.test(n = 100)</span></label><label><input type="radio" autocomplete="off" name="radio_SUVVAMCMNR" value="answer"></input> <span>power.t.test(delta = 0.5, n = 100)</span></label><label><input type="radio" autocomplete="off" name="radio_SUVVAMCMNR" value=""></input> <span>power.t.test(100, 0.5, sig.level = 1, sd = 0.05)</span></label></div>
 
 
 :::

@@ -5,27 +5,27 @@
 <meta charset="utf-8">
 <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
 <title>Chapter 3 Data Visualisation | Data Skills for Reproducible Research</title>
-<meta name="description" content="3.1 Learning Objectives  Basic Understand what types of graphs are best for different types of data (video) 1 discrete 1 continuous 2 discrete 2 continuous 1 discrete, 1 continuous 3 continuous...">
+<meta name="description" content="3.1 Learning Objectives  Basic Understand what types of graphs are best for different types of data (video) Create common types of graphs with ggplot2 (video) Set custom size, labels, colours, and...">
 <meta name="generator" content="bookdown 0.28 with bs4_book()">
 <meta property="og:title" content="Chapter 3 Data Visualisation | Data Skills for Reproducible Research">
 <meta property="og:type" content="book">
 <meta property="og:url" content="https://psyteachr.github.io/reprores-v3/ggplot.html">
 <meta property="og:image" content="https://psyteachr.github.io/reprores-v3/images/logos/logo.png">
-<meta property="og:description" content="3.1 Learning Objectives  Basic Understand what types of graphs are best for different types of data (video) 1 discrete 1 continuous 2 discrete 2 continuous 1 discrete, 1 continuous 3 continuous...">
+<meta property="og:description" content="3.1 Learning Objectives  Basic Understand what types of graphs are best for different types of data (video) Create common types of graphs with ggplot2 (video) Set custom size, labels, colours, and...">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="Chapter 3 Data Visualisation | Data Skills for Reproducible Research">
-<meta name="twitter:description" content="3.1 Learning Objectives  Basic Understand what types of graphs are best for different types of data (video) 1 discrete 1 continuous 2 discrete 2 continuous 1 discrete, 1 continuous 3 continuous...">
+<meta name="twitter:description" content="3.1 Learning Objectives  Basic Understand what types of graphs are best for different types of data (video) Create common types of graphs with ggplot2 (video) Set custom size, labels, colours, and...">
 <meta name="twitter:image" content="https://psyteachr.github.io/reprores-v3/images/logos/logo.png">
 <!-- JS --><script src="https://cdnjs.cloudflare.com/ajax/libs/clipboard.js/2.0.6/clipboard.min.js" integrity="sha256-inc5kl9MA1hkeYUt+EC3BhlIgyp/2jDIyBLS6k3UxPI=" crossorigin="anonymous"></script><script src="https://cdnjs.cloudflare.com/ajax/libs/fuse.js/6.4.6/fuse.js" integrity="sha512-zv6Ywkjyktsohkbp9bb45V6tEMoWhzFzXis+LrMehmJZZSys19Yxf1dopHx7WzIKxr5tK2dVcYmaCk2uqdjF4A==" crossorigin="anonymous"></script><script src="https://kit.fontawesome.com/6ecbd6c532.js" crossorigin="anonymous"></script><script src="libs/jquery-3.6.0/jquery-3.6.0.min.js"></script><meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
 <link href="libs/bootstrap-4.6.0/bootstrap.min.css" rel="stylesheet">
 <script src="libs/bootstrap-4.6.0/bootstrap.bundle.min.js"></script><script src="libs/bs3compat-0.4.0/transition.js"></script><script src="libs/bs3compat-0.4.0/tabs.js"></script><script src="libs/bs3compat-0.4.0/bs3compat.js"></script><link href="libs/bs4_book-1.0.0/bs4_book.css" rel="stylesheet">
 <script src="libs/bs4_book-1.0.0/bs4_book.js"></script><script src="libs/kePrint-0.0.1/kePrint.js"></script><link href="libs/lightable-0.0.1/lightable.css" rel="stylesheet">
-<script src="libs/htmlwidgets-1.5.4/htmlwidgets.js"></script><link href="libs/datatables-css-0.0.0/datatables-crosstalk.css" rel="stylesheet">
-<script src="libs/datatables-binding-0.24/datatables.js"></script><link href="libs/dt-core-1.11.3/css/jquery.dataTables.min.css" rel="stylesheet">
+<script src="libs/htmlwidgets-1.5.4/htmlwidgets.js"></script><script src="libs/plotly-binding-4.10.0/plotly.js"></script><script src="libs/typedarray-0.1/typedarray.min.js"></script><link href="libs/crosstalk-1.2.0/css/crosstalk.min.css" rel="stylesheet">
+<script src="libs/crosstalk-1.2.0/js/crosstalk.min.js"></script><link href="libs/plotly-htmlwidgets-css-2.5.1/plotly-htmlwidgets.css" rel="stylesheet">
+<script src="libs/plotly-main-2.5.1/plotly-latest.min.js"></script><link href="libs/datatables-css-0.0.0/datatables-crosstalk.css" rel="stylesheet">
+<script src="libs/datatables-binding-0.25/datatables.js"></script><link href="libs/dt-core-1.11.3/css/jquery.dataTables.min.css" rel="stylesheet">
 <link href="libs/dt-core-1.11.3/css/jquery.dataTables.extra.css" rel="stylesheet">
-<script src="libs/dt-core-1.11.3/js/jquery.dataTables.min.js"></script><link href="libs/crosstalk-1.2.0/css/crosstalk.min.css" rel="stylesheet">
-<script src="libs/crosstalk-1.2.0/js/crosstalk.min.js"></script><script src="libs/plotly-binding-4.10.0/plotly.js"></script><script src="libs/typedarray-0.1/typedarray.min.js"></script><link href="libs/plotly-htmlwidgets-css-2.5.1/plotly-htmlwidgets.css" rel="stylesheet">
-<script src="libs/plotly-main-2.5.1/plotly-latest.min.js"></script><!-- Global site tag (gtag.js) - Google Analytics --><script async src="https://www.googletagmanager.com/gtag/js?id=G-6NP3MF25W3"></script><script>
+<script src="libs/dt-core-1.11.3/js/jquery.dataTables.min.js"></script><!-- Global site tag (gtag.js) - Google Analytics --><script async src="https://www.googletagmanager.com/gtag/js?id=G-6NP3MF25W3"></script><script>
       window.dataLayer = window.dataLayer || [];
       function gtag(){dataLayer.push(arguments);}
       gtag('js', new Date());
@@ -92,8 +92,9 @@
 <li><a class="" href="dplyr.html"><span class="header-section-number">7</span> Data Wrangling</a></li>
 <li><a class="" href="func.html"><span class="header-section-number">8</span> Iteration &amp; Functions</a></li>
 <li><a class="" href="sim.html"><span class="header-section-number">9</span> Probability &amp; Simulation</a></li>
-<li><a class="" href="custom.html"><span class="header-section-number">10</span> Customising Visualisations &amp; Reports</a></li>
-<li><a class="" href="acknowledgements.html">Acknowledgements</a></li>
+<li><a class="" href="next.html"><span class="header-section-number">10</span> Next Steps</a></li>
+<li><a class="" href="licencecitation.html">Licence/Citation</a></li>
+<li><a class="" href="references-1.html">References</a></li>
 <li class="book-part">Appendices</li>
 <li><a class="" href="installingr.html"><span class="header-section-number">A</span> Installing and Updating</a></li>
 <li><a class="" href="conventions.html"><span class="header-section-number">B</span> Conventions</a></li>
@@ -105,7 +106,7 @@
 <li><a class="" href="twitter-hashtags.html"><span class="header-section-number">H</span> Twitter Hashtags</a></li>
 <li><a class="" href="twitter-data.html"><span class="header-section-number">I</span> Twitter Data</a></li>
 <li><a class="" href="webpages.html"><span class="header-section-number">J</span> Webpages</a></li>
-<li><a class="" href="bookrefs.html"><span class="header-section-number">K</span> References</a></li>
+<li><a class="" href="getting-help.html"><span class="header-section-number">K</span> Getting Help</a></li>
 </ul>
 
         <div class="book-extra">
@@ -129,36 +130,8 @@
 </h3>
 <ol style="list-style-type: decimal">
 <li>Understand what types of graphs are best for <a href="ggplot.html#vartypes">different types of data</a> <a href="https://youtu.be/tOFQFPRgZ3M" class="video">(video)</a>
-<ul>
-<li>1 discrete</li>
-<li>1 continuous</li>
-<li>2 discrete</li>
-<li>2 continuous</li>
-<li>1 discrete, 1 continuous</li>
-<li>3 continuous</li>
-</ul>
 </li>
 <li>Create common types of graphs with ggplot2 <a href="https://youtu.be/kKlQupjD__g" class="video">(video)</a>
-<ul>
-<li><a href="ggplot.html#geom_bar"><code>geom_bar()</code></a></li>
-<li><a href="ggplot.html#geom_density"><code>geom_density()</code></a></li>
-<li><a href="ggplot.html#geom_freqpoly"><code>geom_freqpoly()</code></a></li>
-<li><a href="ggplot.html#geom_histogram"><code>geom_histogram()</code></a></li>
-<li><a href="ggplot.html#geom_col"><code>geom_col()</code></a></li>
-<li><a href="ggplot.html#geom_boxplot"><code>geom_boxplot()</code></a></li>
-<li><a href="ggplot.html#geom_violin"><code>geom_violin()</code></a></li>
-<li>
-<a href="ggplot.html#vertical_intervals">Vertical Intervals</a>
-<ul>
-<li><code><a href="https://ggplot2.tidyverse.org/reference/geom_linerange.html">geom_crossbar()</a></code></li>
-<li><code><a href="https://ggplot2.tidyverse.org/reference/geom_linerange.html">geom_errorbar()</a></code></li>
-<li><code><a href="https://ggplot2.tidyverse.org/reference/geom_linerange.html">geom_linerange()</a></code></li>
-<li><code><a href="https://ggplot2.tidyverse.org/reference/geom_linerange.html">geom_pointrange()</a></code></li>
-</ul>
-</li>
-<li><a href="ggplot.html#geom_point"><code>geom_point()</code></a></li>
-<li><a href="ggplot.html#geom_smooth"><code>geom_smooth()</code></a></li>
-</ul>
 </li>
 <li>Set custom <a href="ggplot.html#custom-size">size</a>,
 <a href="ggplot.html#custom-labels">labels</a>,
@@ -166,7 +139,7 @@
 <a href="ggplot.html#themes">themes</a> <a href="https://youtu.be/6pHuCbOh86s" class="video">(video)</a>
 </li>
 <li>
-<a href="combo_plots">Combine plots</a> on the same plot, as facets, or as a grid using patchwork <a href="https://youtu.be/AnqlfuU-VZk" class="video">(video)</a>
+<a href="ggplot.html#combo_plots">Combine plots</a> on the same plot, as facets, or as a grid using patchwork <a href="https://youtu.be/AnqlfuU-VZk" class="video">(video)</a>
 </li>
 <li>
 <a href="ggplot.html#ggsave">Save plots</a> as an image file <a href="https://youtu.be/f1Y53mjEli0" class="video">(video)</a>
@@ -180,32 +153,37 @@
 <li>Add lines to graphs</li>
 <li>Deal with <a href="ggplot.html#overlap">overlapping data</a>
 </li>
-<li>Create less common types of graphs
-<ul>
-<li><a href="ggplot.html#geom_tile"><code>geom_tile()</code></a></li>
-<li><a href="ggplot.html#geom_density2d"><code>geom_density2d()</code></a></li>
-<li><a href="ggplot.html#geom_bin2d"><code>geom_bin2d()</code></a></li>
-<li><a href="ggplot.html#geom_hex"><code>geom_hex()</code></a></li>
-<li><a href="ggplot.html#geom_count"><code>geom_count()</code></a></li>
-</ul>
-</li>
+<li>Create less common types of graphs</li>
 <li>Adjust axes (e.g., flip coordinates, set axis limits)</li>
 </ol>
 </div>
 </div>
-<div id="setup_ggplot" class="section level2" number="3.2">
+<div id="setup-ggplot" class="section level2" number="3.2">
 <h2>
-<span class="header-section-number">3.2</span> Setup<a class="anchor" aria-label="anchor" href="#setup_ggplot"><i class="fas fa-link"></i></a>
+<span class="header-section-number">3.2</span> Setup<a class="anchor" aria-label="anchor" href="#setup-ggplot"><i class="fas fa-link"></i></a>
 </h2>
-<div class="sourceCode" id="cb73"><pre class="downlit sourceCode r">
-<code class="sourceCode R"><span><span class="co"># libraries needed for these graphs</span></span>
-<span><span class="kw"><a href="https://rdrr.io/r/base/library.html">library</a></span><span class="op">(</span><span class="va"><a href="https://tidyverse.tidyverse.org">tidyverse</a></span><span class="op">)</span></span>
-<span><span class="kw"><a href="https://rdrr.io/r/base/library.html">library</a></span><span class="op">(</span><span class="va"><a href="https://patchwork.data-imaginist.com">patchwork</a></span><span class="op">)</span> </span>
-<span><span class="kw"><a href="https://rdrr.io/r/base/library.html">library</a></span><span class="op">(</span><span class="va"><a href="https://plotly-r.com">plotly</a></span><span class="op">)</span></span>
-<span><span class="kw"><a href="https://rdrr.io/r/base/library.html">library</a></span><span class="op">(</span><span class="va"><a href="https://github.com/lepennec/ggwordcloud">ggwordcloud</a></span><span class="op">)</span></span>
-<span><span class="kw"><a href="https://rdrr.io/r/base/library.html">library</a></span><span class="op">(</span><span class="va"><a href="https://github.com/psyteachr/reprores-v3">reprores</a></span><span class="op">)</span></span>
+<ol style="list-style-type: decimal">
+<li>Open your <code>reprores-class-notes</code> project</li>
+<li>Create a new R Markdown file called <code>03-ggplot.Rmd</code>
+</li>
+<li>Update the YAML header</li>
+<li>Replace the setup chunk with the one below:</li>
+</ol>
+<div class="verbatim">
+<pre class="sourceCode r"><code class="sourceCode R">```{r setup, include = FALSE}</code></pre>
+<div class="sourceCode" id="cb81"><pre class="downlit sourceCode r">
+<code class="sourceCode R"><span><span class="fu">knitr</span><span class="fu">::</span><span class="va"><a href="https://rdrr.io/pkg/knitr/man/opts_chunk.html">opts_chunk</a></span><span class="op">$</span><span class="fu">set</span><span class="op">(</span>echo <span class="op">=</span> <span class="cn">TRUE</span><span class="op">)</span></span>
+<span></span>
+<span><span class="co"># packages needed for this chapter</span></span>
+<span><span class="kw"><a href="https://rdrr.io/r/base/library.html">library</a></span><span class="op">(</span><span class="va"><a href="https://tidyverse.tidyverse.org">tidyverse</a></span><span class="op">)</span>   <span class="co"># loads ggplot2 for plots</span></span>
+<span><span class="kw"><a href="https://rdrr.io/r/base/library.html">library</a></span><span class="op">(</span><span class="va"><a href="https://patchwork.data-imaginist.com">patchwork</a></span><span class="op">)</span>   <span class="co"># multi-part plots</span></span>
+<span><span class="kw"><a href="https://rdrr.io/r/base/library.html">library</a></span><span class="op">(</span><span class="va"><a href="https://plotly-r.com">plotly</a></span><span class="op">)</span>      <span class="co"># interactive plots</span></span>
+<span><span class="kw"><a href="https://rdrr.io/r/base/library.html">library</a></span><span class="op">(</span><span class="va"><a href="https://github.com/psyteachr/reprores-v3">reprores</a></span><span class="op">)</span>    <span class="co"># class-specific datasets</span></span>
 <span></span>
 <span><span class="fu"><a href="https://rdrr.io/r/base/Random.html">set.seed</a></span><span class="op">(</span><span class="fl">30250</span><span class="op">)</span> <span class="co"># makes sure random numbers are reproducible</span></span></code></pre></div>
+<pre class="sourceCode r"><code class="sourceCode R">```</code></pre>
+</div>
+<p>Download the <a href="https://raw.githubusercontent.com/rstudio/cheatsheets/main/data-visualization.pdf">ggplot2 cheat sheet</a>.</p>
 </div>
 <div id="vartypes" class="section level2" number="3.3">
 <h2>
@@ -214,7 +192,7 @@
 <p><a class="glossary" target="_blank" title="Data that can take on any values between other existing values." href="https://psyteachr.github.io/glossary/c#continuous">Continuous</a> variables are properties you can measure, like height. <a class="glossary" target="_blank" title="Data that can only take certain values, such as integers." href="https://psyteachr.github.io/glossary/d#discrete">Discrete</a> variables are things you can count, like the number of pets you have. Categorical variables can be <a class="glossary" target="_blank" title="Categorical variables that don't have an inherent order, such as types of animal." href="https://psyteachr.github.io/glossary/n#nominal">nominal</a>, where the categories don't really have an order, like cats, dogs and ferrets (even though ferrets are obviously best). They can also be <a class="glossary" target="_blank" title="Discrete variables that have an inherent order, such as level of education or dislike/like." href="https://psyteachr.github.io/glossary/o#ordinal">ordinal</a>, where there is a clear order, but the distance between the categories isn't something you could exactly equate, like points on a <a class="glossary" target="_blank" title="A rating scale with a small number of discrete points in order" href="https://psyteachr.github.io/glossary/l#likert">Likert</a> rating scale.</p>
 <p>Different types of visualisations are good for different types of variables.</p>
 <p>Load the <code>pets</code> dataset and explore it with <code>glimpse(pets)</code> or <code>View(pets)</code>. This is a simulated dataset with one random factor (<code>id</code>), two categorical factors (<code>pet</code>, <code>country</code>) and three continuous variables (<code>score</code>, <code>age</code>, <code>weight</code>).</p>
-<div class="sourceCode" id="cb74"><pre class="downlit sourceCode r">
+<div class="sourceCode" id="cb82"><pre class="downlit sourceCode r">
 <code class="sourceCode R"><span><span class="fu"><a href="https://rdrr.io/r/utils/data.html">data</a></span><span class="op">(</span><span class="st">"pets"</span>, package <span class="op">=</span> <span class="st">"reprores"</span><span class="op">)</span></span>
 <span><span class="co"># if you don't have the reprores package, use:</span></span>
 <span><span class="co"># pets &lt;- read_csv("https://psyteachr.github.io/reprores/data/pets.csv", col_types = "cffiid")</span></span>
@@ -243,8 +221,16 @@
 <h2>
 <span class="header-section-number">3.4</span> Basic Plots<a class="anchor" aria-label="anchor" href="#basic-plots"><i class="fas fa-link"></i></a>
 </h2>
-<p>R has some basic plotting functions, but they're difficult to use and aesthetically not very nice. They can be useful to have a quick look at data while you're working on a script, though. The function <code><a href="https://rdrr.io/r/graphics/plot.default.html">plot()</a></code> usually defaults to a sensible type of plot, depending on whether the arguments <code>x</code> and <code>y</code> are categorical, continuous, or missing.</p>
-<div class="sourceCode" id="cb76"><pre class="downlit sourceCode r">
+<p>R has some basic plotting functions, but they're difficult to use and aesthetically not very nice without a fair amount of expertise. They can be useful to have a quick look at data while you're working on a script, though. The function <code><a href="https://rdrr.io/r/graphics/plot.default.html">plot()</a></code> usually defaults to a sensible type of plot, depending on whether the arguments <code>x</code> and <code>y</code> are categorical, continuous, or missing.</p>
+<!-- Tab links -->
+<div class="tab">
+<p><button class="tablinks" onclick="openCity(event, 'catx')">Categorical X</button>
+<button class="tablinks" onclick="openCity(event, 'catxy')">Categorical X and Y</button>
+<button class="tablinks" onclick="openCity(event, 'contxy')">Continuous X and Y</button></p>
+</div>
+<!-- Tab content -->
+<div id="catx" class="tabcontent">
+<div class="sourceCode" id="cb84"><pre class="downlit sourceCode r">
 <code class="sourceCode R"><span><span class="fu"><a href="https://rdrr.io/r/graphics/plot.default.html">plot</a></span><span class="op">(</span>x <span class="op">=</span> <span class="va">pets</span><span class="op">$</span><span class="va">pet</span><span class="op">)</span></span></code></pre></div>
 <div class="figure" style="text-align: center">
 <span style="display:block;" id="fig:plot0"></span>
@@ -252,7 +238,9 @@
 Figure 3.1: plot() with categorical x
 </p>
 </div>
-<div class="sourceCode" id="cb77"><pre class="downlit sourceCode r">
+</div>
+<div id="catxy" class="tabcontent">
+<div class="sourceCode" id="cb85"><pre class="downlit sourceCode r">
 <code class="sourceCode R"><span><span class="fu"><a href="https://rdrr.io/r/graphics/plot.default.html">plot</a></span><span class="op">(</span>x <span class="op">=</span> <span class="va">pets</span><span class="op">$</span><span class="va">pet</span>, y <span class="op">=</span> <span class="va">pets</span><span class="op">$</span><span class="va">score</span><span class="op">)</span></span></code></pre></div>
 <div class="figure" style="text-align: center">
 <span style="display:block;" id="fig:plot1"></span>
@@ -260,7 +248,9 @@ Figure 3.1: plot() with categorical x
 Figure 3.2: plot() with categorical x and continuous y
 </p>
 </div>
-<div class="sourceCode" id="cb78"><pre class="downlit sourceCode r">
+</div>
+<div id="contxy" class="tabcontent">
+<div class="sourceCode" id="cb86"><pre class="downlit sourceCode r">
 <code class="sourceCode R"><span><span class="fu"><a href="https://rdrr.io/r/graphics/plot.default.html">plot</a></span><span class="op">(</span>x <span class="op">=</span> <span class="va">pets</span><span class="op">$</span><span class="va">age</span>, y <span class="op">=</span> <span class="va">pets</span><span class="op">$</span><span class="va">weight</span><span class="op">)</span></span></code></pre></div>
 <div class="figure" style="text-align: center">
 <span style="display:block;" id="fig:plot2"></span>
@@ -268,8 +258,9 @@ Figure 3.2: plot() with categorical x and continuous y
 Figure 3.3: plot() with continuous x and y
 </p>
 </div>
+</div>
 <p>The function <code><a href="https://rdrr.io/r/graphics/hist.html">hist()</a></code> creates a quick histogram so you can see the distribution of your data. You can adjust how many columns are plotted with the argument <code>breaks</code>.</p>
-<div class="sourceCode" id="cb79"><pre class="downlit sourceCode r">
+<div class="sourceCode" id="cb87"><pre class="downlit sourceCode r">
 <code class="sourceCode R"><span><span class="fu"><a href="https://rdrr.io/r/graphics/hist.html">hist</a></span><span class="op">(</span><span class="va">pets</span><span class="op">$</span><span class="va">score</span>, breaks <span class="op">=</span> <span class="fl">20</span><span class="op">)</span></span></code></pre></div>
 <div class="figure" style="text-align: center">
 <span style="display:block;" id="fig:hist"></span>
@@ -282,48 +273,123 @@ Figure 3.4: hist()
 <h2>
 <span class="header-section-number">3.5</span> GGplots<a class="anchor" aria-label="anchor" href="#ggplots"><i class="fas fa-link"></i></a>
 </h2>
-<p>While the functions above are nice for quick visualisations, it's hard to make pretty, publication-ready plots. The package <code>ggplot2</code> (loaded with <code>tidyverse</code>) is one of the most common packages for creating beautiful visualisations.</p>
-<p><code>ggplot2</code> creates plots using a "grammar of graphics" where you add <a class="glossary" target="_blank" title="The geometric style in which data are displayed, such as boxplot, density, or histogram." href="https://psyteachr.github.io/glossary/g#geom">geoms</a> in layers. It can be complex to understand, but it's very powerful once you have a mental model of how it works.</p>
+<p>While the functions above are nice for quick visualisations, it's hard to make pretty, publication-ready plots. The package <code class="package">ggplot2</code> (loaded with <code>tidyverse</code>) is one of the most common packages for creating beautiful visualisations.</p>
+<p><code>ggplot2</code> creates plots using a "grammar of graphics" where you add <a class="glossary" target="_blank" title="The geometric style in which data are displayed, such as boxplot, density, or histogram." href="https://psyteachr.github.io/glossary/g#geom">geoms</a> in layers. It can be complex to understand at first, but it's very powerful once you have a mental model of how it works.</p>
+<p>A grammar of graphics (the "gg" in "ggplot") is a standardised way to describe the components of a graphic. <code class="package">ggplot2</code> uses a layered grammar of graphics, in which plots are built up in a series of layers. It may be helpful to think about any picture as having multiple elements that sit semi-transparently over each other. A good analogy is old Disney movies where artists would create a background and then add moveable elements on top of the background via transparencies.</p>
+<p>Figure <a href="ggplot.html#fig:layers">3.5</a> displays the evolution of a simple plot using this layered approach. First, the plot space is built (layer 1); the variables are specified (layer 2); the type of visualisation (known as a geom) that is desired for these variables is specified (layer 3) - in this case geom_violin() is called to visualise the distribution; the colours are customised (layer 4); the axis labels and ranges are edited for readability (layer 5); and a theme is applied to change the overall appearance of the plot and the legend position is customised (layer 6).</p>
+<div class="figure" style="text-align: center">
+<span style="display:block;" id="fig:layers"></span>
+<img src="03-ggplot_files/figure-html/layers-1.png" alt="Evolution of a layered plot" width="100%"><p class="caption">
+Figure 3.5: Evolution of a layered plot
+</p>
+</div>
+<!-- Tab links -->
+<div class="tab">
+<p><button class="tablinks" onclick="openCity(event, 'layer1')">Layer 1</button>
+<button class="tablinks" onclick="openCity(event, 'layer2')">Layer 2</button>
+<button class="tablinks" onclick="openCity(event, 'layer3')">Layer 3</button>
+<button class="tablinks" onclick="openCity(event, 'layer4')">Layer 4</button>
+<button class="tablinks" onclick="openCity(event, 'layer5')">Layer 5</button>
+<button class="tablinks" onclick="openCity(event, 'layer6')">Layer 6</button></p>
+</div>
+<!-- Tab content -->
+<div id="layer1" class="tabcontent">
 <p>Let's start with a totally empty plot layer created by the <code><a href="https://ggplot2.tidyverse.org/reference/ggplot.html">ggplot()</a></code> function with no arguments.</p>
-<div class="sourceCode" id="cb80"><pre class="downlit sourceCode r">
+<div class="sourceCode" id="cb88"><pre class="downlit sourceCode r">
 <code class="sourceCode R"><span><span class="fu"><a href="https://ggplot2.tidyverse.org/reference/ggplot.html">ggplot</a></span><span class="op">(</span><span class="op">)</span></span></code></pre></div>
 <div class="figure" style="text-align: center">
 <span style="display:block;" id="fig:ggplot-empty"></span>
 <img src="03-ggplot_files/figure-html/ggplot-empty-1.png" alt="A plot base created by ggplot()" width="100%"><p class="caption">
-Figure 3.5: A plot base created by ggplot()
+Figure 3.6: A plot base created by ggplot()
 </p>
 </div>
+</div>
+<div id="layer2" class="tabcontent">
 <p>The first argument to <code><a href="https://ggplot2.tidyverse.org/reference/ggplot.html">ggplot()</a></code> is the <code>data</code> table you want to plot. Let's use the <code>pets</code> data we loaded above. The second argument is the <code>mapping</code> for which columns in your data table correspond to which properties of the plot, such as the <code>x</code>-axis, the <code>y</code>-axis, line <code>colour</code> or <code>linetype</code>, point <code>shape</code>, or object <code>fill</code>. These mappings are specified by the <code><a href="https://ggplot2.tidyverse.org/reference/aes.html">aes()</a></code> function. Just adding this to the <code>ggplot</code> function creates the labels and ranges for the <code>x</code> and <code>y</code> axes. They usually have sensible default values, given your data, but we'll learn how to change them later.</p>
-<div class="sourceCode" id="cb81"><pre class="downlit sourceCode r">
+<div class="sourceCode" id="cb89"><pre class="downlit sourceCode r">
 <code class="sourceCode R"><span><span class="va">mapping</span> <span class="op">&lt;-</span> <span class="fu"><a href="https://ggplot2.tidyverse.org/reference/aes.html">aes</a></span><span class="op">(</span>x <span class="op">=</span> <span class="va">pet</span>, </span>
 <span>               y <span class="op">=</span> <span class="va">score</span>, </span>
 <span>               colour <span class="op">=</span> <span class="va">country</span>, </span>
 <span>               fill <span class="op">=</span> <span class="va">country</span><span class="op">)</span></span>
+<span></span>
 <span><span class="fu"><a href="https://ggplot2.tidyverse.org/reference/ggplot.html">ggplot</a></span><span class="op">(</span>data <span class="op">=</span> <span class="va">pets</span>, mapping <span class="op">=</span> <span class="va">mapping</span><span class="op">)</span></span></code></pre></div>
 <div class="figure" style="text-align: center">
-<span style="display:block;" id="fig:ggplot-labels"></span>
-<img src="03-ggplot_files/figure-html/ggplot-labels-1.png" alt="Empty ggplot with x and y labels" width="100%"><p class="caption">
-Figure 3.6: Empty ggplot with x and y labels
+<span style="display:block;" id="fig:ggplot-aes"></span>
+<img src="03-ggplot_files/figure-html/ggplot-aes-1.png" alt="Empty ggplot with x and y labels" width="100%"><p class="caption">
+Figure 3.7: Empty ggplot with x and y labels
 </p>
 </div>
 <div class="info">
 <p>People usually omit the argument names and just put the <code><a href="https://ggplot2.tidyverse.org/reference/aes.html">aes()</a></code> function directly as the second argument to <code>ggplot</code>. They also usually omit <code>x</code> and <code>y</code> as argument names to <code><a href="https://ggplot2.tidyverse.org/reference/aes.html">aes()</a></code> (but you have to name the other properties).</p>
 </div>
-<p>Next we can add "geoms", or plot styles. You literally add them with the <code>+</code> symbol. You can also add other plot attributes, such as labels, or change the theme and base font size.</p>
-<div class="sourceCode" id="cb82"><pre class="downlit sourceCode r">
+</div>
+<div id="layer3" class="tabcontent">
+<p>Next we can add "geoms", or plot styles. You literally add them with the <code>+</code> symbol. You can customise the appearance of a geom with arguments like <code>alpha</code> (sets transparency).</p>
+<div class="sourceCode" id="cb90"><pre class="downlit sourceCode r">
 <code class="sourceCode R"><span><span class="fu"><a href="https://ggplot2.tidyverse.org/reference/ggplot.html">ggplot</a></span><span class="op">(</span><span class="va">pets</span>, <span class="fu"><a href="https://ggplot2.tidyverse.org/reference/aes.html">aes</a></span><span class="op">(</span><span class="va">pet</span>, <span class="va">score</span>, colour <span class="op">=</span> <span class="va">country</span>, fill <span class="op">=</span> <span class="va">country</span><span class="op">)</span><span class="op">)</span> <span class="op">+</span></span>
-<span>  <span class="fu"><a href="https://ggplot2.tidyverse.org/reference/geom_violin.html">geom_violin</a></span><span class="op">(</span>alpha <span class="op">=</span> <span class="fl">0.5</span><span class="op">)</span> <span class="op">+</span></span>
-<span>  <span class="fu"><a href="https://ggplot2.tidyverse.org/reference/labs.html">labs</a></span><span class="op">(</span>x <span class="op">=</span> <span class="st">"Pet type"</span>,</span>
-<span>       y <span class="op">=</span> <span class="st">"Score on an Important Test"</span>,</span>
-<span>       colour <span class="op">=</span> <span class="st">"Country of Origin"</span>,</span>
-<span>       fill <span class="op">=</span> <span class="st">"Country of Origin"</span>,</span>
-<span>       title <span class="op">=</span> <span class="st">"My first plot!"</span><span class="op">)</span> <span class="op">+</span></span>
-<span>  <span class="fu"><a href="https://ggplot2.tidyverse.org/reference/ggtheme.html">theme_bw</a></span><span class="op">(</span>base_size <span class="op">=</span> <span class="fl">15</span><span class="op">)</span></span></code></pre></div>
+<span>  <span class="fu"><a href="https://ggplot2.tidyverse.org/reference/geom_violin.html">geom_violin</a></span><span class="op">(</span>alpha <span class="op">=</span> <span class="fl">0.5</span><span class="op">)</span></span></code></pre></div>
 <div class="figure" style="text-align: center">
 <span style="display:block;" id="fig:ggplot-geom"></span>
 <img src="03-ggplot_files/figure-html/ggplot-geom-1.png" alt="Violin plot with country represented by colour." width="100%"><p class="caption">
-Figure 3.7: Violin plot with country represented by colour.
+Figure 3.8: Violin plot with country represented by colour.
 </p>
+</div>
+</div>
+<div id="layer4" class="tabcontent">
+<p>The <code>scale_*</code> functions help you to customise the aesthetics.</p>
+<div class="sourceCode" id="cb91"><pre class="downlit sourceCode r">
+<code class="sourceCode R"><span><span class="fu"><a href="https://ggplot2.tidyverse.org/reference/ggplot.html">ggplot</a></span><span class="op">(</span><span class="va">pets</span>, <span class="fu"><a href="https://ggplot2.tidyverse.org/reference/aes.html">aes</a></span><span class="op">(</span><span class="va">pet</span>, <span class="va">score</span>, colour <span class="op">=</span> <span class="va">country</span>, fill <span class="op">=</span> <span class="va">country</span><span class="op">)</span><span class="op">)</span> <span class="op">+</span></span>
+<span>  <span class="fu"><a href="https://ggplot2.tidyverse.org/reference/geom_violin.html">geom_violin</a></span><span class="op">(</span>alpha <span class="op">=</span> <span class="fl">0.5</span><span class="op">)</span> <span class="op">+</span></span>
+<span>  <span class="fu"><a href="https://ggplot2.tidyverse.org/reference/scale_manual.html">scale_fill_manual</a></span><span class="op">(</span>values <span class="op">=</span> <span class="fu"><a href="https://rdrr.io/r/base/c.html">c</a></span><span class="op">(</span><span class="st">"orange"</span>, <span class="st">"orchid"</span><span class="op">)</span><span class="op">)</span> <span class="op">+</span></span>
+<span>  <span class="fu"><a href="https://ggplot2.tidyverse.org/reference/scale_manual.html">scale_colour_manual</a></span><span class="op">(</span>values <span class="op">=</span> <span class="fu"><a href="https://rdrr.io/r/base/c.html">c</a></span><span class="op">(</span><span class="st">"orange"</span>, <span class="st">"orchid"</span><span class="op">)</span><span class="op">)</span></span></code></pre></div>
+<div class="figure" style="text-align: center">
+<span style="display:block;" id="fig:ggplot-color"></span>
+<img src="03-ggplot_files/figure-html/ggplot-color-1.png" alt="Customised colours." width="100%"><p class="caption">
+Figure 3.9: Customised colours.
+</p>
+</div>
+</div>
+<div id="layer5" class="tabcontent">
+<p>Further customise the image by setting the y-axis breaks and limits, and editing the labels.</p>
+<div class="sourceCode" id="cb92"><pre class="downlit sourceCode r">
+<code class="sourceCode R"><span><span class="fu"><a href="https://ggplot2.tidyverse.org/reference/ggplot.html">ggplot</a></span><span class="op">(</span><span class="va">pets</span>, <span class="fu"><a href="https://ggplot2.tidyverse.org/reference/aes.html">aes</a></span><span class="op">(</span><span class="va">pet</span>, <span class="va">score</span>, colour <span class="op">=</span> <span class="va">country</span>, fill <span class="op">=</span> <span class="va">country</span><span class="op">)</span><span class="op">)</span> <span class="op">+</span></span>
+<span>  <span class="fu"><a href="https://ggplot2.tidyverse.org/reference/geom_violin.html">geom_violin</a></span><span class="op">(</span>alpha <span class="op">=</span> <span class="fl">0.5</span><span class="op">)</span> <span class="op">+</span></span>
+<span>  <span class="fu"><a href="https://ggplot2.tidyverse.org/reference/scale_manual.html">scale_fill_manual</a></span><span class="op">(</span>values <span class="op">=</span> <span class="fu"><a href="https://rdrr.io/r/base/c.html">c</a></span><span class="op">(</span><span class="st">"orange"</span>, <span class="st">"orchid"</span><span class="op">)</span><span class="op">)</span> <span class="op">+</span></span>
+<span>  <span class="fu"><a href="https://ggplot2.tidyverse.org/reference/scale_manual.html">scale_colour_manual</a></span><span class="op">(</span>values <span class="op">=</span> <span class="fu"><a href="https://rdrr.io/r/base/c.html">c</a></span><span class="op">(</span><span class="st">"orange"</span>, <span class="st">"orchid"</span><span class="op">)</span><span class="op">)</span> <span class="op">+</span></span>
+<span>  <span class="fu"><a href="https://ggplot2.tidyverse.org/reference/scale_continuous.html">scale_y_continuous</a></span><span class="op">(</span>breaks <span class="op">=</span> <span class="fu"><a href="https://rdrr.io/r/base/c.html">c</a></span><span class="op">(</span><span class="fl">50</span>, <span class="fl">100</span>, <span class="fl">150</span><span class="op">)</span><span class="op">)</span> <span class="op">+</span></span>
+<span>  <span class="fu"><a href="https://ggplot2.tidyverse.org/reference/coord_cartesian.html">coord_cartesian</a></span><span class="op">(</span>ylim <span class="op">=</span> <span class="fu"><a href="https://rdrr.io/r/base/c.html">c</a></span><span class="op">(</span><span class="fl">50</span>, <span class="fl">150</span><span class="op">)</span><span class="op">)</span> <span class="op">+</span></span>
+<span>  <span class="fu"><a href="https://ggplot2.tidyverse.org/reference/labs.html">labs</a></span><span class="op">(</span>x <span class="op">=</span> <span class="st">"Pet type"</span>,</span>
+<span>       y <span class="op">=</span> <span class="st">"Score on an Important Test"</span>,</span>
+<span>       colour <span class="op">=</span> <span class="st">"Country of Origin"</span>,</span>
+<span>       fill <span class="op">=</span> <span class="st">"Country of Origin"</span><span class="op">)</span></span></code></pre></div>
+<div class="figure" style="text-align: center">
+<span style="display:block;" id="fig:ggplot-labels"></span>
+<img src="03-ggplot_files/figure-html/ggplot-labels-1.png" alt="Customised axis labels." width="100%"><p class="caption">
+Figure 3.10: Customised axis labels.
+</p>
+</div>
+</div>
+<div id="layer6" class="tabcontent">
+<p>Finally, change the theme and base font size and customise the legend position.</p>
+<div class="sourceCode" id="cb93"><pre class="downlit sourceCode r">
+<code class="sourceCode R"><span><span class="fu"><a href="https://ggplot2.tidyverse.org/reference/ggplot.html">ggplot</a></span><span class="op">(</span><span class="va">pets</span>, <span class="fu"><a href="https://ggplot2.tidyverse.org/reference/aes.html">aes</a></span><span class="op">(</span><span class="va">pet</span>, <span class="va">score</span>, colour <span class="op">=</span> <span class="va">country</span>, fill <span class="op">=</span> <span class="va">country</span><span class="op">)</span><span class="op">)</span> <span class="op">+</span></span>
+<span>  <span class="fu"><a href="https://ggplot2.tidyverse.org/reference/geom_violin.html">geom_violin</a></span><span class="op">(</span>alpha <span class="op">=</span> <span class="fl">0.5</span><span class="op">)</span> <span class="op">+</span></span>
+<span>  <span class="fu"><a href="https://ggplot2.tidyverse.org/reference/scale_manual.html">scale_fill_manual</a></span><span class="op">(</span>values <span class="op">=</span> <span class="fu"><a href="https://rdrr.io/r/base/c.html">c</a></span><span class="op">(</span><span class="st">"orange"</span>, <span class="st">"orchid"</span><span class="op">)</span><span class="op">)</span> <span class="op">+</span></span>
+<span>  <span class="fu"><a href="https://ggplot2.tidyverse.org/reference/scale_manual.html">scale_colour_manual</a></span><span class="op">(</span>values <span class="op">=</span> <span class="fu"><a href="https://rdrr.io/r/base/c.html">c</a></span><span class="op">(</span><span class="st">"orange"</span>, <span class="st">"orchid"</span><span class="op">)</span><span class="op">)</span> <span class="op">+</span></span>
+<span>  <span class="fu"><a href="https://ggplot2.tidyverse.org/reference/scale_continuous.html">scale_y_continuous</a></span><span class="op">(</span>breaks <span class="op">=</span> <span class="fu"><a href="https://rdrr.io/r/base/c.html">c</a></span><span class="op">(</span><span class="fl">50</span>, <span class="fl">100</span>, <span class="fl">150</span><span class="op">)</span><span class="op">)</span> <span class="op">+</span></span>
+<span>  <span class="fu"><a href="https://ggplot2.tidyverse.org/reference/coord_cartesian.html">coord_cartesian</a></span><span class="op">(</span>ylim <span class="op">=</span> <span class="fu"><a href="https://rdrr.io/r/base/c.html">c</a></span><span class="op">(</span><span class="fl">50</span>, <span class="fl">150</span><span class="op">)</span><span class="op">)</span> <span class="op">+</span></span>
+<span>  <span class="fu"><a href="https://ggplot2.tidyverse.org/reference/labs.html">labs</a></span><span class="op">(</span>x <span class="op">=</span> <span class="st">"Pet type"</span>,</span>
+<span>       y <span class="op">=</span> <span class="st">"Score on an Important Test"</span>,</span>
+<span>       colour <span class="op">=</span> <span class="st">"Country of Origin"</span>,</span>
+<span>       fill <span class="op">=</span> <span class="st">"Country of Origin"</span><span class="op">)</span> <span class="op">+</span></span>
+<span>  <span class="fu"><a href="https://ggplot2.tidyverse.org/reference/ggtheme.html">theme_minimal</a></span><span class="op">(</span>base_size <span class="op">=</span> <span class="fl">13</span><span class="op">)</span> <span class="op">+</span></span>
+<span>  <span class="fu"><a href="https://ggplot2.tidyverse.org/reference/theme.html">theme</a></span><span class="op">(</span>legend.position <span class="op">=</span> <span class="fu"><a href="https://rdrr.io/r/base/c.html">c</a></span><span class="op">(</span><span class="fl">.83</span>, <span class="fl">.17</span><span class="op">)</span><span class="op">)</span></span></code></pre></div>
+<div class="figure" style="text-align: center">
+<span style="display:block;" id="fig:ggplot-theme"></span>
+<img src="03-ggplot_files/figure-html/ggplot-theme-1.png" alt="Customised theme and legend position." width="100%"><p class="caption">
+Figure 3.11: Customised theme and legend position.
+</p>
+</div>
 </div>
 </div>
 <div id="common-plot-types" class="section level2" number="3.6">
@@ -336,13 +402,13 @@ Figure 3.7: Violin plot with country represented by colour.
 <span class="header-section-number">3.6.1</span> Bar plot<a class="anchor" aria-label="anchor" href="#geom_bar"><i class="fas fa-link"></i></a>
 </h3>
 <p>Bar plots are good for categorical data where you want to represent the count.</p>
-<div class="sourceCode" id="cb83"><pre class="downlit sourceCode r">
+<div class="sourceCode" id="cb94"><pre class="downlit sourceCode r">
 <code class="sourceCode R"><span><span class="fu"><a href="https://ggplot2.tidyverse.org/reference/ggplot.html">ggplot</a></span><span class="op">(</span><span class="va">pets</span>, <span class="fu"><a href="https://ggplot2.tidyverse.org/reference/aes.html">aes</a></span><span class="op">(</span><span class="va">pet</span><span class="op">)</span><span class="op">)</span> <span class="op">+</span></span>
 <span>  <span class="fu"><a href="https://ggplot2.tidyverse.org/reference/geom_bar.html">geom_bar</a></span><span class="op">(</span><span class="op">)</span></span></code></pre></div>
 <div class="figure" style="text-align: center">
 <span style="display:block;" id="fig:barplot"></span>
 <img src="03-ggplot_files/figure-html/barplot-1.png" alt="Bar plot" width="100%"><p class="caption">
-Figure 3.8: Bar plot
+Figure 3.12: Bar plot
 </p>
 </div>
 </div>
@@ -351,23 +417,23 @@ Figure 3.8: Bar plot
 <span class="header-section-number">3.6.2</span> Density plot<a class="anchor" aria-label="anchor" href="#geom_density"><i class="fas fa-link"></i></a>
 </h3>
 <p>Density plots are good for one continuous variable, but only if you have a fairly large number of observations.</p>
-<div class="sourceCode" id="cb84"><pre class="downlit sourceCode r">
+<div class="sourceCode" id="cb95"><pre class="downlit sourceCode r">
 <code class="sourceCode R"><span><span class="fu"><a href="https://ggplot2.tidyverse.org/reference/ggplot.html">ggplot</a></span><span class="op">(</span><span class="va">pets</span>, <span class="fu"><a href="https://ggplot2.tidyverse.org/reference/aes.html">aes</a></span><span class="op">(</span><span class="va">score</span><span class="op">)</span><span class="op">)</span> <span class="op">+</span></span>
 <span>  <span class="fu"><a href="https://ggplot2.tidyverse.org/reference/geom_density.html">geom_density</a></span><span class="op">(</span><span class="op">)</span></span></code></pre></div>
 <div class="figure" style="text-align: center">
 <span style="display:block;" id="fig:density"></span>
 <img src="03-ggplot_files/figure-html/density-1.png" alt="Density plot" width="100%"><p class="caption">
-Figure 3.9: Density plot
+Figure 3.13: Density plot
 </p>
 </div>
 <p>You can represent subsets of a variable by assigning the category variable to the argument <code>group</code>, <code>fill</code>, or <code>color</code>.</p>
-<div class="sourceCode" id="cb85"><pre class="downlit sourceCode r">
+<div class="sourceCode" id="cb96"><pre class="downlit sourceCode r">
 <code class="sourceCode R"><span><span class="fu"><a href="https://ggplot2.tidyverse.org/reference/ggplot.html">ggplot</a></span><span class="op">(</span><span class="va">pets</span>, <span class="fu"><a href="https://ggplot2.tidyverse.org/reference/aes.html">aes</a></span><span class="op">(</span><span class="va">score</span>, fill <span class="op">=</span> <span class="va">pet</span><span class="op">)</span><span class="op">)</span> <span class="op">+</span></span>
 <span>  <span class="fu"><a href="https://ggplot2.tidyverse.org/reference/geom_density.html">geom_density</a></span><span class="op">(</span>alpha <span class="op">=</span> <span class="fl">0.5</span><span class="op">)</span></span></code></pre></div>
 <div class="figure" style="text-align: center">
 <span style="display:block;" id="fig:density-grouped"></span>
 <img src="03-ggplot_files/figure-html/density-grouped-1.png" alt="Grouped density plot" width="100%"><p class="caption">
-Figure 3.10: Grouped density plot
+Figure 3.14: Grouped density plot
 </p>
 </div>
 <div class="try">
@@ -379,17 +445,17 @@ Figure 3.10: Grouped density plot
 <span class="header-section-number">3.6.3</span> Frequency polygons<a class="anchor" aria-label="anchor" href="#geom_freqpoly"><i class="fas fa-link"></i></a>
 </h3>
 <p>If you want the y-axis to represent count rather than density, try <code><a href="https://ggplot2.tidyverse.org/reference/geom_histogram.html">geom_freqpoly()</a></code>.</p>
-<div class="sourceCode" id="cb86"><pre class="downlit sourceCode r">
+<div class="sourceCode" id="cb97"><pre class="downlit sourceCode r">
 <code class="sourceCode R"><span><span class="fu"><a href="https://ggplot2.tidyverse.org/reference/ggplot.html">ggplot</a></span><span class="op">(</span><span class="va">pets</span>, <span class="fu"><a href="https://ggplot2.tidyverse.org/reference/aes.html">aes</a></span><span class="op">(</span><span class="va">score</span>, color <span class="op">=</span> <span class="va">pet</span><span class="op">)</span><span class="op">)</span> <span class="op">+</span></span>
 <span>  <span class="fu"><a href="https://ggplot2.tidyverse.org/reference/geom_histogram.html">geom_freqpoly</a></span><span class="op">(</span>binwidth <span class="op">=</span> <span class="fl">5</span><span class="op">)</span></span></code></pre></div>
 <div class="figure" style="text-align: center">
 <span style="display:block;" id="fig:freqpoly"></span>
 <img src="03-ggplot_files/figure-html/freqpoly-1.png" alt="Frequency ploygon plot" width="100%"><p class="caption">
-Figure 3.11: Frequency ploygon plot
+Figure 3.15: Frequency ploygon plot
 </p>
 </div>
 <div class="try">
-<p>Try changing the <code>binwidth</code> argument to 10 and 1. How do you figure out the right value?</p>
+<p>Try changing the <code>binwidth</code> argument to 10 or 1. How do you figure out the right value?</p>
 </div>
 </div>
 <div id="geom_histogram" class="section level3" number="3.6.4">
@@ -397,27 +463,30 @@ Figure 3.11: Frequency ploygon plot
 <span class="header-section-number">3.6.4</span> Histogram<a class="anchor" aria-label="anchor" href="#geom_histogram"><i class="fas fa-link"></i></a>
 </h3>
 <p>Histograms are also good for one continuous variable, and work well if you don't have many observations. Set the <code>binwidth</code> to control how wide each bar is.</p>
-<div class="sourceCode" id="cb87"><pre class="downlit sourceCode r">
+<div class="sourceCode" id="cb98"><pre class="downlit sourceCode r">
 <code class="sourceCode R"><span><span class="fu"><a href="https://ggplot2.tidyverse.org/reference/ggplot.html">ggplot</a></span><span class="op">(</span><span class="va">pets</span>, <span class="fu"><a href="https://ggplot2.tidyverse.org/reference/aes.html">aes</a></span><span class="op">(</span><span class="va">score</span><span class="op">)</span><span class="op">)</span> <span class="op">+</span></span>
-<span>  <span class="fu"><a href="https://ggplot2.tidyverse.org/reference/geom_histogram.html">geom_histogram</a></span><span class="op">(</span>binwidth <span class="op">=</span> <span class="fl">5</span>, fill <span class="op">=</span> <span class="st">"white"</span>, color <span class="op">=</span> <span class="st">"black"</span><span class="op">)</span></span></code></pre></div>
+<span>  <span class="fu"><a href="https://ggplot2.tidyverse.org/reference/geom_histogram.html">geom_histogram</a></span><span class="op">(</span>binwidth <span class="op">=</span> <span class="fl">5</span>, </span>
+<span>                 fill <span class="op">=</span> <span class="st">"white"</span>, </span>
+<span>                 color <span class="op">=</span> <span class="st">"black"</span><span class="op">)</span></span></code></pre></div>
 <div class="figure" style="text-align: center">
 <span style="display:block;" id="fig:histogram"></span>
 <img src="03-ggplot_files/figure-html/histogram-1.png" alt="Histogram" width="100%"><p class="caption">
-Figure 3.12: Histogram
+Figure 3.16: Histogram
 </p>
 </div>
 <div class="info">
 <p>Histograms in ggplot look pretty bad unless you set the <code>fill</code> and <code>color</code>.</p>
 </div>
 <p>If you show grouped histograms, you also probably want to change the default <code>position</code> argument.</p>
-<div class="sourceCode" id="cb88"><pre class="downlit sourceCode r">
+<div class="sourceCode" id="cb99"><pre class="downlit sourceCode r">
 <code class="sourceCode R"><span><span class="fu"><a href="https://ggplot2.tidyverse.org/reference/ggplot.html">ggplot</a></span><span class="op">(</span><span class="va">pets</span>, <span class="fu"><a href="https://ggplot2.tidyverse.org/reference/aes.html">aes</a></span><span class="op">(</span><span class="va">score</span>, fill<span class="op">=</span><span class="va">pet</span><span class="op">)</span><span class="op">)</span> <span class="op">+</span></span>
-<span>  <span class="fu"><a href="https://ggplot2.tidyverse.org/reference/geom_histogram.html">geom_histogram</a></span><span class="op">(</span>binwidth <span class="op">=</span> <span class="fl">5</span>, alpha <span class="op">=</span> <span class="fl">0.5</span>, </span>
+<span>  <span class="fu"><a href="https://ggplot2.tidyverse.org/reference/geom_histogram.html">geom_histogram</a></span><span class="op">(</span>binwidth <span class="op">=</span> <span class="fl">5</span>, </span>
+<span>                 alpha <span class="op">=</span> <span class="fl">0.5</span>, </span>
 <span>                 position <span class="op">=</span> <span class="st">"dodge"</span><span class="op">)</span></span></code></pre></div>
 <div class="figure" style="text-align: center">
 <span style="display:block;" id="fig:histogram-grouped"></span>
 <img src="03-ggplot_files/figure-html/histogram-grouped-1.png" alt="Grouped Histogram" width="100%"><p class="caption">
-Figure 3.13: Grouped Histogram
+Figure 3.17: Grouped Histogram
 </p>
 </div>
 <div class="try">
@@ -429,16 +498,17 @@ Figure 3.13: Grouped Histogram
 <span class="header-section-number">3.6.5</span> Column plot<a class="anchor" aria-label="anchor" href="#geom_col"><i class="fas fa-link"></i></a>
 </h3>
 <p>Column plots are the worst way to represent grouped continuous data, but also one of the most common. If your data are already aggregated (e.g., you have rows for each group with columns for the mean and standard error), you can use <code>geom_bar</code> or <code>geom_col</code> and <code>geom_errorbar</code> directly. If not, you can use the function <code>stat_summary</code> to calculate the mean and standard error and send those numbers to the appropriate geom for plotting.</p>
-<div class="sourceCode" id="cb89"><pre class="downlit sourceCode r">
+<div class="sourceCode" id="cb100"><pre class="downlit sourceCode r">
 <code class="sourceCode R"><span><span class="fu"><a href="https://ggplot2.tidyverse.org/reference/ggplot.html">ggplot</a></span><span class="op">(</span><span class="va">pets</span>, <span class="fu"><a href="https://ggplot2.tidyverse.org/reference/aes.html">aes</a></span><span class="op">(</span><span class="va">pet</span>, <span class="va">score</span>, fill<span class="op">=</span><span class="va">pet</span><span class="op">)</span><span class="op">)</span> <span class="op">+</span></span>
 <span>  <span class="fu"><a href="https://ggplot2.tidyverse.org/reference/stat_summary.html">stat_summary</a></span><span class="op">(</span>fun <span class="op">=</span> <span class="va">mean</span>, geom <span class="op">=</span> <span class="st">"col"</span>, alpha <span class="op">=</span> <span class="fl">0.5</span><span class="op">)</span> <span class="op">+</span> </span>
-<span>  <span class="fu"><a href="https://ggplot2.tidyverse.org/reference/stat_summary.html">stat_summary</a></span><span class="op">(</span>fun.data <span class="op">=</span> <span class="va">mean_se</span>, geom <span class="op">=</span> <span class="st">"errorbar"</span>,</span>
+<span>  <span class="fu"><a href="https://ggplot2.tidyverse.org/reference/stat_summary.html">stat_summary</a></span><span class="op">(</span>fun.data <span class="op">=</span> <span class="va">mean_se</span>, </span>
+<span>               geom <span class="op">=</span> <span class="st">"errorbar"</span>,</span>
 <span>               width <span class="op">=</span> <span class="fl">0.25</span><span class="op">)</span> <span class="op">+</span></span>
 <span>  <span class="fu"><a href="https://ggplot2.tidyverse.org/reference/coord_cartesian.html">coord_cartesian</a></span><span class="op">(</span>ylim <span class="op">=</span> <span class="fu"><a href="https://rdrr.io/r/base/c.html">c</a></span><span class="op">(</span><span class="fl">80</span>, <span class="fl">120</span><span class="op">)</span><span class="op">)</span></span></code></pre></div>
 <div class="figure" style="text-align: center">
 <span style="display:block;" id="fig:colplot-statsum"></span>
 <img src="03-ggplot_files/figure-html/colplot-statsum-1.png" alt="Column plot" width="100%"><p class="caption">
-Figure 3.14: Column plot
+Figure 3.18: Column plot
 </p>
 </div>
 <div class="try">
@@ -450,13 +520,13 @@ Figure 3.14: Column plot
 <span class="header-section-number">3.6.6</span> Boxplot<a class="anchor" aria-label="anchor" href="#geom_boxplot"><i class="fas fa-link"></i></a>
 </h3>
 <p>Boxplots are great for representing the distribution of grouped continuous variables. They fix most of the problems with using bar/column plots for continuous data.</p>
-<div class="sourceCode" id="cb90"><pre class="downlit sourceCode r">
+<div class="sourceCode" id="cb101"><pre class="downlit sourceCode r">
 <code class="sourceCode R"><span><span class="fu"><a href="https://ggplot2.tidyverse.org/reference/ggplot.html">ggplot</a></span><span class="op">(</span><span class="va">pets</span>, <span class="fu"><a href="https://ggplot2.tidyverse.org/reference/aes.html">aes</a></span><span class="op">(</span><span class="va">pet</span>, <span class="va">score</span>, fill<span class="op">=</span><span class="va">pet</span><span class="op">)</span><span class="op">)</span> <span class="op">+</span></span>
 <span>  <span class="fu"><a href="https://ggplot2.tidyverse.org/reference/geom_boxplot.html">geom_boxplot</a></span><span class="op">(</span>alpha <span class="op">=</span> <span class="fl">0.5</span><span class="op">)</span></span></code></pre></div>
 <div class="figure" style="text-align: center">
 <span style="display:block;" id="fig:boxplot"></span>
 <img src="03-ggplot_files/figure-html/boxplot-1.png" alt="Box plot" width="100%"><p class="caption">
-Figure 3.15: Box plot
+Figure 3.19: Box plot
 </p>
 </div>
 </div>
@@ -465,14 +535,15 @@ Figure 3.15: Box plot
 <span class="header-section-number">3.6.7</span> Violin plot<a class="anchor" aria-label="anchor" href="#geom_violin"><i class="fas fa-link"></i></a>
 </h3>
 <p>Violin pots are like sideways, mirrored density plots. They give even more information than a boxplot about distribution and are especially useful when you have non-normal distributions.</p>
-<div class="sourceCode" id="cb91"><pre class="downlit sourceCode r">
+<div class="sourceCode" id="cb102"><pre class="downlit sourceCode r">
 <code class="sourceCode R"><span><span class="fu"><a href="https://ggplot2.tidyverse.org/reference/ggplot.html">ggplot</a></span><span class="op">(</span><span class="va">pets</span>, <span class="fu"><a href="https://ggplot2.tidyverse.org/reference/aes.html">aes</a></span><span class="op">(</span><span class="va">pet</span>, <span class="va">score</span>, fill<span class="op">=</span><span class="va">pet</span><span class="op">)</span><span class="op">)</span> <span class="op">+</span></span>
 <span>  <span class="fu"><a href="https://ggplot2.tidyverse.org/reference/geom_violin.html">geom_violin</a></span><span class="op">(</span>draw_quantiles <span class="op">=</span> <span class="fl">.5</span>,</span>
-<span>              trim <span class="op">=</span> <span class="cn">FALSE</span>, alpha <span class="op">=</span> <span class="fl">0.5</span>,<span class="op">)</span></span></code></pre></div>
+<span>              trim <span class="op">=</span> <span class="cn">FALSE</span>, </span>
+<span>              alpha <span class="op">=</span> <span class="fl">0.5</span><span class="op">)</span></span></code></pre></div>
 <div class="figure" style="text-align: center">
 <span style="display:block;" id="fig:violin"></span>
 <img src="03-ggplot_files/figure-html/violin-1.png" alt="Violin plot" width="100%"><p class="caption">
-Figure 3.16: Violin plot
+Figure 3.20: Violin plot
 </p>
 </div>
 <div class="try">
@@ -485,7 +556,7 @@ Figure 3.16: Violin plot
 </h3>
 <p>Boxplots and violin plots don't always map well onto inferential stats that use the mean. You can represent the mean and standard error or any other value you can calculate.</p>
 <p>Here, we will create a table with the means and standard errors for two groups. We'll learn how to calculate this from raw data in the chapter on <a href="dplyr.html#dplyr">data wrangling</a>. We also create a new object called <code>gg</code> that sets up the base of the plot.</p>
-<div class="sourceCode" id="cb92"><pre class="downlit sourceCode r">
+<div class="sourceCode" id="cb103"><pre class="downlit sourceCode r">
 <code class="sourceCode R"><span><span class="va">dat</span> <span class="op">&lt;-</span> <span class="fu"><a href="https://tibble.tidyverse.org/reference/tibble.html">tibble</a></span><span class="op">(</span></span>
 <span>  group <span class="op">=</span> <span class="fu"><a href="https://rdrr.io/r/base/c.html">c</a></span><span class="op">(</span><span class="st">"A"</span>, <span class="st">"B"</span><span class="op">)</span>,</span>
 <span>  mean <span class="op">=</span> <span class="fu"><a href="https://rdrr.io/r/base/c.html">c</a></span><span class="op">(</span><span class="fl">10</span>, <span class="fl">20</span><span class="op">)</span>,</span>
@@ -495,40 +566,21 @@ Figure 3.16: Violin plot
 <span>                      ymin <span class="op">=</span> <span class="va">mean</span><span class="op">-</span><span class="va">se</span>, </span>
 <span>                      ymax <span class="op">=</span> <span class="va">mean</span><span class="op">+</span><span class="va">se</span><span class="op">)</span><span class="op">)</span></span></code></pre></div>
 <p>The trick above can be useful if you want to represent the same data in different ways. You can add different geoms to the base plot without having to re-type the base plot code.</p>
-<div class="sourceCode" id="cb93"><pre class="downlit sourceCode r">
-<code class="sourceCode R"><span><span class="va">gg</span> <span class="op">+</span> <span class="fu"><a href="https://ggplot2.tidyverse.org/reference/geom_linerange.html">geom_crossbar</a></span><span class="op">(</span><span class="op">)</span></span></code></pre></div>
+<div class="sourceCode" id="cb104"><pre class="downlit sourceCode r">
+<code class="sourceCode R"><span><span class="va">cb</span> <span class="op">&lt;-</span> <span class="va">gg</span> <span class="op">+</span> <span class="fu"><a href="https://ggplot2.tidyverse.org/reference/geom_linerange.html">geom_crossbar</a></span><span class="op">(</span><span class="op">)</span> <span class="op">+</span> <span class="fu"><a href="https://ggplot2.tidyverse.org/reference/labs.html">ggtitle</a></span><span class="op">(</span><span class="st">"geom_crossbar()"</span><span class="op">)</span></span>
+<span><span class="va">eb</span> <span class="op">&lt;-</span> <span class="va">gg</span> <span class="op">+</span> <span class="fu"><a href="https://ggplot2.tidyverse.org/reference/geom_linerange.html">geom_errorbar</a></span><span class="op">(</span><span class="op">)</span> <span class="op">+</span> <span class="fu"><a href="https://ggplot2.tidyverse.org/reference/labs.html">ggtitle</a></span><span class="op">(</span><span class="st">"geom_errorbar()"</span><span class="op">)</span></span>
+<span><span class="va">lr</span> <span class="op">&lt;-</span> <span class="va">gg</span> <span class="op">+</span> <span class="fu"><a href="https://ggplot2.tidyverse.org/reference/geom_linerange.html">geom_linerange</a></span><span class="op">(</span><span class="op">)</span> <span class="op">+</span> <span class="fu"><a href="https://ggplot2.tidyverse.org/reference/labs.html">ggtitle</a></span><span class="op">(</span><span class="st">"geom_linerange()"</span><span class="op">)</span></span>
+<span><span class="va">pr</span> <span class="op">&lt;-</span> <span class="va">gg</span> <span class="op">+</span> <span class="fu"><a href="https://ggplot2.tidyverse.org/reference/geom_linerange.html">geom_pointrange</a></span><span class="op">(</span><span class="op">)</span> <span class="op">+</span> <span class="fu"><a href="https://ggplot2.tidyverse.org/reference/labs.html">ggtitle</a></span><span class="op">(</span><span class="st">"geom_pointrange()"</span><span class="op">)</span></span>
+<span></span>
+<span><span class="va">cb</span> <span class="op">+</span> <span class="va">eb</span> <span class="op">+</span> <span class="va">lr</span> <span class="op">+</span> <span class="va">pr</span> <span class="co"># combine with patchwork package</span></span></code></pre></div>
 <div class="figure" style="text-align: center">
 <span style="display:block;" id="fig:geom-crossbar"></span>
-<img src="03-ggplot_files/figure-html/geom-crossbar-1.png" alt="geom_crossbar()" width="100%"><p class="caption">
-Figure 3.17: geom_crossbar()
-</p>
-</div>
-<div class="sourceCode" id="cb94"><pre class="downlit sourceCode r">
-<code class="sourceCode R"><span><span class="va">gg</span> <span class="op">+</span> <span class="fu"><a href="https://ggplot2.tidyverse.org/reference/geom_linerange.html">geom_errorbar</a></span><span class="op">(</span><span class="op">)</span></span></code></pre></div>
-<div class="figure" style="text-align: center">
-<span style="display:block;" id="fig:geom-errorbar"></span>
-<img src="03-ggplot_files/figure-html/geom-errorbar-1.png" alt="geom_errorbar()" width="100%"><p class="caption">
-Figure 3.18: geom_errorbar()
-</p>
-</div>
-<div class="sourceCode" id="cb95"><pre class="downlit sourceCode r">
-<code class="sourceCode R"><span><span class="va">gg</span> <span class="op">+</span> <span class="fu"><a href="https://ggplot2.tidyverse.org/reference/geom_linerange.html">geom_linerange</a></span><span class="op">(</span><span class="op">)</span></span></code></pre></div>
-<div class="figure" style="text-align: center">
-<span style="display:block;" id="fig:geom-linerange"></span>
-<img src="03-ggplot_files/figure-html/geom-linerange-1.png" alt="geom_linerange()" width="100%"><p class="caption">
-Figure 3.19: geom_linerange()
-</p>
-</div>
-<div class="sourceCode" id="cb96"><pre class="downlit sourceCode r">
-<code class="sourceCode R"><span><span class="va">gg</span> <span class="op">+</span> <span class="fu"><a href="https://ggplot2.tidyverse.org/reference/geom_linerange.html">geom_pointrange</a></span><span class="op">(</span><span class="op">)</span></span></code></pre></div>
-<div class="figure" style="text-align: center">
-<span style="display:block;" id="fig:geom-pointrange"></span>
-<img src="03-ggplot_files/figure-html/geom-pointrange-1.png" alt="geom_pointrange()" width="100%"><p class="caption">
-Figure 3.20: geom_pointrange()
+<img src="03-ggplot_files/figure-html/geom-crossbar-1.png" alt="Four different styles of vertical interval" width="100%"><p class="caption">
+Figure 3.21: Four different styles of vertical interval
 </p>
 </div>
 <p>You can also use the function <code>stats_summary</code> to calculate mean, standard error, or any other value for your data and display it using any geom.</p>
-<div class="sourceCode" id="cb97"><pre class="downlit sourceCode r">
+<div class="sourceCode" id="cb105"><pre class="downlit sourceCode r">
 <code class="sourceCode R"><span><span class="fu"><a href="https://ggplot2.tidyverse.org/reference/ggplot.html">ggplot</a></span><span class="op">(</span><span class="va">pets</span>, <span class="fu"><a href="https://ggplot2.tidyverse.org/reference/aes.html">aes</a></span><span class="op">(</span><span class="va">pet</span>, <span class="va">score</span>, color<span class="op">=</span><span class="va">pet</span><span class="op">)</span><span class="op">)</span> <span class="op">+</span></span>
 <span>  <span class="fu"><a href="https://ggplot2.tidyverse.org/reference/stat_summary.html">stat_summary</a></span><span class="op">(</span>fun.data <span class="op">=</span> <span class="va">mean_se</span>, geom <span class="op">=</span> <span class="st">"crossbar"</span><span class="op">)</span> <span class="op">+</span></span>
 <span>  <span class="fu"><a href="https://ggplot2.tidyverse.org/reference/stat_summary.html">stat_summary</a></span><span class="op">(</span>fun.min <span class="op">=</span> <span class="kw">function</span><span class="op">(</span><span class="va">x</span><span class="op">)</span> <span class="fu"><a href="https://rdrr.io/r/base/mean.html">mean</a></span><span class="op">(</span><span class="va">x</span><span class="op">)</span> <span class="op">-</span> <span class="fu"><a href="https://rdrr.io/r/stats/sd.html">sd</a></span><span class="op">(</span><span class="va">x</span><span class="op">)</span>,</span>
@@ -538,7 +590,7 @@ Figure 3.20: geom_pointrange()
 <div class="figure" style="text-align: center">
 <span style="display:block;" id="fig:vertint-statssum"></span>
 <img src="03-ggplot_files/figure-html/vertint-statssum-1.png" alt="Vertical intervals with stats_summary()" width="100%"><p class="caption">
-Figure 3.21: Vertical intervals with stats_summary()
+Figure 3.22: Vertical intervals with stats_summary()
 </p>
 </div>
 </div>
@@ -547,13 +599,13 @@ Figure 3.21: Vertical intervals with stats_summary()
 <span class="header-section-number">3.6.9</span> Scatter plot<a class="anchor" aria-label="anchor" href="#geom_point"><i class="fas fa-link"></i></a>
 </h3>
 <p>Scatter plots are a good way to represent the relationship between two continuous variables.</p>
-<div class="sourceCode" id="cb98"><pre class="downlit sourceCode r">
-<code class="sourceCode R"><span><span class="fu"><a href="https://ggplot2.tidyverse.org/reference/ggplot.html">ggplot</a></span><span class="op">(</span><span class="va">pets</span>, <span class="fu"><a href="https://ggplot2.tidyverse.org/reference/aes.html">aes</a></span><span class="op">(</span><span class="va">age</span>, <span class="va">score</span>, color <span class="op">=</span> <span class="va">pet</span><span class="op">)</span><span class="op">)</span> <span class="op">+</span></span>
+<div class="sourceCode" id="cb106"><pre class="downlit sourceCode r">
+<code class="sourceCode R"><span><span class="fu"><a href="https://ggplot2.tidyverse.org/reference/ggplot.html">ggplot</a></span><span class="op">(</span><span class="va">pets</span>, <span class="fu"><a href="https://ggplot2.tidyverse.org/reference/aes.html">aes</a></span><span class="op">(</span><span class="va">weight</span>, <span class="va">score</span>, color <span class="op">=</span> <span class="va">pet</span><span class="op">)</span><span class="op">)</span> <span class="op">+</span></span>
 <span>  <span class="fu"><a href="https://ggplot2.tidyverse.org/reference/geom_point.html">geom_point</a></span><span class="op">(</span><span class="op">)</span></span></code></pre></div>
 <div class="figure" style="text-align: center">
 <span style="display:block;" id="fig:scatter"></span>
 <img src="03-ggplot_files/figure-html/scatter-1.png" alt="Scatter plot using geom_point()" width="100%"><p class="caption">
-Figure 3.22: Scatter plot using geom_point()
+Figure 3.23: Scatter plot using geom_point()
 </p>
 </div>
 </div>
@@ -562,21 +614,25 @@ Figure 3.22: Scatter plot using geom_point()
 <span class="header-section-number">3.6.10</span> Line graph<a class="anchor" aria-label="anchor" href="#geom_smooth"><i class="fas fa-link"></i></a>
 </h3>
 <p>You often want to represent the relationship as a single line.</p>
-<div class="sourceCode" id="cb99"><pre class="downlit sourceCode r">
-<code class="sourceCode R"><span><span class="fu"><a href="https://ggplot2.tidyverse.org/reference/ggplot.html">ggplot</a></span><span class="op">(</span><span class="va">pets</span>, <span class="fu"><a href="https://ggplot2.tidyverse.org/reference/aes.html">aes</a></span><span class="op">(</span><span class="va">age</span>, <span class="va">score</span>, color <span class="op">=</span> <span class="va">pet</span><span class="op">)</span><span class="op">)</span> <span class="op">+</span></span>
+<div class="sourceCode" id="cb107"><pre class="downlit sourceCode r">
+<code class="sourceCode R"><span><span class="fu"><a href="https://ggplot2.tidyverse.org/reference/ggplot.html">ggplot</a></span><span class="op">(</span><span class="va">pets</span>, <span class="fu"><a href="https://ggplot2.tidyverse.org/reference/aes.html">aes</a></span><span class="op">(</span><span class="va">weight</span>, <span class="va">score</span>, color <span class="op">=</span> <span class="va">pet</span><span class="op">)</span><span class="op">)</span> <span class="op">+</span></span>
 <span>  <span class="fu"><a href="https://ggplot2.tidyverse.org/reference/geom_smooth.html">geom_smooth</a></span><span class="op">(</span>formula <span class="op">=</span> <span class="va">y</span> <span class="op">~</span> <span class="va">x</span>, method<span class="op">=</span><span class="st">"lm"</span><span class="op">)</span></span></code></pre></div>
 <div class="figure" style="text-align: center">
 <span style="display:block;" id="fig:smooth"></span>
 <img src="03-ggplot_files/figure-html/smooth-1.png" alt="Line plot using geom_smooth()" width="100%"><p class="caption">
-Figure 3.23: Line plot using geom_smooth()
+Figure 3.24: Line plot using geom_smooth()
 </p>
 </div>
 <div class="try">
 <p>What are some other options for the <code>method</code> argument to <code>geom_smooth</code>? When might you want to use them?</p>
 </div>
+<div class="webex-solution">
+<button>
+Bonus: Non-Linear Plots
+</button>
 <div class="info">
 <p>You can plot functions other than the linear <code>y ~ x</code>. The code below creates a data table where <code>x</code> is 101 values between -10 and 10. and <code>y</code> is <code>x</code> squared plus <code>3*x</code> plus <code>1</code>. You'll probably recognise this from algebra as the quadratic equation. You can set the <code>formula</code> argument in <code>geom_smooth</code> to a quadratic formula (<code>y ~ x + I(x^2)</code>) to fit a quadratic function to the data.</p>
-<div class="sourceCode" id="cb100"><pre class="downlit sourceCode r">
+<div class="sourceCode" id="cb108"><pre class="downlit sourceCode r">
 <code class="sourceCode R"><span><span class="va">quad</span> <span class="op">&lt;-</span> <span class="fu"><a href="https://tibble.tidyverse.org/reference/tibble.html">tibble</a></span><span class="op">(</span></span>
 <span>  x <span class="op">=</span> <span class="fu"><a href="https://rdrr.io/r/base/seq.html">seq</a></span><span class="op">(</span><span class="op">-</span><span class="fl">10</span>, <span class="fl">10</span>, length.out <span class="op">=</span> <span class="fl">101</span><span class="op">)</span>,</span>
 <span>  y <span class="op">=</span> <span class="va">x</span><span class="op">^</span><span class="fl">2</span> <span class="op">+</span> <span class="fl">3</span><span class="op">*</span><span class="va">x</span> <span class="op">+</span> <span class="fl">1</span></span>
@@ -589,8 +645,9 @@ Figure 3.23: Line plot using geom_smooth()
 <div class="figure" style="text-align: center">
 <span style="display:block;" id="fig:quadratic"></span>
 <img src="03-ggplot_files/figure-html/quadratic-1.png" alt="Fitting quadratic functions" width="100%"><p class="caption">
-Figure 3.24: Fitting quadratic functions
+Figure 3.25: Fitting quadratic functions
 </p>
+</div>
 </div>
 </div>
 </div>
@@ -604,7 +661,7 @@ Figure 3.24: Fitting quadratic functions
 <span class="header-section-number">3.7.1</span> Size and Position<a class="anchor" aria-label="anchor" href="#custom-size"><i class="fas fa-link"></i></a>
 </h3>
 <p>You can change the size, aspect ratio and position of plots in an R Markdown document in the setup chunk.</p>
-<div class="sourceCode" id="cb101"><pre class="downlit sourceCode r">
+<div class="sourceCode" id="cb109"><pre class="downlit sourceCode r">
 <code class="sourceCode R"><span><span class="fu">knitr</span><span class="fu">::</span><span class="va"><a href="https://rdrr.io/pkg/knitr/man/opts_chunk.html">opts_chunk</a></span><span class="op">$</span><span class="fu">set</span><span class="op">(</span></span>
 <span>  fig.width  <span class="op">=</span> <span class="fl">8</span>, <span class="co"># figures default to 8 inches wide</span></span>
 <span>  fig.height <span class="op">=</span> <span class="fl">5</span>, <span class="co"># figures default to 5 inches tall</span></span>
@@ -614,29 +671,29 @@ Figure 3.24: Fitting quadratic functions
 <span><span class="op">)</span></span></code></pre></div>
 <p>You can change defaults for any single image using <a class="glossary" target="_blank" title="A section of code in an R Markdown file" href="https://psyteachr.github.io/glossary/c#chunk">chunk</a> options.</p>
 <div class="verbatim">
-<pre class="sourceCode r"><code class="sourceCode R">```{r fig-pet1, fig.width=10, fig.height=3, out.width="100%", fig.align="center", fig.cap="10x3 inches at 100% width centre aligned."}</code></pre>
-<div class="sourceCode" id="cb102"><pre class="downlit sourceCode r">
-<code class="sourceCode R"><span><span class="fu"><a href="https://ggplot2.tidyverse.org/reference/ggplot.html">ggplot</a></span><span class="op">(</span><span class="va">pets</span>, <span class="fu"><a href="https://ggplot2.tidyverse.org/reference/aes.html">aes</a></span><span class="op">(</span><span class="va">age</span>, <span class="va">score</span>, color <span class="op">=</span> <span class="va">pet</span><span class="op">)</span><span class="op">)</span> <span class="op">+</span></span>
+<pre class="sourceCode r"><code class="sourceCode R">```{r fig-pet1, fig.width=10, fig.height=3, out.width="100%", fig.align="center"}</code></pre>
+<div class="sourceCode" id="cb110"><pre class="downlit sourceCode r">
+<code class="sourceCode R"><span><span class="fu"><a href="https://ggplot2.tidyverse.org/reference/ggplot.html">ggplot</a></span><span class="op">(</span><span class="va">pets</span>, <span class="fu"><a href="https://ggplot2.tidyverse.org/reference/aes.html">aes</a></span><span class="op">(</span><span class="va">weight</span>, <span class="va">score</span>, color <span class="op">=</span> <span class="va">pet</span><span class="op">)</span><span class="op">)</span> <span class="op">+</span></span>
 <span>  <span class="fu"><a href="https://ggplot2.tidyverse.org/reference/geom_smooth.html">geom_smooth</a></span><span class="op">(</span>formula <span class="op">=</span> <span class="va">y</span><span class="op">~</span><span class="va">x</span>, method <span class="op">=</span> <span class="va">lm</span><span class="op">)</span></span></code></pre></div>
 <pre class="sourceCode r"><code class="sourceCode R">```</code></pre>
 </div>
 <div class="figure" style="text-align: center">
 <span style="display:block;" id="fig:fig-chunk-example1-out"></span>
 <img src="images/fig-chunk-example1-out-1.png" alt="10x3 inches at 100% width centre aligned." width="100%"><p class="caption">
-Figure 3.25: 10x3 inches at 100% width centre aligned.
+Figure 3.26: 10x3 inches at 100% width centre aligned.
 </p>
 </div>
 <div class="verbatim">
-<pre class="sourceCode r"><code class="sourceCode R">```{r fig-pet2, fig.width=5, fig.height=3, out.width="50%", fig.align="left", fig.cap="5x3 inches at 50% width aligned left."}</code></pre>
-<div class="sourceCode" id="cb103"><pre class="downlit sourceCode r">
-<code class="sourceCode R"><span><span class="fu"><a href="https://ggplot2.tidyverse.org/reference/ggplot.html">ggplot</a></span><span class="op">(</span><span class="va">pets</span>, <span class="fu"><a href="https://ggplot2.tidyverse.org/reference/aes.html">aes</a></span><span class="op">(</span><span class="va">age</span>, <span class="va">score</span>, color <span class="op">=</span> <span class="va">pet</span><span class="op">)</span><span class="op">)</span> <span class="op">+</span></span>
+<pre class="sourceCode r"><code class="sourceCode R">```{r fig-pet2, fig.width=5, fig.height=3, out.width="50%", fig.align="left"}</code></pre>
+<div class="sourceCode" id="cb111"><pre class="downlit sourceCode r">
+<code class="sourceCode R"><span><span class="fu"><a href="https://ggplot2.tidyverse.org/reference/ggplot.html">ggplot</a></span><span class="op">(</span><span class="va">pets</span>, <span class="fu"><a href="https://ggplot2.tidyverse.org/reference/aes.html">aes</a></span><span class="op">(</span><span class="va">weight</span>, <span class="va">score</span>, color <span class="op">=</span> <span class="va">pet</span><span class="op">)</span><span class="op">)</span> <span class="op">+</span></span>
 <span>  <span class="fu"><a href="https://ggplot2.tidyverse.org/reference/geom_smooth.html">geom_smooth</a></span><span class="op">(</span>formula <span class="op">=</span> <span class="va">y</span><span class="op">~</span><span class="va">x</span>, method <span class="op">=</span> <span class="va">lm</span><span class="op">)</span></span></code></pre></div>
 <pre class="sourceCode r"><code class="sourceCode R">```</code></pre>
 </div>
 <div class="figure" style="text-align: left">
 <span style="display:block;" id="fig:fig-chunk-example2-out"></span>
 <img src="images/fig-chunk-example2-out-1.png" alt="5x3 inches at 50% width aligned left." width="50%"><p class="caption">
-Figure 3.26: 5x3 inches at 50% width aligned left.
+Figure 3.27: 5x3 inches at 50% width aligned left.
 </p>
 </div>
 </div>
@@ -645,51 +702,51 @@ Figure 3.26: 5x3 inches at 50% width aligned left.
 <span class="header-section-number">3.7.2</span> Labels<a class="anchor" aria-label="anchor" href="#custom-labels"><i class="fas fa-link"></i></a>
 </h3>
 <p>You can set custom titles and axis labels in a few different ways.</p>
-<div class="sourceCode" id="cb104"><pre class="downlit sourceCode r">
-<code class="sourceCode R"><span><span class="fu"><a href="https://ggplot2.tidyverse.org/reference/ggplot.html">ggplot</a></span><span class="op">(</span><span class="va">pets</span>, <span class="fu"><a href="https://ggplot2.tidyverse.org/reference/aes.html">aes</a></span><span class="op">(</span><span class="va">age</span>, <span class="va">score</span>, color <span class="op">=</span> <span class="va">pet</span><span class="op">)</span><span class="op">)</span> <span class="op">+</span></span>
+<div class="sourceCode" id="cb112"><pre class="downlit sourceCode r">
+<code class="sourceCode R"><span><span class="fu"><a href="https://ggplot2.tidyverse.org/reference/ggplot.html">ggplot</a></span><span class="op">(</span><span class="va">pets</span>, <span class="fu"><a href="https://ggplot2.tidyverse.org/reference/aes.html">aes</a></span><span class="op">(</span><span class="va">weight</span>, <span class="va">score</span>, color <span class="op">=</span> <span class="va">pet</span><span class="op">)</span><span class="op">)</span> <span class="op">+</span></span>
 <span>  <span class="fu"><a href="https://ggplot2.tidyverse.org/reference/geom_smooth.html">geom_smooth</a></span><span class="op">(</span>formula <span class="op">=</span> <span class="va">y</span> <span class="op">~</span> <span class="va">x</span>, method<span class="op">=</span><span class="st">"lm"</span><span class="op">)</span> <span class="op">+</span></span>
-<span>  <span class="fu"><a href="https://ggplot2.tidyverse.org/reference/labs.html">labs</a></span><span class="op">(</span>title <span class="op">=</span> <span class="st">"Pet Score with Age"</span>,</span>
-<span>       x <span class="op">=</span> <span class="st">"Age (in Years)"</span>,</span>
+<span>  <span class="fu"><a href="https://ggplot2.tidyverse.org/reference/labs.html">labs</a></span><span class="op">(</span>title <span class="op">=</span> <span class="st">"Pet Score by Weight and Type"</span>,</span>
+<span>       x <span class="op">=</span> <span class="st">"Weight (in kg)"</span>,</span>
 <span>       y <span class="op">=</span> <span class="st">"Pet Score"</span>,</span>
 <span>       color <span class="op">=</span> <span class="st">"Pet Type"</span><span class="op">)</span></span></code></pre></div>
 <div class="figure" style="text-align: center">
 <span style="display:block;" id="fig:line-labels1"></span>
 <img src="images/line-labels1-1.png" alt="Set custom labels with labs()" width="90%"><p class="caption">
-Figure 3.27: Set custom labels with labs()
+Figure 3.28: Set custom labels with labs()
 </p>
 </div>
-<div class="sourceCode" id="cb105"><pre class="downlit sourceCode r">
-<code class="sourceCode R"><span><span class="fu"><a href="https://ggplot2.tidyverse.org/reference/ggplot.html">ggplot</a></span><span class="op">(</span><span class="va">pets</span>, <span class="fu"><a href="https://ggplot2.tidyverse.org/reference/aes.html">aes</a></span><span class="op">(</span><span class="va">age</span>, <span class="va">score</span>, color <span class="op">=</span> <span class="va">pet</span><span class="op">)</span><span class="op">)</span> <span class="op">+</span></span>
+<div class="sourceCode" id="cb113"><pre class="downlit sourceCode r">
+<code class="sourceCode R"><span><span class="fu"><a href="https://ggplot2.tidyverse.org/reference/ggplot.html">ggplot</a></span><span class="op">(</span><span class="va">pets</span>, <span class="fu"><a href="https://ggplot2.tidyverse.org/reference/aes.html">aes</a></span><span class="op">(</span><span class="va">weight</span>, <span class="va">score</span>, color <span class="op">=</span> <span class="va">pet</span><span class="op">)</span><span class="op">)</span> <span class="op">+</span></span>
 <span>  <span class="fu"><a href="https://ggplot2.tidyverse.org/reference/geom_smooth.html">geom_smooth</a></span><span class="op">(</span>formula <span class="op">=</span> <span class="va">y</span> <span class="op">~</span> <span class="va">x</span>, method<span class="op">=</span><span class="st">"lm"</span><span class="op">)</span> <span class="op">+</span></span>
-<span>  <span class="fu"><a href="https://ggplot2.tidyverse.org/reference/labs.html">ggtitle</a></span><span class="op">(</span><span class="st">"Pet Score with Age"</span><span class="op">)</span> <span class="op">+</span></span>
-<span>  <span class="fu"><a href="https://ggplot2.tidyverse.org/reference/labs.html">xlab</a></span><span class="op">(</span><span class="st">"Age (in Years)"</span><span class="op">)</span> <span class="op">+</span></span>
+<span>  <span class="fu"><a href="https://ggplot2.tidyverse.org/reference/labs.html">ggtitle</a></span><span class="op">(</span><span class="st">"Pet Score by Weight and Type"</span><span class="op">)</span> <span class="op">+</span></span>
+<span>  <span class="fu"><a href="https://ggplot2.tidyverse.org/reference/labs.html">xlab</a></span><span class="op">(</span><span class="st">"Weight (in kg)"</span><span class="op">)</span> <span class="op">+</span></span>
 <span>  <span class="fu"><a href="https://ggplot2.tidyverse.org/reference/labs.html">ylab</a></span><span class="op">(</span><span class="st">"Pet Score"</span><span class="op">)</span></span></code></pre></div>
 <div class="figure" style="text-align: center">
 <span style="display:block;" id="fig:line-labels2"></span>
 <img src="images/line-labels2-1.png" alt="Set custom labels with individual functions" width="90%"><p class="caption">
-Figure 3.28: Set custom labels with individual functions
+Figure 3.29: Set custom labels with individual functions
 </p>
 </div>
 <p>The functions <code><span><span class="fu">labs</span><span class="op">(</span><span class="op">)</span></span></code>, <code><span><span class="fu">xlab</span><span class="op">(</span><span class="op">)</span></span></code>, and <code><span><span class="fu">ylab</span><span class="op">(</span><span class="op">)</span></span></code> are convenient when you just want to change a label name, but the <code>scale_{aesthetic}_{type}</code> functions are worth learning because they let you customise many things about any aesthetic property (e.g., <code>x</code>, <code>y</code>, <code>colour</code>, <code>fill</code>, <code>shape</code>, <code>linetype</code>), as long as you choose the correct type (usually <code>continuous</code> or <code>discrete</code>, but there are also special scale functions for other data types like dates).</p>
-<div class="sourceCode" id="cb106"><pre class="downlit sourceCode r">
-<code class="sourceCode R"><span><span class="fu"><a href="https://ggplot2.tidyverse.org/reference/ggplot.html">ggplot</a></span><span class="op">(</span><span class="va">pets</span>, <span class="fu"><a href="https://ggplot2.tidyverse.org/reference/aes.html">aes</a></span><span class="op">(</span><span class="va">age</span>, <span class="va">score</span>, color <span class="op">=</span> <span class="va">pet</span><span class="op">)</span><span class="op">)</span> <span class="op">+</span></span>
+<div class="sourceCode" id="cb114"><pre class="downlit sourceCode r">
+<code class="sourceCode R"><span><span class="fu"><a href="https://ggplot2.tidyverse.org/reference/ggplot.html">ggplot</a></span><span class="op">(</span><span class="va">pets</span>, <span class="fu"><a href="https://ggplot2.tidyverse.org/reference/aes.html">aes</a></span><span class="op">(</span><span class="va">weight</span>, <span class="va">score</span>, color <span class="op">=</span> <span class="va">pet</span><span class="op">)</span><span class="op">)</span> <span class="op">+</span></span>
 <span>  <span class="fu"><a href="https://ggplot2.tidyverse.org/reference/geom_smooth.html">geom_smooth</a></span><span class="op">(</span>formula <span class="op">=</span> <span class="va">y</span> <span class="op">~</span> <span class="va">x</span>, method<span class="op">=</span><span class="st">"lm"</span><span class="op">)</span> <span class="op">+</span></span>
-<span>  <span class="fu"><a href="https://ggplot2.tidyverse.org/reference/labs.html">ggtitle</a></span><span class="op">(</span><span class="st">"Pet Score with Age"</span><span class="op">)</span> <span class="op">+</span></span>
-<span>  <span class="fu"><a href="https://ggplot2.tidyverse.org/reference/scale_continuous.html">scale_x_continuous</a></span><span class="op">(</span>name <span class="op">=</span> <span class="st">"Age (in Years)"</span>, </span>
-<span>                     breaks <span class="op">=</span> <span class="fl">0</span><span class="op">:</span><span class="fl">16</span>,</span>
+<span>  <span class="fu"><a href="https://ggplot2.tidyverse.org/reference/labs.html">ggtitle</a></span><span class="op">(</span><span class="st">"Pet Score by Weight and Type"</span><span class="op">)</span> <span class="op">+</span></span>
+<span>  <span class="fu"><a href="https://ggplot2.tidyverse.org/reference/scale_continuous.html">scale_x_continuous</a></span><span class="op">(</span>name <span class="op">=</span> <span class="st">"Weight (in kg)"</span>, </span>
+<span>                     breaks <span class="op">=</span> <span class="fu"><a href="https://rdrr.io/r/base/seq.html">seq</a></span><span class="op">(</span><span class="fl">0</span>, <span class="fl">26</span>, <span class="fl">2</span><span class="op">)</span>,</span>
 <span>                     minor_breaks <span class="op">=</span> <span class="cn">NULL</span>, </span>
-<span>                     trans <span class="op">=</span> <span class="st">"reverse"</span>,</span>
 <span>                     position <span class="op">=</span> <span class="st">"top"</span><span class="op">)</span> <span class="op">+</span></span>
 <span>  <span class="fu"><a href="https://ggplot2.tidyverse.org/reference/scale_continuous.html">scale_y_continuous</a></span><span class="op">(</span>name <span class="op">=</span> <span class="st">"Pet Score"</span>, </span>
 <span>                     n.breaks <span class="op">=</span> <span class="fl">16</span>, </span>
-<span>                     limits <span class="op">=</span> <span class="fu"><a href="https://rdrr.io/r/base/c.html">c</a></span><span class="op">(</span><span class="fl">0</span>, <span class="fl">150</span><span class="op">)</span><span class="op">)</span> <span class="op">+</span></span>
+<span>                     trans <span class="op">=</span> <span class="st">"reverse"</span>,</span>
+<span>                     limits <span class="op">=</span> <span class="fu"><a href="https://rdrr.io/r/base/c.html">c</a></span><span class="op">(</span><span class="fl">150</span>, <span class="fl">0</span><span class="op">)</span><span class="op">)</span> <span class="op">+</span></span>
 <span>  <span class="fu"><a href="https://ggplot2.tidyverse.org/reference/scale_colour_discrete.html">scale_color_discrete</a></span><span class="op">(</span>name <span class="op">=</span> <span class="st">"Pet Type"</span>, </span>
 <span>                       labels <span class="op">=</span> <span class="fu"><a href="https://rdrr.io/r/base/c.html">c</a></span><span class="op">(</span><span class="st">"Dogs"</span>, <span class="st">"Cats"</span>, <span class="st">"Ferrets"</span><span class="op">)</span>, </span>
 <span>                       type <span class="op">=</span> <span class="fu"><a href="https://rdrr.io/r/base/c.html">c</a></span><span class="op">(</span><span class="st">"purple"</span>, <span class="st">"green"</span>, <span class="st">"orange"</span><span class="op">)</span><span class="op">)</span></span></code></pre></div>
 <div class="figure" style="text-align: center">
 <span style="display:block;" id="fig:line-labels3"></span>
 <img src="images/line-labels3-1.png" alt="Set custom labels with scale functions" width="90%"><p class="caption">
-Figure 3.29: Set custom labels with scale functions
+Figure 3.30: Set custom labels with scale functions
 </p>
 </div>
 <div class="try">
@@ -701,7 +758,7 @@ Figure 3.29: Set custom labels with scale functions
 <span class="header-section-number">3.7.3</span> Colours<a class="anchor" aria-label="anchor" href="#custom-colours"><i class="fas fa-link"></i></a>
 </h3>
 <p>You can set custom values for colour and fill using the <code>scale_{aesthetic}_{type}</code> functions like <code><a href="https://ggplot2.tidyverse.org/reference/scale_manual.html">scale_colour_manual()</a></code> or <code><a href="https://ggplot2.tidyverse.org/reference/scale_manual.html">scale_fill_manual()</a></code>.</p>
-<div class="sourceCode" id="cb107"><pre class="downlit sourceCode r">
+<div class="sourceCode" id="cb115"><pre class="downlit sourceCode r">
 <code class="sourceCode R"><span><span class="fu"><a href="https://ggplot2.tidyverse.org/reference/ggplot.html">ggplot</a></span><span class="op">(</span><span class="va">pets</span>, <span class="fu"><a href="https://ggplot2.tidyverse.org/reference/aes.html">aes</a></span><span class="op">(</span><span class="va">pet</span>, <span class="va">score</span>, colour <span class="op">=</span> <span class="va">pet</span>, fill <span class="op">=</span> <span class="va">pet</span><span class="op">)</span><span class="op">)</span> <span class="op">+</span></span>
 <span>  <span class="fu"><a href="https://ggplot2.tidyverse.org/reference/geom_violin.html">geom_violin</a></span><span class="op">(</span><span class="op">)</span> <span class="op">+</span></span>
 <span>  <span class="fu"><a href="https://ggplot2.tidyverse.org/reference/scale_manual.html">scale_color_manual</a></span><span class="op">(</span>values <span class="op">=</span> <span class="fu"><a href="https://rdrr.io/r/base/c.html">c</a></span><span class="op">(</span><span class="st">"darkgreen"</span>, <span class="st">"dodgerblue"</span>, <span class="st">"orange"</span><span class="op">)</span><span class="op">)</span> <span class="op">+</span></span>
@@ -709,7 +766,7 @@ Figure 3.29: Set custom labels with scale functions
 <div class="figure" style="text-align: center">
 <span style="display:block;" id="fig:line-labels"></span>
 <img src="images/line-labels-1.png" alt="Set custom colour" width="90%"><p class="caption">
-Figure 3.30: Set custom colour
+Figure 3.31: Set custom colour
 </p>
 </div>
 <p>The <a href="http://www.cookbook-r.com/Graphs/Colors_(ggplot2)/">Colours chapter in Cookbook for R</a> has many more ways to customise colour.</p>
@@ -719,18 +776,18 @@ Figure 3.30: Set custom colour
 <span class="header-section-number">3.7.4</span> Themes<a class="anchor" aria-label="anchor" href="#themes"><i class="fas fa-link"></i></a>
 </h3>
 <p>GGplot comes with several additional themes and the ability to fully customise your theme. Type <code><a href="https://ggplot2.tidyverse.org/reference/theme.html">?theme</a></code> into the console to see the full list. Other packages such as <code>cowplot</code> also have custom themes. You can add a custom theme to the end of your ggplot object and specify a new <code>base_size</code> to make the default fonts and lines larger or smaller.</p>
-<div class="sourceCode" id="cb108"><pre class="downlit sourceCode r">
-<code class="sourceCode R"><span><span class="fu"><a href="https://ggplot2.tidyverse.org/reference/ggplot.html">ggplot</a></span><span class="op">(</span><span class="va">pets</span>, <span class="fu"><a href="https://ggplot2.tidyverse.org/reference/aes.html">aes</a></span><span class="op">(</span><span class="va">age</span>, <span class="va">score</span>, color <span class="op">=</span> <span class="va">pet</span><span class="op">)</span><span class="op">)</span> <span class="op">+</span></span>
+<div class="sourceCode" id="cb116"><pre class="downlit sourceCode r">
+<code class="sourceCode R"><span><span class="fu"><a href="https://ggplot2.tidyverse.org/reference/ggplot.html">ggplot</a></span><span class="op">(</span><span class="va">pets</span>, <span class="fu"><a href="https://ggplot2.tidyverse.org/reference/aes.html">aes</a></span><span class="op">(</span><span class="va">weight</span>, <span class="va">score</span>, color <span class="op">=</span> <span class="va">pet</span><span class="op">)</span><span class="op">)</span> <span class="op">+</span></span>
 <span>  <span class="fu"><a href="https://ggplot2.tidyverse.org/reference/geom_smooth.html">geom_smooth</a></span><span class="op">(</span>formula <span class="op">=</span> <span class="va">y</span> <span class="op">~</span> <span class="va">x</span>, method<span class="op">=</span><span class="st">"lm"</span><span class="op">)</span> <span class="op">+</span></span>
 <span>  <span class="fu"><a href="https://ggplot2.tidyverse.org/reference/ggtheme.html">theme_minimal</a></span><span class="op">(</span>base_size <span class="op">=</span> <span class="fl">18</span><span class="op">)</span></span></code></pre></div>
 <div class="figure" style="text-align: center">
 <span style="display:block;" id="fig:themes"></span>
 <img src="images/themes-1.png" alt="Minimal theme with 18-point base font size" width="90%"><p class="caption">
-Figure 3.31: Minimal theme with 18-point base font size
+Figure 3.32: Minimal theme with 18-point base font size
 </p>
 </div>
 <p>It's more complicated, but you can fully customise your theme with <code><a href="https://ggplot2.tidyverse.org/reference/theme.html">theme()</a></code>. You can save this to an object and add it to the end of all of your plots to make the style consistent. Alternatively, you can set the theme at the top of a script with <code><a href="https://ggplot2.tidyverse.org/reference/theme_get.html">theme_set()</a></code> and this will apply to all subsequent ggplot plots.</p>
-<div class="sourceCode" id="cb109"><pre class="downlit sourceCode r">
+<div class="sourceCode" id="cb117"><pre class="downlit sourceCode r">
 <code class="sourceCode R"><span><span class="co"># always start with a base theme that is closest to your desired theme</span></span>
 <span><span class="va">vampire_theme</span> <span class="op">&lt;-</span> <span class="fu"><a href="https://ggplot2.tidyverse.org/reference/ggtheme.html">theme_dark</a></span><span class="op">(</span><span class="op">)</span> <span class="op">+</span></span>
 <span>  <span class="fu"><a href="https://ggplot2.tidyverse.org/reference/theme.html">theme</a></span><span class="op">(</span></span>
@@ -747,12 +804,12 @@ Figure 3.31: Minimal theme with 18-point base font size
 <span></span>
 <span><span class="fu"><a href="https://ggplot2.tidyverse.org/reference/theme_get.html">theme_set</a></span><span class="op">(</span><span class="va">vampire_theme</span><span class="op">)</span></span>
 <span></span>
-<span><span class="fu"><a href="https://ggplot2.tidyverse.org/reference/ggplot.html">ggplot</a></span><span class="op">(</span><span class="va">pets</span>, <span class="fu"><a href="https://ggplot2.tidyverse.org/reference/aes.html">aes</a></span><span class="op">(</span><span class="va">age</span>, <span class="va">score</span>, color <span class="op">=</span> <span class="va">pet</span><span class="op">)</span><span class="op">)</span> <span class="op">+</span></span>
+<span><span class="fu"><a href="https://ggplot2.tidyverse.org/reference/ggplot.html">ggplot</a></span><span class="op">(</span><span class="va">pets</span>, <span class="fu"><a href="https://ggplot2.tidyverse.org/reference/aes.html">aes</a></span><span class="op">(</span><span class="va">weight</span>, <span class="va">score</span>, color <span class="op">=</span> <span class="va">pet</span><span class="op">)</span><span class="op">)</span> <span class="op">+</span></span>
 <span>  <span class="fu"><a href="https://ggplot2.tidyverse.org/reference/geom_smooth.html">geom_smooth</a></span><span class="op">(</span>formula <span class="op">=</span> <span class="va">y</span> <span class="op">~</span> <span class="va">x</span>, method<span class="op">=</span><span class="st">"lm"</span><span class="op">)</span></span></code></pre></div>
 <div class="figure" style="text-align: center">
 <span style="display:block;" id="fig:custom-themes"></span>
 <img src="images/custom-themes-1.png" alt="Custom theme" width="90%"><p class="caption">
-Figure 3.32: Custom theme
+Figure 3.33: Custom theme
 </p>
 </div>
 </div>
@@ -762,7 +819,7 @@ Figure 3.32: Custom theme
 </h3>
 <p>You can save a ggplot using <code><a href="https://ggplot2.tidyverse.org/reference/ggsave.html">ggsave()</a></code>. It saves the last ggplot you made, by default, but you can specify which plot you want to save if you assigned that plot to a variable.</p>
 <p>You can set the <code>width</code> and <code>height</code> of your plot. The default units are inches, but you can change the <code>units</code> argument to "in", "cm", or "mm".</p>
-<div class="sourceCode" id="cb110"><pre class="downlit sourceCode r">
+<div class="sourceCode" id="cb118"><pre class="downlit sourceCode r">
 <code class="sourceCode R"><span><span class="va">box</span> <span class="op">&lt;-</span> <span class="fu"><a href="https://ggplot2.tidyverse.org/reference/ggplot.html">ggplot</a></span><span class="op">(</span><span class="va">pets</span>, <span class="fu"><a href="https://ggplot2.tidyverse.org/reference/aes.html">aes</a></span><span class="op">(</span><span class="va">pet</span>, <span class="va">score</span>, fill<span class="op">=</span><span class="va">pet</span><span class="op">)</span><span class="op">)</span> <span class="op">+</span></span>
 <span>  <span class="fu"><a href="https://ggplot2.tidyverse.org/reference/geom_boxplot.html">geom_boxplot</a></span><span class="op">(</span>alpha <span class="op">=</span> <span class="fl">0.5</span><span class="op">)</span></span>
 <span></span>
@@ -788,7 +845,7 @@ specifying the argument <code>device</code>, which can take the following values
 <span class="header-section-number">3.8.1</span> Violinbox plot<a class="anchor" aria-label="anchor" href="#violinbox-plot"><i class="fas fa-link"></i></a>
 </h3>
 <p>A combination of a violin plot to show the shape of the distribution and a boxplot to show the median and interquartile ranges can be a very useful visualisation.</p>
-<div class="sourceCode" id="cb111"><pre class="downlit sourceCode r">
+<div class="sourceCode" id="cb119"><pre class="downlit sourceCode r">
 <code class="sourceCode R"><span><span class="fu"><a href="https://ggplot2.tidyverse.org/reference/ggplot.html">ggplot</a></span><span class="op">(</span><span class="va">pets</span>, <span class="fu"><a href="https://ggplot2.tidyverse.org/reference/aes.html">aes</a></span><span class="op">(</span><span class="va">pet</span>, <span class="va">score</span>, fill <span class="op">=</span> <span class="va">pet</span><span class="op">)</span><span class="op">)</span> <span class="op">+</span></span>
 <span>  <span class="fu"><a href="https://ggplot2.tidyverse.org/reference/geom_violin.html">geom_violin</a></span><span class="op">(</span>show.legend <span class="op">=</span> <span class="cn">FALSE</span><span class="op">)</span> <span class="op">+</span> </span>
 <span>  <span class="fu"><a href="https://ggplot2.tidyverse.org/reference/geom_boxplot.html">geom_boxplot</a></span><span class="op">(</span>width <span class="op">=</span> <span class="fl">0.2</span>, fill <span class="op">=</span> <span class="st">"white"</span>, </span>
@@ -796,7 +853,7 @@ specifying the argument <code>device</code>, which can take the following values
 <div class="figure" style="text-align: center">
 <span style="display:block;" id="fig:violinbox"></span>
 <img src="images/violinbox-1.png" alt="Violin-box plot" width="90%"><p class="caption">
-Figure 3.33: Violin-box plot
+Figure 3.34: Violin-box plot
 </p>
 </div>
 <div class="info">
@@ -808,7 +865,7 @@ Figure 3.33: Violin-box plot
 <span class="header-section-number">3.8.2</span> Violin-point-range plot<a class="anchor" aria-label="anchor" href="#violin-point-range-plot"><i class="fas fa-link"></i></a>
 </h3>
 <p>You can use <code><a href="https://ggplot2.tidyverse.org/reference/stat_summary.html">stat_summary()</a></code> to superimpose a point-range plot showing the mean ± 1 SD. You'll learn how to write your own functions in the lesson on <a href="func.html#func">Iteration and Functions</a>.</p>
-<div class="sourceCode" id="cb112"><pre class="downlit sourceCode r">
+<div class="sourceCode" id="cb120"><pre class="downlit sourceCode r">
 <code class="sourceCode R"><span><span class="fu"><a href="https://ggplot2.tidyverse.org/reference/ggplot.html">ggplot</a></span><span class="op">(</span><span class="va">pets</span>, <span class="fu"><a href="https://ggplot2.tidyverse.org/reference/aes.html">aes</a></span><span class="op">(</span><span class="va">pet</span>, <span class="va">score</span>, fill<span class="op">=</span><span class="va">pet</span><span class="op">)</span><span class="op">)</span> <span class="op">+</span></span>
 <span>  <span class="fu"><a href="https://ggplot2.tidyverse.org/reference/geom_violin.html">geom_violin</a></span><span class="op">(</span>trim <span class="op">=</span> <span class="cn">FALSE</span>, alpha <span class="op">=</span> <span class="fl">0.5</span><span class="op">)</span> <span class="op">+</span></span>
 <span>  <span class="fu"><a href="https://ggplot2.tidyverse.org/reference/stat_summary.html">stat_summary</a></span><span class="op">(</span></span>
@@ -820,7 +877,7 @@ Figure 3.33: Violin-box plot
 <div class="figure" style="text-align: center">
 <span style="display:block;" id="fig:stat-summary"></span>
 <img src="images/stat-summary-1.png" alt="Point-range plot using stat_summary()" width="90%"><p class="caption">
-Figure 3.34: Point-range plot using stat_summary()
+Figure 3.35: Point-range plot using stat_summary()
 </p>
 </div>
 </div>
@@ -829,7 +886,7 @@ Figure 3.34: Point-range plot using stat_summary()
 <span class="header-section-number">3.8.3</span> Violin-jitter plot<a class="anchor" aria-label="anchor" href="#violin-jitter-plot"><i class="fas fa-link"></i></a>
 </h3>
 <p>If you don't have a lot of data points, it's good to represent them individually. You can use <code>geom_jitter</code> to do this.</p>
-<div class="sourceCode" id="cb113"><pre class="downlit sourceCode r">
+<div class="sourceCode" id="cb121"><pre class="downlit sourceCode r">
 <code class="sourceCode R"><span><span class="co"># sample_n chooses 50 random observations from the dataset</span></span>
 <span><span class="fu"><a href="https://ggplot2.tidyverse.org/reference/ggplot.html">ggplot</a></span><span class="op">(</span><span class="fu"><a href="https://dplyr.tidyverse.org/reference/sample_n.html">sample_n</a></span><span class="op">(</span><span class="va">pets</span>, <span class="fl">50</span><span class="op">)</span>, <span class="fu"><a href="https://ggplot2.tidyverse.org/reference/aes.html">aes</a></span><span class="op">(</span><span class="va">pet</span>, <span class="va">score</span>, fill<span class="op">=</span><span class="va">pet</span><span class="op">)</span><span class="op">)</span> <span class="op">+</span></span>
 <span>  <span class="fu"><a href="https://ggplot2.tidyverse.org/reference/geom_violin.html">geom_violin</a></span><span class="op">(</span></span>
@@ -846,7 +903,7 @@ Figure 3.34: Point-range plot using stat_summary()
 <div class="figure" style="text-align: center">
 <span style="display:block;" id="fig:violin-jitter"></span>
 <img src="images/violin-jitter-1.png" alt="Violin-jitter plot" width="90%"><p class="caption">
-Figure 3.35: Violin-jitter plot
+Figure 3.36: Violin-jitter plot
 </p>
 </div>
 </div>
@@ -855,23 +912,78 @@ Figure 3.35: Violin-jitter plot
 <span class="header-section-number">3.8.4</span> Scatter-line graph<a class="anchor" aria-label="anchor" href="#scatter-line-graph"><i class="fas fa-link"></i></a>
 </h3>
 <p>If your graph isn't too complicated, it's good to also show the individual data points behind the line.</p>
-<div class="sourceCode" id="cb114"><pre class="downlit sourceCode r">
+<div class="sourceCode" id="cb122"><pre class="downlit sourceCode r">
 <code class="sourceCode R"><span><span class="fu"><a href="https://ggplot2.tidyverse.org/reference/ggplot.html">ggplot</a></span><span class="op">(</span><span class="fu"><a href="https://dplyr.tidyverse.org/reference/sample_n.html">sample_n</a></span><span class="op">(</span><span class="va">pets</span>, <span class="fl">50</span><span class="op">)</span>, <span class="fu"><a href="https://ggplot2.tidyverse.org/reference/aes.html">aes</a></span><span class="op">(</span><span class="va">age</span>, <span class="va">weight</span>, colour <span class="op">=</span> <span class="va">pet</span><span class="op">)</span><span class="op">)</span> <span class="op">+</span></span>
 <span>  <span class="fu"><a href="https://ggplot2.tidyverse.org/reference/geom_point.html">geom_point</a></span><span class="op">(</span><span class="op">)</span> <span class="op">+</span></span>
 <span>  <span class="fu"><a href="https://ggplot2.tidyverse.org/reference/geom_smooth.html">geom_smooth</a></span><span class="op">(</span>formula <span class="op">=</span> <span class="va">y</span> <span class="op">~</span> <span class="va">x</span>, method<span class="op">=</span><span class="st">"lm"</span><span class="op">)</span></span></code></pre></div>
 <div class="figure" style="text-align: center">
 <span style="display:block;" id="fig:scatter-line"></span>
 <img src="images/scatter-line-1.png" alt="Scatter-line plot" width="90%"><p class="caption">
-Figure 3.36: Scatter-line plot
+Figure 3.37: Scatter-line plot
 </p>
 </div>
 </div>
-<div id="plot_grid" class="section level3" number="3.8.5">
+<div id="facets" class="section level3" number="3.8.5">
 <h3>
-<span class="header-section-number">3.8.5</span> Grid of plots<a class="anchor" aria-label="anchor" href="#plot_grid"><i class="fas fa-link"></i></a>
+<span class="header-section-number">3.8.5</span> Facets<a class="anchor" aria-label="anchor" href="#facets"><i class="fas fa-link"></i></a>
+</h3>
+<p>You may want to replicate your plot for each level of a categorical variable. The <code>facet</code> functions make this easy. If you have a single category to facet over, such as country, you can use <code><a href="https://ggplot2.tidyverse.org/reference/facet_wrap.html">facet_wrap()</a></code>, which makes a plot for each level.</p>
+<div class="sourceCode" id="cb123"><pre class="downlit sourceCode r">
+<code class="sourceCode R"><span><span class="fu"><a href="https://ggplot2.tidyverse.org/reference/ggplot.html">ggplot</a></span><span class="op">(</span><span class="va">pets</span>, <span class="fu"><a href="https://ggplot2.tidyverse.org/reference/aes.html">aes</a></span><span class="op">(</span><span class="va">pet</span>, <span class="va">score</span>, fill <span class="op">=</span> <span class="va">pet</span><span class="op">)</span><span class="op">)</span> <span class="op">+</span></span>
+<span>  <span class="fu"><a href="https://ggplot2.tidyverse.org/reference/geom_violin.html">geom_violin</a></span><span class="op">(</span>show.legend <span class="op">=</span> <span class="cn">FALSE</span><span class="op">)</span> <span class="op">+</span> </span>
+<span>  <span class="fu"><a href="https://ggplot2.tidyverse.org/reference/facet_wrap.html">facet_wrap</a></span><span class="op">(</span>facets <span class="op">=</span> <span class="fu"><a href="https://ggplot2.tidyverse.org/reference/vars.html">vars</a></span><span class="op">(</span><span class="va">country</span><span class="op">)</span><span class="op">)</span></span></code></pre></div>
+<div class="figure" style="text-align: center">
+<span style="display:block;" id="fig:facet-wrap"></span>
+<img src="images/facet-wrap-1.png" alt="Facetted plot, facetting by country." width="90%"><p class="caption">
+Figure 3.38: Facetted plot, facetting by country.
+</p>
+</div>
+<div class="warn">
+<p>You can't just use unquoted column names for the <code>facets</code> argument; you have to specify them using the <code><a href="https://ggplot2.tidyverse.org/reference/vars.html">vars()</a></code> function. You may see a common shortcut notation using the tilde that is equivalent: <code>facet_wrap(~country)</code>.</p>
+</div>
+<p>If you have many levels, the plots will "wrap" around. The function makes a best guess at what will look good, but you can also specify how many rows or columns the resulting plot should have by setting the arguments <code>ncol</code> or <code>nrow</code>.</p>
+<div class="sourceCode" id="cb124"><pre class="downlit sourceCode r">
+<code class="sourceCode R"><span><span class="fu"><a href="https://ggplot2.tidyverse.org/reference/ggplot.html">ggplot</a></span><span class="op">(</span><span class="va">pets</span>, <span class="fu"><a href="https://ggplot2.tidyverse.org/reference/aes.html">aes</a></span><span class="op">(</span><span class="va">pet</span>, <span class="va">score</span>, fill <span class="op">=</span> <span class="va">pet</span><span class="op">)</span><span class="op">)</span> <span class="op">+</span></span>
+<span>  <span class="fu"><a href="https://ggplot2.tidyverse.org/reference/geom_violin.html">geom_violin</a></span><span class="op">(</span>show.legend <span class="op">=</span> <span class="cn">FALSE</span><span class="op">)</span> <span class="op">+</span> </span>
+<span>  <span class="fu"><a href="https://ggplot2.tidyverse.org/reference/facet_wrap.html">facet_wrap</a></span><span class="op">(</span>facets <span class="op">=</span> <span class="fu"><a href="https://ggplot2.tidyverse.org/reference/vars.html">vars</a></span><span class="op">(</span><span class="va">age</span><span class="op">)</span>, nrow <span class="op">=</span> <span class="fl">3</span><span class="op">)</span></span></code></pre></div>
+<pre><code>## Warning: Groups with fewer than two data points have been dropped.
+## Groups with fewer than two data points have been dropped.</code></pre>
+<pre><code>## Warning in max(data$density): no non-missing arguments to max; returning -Inf</code></pre>
+<pre><code>## Warning: Computation failed in `stat_ydensity()`:
+## replacement has 1 row, data has 0</code></pre>
+<pre><code>## Warning: Groups with fewer than two data points have been dropped.
+## Groups with fewer than two data points have been dropped.
+## Groups with fewer than two data points have been dropped.</code></pre>
+<div class="figure" style="text-align: center">
+<span style="display:block;" id="fig:facet-wrap2"></span>
+<img src="images/facet-wrap2-1.png" alt="Facetted plot, facetting by age" width="90%"><p class="caption">
+Figure 3.39: Facetted plot, facetting by age
+</p>
+</div>
+<p>If you want to make sub-plots for crossed factors, you can use <code><a href="https://ggplot2.tidyverse.org/reference/facet_grid.html">facet_grid()</a></code></p>
+<div class="sourceCode" id="cb129"><pre class="downlit sourceCode r">
+<code class="sourceCode R"><span><span class="fu"><a href="https://ggplot2.tidyverse.org/reference/ggplot.html">ggplot</a></span><span class="op">(</span><span class="va">pets</span>, <span class="fu"><a href="https://ggplot2.tidyverse.org/reference/aes.html">aes</a></span><span class="op">(</span><span class="va">weight</span>, <span class="va">score</span><span class="op">)</span><span class="op">)</span> <span class="op">+</span></span>
+<span>  <span class="fu"><a href="https://ggplot2.tidyverse.org/reference/geom_point.html">geom_point</a></span><span class="op">(</span>alpha <span class="op">=</span> <span class="fl">0.5</span><span class="op">)</span> <span class="op">+</span></span>
+<span>  <span class="fu"><a href="https://ggplot2.tidyverse.org/reference/geom_smooth.html">geom_smooth</a></span><span class="op">(</span>formula <span class="op">=</span> <span class="va">y</span> <span class="op">~</span> <span class="va">x</span>, method<span class="op">=</span><span class="st">"lm"</span><span class="op">)</span> <span class="op">+</span> </span>
+<span>  <span class="fu"><a href="https://ggplot2.tidyverse.org/reference/facet_grid.html">facet_grid</a></span><span class="op">(</span>rows <span class="op">=</span> <span class="fu"><a href="https://ggplot2.tidyverse.org/reference/vars.html">vars</a></span><span class="op">(</span><span class="va">pet</span><span class="op">)</span>, cols <span class="op">=</span> <span class="fu"><a href="https://ggplot2.tidyverse.org/reference/vars.html">vars</a></span><span class="op">(</span><span class="va">country</span><span class="op">)</span><span class="op">)</span></span></code></pre></div>
+<div class="figure" style="text-align: center">
+<span style="display:block;" id="fig:facet-grid"></span>
+<img src="images/facet-grid-1.png" alt="Facetted plot" width="90%"><p class="caption">
+Figure 3.40: Facetted plot
+</p>
+</div>
+<div class="sourceCode" id="cb130"><pre class="downlit sourceCode r">
+<code class="sourceCode R"><span>  <span class="co"># facet_grid(pet~country) # an alternative shortcut way to specify the rows and columns</span></span></code></pre></div>
+<div class="try">
+<p>Look at the help for <code><a href="https://ggplot2.tidyverse.org/reference/facet_grid.html">facet_grid()</a></code> and see what happens when you change the default values of arguments such as <code>margin</code>, <code>scales</code>, <code>as.table</code> and <code>switch</code>.</p>
+</div>
+</div>
+<div id="plot_grid" class="section level3" number="3.8.6">
+<h3>
+<span class="header-section-number">3.8.6</span> Grid of plots<a class="anchor" aria-label="anchor" href="#plot_grid"><i class="fas fa-link"></i></a>
 </h3>
 <p>You can use the <a href="https://patchwork.data-imaginist.com/"><code>patchwork</code></a> package to easily make grids of different graphs. First, you have to assign each plot a name.</p>
-<div class="sourceCode" id="cb115"><pre class="downlit sourceCode r">
+<div class="sourceCode" id="cb131"><pre class="downlit sourceCode r">
 <code class="sourceCode R"><span><span class="va">gg</span> <span class="op">&lt;-</span> <span class="fu"><a href="https://ggplot2.tidyverse.org/reference/ggplot.html">ggplot</a></span><span class="op">(</span><span class="va">pets</span>, <span class="fu"><a href="https://ggplot2.tidyverse.org/reference/aes.html">aes</a></span><span class="op">(</span><span class="va">pet</span>, <span class="va">score</span>, colour <span class="op">=</span> <span class="va">pet</span><span class="op">)</span><span class="op">)</span></span>
 <span><span class="va">nolegend</span> <span class="op">&lt;-</span> <span class="fu"><a href="https://ggplot2.tidyverse.org/reference/theme.html">theme</a></span><span class="op">(</span>legend.position <span class="op">=</span> <span class="fl">0</span><span class="op">)</span></span>
 <span></span>
@@ -885,25 +997,25 @@ Figure 3.36: Scatter-line plot
 <span>  <span class="fu"><a href="https://ggplot2.tidyverse.org/reference/geom_density.html">geom_density</a></span><span class="op">(</span><span class="op">)</span> <span class="op">+</span> <span class="va">nolegend</span> <span class="op">+</span></span>
 <span>  <span class="fu"><a href="https://ggplot2.tidyverse.org/reference/labs.html">ggtitle</a></span><span class="op">(</span><span class="st">"Density Plot"</span><span class="op">)</span></span></code></pre></div>
 <p>Then you add all the plots together.</p>
-<div class="sourceCode" id="cb116"><pre class="downlit sourceCode r">
+<div class="sourceCode" id="cb132"><pre class="downlit sourceCode r">
 <code class="sourceCode R"><span><span class="va">vp</span> <span class="op">+</span> <span class="va">bp</span> <span class="op">+</span> <span class="va">cp</span> <span class="op">+</span> <span class="va">dp</span></span></code></pre></div>
 <div class="figure" style="text-align: center">
 <span style="display:block;" id="fig:patchwork-add"></span>
 <img src="images/patchwork-add-1.png" alt="Default grid of plots" width="90%"><p class="caption">
-Figure 3.37: Default grid of plots
+Figure 3.41: Default grid of plots
 </p>
 </div>
 <p>You can use <code>+</code>, <code>|</code>, <code>/</code>, and parentheses to customise your layout.</p>
-<div class="sourceCode" id="cb117"><pre class="downlit sourceCode r">
+<div class="sourceCode" id="cb133"><pre class="downlit sourceCode r">
 <code class="sourceCode R"><span><span class="op">(</span><span class="va">vp</span> <span class="op">|</span> <span class="va">bp</span> <span class="op">|</span> <span class="va">cp</span><span class="op">)</span> <span class="op">/</span> <span class="va">dp</span></span></code></pre></div>
 <div class="figure" style="text-align: center">
 <span style="display:block;" id="fig:patchwork-layout"></span>
 <img src="images/patchwork-layout-1.png" alt="Custom plot layout." width="90%"><p class="caption">
-Figure 3.38: Custom plot layout.
+Figure 3.42: Custom plot layout.
 </p>
 </div>
 <p>You can alter the plot layout to control the number and widths of plots per row or column, and add annotation.</p>
-<div class="sourceCode" id="cb118"><pre class="downlit sourceCode r">
+<div class="sourceCode" id="cb134"><pre class="downlit sourceCode r">
 <code class="sourceCode R"><span><span class="va">vp</span> <span class="op">+</span> <span class="va">bp</span> <span class="op">+</span> <span class="va">cp</span> <span class="op">+</span> </span>
 <span>  <span class="fu"><a href="https://patchwork.data-imaginist.com/reference/plot_layout.html">plot_layout</a></span><span class="op">(</span>nrow <span class="op">=</span> <span class="fl">1</span>, width <span class="op">=</span> <span class="fu"><a href="https://rdrr.io/r/base/c.html">c</a></span><span class="op">(</span><span class="fl">1</span>,<span class="fl">2</span>,<span class="fl">1</span><span class="op">)</span><span class="op">)</span> <span class="op">+</span></span>
 <span>  <span class="fu"><a href="https://patchwork.data-imaginist.com/reference/plot_annotation.html">plot_annotation</a></span><span class="op">(</span>title <span class="op">=</span> <span class="st">"Pet Scores"</span>,</span>
@@ -912,7 +1024,7 @@ Figure 3.38: Custom plot layout.
 <div class="figure" style="text-align: center">
 <span style="display:block;" id="fig:patchwork-annotate"></span>
 <img src="images/patchwork-annotate-1.png" alt="Plot annotation." width="90%"><p class="caption">
-Figure 3.39: Plot annotation.
+Figure 3.43: Plot annotation.
 </p>
 </div>
 <div class="try">
@@ -929,14 +1041,14 @@ Figure 3.39: Plot annotation.
 <span class="header-section-number">3.9.1</span> Reducing Opacity<a class="anchor" aria-label="anchor" href="#reducing-opacity"><i class="fas fa-link"></i></a>
 </h3>
 <p>You can deal with overlapping data points (very common if you're using Likert scales) by reducing the opacity of the points. You need to use trial and error to adjust these so they look right.</p>
-<div class="sourceCode" id="cb119"><pre class="downlit sourceCode r">
+<div class="sourceCode" id="cb135"><pre class="downlit sourceCode r">
 <code class="sourceCode R"><span><span class="fu"><a href="https://ggplot2.tidyverse.org/reference/ggplot.html">ggplot</a></span><span class="op">(</span><span class="va">pets</span>, <span class="fu"><a href="https://ggplot2.tidyverse.org/reference/aes.html">aes</a></span><span class="op">(</span><span class="va">age</span>, <span class="va">score</span>, colour <span class="op">=</span> <span class="va">pet</span><span class="op">)</span><span class="op">)</span> <span class="op">+</span></span>
 <span>  <span class="fu"><a href="https://ggplot2.tidyverse.org/reference/geom_point.html">geom_point</a></span><span class="op">(</span>alpha <span class="op">=</span> <span class="fl">0.25</span><span class="op">)</span> <span class="op">+</span></span>
 <span>  <span class="fu"><a href="https://ggplot2.tidyverse.org/reference/geom_smooth.html">geom_smooth</a></span><span class="op">(</span>formula <span class="op">=</span> <span class="va">y</span> <span class="op">~</span> <span class="va">x</span>, method<span class="op">=</span><span class="st">"lm"</span><span class="op">)</span></span></code></pre></div>
 <div class="figure" style="text-align: center">
 <span style="display:block;" id="fig:overlap-alpha"></span>
 <img src="images/overlap-alpha-1.png" alt="Deal with overlapping data using transparency" width="90%"><p class="caption">
-Figure 3.40: Deal with overlapping data using transparency
+Figure 3.44: Deal with overlapping data using transparency
 </p>
 </div>
 </div>
@@ -945,17 +1057,17 @@ Figure 3.40: Deal with overlapping data using transparency
 <span class="header-section-number">3.9.2</span> Proportional Dot Plots<a class="anchor" aria-label="anchor" href="#geom_count"><i class="fas fa-link"></i></a>
 </h3>
 <p>Or you can set the size of the dot proportional to the number of overlapping observations using <code><a href="https://ggplot2.tidyverse.org/reference/geom_count.html">geom_count()</a></code>.</p>
-<div class="sourceCode" id="cb120"><pre class="downlit sourceCode r">
+<div class="sourceCode" id="cb136"><pre class="downlit sourceCode r">
 <code class="sourceCode R"><span><span class="fu"><a href="https://ggplot2.tidyverse.org/reference/ggplot.html">ggplot</a></span><span class="op">(</span><span class="va">pets</span>, <span class="fu"><a href="https://ggplot2.tidyverse.org/reference/aes.html">aes</a></span><span class="op">(</span><span class="va">age</span>, <span class="va">score</span>, colour <span class="op">=</span> <span class="va">pet</span><span class="op">)</span><span class="op">)</span> <span class="op">+</span></span>
 <span>  <span class="fu"><a href="https://ggplot2.tidyverse.org/reference/geom_count.html">geom_count</a></span><span class="op">(</span><span class="op">)</span></span></code></pre></div>
 <div class="figure" style="text-align: center">
 <span style="display:block;" id="fig:overlap-size"></span>
 <img src="images/overlap-size-1.png" alt="Deal with overlapping data using geom_count()" width="90%"><p class="caption">
-Figure 3.41: Deal with overlapping data using geom_count()
+Figure 3.45: Deal with overlapping data using geom_count()
 </p>
 </div>
 <p>Alternatively, you can transform your data (we will learn to do this in the <a href="dplyr.html#dplyr">data wrangling</a> chapter) to create a count column and use the count to set the dot colour.</p>
-<div class="sourceCode" id="cb121"><pre class="downlit sourceCode r">
+<div class="sourceCode" id="cb137"><pre class="downlit sourceCode r">
 <code class="sourceCode R"><span><span class="va">pets</span> <span class="op"><a href="https://magrittr.tidyverse.org/reference/pipe.html">%&gt;%</a></span></span>
 <span>  <span class="fu"><a href="https://dplyr.tidyverse.org/reference/group_by.html">group_by</a></span><span class="op">(</span><span class="va">age</span>, <span class="va">score</span><span class="op">)</span> <span class="op"><a href="https://magrittr.tidyverse.org/reference/pipe.html">%&gt;%</a></span></span>
 <span>  <span class="fu"><a href="https://dplyr.tidyverse.org/reference/summarise.html">summarise</a></span><span class="op">(</span>count <span class="op">=</span> <span class="fu"><a href="https://dplyr.tidyverse.org/reference/context.html">n</a></span><span class="op">(</span><span class="op">)</span>, .groups <span class="op">=</span> <span class="st">"drop"</span><span class="op">)</span> <span class="op"><a href="https://magrittr.tidyverse.org/reference/pipe.html">%&gt;%</a></span></span>
@@ -965,7 +1077,7 @@ Figure 3.41: Deal with overlapping data using geom_count()
 <div class="figure" style="text-align: center">
 <span style="display:block;" id="fig:overlap-colour"></span>
 <img src="images/overlap-colour-1.png" alt="Deal with overlapping data using dot colour" width="90%"><p class="caption">
-Figure 3.42: Deal with overlapping data using dot colour
+Figure 3.46: Deal with overlapping data using dot colour
 </p>
 </div>
 <div class="info">
@@ -978,13 +1090,13 @@ Figure 3.42: Deal with overlapping data using dot colour
 <span class="header-section-number">3.10</span> Overlapping Continuous Data<a class="anchor" aria-label="anchor" href="#overlapping-continuous-data"><i class="fas fa-link"></i></a>
 </h2>
 <p>Even if the variables are continuous, overplotting might obscure any relationships if you have lots of data.</p>
-<div class="sourceCode" id="cb122"><pre class="downlit sourceCode r">
+<div class="sourceCode" id="cb138"><pre class="downlit sourceCode r">
 <code class="sourceCode R"><span><span class="fu"><a href="https://ggplot2.tidyverse.org/reference/ggplot.html">ggplot</a></span><span class="op">(</span><span class="va">pets</span>, <span class="fu"><a href="https://ggplot2.tidyverse.org/reference/aes.html">aes</a></span><span class="op">(</span><span class="va">age</span>, <span class="va">score</span><span class="op">)</span><span class="op">)</span> <span class="op">+</span></span>
 <span>  <span class="fu"><a href="https://ggplot2.tidyverse.org/reference/geom_point.html">geom_point</a></span><span class="op">(</span><span class="op">)</span></span></code></pre></div>
 <div class="figure" style="text-align: center">
 <span style="display:block;" id="fig:overplot-point"></span>
 <img src="images/overplot-point-1.png" alt="Overplotted data" width="90%"><p class="caption">
-Figure 3.43: Overplotted data
+Figure 3.47: Overplotted data
 </p>
 </div>
 <div id="geom_density2d" class="section level3" number="3.10.1">
@@ -992,23 +1104,23 @@ Figure 3.43: Overplotted data
 <span class="header-section-number">3.10.1</span> 2D Density Plot<a class="anchor" aria-label="anchor" href="#geom_density2d"><i class="fas fa-link"></i></a>
 </h3>
 <p>Use <code><a href="https://ggplot2.tidyverse.org/reference/geom_density_2d.html">geom_density2d()</a></code> to create a contour map.</p>
-<div class="sourceCode" id="cb123"><pre class="downlit sourceCode r">
+<div class="sourceCode" id="cb139"><pre class="downlit sourceCode r">
 <code class="sourceCode R"><span><span class="fu"><a href="https://ggplot2.tidyverse.org/reference/ggplot.html">ggplot</a></span><span class="op">(</span><span class="va">pets</span>, <span class="fu"><a href="https://ggplot2.tidyverse.org/reference/aes.html">aes</a></span><span class="op">(</span><span class="va">age</span>, <span class="va">score</span><span class="op">)</span><span class="op">)</span> <span class="op">+</span></span>
 <span>  <span class="fu"><a href="https://ggplot2.tidyverse.org/reference/geom_density_2d.html">geom_density2d</a></span><span class="op">(</span><span class="op">)</span></span></code></pre></div>
 <div class="figure" style="text-align: center">
 <span style="display:block;" id="fig:density2d"></span>
 <img src="images/density2d-1.png" alt="Contour map with geom_density2d()" width="90%"><p class="caption">
-Figure 3.44: Contour map with geom_density2d()
+Figure 3.48: Contour map with geom_density2d()
 </p>
 </div>
 <p>You can use <code><a href="https://ggplot2.tidyverse.org/reference/geom_density_2d.html">geom_density2d_filled()</a></code> to create a heatmap-style density plot.</p>
-<div class="sourceCode" id="cb124"><pre class="downlit sourceCode r">
+<div class="sourceCode" id="cb140"><pre class="downlit sourceCode r">
 <code class="sourceCode R"><span><span class="fu"><a href="https://ggplot2.tidyverse.org/reference/ggplot.html">ggplot</a></span><span class="op">(</span><span class="va">pets</span>, <span class="fu"><a href="https://ggplot2.tidyverse.org/reference/aes.html">aes</a></span><span class="op">(</span><span class="va">age</span>, <span class="va">score</span><span class="op">)</span><span class="op">)</span> <span class="op">+</span></span>
 <span>  <span class="fu"><a href="https://ggplot2.tidyverse.org/reference/geom_density_2d.html">geom_density2d_filled</a></span><span class="op">(</span>n <span class="op">=</span> <span class="fl">5</span>, h <span class="op">=</span> <span class="fl">10</span><span class="op">)</span></span></code></pre></div>
 <div class="figure" style="text-align: center">
 <span style="display:block;" id="fig:density2d-fill"></span>
 <img src="images/density2d-fill-1.png" alt="Heatmap-density plot" width="90%"><p class="caption">
-Figure 3.45: Heatmap-density plot
+Figure 3.49: Heatmap-density plot
 </p>
 </div>
 <div class="try">
@@ -1020,13 +1132,13 @@ Figure 3.45: Heatmap-density plot
 <span class="header-section-number">3.10.2</span> 2D Histogram<a class="anchor" aria-label="anchor" href="#geom_bin2d"><i class="fas fa-link"></i></a>
 </h3>
 <p>Use <code><a href="https://ggplot2.tidyverse.org/reference/geom_bin_2d.html">geom_bin2d()</a></code> to create a rectangular heatmap of bin counts. Set the <code>binwidth</code> to the x and y dimensions to capture in each box.</p>
-<div class="sourceCode" id="cb125"><pre class="downlit sourceCode r">
+<div class="sourceCode" id="cb141"><pre class="downlit sourceCode r">
 <code class="sourceCode R"><span><span class="fu"><a href="https://ggplot2.tidyverse.org/reference/ggplot.html">ggplot</a></span><span class="op">(</span><span class="va">pets</span>, <span class="fu"><a href="https://ggplot2.tidyverse.org/reference/aes.html">aes</a></span><span class="op">(</span><span class="va">age</span>, <span class="va">score</span><span class="op">)</span><span class="op">)</span> <span class="op">+</span></span>
 <span>  <span class="fu"><a href="https://ggplot2.tidyverse.org/reference/geom_bin_2d.html">geom_bin2d</a></span><span class="op">(</span>binwidth <span class="op">=</span> <span class="fu"><a href="https://rdrr.io/r/base/c.html">c</a></span><span class="op">(</span><span class="fl">1</span>, <span class="fl">5</span><span class="op">)</span><span class="op">)</span></span></code></pre></div>
 <div class="figure" style="text-align: center">
 <span style="display:block;" id="fig:bin2d"></span>
 <img src="images/bin2d-1.png" alt="Heatmap of bin counts" width="90%"><p class="caption">
-Figure 3.46: Heatmap of bin counts
+Figure 3.50: Heatmap of bin counts
 </p>
 </div>
 </div>
@@ -1035,13 +1147,13 @@ Figure 3.46: Heatmap of bin counts
 <span class="header-section-number">3.10.3</span> Hexagonal Heatmap<a class="anchor" aria-label="anchor" href="#geom_hex"><i class="fas fa-link"></i></a>
 </h3>
 <p>Use <code>geomhex()</code> to create a hexagonal heatmap of bin counts. Adjust the <code>binwidth</code>, <code><a href="https://ggplot2.tidyverse.org/reference/lims.html">xlim()</a></code>, <code><a href="https://ggplot2.tidyverse.org/reference/lims.html">ylim()</a></code> and/or the figure dimensions to make the hexagons more or less stretched.</p>
-<div class="sourceCode" id="cb126"><pre class="downlit sourceCode r">
+<div class="sourceCode" id="cb142"><pre class="downlit sourceCode r">
 <code class="sourceCode R"><span><span class="fu"><a href="https://ggplot2.tidyverse.org/reference/ggplot.html">ggplot</a></span><span class="op">(</span><span class="va">pets</span>, <span class="fu"><a href="https://ggplot2.tidyverse.org/reference/aes.html">aes</a></span><span class="op">(</span><span class="va">age</span>, <span class="va">score</span><span class="op">)</span><span class="op">)</span> <span class="op">+</span></span>
 <span>  <span class="fu"><a href="https://ggplot2.tidyverse.org/reference/geom_hex.html">geom_hex</a></span><span class="op">(</span>binwidth <span class="op">=</span> <span class="fu"><a href="https://rdrr.io/r/base/c.html">c</a></span><span class="op">(</span><span class="fl">1</span>, <span class="fl">5</span><span class="op">)</span><span class="op">)</span></span></code></pre></div>
 <div class="figure" style="text-align: center">
 <span style="display:block;" id="fig:overplot-hex"></span>
 <img src="images/overplot-hex-1.png" alt="Hexagonal heatmap of bin counts" width="90%"><p class="caption">
-Figure 3.47: Hexagonal heatmap of bin counts
+Figure 3.51: Hexagonal heatmap of bin counts
 </p>
 </div>
 </div>
@@ -1050,21 +1162,21 @@ Figure 3.47: Hexagonal heatmap of bin counts
 <span class="header-section-number">3.10.4</span> Correlation Heatmap<a class="anchor" aria-label="anchor" href="#geom_tile"><i class="fas fa-link"></i></a>
 </h3>
 <p>I've included the code for creating a correlation matrix from a table of variables, but you don't need to understand how this is done yet. We'll cover <code><a href="https://dplyr.tidyverse.org/reference/mutate.html">mutate()</a></code> and <code><a href="https://tidyr.tidyverse.org/reference/gather.html">gather()</a></code> functions in the <a href="dplyr.html#dplyr">dplyr</a> and <a href="tidyr.html#tidyr">tidyr</a> lessons.</p>
-<div class="sourceCode" id="cb127"><pre class="downlit sourceCode r">
+<div class="sourceCode" id="cb143"><pre class="downlit sourceCode r">
 <code class="sourceCode R"><span><span class="va">heatmap</span> <span class="op">&lt;-</span> <span class="va">pets</span> <span class="op"><a href="https://magrittr.tidyverse.org/reference/pipe.html">%&gt;%</a></span></span>
 <span>  <span class="fu"><a href="https://dplyr.tidyverse.org/reference/select_all.html">select_if</a></span><span class="op">(</span><span class="va">is.numeric</span><span class="op">)</span> <span class="op"><a href="https://magrittr.tidyverse.org/reference/pipe.html">%&gt;%</a></span> <span class="co"># get just the numeric columns</span></span>
 <span>  <span class="fu"><a href="https://rdrr.io/r/stats/cor.html">cor</a></span><span class="op">(</span><span class="op">)</span> <span class="op"><a href="https://magrittr.tidyverse.org/reference/pipe.html">%&gt;%</a></span> <span class="co"># create the correlation matrix</span></span>
 <span>  <span class="fu"><a href="https://tibble.tidyverse.org/reference/as_tibble.html">as_tibble</a></span><span class="op">(</span>rownames <span class="op">=</span> <span class="st">"V1"</span><span class="op">)</span> <span class="op"><a href="https://magrittr.tidyverse.org/reference/pipe.html">%&gt;%</a></span> <span class="co"># make it a tibble</span></span>
 <span>  <span class="fu"><a href="https://tidyr.tidyverse.org/reference/gather.html">gather</a></span><span class="op">(</span><span class="st">"V2"</span>, <span class="st">"r"</span>, <span class="fl">2</span><span class="op">:</span><span class="fu"><a href="https://rdrr.io/r/base/nrow.html">ncol</a></span><span class="op">(</span><span class="va">.</span><span class="op">)</span><span class="op">)</span> <span class="co"># wide to long (V2)</span></span></code></pre></div>
 <p>Once you have a correlation matrix in the correct (long) format, it's easy to make a heatmap using <code><a href="https://ggplot2.tidyverse.org/reference/geom_tile.html">geom_tile()</a></code>.</p>
-<div class="sourceCode" id="cb128"><pre class="downlit sourceCode r">
+<div class="sourceCode" id="cb144"><pre class="downlit sourceCode r">
 <code class="sourceCode R"><span><span class="fu"><a href="https://ggplot2.tidyverse.org/reference/ggplot.html">ggplot</a></span><span class="op">(</span><span class="va">heatmap</span>, <span class="fu"><a href="https://ggplot2.tidyverse.org/reference/aes.html">aes</a></span><span class="op">(</span><span class="va">V1</span>, <span class="va">V2</span>, fill<span class="op">=</span><span class="va">r</span><span class="op">)</span><span class="op">)</span> <span class="op">+</span></span>
 <span>  <span class="fu"><a href="https://ggplot2.tidyverse.org/reference/geom_tile.html">geom_tile</a></span><span class="op">(</span><span class="op">)</span> <span class="op">+</span></span>
 <span>  <span class="fu"><a href="https://ggplot2.tidyverse.org/reference/scale_viridis.html">scale_fill_viridis_c</a></span><span class="op">(</span><span class="op">)</span></span></code></pre></div>
 <div class="figure" style="text-align: center">
 <span style="display:block;" id="fig:heatmap"></span>
 <img src="images/heatmap-1.png" alt="Heatmap using geom_tile()" width="90%"><p class="caption">
-Figure 3.48: Heatmap using geom_tile()
+Figure 3.52: Heatmap using geom_tile()
 </p>
 </div>
 </div>
@@ -1406,7 +1518,7 @@ function openCity(evt, cityName) {
 <li><a class="nav-link" href="#intermediate">Intermediate</a></li>
 </ul>
 </li>
-<li><a class="nav-link" href="#setup_ggplot"><span class="header-section-number">3.2</span> Setup</a></li>
+<li><a class="nav-link" href="#setup-ggplot"><span class="header-section-number">3.2</span> Setup</a></li>
 <li><a class="nav-link" href="#vartypes"><span class="header-section-number">3.3</span> Common Variable Combinations</a></li>
 <li><a class="nav-link" href="#basic-plots"><span class="header-section-number">3.4</span> Basic Plots</a></li>
 <li><a class="nav-link" href="#ggplots"><span class="header-section-number">3.5</span> GGplots</a></li>
@@ -1439,7 +1551,8 @@ function openCity(evt, cityName) {
 <li><a class="nav-link" href="#violin-point-range-plot"><span class="header-section-number">3.8.2</span> Violin-point-range plot</a></li>
 <li><a class="nav-link" href="#violin-jitter-plot"><span class="header-section-number">3.8.3</span> Violin-jitter plot</a></li>
 <li><a class="nav-link" href="#scatter-line-graph"><span class="header-section-number">3.8.4</span> Scatter-line graph</a></li>
-<li><a class="nav-link" href="#plot_grid"><span class="header-section-number">3.8.5</span> Grid of plots</a></li>
+<li><a class="nav-link" href="#facets"><span class="header-section-number">3.8.5</span> Facets</a></li>
+<li><a class="nav-link" href="#plot_grid"><span class="header-section-number">3.8.6</span> Grid of plots</a></li>
 </ul>
 </li>
 <li>
@@ -1475,7 +1588,7 @@ function openCity(evt, cityName) {
 <footer class="bg-primary text-light mt-5"><div class="container"><div class="row">
 
   <div class="col-12 col-md-6 mt-3">
-    <p>"<strong>Data Skills for Reproducible Research</strong>: <br><a href="https://doi.org/10.5281/zenodo.6527194"><img src="https://zenodo.org/badge/DOI/10.5281/zenodo.6527194.svg" alt="DOI: 10.5281/zenodo.6527194"></a>" was written by . It was last built on 2022-08-30.</p>
+    <p>"<strong>Data Skills for Reproducible Research</strong>: <br><a href="https://doi.org/10.5281/zenodo.6527194"><img src="https://zenodo.org/badge/DOI/10.5281/zenodo.6527194.svg" alt="DOI: 10.5281/zenodo.6527194"></a>" was written by . It was last built on 2022-10-04.</p>
   </div>
 
   <div class="col-12 col-md-6 mt-3">

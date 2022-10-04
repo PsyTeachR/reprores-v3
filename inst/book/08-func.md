@@ -1,7 +1,7 @@
 # Iteration & Functions {#func}
 
 <div class="right meme"><img src="images/memes/functions.jpg" 
-     alt="History channel aliens conspiracy guy. Top text: I've got function inside functions...; Bottom text: ... inside functions." /></div>
+     alt="History channel aliens conspiracy guy. Top text: I've got functions inside functions...; Bottom text: ... inside functions." /></div>
 
 ## Learning Objectives {#ilo-func}
 
@@ -36,14 +36,26 @@ In the next two lectures, we are going to learn more about <a class='glossary' t
 
 ## Setup  {#setup-func}
 
+1. Open your `reprores-class-notes` project 
+1. Create a new R Markdown file called `08-func.Rmd`
+1. Update the YAML header 
+1. Replace the setup chunk with the one below: 
+
+<div class='verbatim'><pre class='sourceCode r'><code class='sourceCode R'>&#96;&#96;&#96;{r setup, include = FALSE}</code></pre>
 
 ```r
-# libraries needed for these examples
-library(tidyverse)  ## contains purrr, tidyr, dplyr
-library(broom) ## converts test output to tidy tables
+knitr::opts_chunk$set(echo = TRUE)
+
+# packages needed for this chapter
+library(tidyverse)  # loads purrr for iteration
+library(broom)      # converts test output to tidy tables
 
 set.seed(8675309) # makes sure random numbers are reproducible
 ```
+
+<pre class='sourceCode r'><code class='sourceCode R'>&#96;&#96;&#96;</code></pre></div>
+
+Download the [Apply functions with purrr cheat sheet](https://raw.githubusercontent.com/rstudio/cheatsheets/main/purrr.pdf).
 
 ## Iteration functions {#iteration-functions}
 
@@ -531,9 +543,11 @@ report_p(2)
 
 ## Iterating your own functions
 
+### Build code
+
 First, let's build up the code that we want to iterate.
 
-### rnorm()
+#### Simulate and structure data
 
 Create a vector of 20 random numbers drawn from a normal distribution with a mean of 5 and standard deviation of 1 using the `rnorm()` function and store them in the variable `A`.
 
@@ -541,8 +555,6 @@ Create a vector of 20 random numbers drawn from a normal distribution with a mea
 ```r
 A <- rnorm(20, mean = 5, sd = 1)
 ```
-
-### tibble::tibble()
 
 A `tibble` is a type of table or `data.frame`. The function `tibble::tibble()` creates a tibble with a column for each argument. Each argument takes the form `column_name = data_vector`.
 
@@ -556,7 +568,7 @@ dat <- tibble(
 )
 ```
 
-### t.test()
+#### Statistical test
 
 You can run a Welch two-sample t-test by including the two samples you made as the first two arguments to the function `t.test`. You can reference one column of a table by its names using the format `table_name$column_name`
 
@@ -602,7 +614,7 @@ t.test(score~group, data = longdat)
 ##        4.886096        5.466453
 ```
 
-### broom::tidy()
+#### Tidy output
 
 You can use the function `broom::tidy()` to extract the data from a statistical test in a table format. The example below pipes everything together.
 
@@ -656,6 +668,8 @@ tibble(
 In the pipeline above, `t.test(score~group, data = _)` uses the `_` notation to change the location of the piped-in data table from it's default position as the first argument to a different position. 
 :::
 
+#### Extract important values
+
 Finally, we can extract a single value from this results table using `pull()`.
 
 
@@ -674,7 +688,9 @@ tibble(
 ## [1] 0.7550108
 ```
 
-### Custom function: t_sim()
+### Custom function
+
+Next, we can group the code above inside a function.
 
 First, name your function `t_sim` and wrap the code above in a function with no arguments. 
 
@@ -703,7 +719,7 @@ t_sim()
 ## [1] 0.2744559
 ```
 
-### Iterate t_sim()
+#### Iterate
 
 Let's run the `t_sim` function 1000 times, assign the resulting p-values to a vector called `reps`, and check what proportion of p-values are lower than alpha (e.g., .05). This number is the power for this analysis.
 
@@ -719,7 +735,7 @@ power
 ## [1] 0.329
 ```
 
-### Set seed {#seed}
+#### Set seed {#seed}
 
 You can use the `set.seed` function before you run a function that uses random numbers to make sure that you get the same random data back each time. You can use any integer you like as the seed.
 
@@ -737,9 +753,9 @@ Make sure you don't ever use `set.seed()` **inside** of a simulation function, o
 <p class="caption">(\#fig:img-seed-alignment)&commat;KellyBodwin</p>
 </div>
 
-### Add arguments
+#### Add arguments
 
-You can just edit your function each time you want to cacluate power for a different sample n, but it is more efficent to build this into your fuction as an arguments. Redefine `t_sim`, setting arguments for the mean and SD of group A, the mean and SD of group B, and the number of subjects per group. Give them all default values.
+You can just edit your function each time you want to calculate power for a different sample n, but it is more efficient to build this into your function as an arguments. Redefine `t_sim`, setting arguments for the mean and SD of group A, the mean and SD of group B, and the number of subjects per group. Give them all default values.
 
 
 
@@ -755,6 +771,8 @@ t_sim <- function(n = 10, m1=0, sd1=1, m2=0, sd2=1) {
     pull(p.value) 
 }
 ```
+
+### Test your function
 
 Test your function with some different values to see if the results make sense.
 
@@ -803,11 +821,14 @@ power.t.test(n = 100, delta = 0.2, sd = 1, type="two.sample")
 ## NOTE: n is number in *each* group
 ```
 
+
+::: {.try data-latex=""}
 Calculate power via simulation and `power.t.test` for the following tests:
 
 * 20 subjects/group, A: m = 0, SD = 1; B: m = 0.2, SD = 1
 * 40 subjects/group, A: m = 0, SD = 1; B: m = 0.2, SD = 1
 * 20 subjects/group, A: m = 10, SD = 1; B: m = 12, SD = 1.5
+:::
 
 ## Glossary {#glossary-func}
 
@@ -851,4 +872,4 @@ Calculate power via simulation and `power.t.test` for the following tests:
 ## Further Resources {#resources-func}
 
 * Chapters 19 and 21 of [R for Data Science](http://r4ds.had.co.nz)
-* [RStudio Apply Functions Cheatsheet](https://github.com/rstudio/cheatsheets/raw/master/purrr.pdf)
+* [Apply functions with purrr cheat sheet](https://raw.githubusercontent.com/rstudio/cheatsheets/main/purrr.pdf)

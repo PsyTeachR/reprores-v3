@@ -1,7 +1,7 @@
 Package: reprores
 Title: Data Skills for Reproducible Research
-Version: 3.0
-Date: 2022-08-08
+Version: 3.0.1
+Date: 2022-10--04
 Authors@R: 
   c(
     person(
@@ -60,10 +60,6 @@ Imports:
     ggwordcloud,
     googlesheets4,
     waffle,
-    sf,
-    rnaturalearth,
-    rnaturalearthdata, 
-    rnaturalearthhires,
     flexdashboard,
     treemap,
     beepr,
@@ -85,5 +81,4 @@ URL: https://github.com/psyteachr/reprores-v3
 BugReports: https://github.com/psyteachr/reprores-v3/issues
 Remotes: 
     psyteachr/glossary,
-    hrbrmstr/waffle,
-    ropensci/rnaturalearthhires
+    hrbrmstr/waffle

@@ -24,14 +24,25 @@
 
 ## Setup {#setup-joins}
 
+1. Open your `reprores-class-notes` project 
+1. Create a new R Markdown file called `05-joins.Rmd`
+1. Update the YAML header 
+1. Replace the setup chunk with the one below: 
+
+<div class='verbatim'><pre class='sourceCode r'><code class='sourceCode R'>&#96;&#96;&#96;{r setup, include = FALSE}</code></pre>
 
 ```r
-# libraries needed
-library(tidyverse)
-library(reprores)
+knitr::opts_chunk$set(echo = TRUE)
+
+# packages needed for this chapter
+library(tidyverse) # loads dplyr for join functions
 ```
 
-## Data
+<pre class='sourceCode r'><code class='sourceCode R'>&#96;&#96;&#96;</code></pre></div>
+
+Download the [Data transformation cheatsheet](https://raw.githubusercontent.com/rstudio/cheatsheets/main/data-transformation.pdf).
+
+## Create Demo Data
 
 First, we'll create two small data tables. 
 

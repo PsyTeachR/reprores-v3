@@ -2,7 +2,7 @@
 title: Data Skills for Reproducible Research
 subtitle: "<br><a href='https://doi.org/10.5281/zenodo.6527194'><img src='https://zenodo.org/badge/DOI/10.5281/zenodo.6527194.svg' alt='DOI: 10.5281/zenodo.6527194'></a>"
 authors: "Lisa DeBruine & Dale Barr"
-date: "2022-09-07"
+date: "2022-10-04"
 site: bookdown::bookdown_site
 documentclass: book
 classoption: oneside # for PDFs
@@ -28,7 +28,7 @@ This book provides an overview of skills needed for reproducible and open resear
 
 While this book mainly focusses on technical data skills, reproducible and open research is the reason for learning these skills. The following papers provide a great overview of these concepts if you are not already familiar with them.
 
-* [Easing into open science: A guide for graduate students and their advisors](https://doi.org/10.1525/collabra.18684) [@kathawalla2021easing]
+* [Easing into open science: A guide for graduate students and their advisors](https://doi.org/10.1525/collabra.18684) [@kathawalla_easing_2021]
 * [An open science workflow for more credible, rigorous research](https://psyarxiv.com/wu6sn) [@corker2021open]
 * [Seven easy steps to open science](https://doi.org/10.1027/2151-2604/a000387) [@cruwell2019seven]
 * [A community-sourced glossary of open scholarship terms](https://doi.org/10.1038/s41562-021-01269-4) [@parsons2022community]

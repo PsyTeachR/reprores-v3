@@ -16,19 +16,30 @@
 
 ## Setup {#setup-repro}
 
+You will be given instructions in Section\ \@ref(new-project) below to set up a new project where you will keep all of your class notes. Section\ \@ref(r-markdown) gives instructions to set up an R Markdown script for this chapter. 
+
+For reference, here are the packages we will use in this chapter.
+
 
 ```r
-library(tidyverse)
-library(knitr)
+# packages needed for this chapter
+library(tidyverse)  # various data manipulation functions
+library(knitr)      # for table and image display
+library(kableExtra) # for styling tables
+library(papaja)     # for APA-style tables
+library(gt)         # for fancy tables
+library(DT)         # for interactive tables
 ```
 
-## Why learn reproducible reports?
+Download the [R Markdown Cheat Sheet](https://www.rstudio.org/links/r_markdown_cheat_sheet).
+
+## Why use reproducible reports?
 
 Have you ever worked on a report, creating a summary table for the demographics, making beautiful plots, getting the analysis just right, and copying all the relevant numbers into your manuscript, only to find out that you forgot to exclude a test run and have to redo everything?
 
-A<a class='glossary' target='_blank' title='The extent to which the findings of a study can be repeated in some other context' href='https://psyteachr.github.io/glossary/r#reproducibility'>reproducible</a> report fixes this problem. Although this requires a bit of extra effort at the start, it will more than pay you back by allowing you to update your entire report with the push of a button whenever anything changes.
+A <a class='glossary' target='_blank' title='The extent to which the findings of a study can be repeated in some other context' href='https://psyteachr.github.io/glossary/r#reproducibility'>reproducible</a> report fixes this problem. Although this requires a bit of extra effort at the start, it will more than pay you back by allowing you to update your entire report with the push of a button whenever anything changes.
 
-Studies also show that many, if not most, papers in the scientific literature have reporting errors. For example, more than half of over 250,000 psychology papers published between 1985 and 2013 have at least one value that is statistically incompatible (e.g., a p-value that is not possible given a t-value and degrees of freedom) [@nuijten2016prevalence]. Reproducible reports help avoid transcription and rounding errors.
+Studies also show that many, if not most, papers in the scientific literature have reporting errors. For example, more than half of over 250,000 psychology papers published between 1985 and 2013 have at least one value that is statistically incompatible, such as a p-value that is not possible given a t-value and degrees of freedom [@nuijten2016prevalence]. Reproducible reports help avoid transcription and rounding errors.
 
 We will make reproducible reports following the principles of [literate programming](https://en.wikipedia.org/wiki/Literate_programming). The basic idea is to have the text of the report together in a single document along with the code needed to perform all analyses and generate the tables. The report is then "compiled" from the original format into some other, more portable format, such as HTML or PDF. This is different from traditional cutting and pasting approaches where, for instance, you create a graph in Microsoft Excel or a statistics program like SPSS and then paste it into Microsoft Word.
 
@@ -44,15 +55,15 @@ For example, if Lisa is looking for a file called `report.Rmd`on their Desktop, 
 
 ### Working Directory
 
-Where should you put all of your files? You usually want to have all of your scripts and data files for a single project inside one folder on your computer, the <a class='glossary' target='_blank' title='The filepath where R is currently reading and writing files.' href='https://psyteachr.github.io/glossary/w#working-directory'>working directory</a> for that project. You can organise files in subdirectories inside this main project directory, such as putting all raw data files in a directory called <code class='path'>data</code> and saving any image files to a directory called <code class='path'>images</code>.
+Where should you put all of your files? You usually want to have all of your scripts and data files for a single project inside one folder on your computer, the <a class='glossary' target='_blank' title='The filepath where R is currently reading and writing files.' href='https://psyteachr.github.io/glossary/w#working-directory'>working directory</a> for that project. You can organise files in subdirectories inside this main project directory, such as putting all raw data files in a directory called <code class='path'>data</code> and saving any image files to a directory called <code class='path'>images</code>. 
 
-Your script should only reference files in three locations, using the appropriate format.
+Your script should only reference files in three types of locations, using the appropriate format.
 
-| Where                    | Example                                                          |
-|--------------------------|------------------------------------------------------------------|
-| on the web               | "<https://psyteachr.github.io/reprores-v3/data/5factor.xlsx>" |
-| in the working directory | "5factor.xlsx"                                           |
-| in a subdirectory        | "data/5factor.xlsx"                                      |
+| Where | Example |
+|-------|---------|
+| on the web               | "https://psyteachr.github.io/reprores-v3/data/5factor.xlsx" |
+| in the working directory | "5factor.xlsx" |
+| in a subdirectory        | "data/5factor.xlsx" |
 
 ::: {.warning data-latex=""}
 Never set or change your working directory in a script.
@@ -87,58 +98,51 @@ Name files so that both people and computers can easily find things. Here are so
 -   use underscores (`_`) to separate parts of the file name, and dashes (`-`) to separate words in a section
 -   name files with a pattern that alphabetises in a sensible order and makes it easy for you to find the file you're looking for
 -   prefix a filename with an underscore to move it to the top of the list, or prefix all files with numbers to control their order
+-   use YYYY-MM-DD format for dates so they sort in chronological order
 
 For example, these file names are a mess:
 
--   <code class='path'>report.doc</code>
--   <code class='path'>report final.doc</code>
 -   <code class='path'>Data (Participants) 11-15.xls</code>
--   <code class='path'>Participants Data Nov 12.xls</code>
 -   <code class='path'>final report2.doc</code>
+-   <code class='path'>Participants Data Nov 12.xls</code>
 -   <code class='path'>project notes.txt</code>
 -   <code class='path'>Questionnaire Data November 15.xls</code>
+-   <code class='path'>report.doc</code>
+-   <code class='path'>report final.doc</code>
 
-Here is one way to structure them so that similar files have the same structure and it's easy for a human to scan the list or to use code to find relevant files. See if you can figure out what the last one should be.
+Here is one way to structure them so that similar files have the same structure and it's easy for a human to scan the list or to use code to find relevant files. See if you can figure out what the missing one should be.
 
 -   <code class='path'>_project-notes.txt</code>
--   <code class='path'>report_v1.doc</code>
--   <code class='path'>report_v2.doc</code>
--   <code class='path'>report_v3.doc</code>
 -   <code class='path'>data_participants_2021-11-12.xls</code>
 -   <code class='path'>data_participants_2021-11-15.xls</code>
 -   <select class='webex-select'><option value='blank'></option><option value=''>questionnaire-data_2021-11-15.xls</option><option value=''>data-questionnaire-2021_11_15.xls</option><option value='answer'>data_questionnaire_2021-11-15.xls</option><option value=''>data_2021-11-15_questionnaire.xls</option></select>
+-   <code class='path'>report_v1.doc</code>
+-   <code class='path'>report_v2.doc</code>
+-   <code class='path'>report_v3.doc</code>
 
 ::: {.try data-latex=""}
 Think of other ways to name the files above. Look at some of your own project files and see what you can improve.
 :::
 
-### Start a Project
+### Start a Project {#new-project}
 
-Now that we understand how the file system work and how to name things to make it easier for scripts to access them, we're ready to make our first project. 
+Now that we understand how the file system work and how to name things to make it easier for scripts to access them, we're ready to make our class project. 
 
-First, make a new <a class='glossary' target='_blank' title='A collection or "folder" of files on a computer.' href='https://psyteachr.github.io/glossary/d#directory'>directory</a> where you will keep all of your materials for this class. You can set this directory to be the default working directory under the General tab of the Global Options. This means that files will be saved here by default if you aren't working in a project. 
+First, make a new <a class='glossary' target='_blank' title='A collection or "folder" of files on a computer.' href='https://psyteachr.github.io/glossary/d#directory'>directory</a> where you will keep all of your materials for this class (I called mine `reprores-2022`). You can set this directory to be the default working directory under the General tab of the Global Options. This means that files will be saved here by default if you aren't working in a project. 
 
-Next, choose **`New Project...`** under the **`File`** menu to create a new project called <code class='path'>02-reports</code>. Make sure you save it inside the directory you just made. RStudio will restart itself and open with this new project directory as the working directory. 
+::: {.warning data-latex=""}
+It can sometimes cause problems if this directory is in OneDrive or if the full file path has special characters or is [more than 260 characters](http://handbook.datalad.org/en/latest/intro/filenaming.html){target='_blank'} on some Windows machines.
+:::
 
-
-```r
-include_graphics(c("images/repro/new_proj_1.png",
-                   "images/repro/new_proj_2.png",
-                   "images/repro/new_proj_3.png"))
-```
+Next, choose **`New Project...`** under the **`File`** menu to create a new project called <code class='path'>reprores-class-notes</code>. Make sure you save it inside the directory you just made. RStudio will restart itself and open with this new project directory as the working directory. 
 
 <div class="figure" style="text-align: center">
-<img src="images/repro/new_proj_1.png" alt="Starting a new project." width="100%" />
-<p class="caption">(\#fig:unnamed-chunk-2-1)Starting a new project.</p>
-</div><div class="figure" style="text-align: center">
-<img src="images/repro/new_proj_2.png" alt="Starting a new project." width="100%" />
-<p class="caption">(\#fig:unnamed-chunk-2-2)Starting a new project.</p>
-</div><div class="figure" style="text-align: center">
-<img src="images/repro/new_proj_3.png" alt="Starting a new project." width="100%" />
-<p class="caption">(\#fig:unnamed-chunk-2-3)Starting a new project.</p>
+<img src="images/repro/new_proj_1.png" alt="Starting a new project." width="32%" /><img src="images/repro/new_proj_2.png" alt="Starting a new project." width="32%" /><img src="images/repro/new_proj_3.png" alt="Starting a new project." width="32%" />
+<p class="caption">(\#fig:img-new-proj)Starting a new project.</p>
 </div>
 
-Click on the Files tab in the lower right pane to see the contents of the project directory. You will see a file called `02-reports.Rproj`, which is a file that contains all of the project information.You can double-click on it to open up the project. 
+
+Click on the Files tab in the lower right pane to see the contents of the project directory. You will see a file called `reprores-class-notes.Rproj`, which is a file that contains all of the project information.You can double-click on it to open up the project. 
 
 ::: {.info data-latex=""}
 Depending on your settings, you may also see a directory called `.Rproj.user`, which contains your specific user settings. You can ignore this and other "invisible" files that start with a full stop.
@@ -154,15 +158,50 @@ There is a new type of reproducible report format called [quarto](https://quarto
 
 We will use <a class='glossary' target='_blank' title='The R-specific version of markdown: a way to specify formatting, such as headers, paragraphs, lists, bolding, and links, as well as code blocks and inline code.' href='https://psyteachr.github.io/glossary/r#r-markdown'>R Markdown</a> to create reproducible reports, which enables mixing of text and code. A reproducible script will contain sections of code in code blocks. A code block starts and ends with three backtick symbols in a row, with some information about the code between curly brackets, such as `{r chunk-name, echo=FALSE}` (this runs the code, but does not show the text of the code block in the compiled document). The text outside of code blocks is written in <a class='glossary' target='_blank' title='A way to specify formatting, such as headers, paragraphs, lists, bolding, and links.' href='https://psyteachr.github.io/glossary/m#markdown'>markdown</a>, which is a way to specify formatting, such as headers, paragraphs, lists, bolding, and links.
 
-<div class="figure" style="text-align: center">
-<img src="images/repro/reproducible_script.png" alt="A reproducible script." width="100%" />
-<p class="caption">(\#fig:img-reproducible-script)A reproducible script.</p>
-</div>
+
+````md
+---
+title: "Reproducible Script"
+author: "Lisa DeBruine"
+output: html_document
+---
+
+```{r setup, include=FALSE}
+knitr::opts_chunk$set(echo = TRUE)
+library(tidyverse)
+```
+
+## Simulate Data
+
+Here we will simulate data from a study with two conditions. 
+The mean in condition A is 0 and the mean in condition B is 1.
+
+```{r simulate}
+n <- 100
+
+data <- data.frame(
+  id = 1:n,
+  condition = c("A", "B") |> rep(each = n/2),
+  dv = c(rnorm(n/2, 0), rnorm(n/2, 1))
+)
+```
+
+## Plot Data
+
+```{r condition-plot, echo = FALSE}
+ggplot(data, aes(condition, dv)) +
+  geom_violin(trim = FALSE) +
+  geom_boxplot(width = 0.25,
+               aes(fill = condition),
+               show.legend = FALSE)
+```
+````
+
 
 If you open up a new R Markdown file from a template, you will see an example document with several code blocks in it. To create an HTML or PDF report from an R Markdown (Rmd) document, you compile it.  Compiling a document is called <a class='glossary' target='_blank' title='To create an HTML, PDF, or Word document from an R Markdown (Rmd) document' href='https://psyteachr.github.io/glossary/k#knit'>knitting</a> in RStudio. There is a button that looks like a ball of yarn with needles through it that you click on to compile your file into a report. 
 
 ::: {.try data-latex=""}
-Create a new R Markdown file from the **`File > New File > R Markdown...`** menu. Change the title and author, then click the knit button to create an html file.
+Create a new R Markdown file from the **`File > New File > R Markdown...`** menu. Change the title and author, save the file as `02-repro.Rmd`, then click the knit button to create an html file.
 :::
 
 ### YAML Header {#yaml}
@@ -180,8 +219,6 @@ output:
       collapsed: false
       smooth_scroll: false
     number_sections: false
-bibliography: refs.bib
-csl: apa.csl
 ---
 ```
 
@@ -277,6 +314,7 @@ pets <- read_csv("https://psyteachr.github.io/reprores/data/pets.csv",
                  show_col_types = FALSE)
 ```
 
+### Comments
 
 You can add comments inside R chunks with the hash symbol (`#`). The R interpreter will ignore characters from the hash to the end of the line.
 
@@ -295,7 +333,52 @@ It's usually good practice to start a code chunk with a comment that explains wh
 
 If you name your objects clearly, you often don't need to add clarifying comments. For example, if I'd named the three objects above `total_pet_n`, `mean_score` and `sd_score`, I would omit the comments.
 
-It's a bit of an art to comment your code well. The best way to develop this skill is to read a lot of other people's code and have others review your code. 
+Another use for comments is to "comment out" a section of code that you don't want to run, but also don't want to delete. For example, you might include the code used to install a package in your script, but you should always comment it out so the script doesn't force a lengthy installation every time it's run. 
+
+
+```r
+# install.packages("dplyr")
+# install.packages("tidyr")
+# install.packages("ggplot2")
+```
+
+::: {.info data-latex=""}
+You can comment or uncomment multiple lines at once by selecting the lines and typing Cmd-shift-C (Mac) or Ctrl-shift-C (Windows).
+:::
+
+It's a bit of an art to comment your code well. The best way to develop this skill is to read a lot of other people's code and have others review your code.
+
+### In-line R {#inline-r}
+
+Now let's analyse the pets data to see if cats are heavier than ferrets. First we'll run the analysis code. Then we'll save any numbers we might want to use in our manuscript to variables and round them appropriately. Finally, we'll use <code><span><span class='fu'>glue</span><span class='fu'>::</span><span class='fu'><a target='_blank' href='https://glue.tidyverse.org/reference/glue.html'>glue</a></span><span class='op'>(</span><span class='op'>)</span></span></code> to format a results string.
+
+
+```r
+# analysis
+cat_weight <- filter(pets, pet == "cat") %>% pull(weight)
+ferret_weight <- filter(pets, pet == "ferret") %>% pull(weight)
+weight_test <- t.test(cat_weight, ferret_weight)
+
+# round individual values you want to report
+t <- weight_test$statistic %>% round(2)
+df <- weight_test$parameter %>% round(1)
+p <- weight_test$p.value %>% round(3)
+# handle p-values < .001
+p_symbol <- ifelse(p < .001, "<", "=")
+if (p < .001) p <- .001
+
+# format the results string
+weight_result <- glue::glue("t = {t}, df = {df}, p {p_symbol} {p}")
+```
+
+You can insert the results into a paragraph with inline R code that looks like this: 
+
+<pre><code>Cats were significantly heavier than ferrets (&#96;r weight_result&#96;).</code></pre>
+
+**Rendered text:**  
+Cats were significantly heavier than ferrets (t = 18.42, df = 180.4, p < 0.001). 
+
+
 
 ### Tables {#repro-tables}
 
@@ -363,7 +446,6 @@ The table above is OK, but it could be more reader-friendly by changing the colu
   <button class="tablinks" onclick="openCity(event, 'kableExtra')">kableExtra</button>
   <button class="tablinks" onclick="openCity(event, 'papaja')">papaja</button>
   <button class="tablinks" onclick="openCity(event, 'gt')">gt</button>
-  <button class="tablinks" onclick="openCity(event, 'DT')">DT</button>
 </div>
 
 <!-- Tab content -->
@@ -518,12 +600,12 @@ gt(summary_table, caption = "Summary statistics for the pets dataset.") |>
 ```
 
 ```{=html}
-<div id="ceatgionfl" style="overflow-x:auto;overflow-y:auto;width:auto;height:auto;">
+<div id="unjtlddltl" style="overflow-x:auto;overflow-y:auto;width:auto;height:auto;">
 <style>html {
   font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Oxygen, Ubuntu, Cantarell, 'Helvetica Neue', 'Fira Sans', 'Droid Sans', Arial, sans-serif;
 }
 
-#ceatgionfl .gt_table {
+#unjtlddltl .gt_table {
   display: table;
   border-collapse: collapse;
   margin-left: auto;
@@ -548,7 +630,7 @@ gt(summary_table, caption = "Summary statistics for the pets dataset.") |>
   border-left-color: #D3D3D3;
 }
 
-#ceatgionfl .gt_heading {
+#unjtlddltl .gt_heading {
   background-color: #FFFFFF;
   text-align: center;
   border-bottom-color: #FFFFFF;
@@ -560,7 +642,7 @@ gt(summary_table, caption = "Summary statistics for the pets dataset.") |>
   border-right-color: #D3D3D3;
 }
 
-#ceatgionfl .gt_title {
+#unjtlddltl .gt_title {
   color: #333333;
   font-size: 125%;
   font-weight: initial;
@@ -572,7 +654,7 @@ gt(summary_table, caption = "Summary statistics for the pets dataset.") |>
   border-bottom-width: 0;
 }
 
-#ceatgionfl .gt_subtitle {
+#unjtlddltl .gt_subtitle {
   color: #333333;
   font-size: 85%;
   font-weight: initial;
@@ -584,13 +666,13 @@ gt(summary_table, caption = "Summary statistics for the pets dataset.") |>
   border-top-width: 0;
 }
 
-#ceatgionfl .gt_bottom_border {
+#unjtlddltl .gt_bottom_border {
   border-bottom-style: solid;
   border-bottom-width: 2px;
   border-bottom-color: #5F5F5F;
 }
 
-#ceatgionfl .gt_col_headings {
+#unjtlddltl .gt_col_headings {
   border-top-style: solid;
   border-top-width: 2px;
   border-top-color: #5F5F5F;
@@ -605,7 +687,7 @@ gt(summary_table, caption = "Summary statistics for the pets dataset.") |>
   border-right-color: #D3D3D3;
 }
 
-#ceatgionfl .gt_col_heading {
+#unjtlddltl .gt_col_heading {
   color: #FFFFFF;
   background-color: #0076BA;
   font-size: 100%;
@@ -625,7 +707,7 @@ gt(summary_table, caption = "Summary statistics for the pets dataset.") |>
   overflow-x: hidden;
 }
 
-#ceatgionfl .gt_column_spanner_outer {
+#unjtlddltl .gt_column_spanner_outer {
   color: #FFFFFF;
   background-color: #0076BA;
   font-size: 100%;
@@ -637,15 +719,15 @@ gt(summary_table, caption = "Summary statistics for the pets dataset.") |>
   padding-right: 4px;
 }
 
-#ceatgionfl .gt_column_spanner_outer:first-child {
+#unjtlddltl .gt_column_spanner_outer:first-child {
   padding-left: 0;
 }
 
-#ceatgionfl .gt_column_spanner_outer:last-child {
+#unjtlddltl .gt_column_spanner_outer:last-child {
   padding-right: 0;
 }
 
-#ceatgionfl .gt_column_spanner {
+#unjtlddltl .gt_column_spanner {
   border-bottom-style: solid;
   border-bottom-width: 2px;
   border-bottom-color: #5F5F5F;
@@ -657,7 +739,7 @@ gt(summary_table, caption = "Summary statistics for the pets dataset.") |>
   width: 100%;
 }
 
-#ceatgionfl .gt_group_heading {
+#unjtlddltl .gt_group_heading {
   padding-top: 8px;
   padding-bottom: 8px;
   padding-left: 5px;
@@ -682,7 +764,7 @@ gt(summary_table, caption = "Summary statistics for the pets dataset.") |>
   vertical-align: middle;
 }
 
-#ceatgionfl .gt_empty_group_heading {
+#unjtlddltl .gt_empty_group_heading {
   padding: 0.5px;
   color: #333333;
   background-color: #FFFFFF;
@@ -697,15 +779,15 @@ gt(summary_table, caption = "Summary statistics for the pets dataset.") |>
   vertical-align: middle;
 }
 
-#ceatgionfl .gt_from_md > :first-child {
+#unjtlddltl .gt_from_md > :first-child {
   margin-top: 0;
 }
 
-#ceatgionfl .gt_from_md > :last-child {
+#unjtlddltl .gt_from_md > :last-child {
   margin-bottom: 0;
 }
 
-#ceatgionfl .gt_row {
+#unjtlddltl .gt_row {
   padding-top: 8px;
   padding-bottom: 8px;
   padding-left: 5px;
@@ -724,7 +806,7 @@ gt(summary_table, caption = "Summary statistics for the pets dataset.") |>
   overflow-x: hidden;
 }
 
-#ceatgionfl .gt_stub {
+#unjtlddltl .gt_stub {
   color: #333333;
   background-color: #89D3FE;
   font-size: 100%;
@@ -737,7 +819,7 @@ gt(summary_table, caption = "Summary statistics for the pets dataset.") |>
   padding-right: 5px;
 }
 
-#ceatgionfl .gt_stub_row_group {
+#unjtlddltl .gt_stub_row_group {
   color: #333333;
   background-color: #FFFFFF;
   font-size: 100%;
@@ -751,11 +833,11 @@ gt(summary_table, caption = "Summary statistics for the pets dataset.") |>
   vertical-align: top;
 }
 
-#ceatgionfl .gt_row_group_first td {
+#unjtlddltl .gt_row_group_first td {
   border-top-width: 2px;
 }
 
-#ceatgionfl .gt_summary_row {
+#unjtlddltl .gt_summary_row {
   color: #333333;
   background-color: #FFFFFF;
   text-transform: inherit;
@@ -765,16 +847,16 @@ gt(summary_table, caption = "Summary statistics for the pets dataset.") |>
   padding-right: 5px;
 }
 
-#ceatgionfl .gt_first_summary_row {
+#unjtlddltl .gt_first_summary_row {
   border-top-style: solid;
   border-top-color: #5F5F5F;
 }
 
-#ceatgionfl .gt_first_summary_row.thick {
+#unjtlddltl .gt_first_summary_row.thick {
   border-top-width: 2px;
 }
 
-#ceatgionfl .gt_last_summary_row {
+#unjtlddltl .gt_last_summary_row {
   padding-top: 8px;
   padding-bottom: 8px;
   padding-left: 5px;
@@ -784,7 +866,7 @@ gt(summary_table, caption = "Summary statistics for the pets dataset.") |>
   border-bottom-color: #5F5F5F;
 }
 
-#ceatgionfl .gt_grand_summary_row {
+#unjtlddltl .gt_grand_summary_row {
   color: #333333;
   background-color: #D5D5D5;
   text-transform: inherit;
@@ -794,7 +876,7 @@ gt(summary_table, caption = "Summary statistics for the pets dataset.") |>
   padding-right: 5px;
 }
 
-#ceatgionfl .gt_first_grand_summary_row {
+#unjtlddltl .gt_first_grand_summary_row {
   padding-top: 8px;
   padding-bottom: 8px;
   padding-left: 5px;
@@ -804,11 +886,11 @@ gt(summary_table, caption = "Summary statistics for the pets dataset.") |>
   border-top-color: #5F5F5F;
 }
 
-#ceatgionfl .gt_striped {
+#unjtlddltl .gt_striped {
   background-color: #EDF7FC;
 }
 
-#ceatgionfl .gt_table_body {
+#unjtlddltl .gt_table_body {
   border-top-style: solid;
   border-top-width: 2px;
   border-top-color: #5F5F5F;
@@ -817,7 +899,7 @@ gt(summary_table, caption = "Summary statistics for the pets dataset.") |>
   border-bottom-color: #5F5F5F;
 }
 
-#ceatgionfl .gt_footnotes {
+#unjtlddltl .gt_footnotes {
   color: #333333;
   background-color: #FFFFFF;
   border-bottom-style: none;
@@ -831,7 +913,7 @@ gt(summary_table, caption = "Summary statistics for the pets dataset.") |>
   border-right-color: #D3D3D3;
 }
 
-#ceatgionfl .gt_footnote {
+#unjtlddltl .gt_footnote {
   margin: 0px;
   font-size: 90%;
   padding-left: 4px;
@@ -840,7 +922,7 @@ gt(summary_table, caption = "Summary statistics for the pets dataset.") |>
   padding-right: 5px;
 }
 
-#ceatgionfl .gt_sourcenotes {
+#unjtlddltl .gt_sourcenotes {
   color: #333333;
   background-color: #FFFFFF;
   border-bottom-style: none;
@@ -854,7 +936,7 @@ gt(summary_table, caption = "Summary statistics for the pets dataset.") |>
   border-right-color: #D3D3D3;
 }
 
-#ceatgionfl .gt_sourcenote {
+#unjtlddltl .gt_sourcenote {
   font-size: 90%;
   padding-top: 4px;
   padding-bottom: 4px;
@@ -862,64 +944,64 @@ gt(summary_table, caption = "Summary statistics for the pets dataset.") |>
   padding-right: 5px;
 }
 
-#ceatgionfl .gt_left {
+#unjtlddltl .gt_left {
   text-align: left;
 }
 
-#ceatgionfl .gt_center {
+#unjtlddltl .gt_center {
   text-align: center;
 }
 
-#ceatgionfl .gt_right {
+#unjtlddltl .gt_right {
   text-align: right;
   font-variant-numeric: tabular-nums;
 }
 
-#ceatgionfl .gt_font_normal {
+#unjtlddltl .gt_font_normal {
   font-weight: normal;
 }
 
-#ceatgionfl .gt_font_bold {
+#unjtlddltl .gt_font_bold {
   font-weight: bold;
 }
 
-#ceatgionfl .gt_font_italic {
+#unjtlddltl .gt_font_italic {
   font-style: italic;
 }
 
-#ceatgionfl .gt_super {
+#unjtlddltl .gt_super {
   font-size: 65%;
 }
 
-#ceatgionfl .gt_footnote_marks {
+#unjtlddltl .gt_footnote_marks {
   font-style: italic;
   font-weight: normal;
   font-size: 75%;
   vertical-align: 0.4em;
 }
 
-#ceatgionfl .gt_asterisk {
+#unjtlddltl .gt_asterisk {
   font-size: 100%;
   vertical-align: 0;
 }
 
-#ceatgionfl .gt_indent_1 {
+#unjtlddltl .gt_indent_1 {
   text-indent: 5px;
 }
 
-#ceatgionfl .gt_indent_2 {
+#unjtlddltl .gt_indent_2 {
   text-indent: 10px;
 }
 
-#ceatgionfl .gt_indent_3 {
+#unjtlddltl .gt_indent_3 {
   text-indent: 15px;
 }
 
-#ceatgionfl .gt_indent_4 {
+#unjtlddltl .gt_indent_4 {
   text-indent: 20px;
 }
 
-#ceatgionfl .gt_indent_5 {
+#unjtlddltl .gt_indent_5 {
   text-indent: 25px;
 }
 </style>
@@ -962,34 +1044,14 @@ gt(summary_table, caption = "Summary statistics for the pets dataset.") |>
 </div>
 
 
-<!-- Tab content -->
-<div id="DT" class="tabcontent">
-
-[DT](https://rstudio.github.io/DT/) lets you make interactive data tables. It can be tricky to customise, but the defaults are similar to other table functions.
-
-
-```r
-DT::datatable(summary_table, 
-              caption = "Summary statistics for the pets dataset.",
-              colnames = c("Pet Type", "N", "Weight", "Score")) |>
-  DT::formatRound(c("mean_weight", "mean_score"),
-                  digits = 2)
-```
-
-```{=html}
-<div id="htmlwidget-3c47dd0fab7617369218" style="width:100%;height:auto;" class="datatables html-widget"></div>
-<script type="application/json" data-for="htmlwidget-3c47dd0fab7617369218">{"x":{"filter":"none","vertical":false,"caption":"<caption>Summary statistics for the pets dataset.<\/caption>","data":[["1","2","3"],["cat","dog","ferret"],[300,400,100],[9.3716129083,19.0679737427696,4.78156944173321],[90.2366666666667,99.9825,111.78]],"container":"<table class=\"display\">\n  <thead>\n    <tr>\n      <th> <\/th>\n      <th>Pet Type<\/th>\n      <th>N<\/th>\n      <th>Weight<\/th>\n      <th>Score<\/th>\n    <\/tr>\n  <\/thead>\n<\/table>","options":{"columnDefs":[{"targets":3,"render":"function(data, type, row, meta) {\n    return type !== 'display' ? data : DTWidget.formatRound(data, 2, 3, \",\", \".\", null);\n  }"},{"targets":4,"render":"function(data, type, row, meta) {\n    return type !== 'display' ? data : DTWidget.formatRound(data, 2, 3, \",\", \".\", null);\n  }"},{"className":"dt-right","targets":[2,3,4]},{"orderable":false,"targets":0}],"order":[],"autoWidth":false,"orderClasses":false}},"evals":["options.columnDefs.0.render","options.columnDefs.1.render"],"jsHooks":[]}</script>
-```
-
-</div>
-
 ### Images {#repro-figures}
 
 Next, create a code chunk where you want to display an image in your document. Let's put it in the Results section. We'll use some code that you'll learn more about  in the [data visualisation lecture](#ggplot) to show violin-boxplots for the groups.
 
 Notice how the figure caption is formatted in the chunk options.
 
-````
+
+<div class='verbatim'><pre class='sourceCode r'><code class='sourceCode R'>&#96;&#96;&#96;{r pet-plot, fig.cap="Figure 1. Scores by pet type and country."}</code></pre>
 
 ```r
 ggplot(pets, aes(pet, score, fill = country)) +
@@ -998,21 +1060,18 @@ ggplot(pets, aes(pet, score, fill = country)) +
                position = position_dodge(width = 0.9),
                show.legend = FALSE) +
   scale_fill_manual(values = c("orange", "dodgerblue")) +
-  xlab("") +
-  ylab("Score") +
+  labs(x = "", y = "Score") +
   theme(text = element_text(size = 20, family = "Times"))
 ```
 
-<div class="figure" style="text-align: center">
-<img src="02-repro_files/figure-html/unnamed-chunk-6-1.png" alt="Figure 1. Scores by pet type and country." width="100%" />
-<p class="caption">(\#fig:unnamed-chunk-6)Figure 1. Scores by pet type and country.</p>
-</div>
-````
+<pre class='sourceCode r'><code class='sourceCode R'>&#96;&#96;&#96;</code></pre></div>
+
 
 <div class="figure" style="text-align: center">
-<img src="02-repro_files/figure-html/unnamed-chunk-7-1.png" alt="Figure 1. Scores by pet type and country." width="100%" />
-<p class="caption">(\#fig:unnamed-chunk-7)Figure 1. Scores by pet type and country.</p>
+<img src="02-repro_files/figure-html/pet-plot-out-1.png" alt="Figure 1. Scores by pet type and country." width="100%" />
+<p class="caption">(\#fig:pet-plot-out)Figure 1. Scores by pet type and country.</p>
 </div>
+
 
 ::: {.info data-latex=""}
 The last line changes the default text size and font, which can be useful for generating figures that meet a journal's requirements.
@@ -1022,46 +1081,148 @@ The last line changes the default text size and font, which can be useful for ge
 
 You can also include images that you did not create in R using the typical markdown syntax for images: 
 
-```
+``` md
 ![All the Things by [Hyperbole and a Half](http://hyperboleandahalf.blogspot.com/)](images/memes/x-all-the-things.png){style="width: 50%"}
 ```
 
 ![All the Things by [Hyperbole and a Half](http://hyperboleandahalf.blogspot.com/)](images/memes/x-all-the-things.png){style="width: 50%"}
 
-### In-line R {#inline-r}
 
-Now let's analyse the pets data to see if cats are heavier than ferrets. First we'll run the analysis code. Then we'll save any numbers we might want to use in our manuscript to variables and round them appropriately. Finally, we'll use <code><span><span class='fu'>glue</span><span class='fu'>::</span><span class='fu'><a target='_blank' href='https://glue.tidyverse.org/reference/glue.html'>glue</a></span><span class='op'>(</span><span class='op'>)</span></span></code> to format a results string.
+### Linked documents
 
+If you need to create longer reports with links between sections, you can edit the YAML to use an output format from the <code class='package'>bookdown</code> package. `bookdown::html_document2` is a useful one that adds figure and table numbers automatically to any figures or tables with a caption and allows you to link to these by reference.
+
+To create links to tables and figures, you need to name the code chunk that created your figures or tables, and then call those names in your inline coding:
+
+<div class='verbatim'><pre class='sourceCode r'><code class='sourceCode R'>&#96;&#96;&#96;{r my-table}</code></pre>
 
 ```r
-# analysis
-cat_weight <- filter(pets, pet == "cat") %>% pull(weight)
-ferret_weight <- filter(pets, pet == "ferret") %>% pull(weight)
-weight_test <- t.test(cat_weight, ferret_weight)
-
-# round individual values you want to report
-t <- weight_test$statistic %>% round(2)
-df <- weight_test$parameter %>% round(1)
-p <- weight_test$p.value %>% round(3)
-# handle p-values < .001
-p_symbol <- ifelse(p < .001, "<", "=")
-if (p < .001) p <- .001
-
-# format the results string
-weight_result <- glue::glue("t = {t}, df = {df}, p {p_symbol} {p}")
+# table code here
 ```
 
-You can insert the results into a paragraph with inline R code that looks like this: 
+<pre class='sourceCode r'><code class='sourceCode R'>&#96;&#96;&#96;</code></pre></div>
 
-<pre><code>Cats were significantly heavier than ferrets (&#96;r weight_result&#96;).</code></pre>
+<div class='verbatim'><pre class='sourceCode r'><code class='sourceCode R'>&#96;&#96;&#96;{r my-figure}</code></pre>
 
-**Rendered text:**  
-Cats were significantly heavier than ferrets (t = 18.42, df = 180.4, p < 0.001). 
+```r
+# figure code here
+```
+
+<pre class='sourceCode r'><code class='sourceCode R'>&#96;&#96;&#96;</code></pre></div>
+
+```
+See Table\ \@ref(tab:my-table) or Figure\ \@ref(fig:my-figure).
+```
+
+::: {.warning data-latex=""}
+The code chunk names can only contain letters, numbers and dashes. If they contain other characters like spaces or underscores, the referencing will not work.
+:::
+
+You can also link to different sections of your report by naming your headings with `{#}`:
+
+```
+# My first heading {#heading-1}
+
+## My second heading {#heading-2}
+
+See Section\ \@ref(heading-1) and Section\ \@ref(heading-2)
+
+```
+The code below shows how to link text to figures or tables in a full report using the built-in `diamonds` dataset - use your `reports.Rmd` to create this document now. You can see the [HTML output here](demos/html_document2.html).
 
 
-### Bibliography
+<div class='webex-solution'><button>Linked document code</button>
 
-There are several ways to do in-text references and automatically generate a [bibliography](https://bookdown.org/yihui/rmarkdown-cookbook/bibliography.html){target="_blank"} in R Markdown. Markdown files need to link to a BibTex file (a plain text file with references in a specific format) that contains the references you need to cite. You specify the name of this file in the YAML header, like `bibliography: refs.bib` and cite references in text using an at symbol and a shortname, like `[@tidyverse]`. You can also include a "csl" style file to format your references in, for example, APA style.
+
+
+````md
+---
+title: "Linked Document Demo"
+output: 
+  bookdown::html_document2:
+    number_sections: true
+---
+
+```{r setup, include=FALSE}
+knitr::opts_chunk$set(echo = FALSE,
+                      message = FALSE,
+                      warning = FALSE)
+library(tidyverse)
+library(kableExtra)
+theme_set(theme_minimal())
+```
+
+Diamond price depends on many features, such as:
+
+- cut (See Table\ \@ref(tab:by-cut))
+- colour (See Table\ \@ref(tab:by-colour))
+- clarity (See Figure\ \@ref(fig:by-clarity))
+- carats (See Figure\ \@ref(fig:by-carat))
+- See section\ \@ref(conclusion) for concluding remarks
+
+## Tables
+
+### Cut
+
+```{r by-cut}
+diamonds %>%
+  group_by(cut) %>%
+  summarise(avg = mean(price),
+            .groups = "drop") %>%
+  kable(digits = 0, 
+        col.names = c("Cut", "Average Price"),
+        caption = "Mean diamond price by cut.") %>%
+  kable_material()
+```
+
+### Colour
+
+```{r by-colour}
+diamonds %>%
+  group_by(color) %>%
+  summarise(avg = mean(price),
+            .groups = "drop") %>%
+  kable(digits = 0, 
+        col.names = c("Cut", "Average Price"),
+        caption = "Mean diamond price by colour.") %>%
+  kable_material()
+```
+
+## Plots
+
+### Clarity
+
+```{r by-clarity, fig.cap = "Diamond price by clarity"}
+ggplot(diamonds, aes(x = clarity, y = price)) +
+  geom_boxplot() 
+```
+
+### Carats
+
+```{r by-carat, fig.cap = "Diamond price by carat"}
+ggplot(diamonds, aes(x = carat, y = price)) +
+  stat_smooth()
+```
+
+### Concluding remarks {#conclusion}
+
+I am not rich enough to worry about any of this.
+````
+
+
+</div>
+
+
+This format defaults to numbered sections, so set `number_sections: false` in the <a class='glossary' target='_blank' title='A structured format for information' href='https://psyteachr.github.io/glossary/y#yaml'>YAML</a> header if you don't want this. If you remove numbered sections, links like `\@ref(conclusion)` will show "??", so you need to use URL link syntax instead, like this:
+
+```
+See the [last section](#conclusion) for concluding remarks.
+```
+
+
+## Bibliography
+
+There are several ways to do in-text references and automatically generate a [bibliography](https://bookdown.org/yihui/rmarkdown-cookbook/bibliography.html){target="_blank"} in R Markdown. Markdown files need to link to a BibTex or JSON file (a plain text file with references in a specific format) that contains the references you need to cite. You specify the name of this file in the YAML header, like `bibliography: refs.bib` and cite references in text using an at symbol and a shortname, like `[@tidyverse]`. You can also include a Citation Style Language (.csl) file to format your references in, for example, APA style.
 
 ```
 ---
@@ -1074,19 +1235,57 @@ bibliography: refs.bib
 csl: apa.csl
 ```
 
-#### Converting from reference software
+### Converting from reference software
 
-Most reference software like EndNote, Zotero or Mendeley have exporting options that can export to BibTeX format. You just need to check the shortnames in the resulting file.
+Most reference software like EndNote or Zotero has exporting options that can export to BibTeX format. You just need to check the shortnames in the resulting file.
 
-#### Creating a BibTeX File
+::: {.warning data-latex=""}
+Please start using a reference manager consistently through your research career. It will make your life so much easier. Zotero is probably the best one.
+:::
 
-Most reference software like EndNote, Zotero or Mendeley have exporting options that can export to BibTeX format. You just need to check the shortnames in the resulting file.
+1. If you don't already have one, set up a [Zotero](https://www.zotero.org/){target="_blank"} account  
+2. Add the [connector for your web browser](https://www.zotero.org/download/){target="_blank"} (if you're on a computer you can add browser extensions to)  
+3. Navigate to [Easing Into Open Science](https://doi.org/10.1525/collabra.18684){target="_blank"} and add this reference to your library with the browser connector  
+4. Go to your library and make a new collection called "Open Research" (click on the + icon after **`My Library`**)  
+5. Drag the reference to Easing Into Open Science into this collection  
+6. Export this collection as BibTex  
 
-You can also make a BibTeX file and add references manually. In RStudio, go to **`File`** > **`New File...`** > **`Text File`** and save the file as "bibliography.bib".
+<div class="figure" style="text-align: center">
+<img src="images/repro/zotero.png" alt="Export a bibliography file from Zotero" width="100%" />
+<p class="caption">(\#fig:zotero)Export a bibliography file from Zotero</p>
+</div>
 
-Next, add the line `bibliography: bibliography.bib` to your YAML header.
+The exported file should look like this:
 
-#### Adding references {#citations}
+
+```bib
+
+@article{kathawalla_easing_2021,
+	title = {Easing {Into} {Open} {Science}: {A} {Guide} for {Graduate} {Students} and {Their} {Advisors}},
+	volume = {7},
+	issn = {2474-7394},
+	shorttitle = {Easing {Into} {Open} {Science}},
+	url = {https://doi.org/10.1525/collabra.18684},
+	doi = {10.1525/collabra.18684},
+	abstract = {This article provides a roadmap to assist graduate students and their advisors to engage in open science practices. We suggest eight open science practices that novice graduate students could begin adopting today. The topics we cover include journal clubs, project workflow, preprints, reproducible code, data sharing, transparent writing, preregistration, and registered reports. To address concerns about not knowing how to engage in open science practices, we provide a difficulty rating of each behavior (easy, medium, difficult), present them in order of suggested adoption, and follow the format of what, why, how, and worries. We give graduate students ideas on how to approach conversations with their advisors/collaborators, ideas on how to integrate open science practices within the graduate school framework, and specific resources on how to engage with each behavior. We emphasize that engaging in open science behaviors need not be an all or nothing approach, but rather graduate students can engage with any number of the behaviors outlined.},
+	number = {1},
+	urldate = {2022-09-07},
+	journal = {Collabra: Psychology},
+	author = {Kathawalla, Ummul-Kiram and Silverstein, Priya and Syed, Moin},
+	month = jan,
+	year = {2021},
+	pages = {18684},
+}
+```
+
+
+### Creating a BibTeX File
+
+You can also add references manually. In RStudio, go to **`File`** > **`New File...`** > **`Text File`** and save the file as "refs.bib".
+
+Next, add the line `bibliography: refs.bib` to your YAML header.
+
+### Adding references {#references}
 
 You can add references to a journal article in the following format:
 
@@ -1124,40 +1323,15 @@ citation(package="ggplot2") %>% toBibtex()
 ```
 
 
-[Google Scholar](https://scholar.google.com/) entries have a BibTeX citation option. This is usually the easiest way to get the relevant values, although you have to add the DOI yourself. You can keep the suggested shortname or change it to something that makes more sense to you.
+[Google Scholar](https://scholar.google.com/) entries have a BibTeX citation option. This is usually the easiest way to get the relevant values if you can't add a citation through the Zotero browser connector, although you have to add the DOI yourself. You can keep the suggested shortname or change it to something that makes more sense to you.
 
-<img src="images/present/google-scholar.png" width="100%" style="display: block; margin: auto;" />
+<div class="figure" style="text-align: center">
+<img src="images/present/google-scholar.png" alt="Get BibTex citations from Google Scholar." width="100%" />
+<p class="caption">(\#fig:google-scholar)Get BibTex citations from Google Scholar.</p>
+</div>
 
 
-Some journal websites also let you download citations in bibtex format. For example, go to the publisher's page for [Equivalence Testing for Psychological Research: A Tutorial](https://journals.sagepub.com/doi/abs/10.1177/2515245918770963){target="_blank"}, click on the Cite button (in the sidebar or under the bottom Explore More menu), choose BibTeX format, and download the citation. You can open up the file in a text editor and copy the text. It should look like this:
-
-```
-@article{doi:10.1177/2515245918770963,
-author = {Daniël Lakens and Anne M. Scheel and Peder M. Isager},
-title ={Equivalence Testing for Psychological Research: A Tutorial},
-journal = {Advances in Methods and Practices in Psychological Science},
-volume = {1},
-number = {2},
-pages = {259-269},
-year = {2018},
-doi = {10.1177/2515245918770963},
-
-URL = { 
-        https://doi.org/10.1177/2515245918770963
-    
-},
-eprint = { 
-        https://doi.org/10.1177/2515245918770963
-    
-}
-,
-    abstract = { Psychologists must be able to test both for the presence of an effect and for the absence of an effect. In addition to testing against zero, researchers can use the two one-sided tests (TOST) procedure to test for equivalence and reject the presence of a smallest effect size of interest (SESOI). The TOST procedure can be used to determine if an observed effect is surprisingly small, given that a true effect at least as extreme as the SESOI exists. We explain a range of approaches to determine the SESOI in psychological science and provide detailed examples of how equivalence tests should be performed and reported. Equivalence tests are an important extension of the statistical tools psychologists currently use and enable researchers to falsify predictions about the presence, and declare the absence, of meaningful effects. }
-}
-```
-
-Paste the reference into your bibliography.bib file. Change `doi:10.1177/2515245918770963` in the first line of the reference to a shortname you will use to cite the reference in your manuscript. We'll use `TOSTtutorial`.
-
-#### Citing references {#references}
+### Citing references {#citations}
 
 You can cite references in text like this: 
 
@@ -1170,18 +1344,18 @@ This tutorial uses several R packages [@tidyverse;@rmarkdown].
 Put a minus in front of the @ if you just want the year:
 
 ```
-Lakens, Scheel and Isengar [-@TOSTtutorial] wrote a tutorial explaining how to test for the absence of an effect.
+Kathawalla and colleagues [-@kathawalla_easing_2021] explain how to introduce open research practices into your postgraduate studies.
 ```
 
-Lakens, Scheel and Isengar [-@TOSTtutorial] wrote a tutorial explaining how to test for the absence of an effect.
+Kathawalla and colleagues [-@kathawalla_easing_2021] explain how to introduce open research practices into your postgraduate studies.
 
-#### Uncited references
+### Uncited references
 
 If you want to add an item to the reference section without citing, it, add it to the YAML header like this:
 
 ```
 nocite: |
-  @ref1, @ref2, @ref3
+  @kathawalla_easing_2021, @broman2018data, @nordmann2022data
 ```
 
 Or add all of the items in the .bib file like this:
@@ -1190,15 +1364,15 @@ Or add all of the items in the .bib file like this:
 nocite: '@*'
 ```
 
-#### Citation Styles
+### Citation Styles
 
 You can search a [list of style files](https://www.zotero.org/styles){target="_blank"} for various journals and download a file that will format your bibliography for a specific journal's style. You'll need to add the line `csl: filename.csl` to your YAML header. 
 
 ::: {.try data-latex=""}
-Add some citations to your bibliography.bib file, reference them in your text, and render your manuscript to see the automatically generated reference section. Try a few different citation style files.
+Add some citations to your refs.bib file, reference them in your text, and render your manuscript to see the automatically generated reference section. Try a few different citation style files.
 :::
 
-#### Reference Section
+### Reference Section
 
 By default, the reference section is added to the end of the document. If you want to change the position (e.g., to add figures and tables after the references), include `<div id="refs"></div>` where you want the references. 
 
@@ -1207,13 +1381,13 @@ By default, the reference section is added to the end of the document. If you wa
 Add in-text citations and a reference list to your report.
 :::
 
-### Custom Templates
+## Custom Templates {#custom-templates}
 
 Some packages provide custom R Markdown templates. `reprores` has a Report template that shows all of the possible options in the YAML header, has bibliography and style files, and explains how to set up linked figures and tables. Because it contains multiple files, RStudio will ask you to create a new folder to keep all of the files in.
 
 <div class="figure" style="text-align: center">
-<img src="images/custom-rmd.png" alt="The custom R markdown temlate from reprores." width="50%" />
-<p class="caption">(\#fig:img-custom-rmd)The custom R markdown temlate from reprores.</p>
+<img src="images/custom-rmd.png" alt="The custom R markdown template from reprores." width="75%" />
+<p class="caption">(\#fig:img-custom-rmd)The custom R markdown template from reprores.</p>
 </div>
 
 ::: {.try data-latex=""}

@@ -23,7 +23,7 @@
 <script src="libs/htmlwidgets-1.5.4/htmlwidgets.js"></script><script src="libs/plotly-binding-4.10.0/plotly.js"></script><script src="libs/typedarray-0.1/typedarray.min.js"></script><link href="libs/crosstalk-1.2.0/css/crosstalk.min.css" rel="stylesheet">
 <script src="libs/crosstalk-1.2.0/js/crosstalk.min.js"></script><link href="libs/plotly-htmlwidgets-css-2.5.1/plotly-htmlwidgets.css" rel="stylesheet">
 <script src="libs/plotly-main-2.5.1/plotly-latest.min.js"></script><link href="libs/datatables-css-0.0.0/datatables-crosstalk.css" rel="stylesheet">
-<script src="libs/datatables-binding-0.24/datatables.js"></script><link href="libs/dt-core-1.11.3/css/jquery.dataTables.min.css" rel="stylesheet">
+<script src="libs/datatables-binding-0.25/datatables.js"></script><link href="libs/dt-core-1.11.3/css/jquery.dataTables.min.css" rel="stylesheet">
 <link href="libs/dt-core-1.11.3/css/jquery.dataTables.extra.css" rel="stylesheet">
 <script src="libs/dt-core-1.11.3/js/jquery.dataTables.min.js"></script><!-- Global site tag (gtag.js) - Google Analytics --><script async src="https://www.googletagmanager.com/gtag/js?id=G-6NP3MF25W3"></script><script>
       window.dataLayer = window.dataLayer || [];
@@ -174,7 +174,7 @@ navbar:
 <span class="header-section-number">J.1.4</span> Render the site<a class="anchor" aria-label="anchor" href="#render-the-site"><i class="fas fa-link"></i></a>
 </h3>
 <p>In the upper right "Build" pane, click on the "Build website" hammer icon. This will render the website and automatically open it in a browser window. Alternatively, type the following into the Console pane:</p>
-<div class="sourceCode" id="cb627"><pre class="downlit sourceCode r">
+<div class="sourceCode" id="cb635"><pre class="downlit sourceCode r">
 <code class="sourceCode R"><span><span class="fu"><a href="https://rdrr.io/r/utils/browseURL.html">browseURL</a></span><span class="op">(</span><span class="fu">rmarkdown</span><span class="fu">::</span><span class="fu"><a href="https://pkgs.rstudio.com/rmarkdown/reference/render_site.html">render_site</a></span><span class="op">(</span>encoding <span class="op">=</span> <span class="st">'UTF-8'</span><span class="op">)</span><span class="op">)</span></span></code></pre></div>
 <p>If you accidentally close the website and want to look at it again, you don't have to re-render it. Click on the <code>docs</code> directory in the <code>Files</code> tab of the lower right pane, then click on <code>index.html</code> and choose <strong><code>View in Web Browser</code></strong></p>
 </div>
@@ -239,26 +239,26 @@ navbar:
 <span class="header-section-number">J.3.3</span> Change certain elements<a class="anchor" aria-label="anchor" href="#change-certain-elements"><i class="fas fa-link"></i></a>
 </h3>
 <p>Maybe you only want to change the font colour for your headings, not the rest of the text. You can apply a style to a specific <em>element</em> type by specifying the element name before the curly brackets.</p>
-<div class="sourceCode" id="cb630"><pre class="sourceCode css"><code class="sourceCode css"><span id="cb630-1"><a href="webpages.html#cb630-1" aria-hidden="true" tabindex="-1"></a>h1<span class="op">,</span> h2<span class="op">,</span> h3 {</span>
-<span id="cb630-2"><a href="webpages.html#cb630-2" aria-hidden="true" tabindex="-1"></a>  <span class="kw">text-align</span>: <span class="dv">center</span><span class="op">;</span></span>
-<span id="cb630-3"><a href="webpages.html#cb630-3" aria-hidden="true" tabindex="-1"></a>  <span class="kw">color</span>: <span class="fu">hsl(</span><span class="dv">0</span><span class="op">,</span> <span class="dv">100</span><span class="dt">%</span><span class="op">,</span> <span class="dv">20</span><span class="dt">%</span><span class="fu">)</span><span class="op">;</span></span>
-<span id="cb630-4"><a href="webpages.html#cb630-4" aria-hidden="true" tabindex="-1"></a>}</span>
-<span id="cb630-5"><a href="webpages.html#cb630-5" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb630-6"><a href="webpages.html#cb630-6" aria-hidden="true" tabindex="-1"></a>h3 {</span>
-<span id="cb630-7"><a href="webpages.html#cb630-7" aria-hidden="true" tabindex="-1"></a>  <span class="kw">font-style</span>: <span class="dv">italic</span><span class="op">;</span></span>
-<span id="cb630-8"><a href="webpages.html#cb630-8" aria-hidden="true" tabindex="-1"></a>}</span>
-<span id="cb630-9"><a href="webpages.html#cb630-9" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb630-10"><a href="webpages.html#cb630-10" aria-hidden="true" tabindex="-1"></a>p {</span>
-<span id="cb630-11"><a href="webpages.html#cb630-11" aria-hidden="true" tabindex="-1"></a>  <span class="kw">border</span>: <span class="dv">1</span><span class="dt">px</span> <span class="dv">solid</span> <span class="cn">green</span><span class="op">;</span></span>
-<span id="cb630-12"><a href="webpages.html#cb630-12" aria-hidden="true" tabindex="-1"></a>  <span class="kw">padding</span>: <span class="dv">10</span><span class="dt">px</span><span class="op">;</span></span>
-<span id="cb630-13"><a href="webpages.html#cb630-13" aria-hidden="true" tabindex="-1"></a>  <span class="kw">line-height</span>: <span class="dv">2</span><span class="op">;</span></span>
-<span id="cb630-14"><a href="webpages.html#cb630-14" aria-hidden="true" tabindex="-1"></a>}</span>
-<span id="cb630-15"><a href="webpages.html#cb630-15" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb630-16"><a href="webpages.html#cb630-16" aria-hidden="true" tabindex="-1"></a>ul {</span>
-<span id="cb630-17"><a href="webpages.html#cb630-17" aria-hidden="true" tabindex="-1"></a>  <span class="kw">border</span>: <span class="dv">3</span><span class="dt">px</span> <span class="dv">dotted</span> <span class="cn">red</span><span class="op">;</span></span>
-<span id="cb630-18"><a href="webpages.html#cb630-18" aria-hidden="true" tabindex="-1"></a>  <span class="kw">border-radius</span>: <span class="dv">10</span><span class="dt">px</span><span class="op">;</span></span>
-<span id="cb630-19"><a href="webpages.html#cb630-19" aria-hidden="true" tabindex="-1"></a>  <span class="kw">padding</span>: <span class="dv">10</span><span class="dt">px</span> <span class="dv">30</span><span class="dt">px</span><span class="op">;</span></span>
-<span id="cb630-20"><a href="webpages.html#cb630-20" aria-hidden="true" tabindex="-1"></a>}</span></code></pre></div>
+<div class="sourceCode" id="cb638"><pre class="sourceCode css"><code class="sourceCode css"><span id="cb638-1"><a href="webpages.html#cb638-1" aria-hidden="true" tabindex="-1"></a>h1<span class="op">,</span> h2<span class="op">,</span> h3 {</span>
+<span id="cb638-2"><a href="webpages.html#cb638-2" aria-hidden="true" tabindex="-1"></a>  <span class="kw">text-align</span>: <span class="dv">center</span><span class="op">;</span></span>
+<span id="cb638-3"><a href="webpages.html#cb638-3" aria-hidden="true" tabindex="-1"></a>  <span class="kw">color</span>: <span class="fu">hsl(</span><span class="dv">0</span><span class="op">,</span> <span class="dv">100</span><span class="dt">%</span><span class="op">,</span> <span class="dv">20</span><span class="dt">%</span><span class="fu">)</span><span class="op">;</span></span>
+<span id="cb638-4"><a href="webpages.html#cb638-4" aria-hidden="true" tabindex="-1"></a>}</span>
+<span id="cb638-5"><a href="webpages.html#cb638-5" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb638-6"><a href="webpages.html#cb638-6" aria-hidden="true" tabindex="-1"></a>h3 {</span>
+<span id="cb638-7"><a href="webpages.html#cb638-7" aria-hidden="true" tabindex="-1"></a>  <span class="kw">font-style</span>: <span class="dv">italic</span><span class="op">;</span></span>
+<span id="cb638-8"><a href="webpages.html#cb638-8" aria-hidden="true" tabindex="-1"></a>}</span>
+<span id="cb638-9"><a href="webpages.html#cb638-9" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb638-10"><a href="webpages.html#cb638-10" aria-hidden="true" tabindex="-1"></a>p {</span>
+<span id="cb638-11"><a href="webpages.html#cb638-11" aria-hidden="true" tabindex="-1"></a>  <span class="kw">border</span>: <span class="dv">1</span><span class="dt">px</span> <span class="dv">solid</span> <span class="cn">green</span><span class="op">;</span></span>
+<span id="cb638-12"><a href="webpages.html#cb638-12" aria-hidden="true" tabindex="-1"></a>  <span class="kw">padding</span>: <span class="dv">10</span><span class="dt">px</span><span class="op">;</span></span>
+<span id="cb638-13"><a href="webpages.html#cb638-13" aria-hidden="true" tabindex="-1"></a>  <span class="kw">line-height</span>: <span class="dv">2</span><span class="op">;</span></span>
+<span id="cb638-14"><a href="webpages.html#cb638-14" aria-hidden="true" tabindex="-1"></a>}</span>
+<span id="cb638-15"><a href="webpages.html#cb638-15" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb638-16"><a href="webpages.html#cb638-16" aria-hidden="true" tabindex="-1"></a>ul {</span>
+<span id="cb638-17"><a href="webpages.html#cb638-17" aria-hidden="true" tabindex="-1"></a>  <span class="kw">border</span>: <span class="dv">3</span><span class="dt">px</span> <span class="dv">dotted</span> <span class="cn">red</span><span class="op">;</span></span>
+<span id="cb638-18"><a href="webpages.html#cb638-18" aria-hidden="true" tabindex="-1"></a>  <span class="kw">border-radius</span>: <span class="dv">10</span><span class="dt">px</span><span class="op">;</span></span>
+<span id="cb638-19"><a href="webpages.html#cb638-19" aria-hidden="true" tabindex="-1"></a>  <span class="kw">padding</span>: <span class="dv">10</span><span class="dt">px</span> <span class="dv">30</span><span class="dt">px</span><span class="op">;</span></span>
+<span id="cb638-20"><a href="webpages.html#cb638-20" aria-hidden="true" tabindex="-1"></a>}</span></code></pre></div>
 <style>
   #h-example h2, 
   #h-example h3, 
@@ -572,7 +572,7 @@ function openCity(evt, cityName) {
 <footer class="bg-primary text-light mt-5"><div class="container"><div class="row">
 
   <div class="col-12 col-md-6 mt-3">
-    <p>"<strong>Data Skills for Reproducible Research</strong>: <br><a href="https://doi.org/10.5281/zenodo.6527194"><img src="https://zenodo.org/badge/DOI/10.5281/zenodo.6527194.svg" alt="DOI: 10.5281/zenodo.6527194"></a>" was written by . It was last built on 2022-09-07.</p>
+    <p>"<strong>Data Skills for Reproducible Research</strong>: <br><a href="https://doi.org/10.5281/zenodo.6527194"><img src="https://zenodo.org/badge/DOI/10.5281/zenodo.6527194.svg" alt="DOI: 10.5281/zenodo.6527194"></a>" was written by . It was last built on 2022-10-04.</p>
   </div>
 
   <div class="col-12 col-md-6 mt-3">

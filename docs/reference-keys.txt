@@ -49,6 +49,9 @@ fig:violinbox
 fig:stat-summary
 fig:violin-jitter
 fig:scatter-line
+fig:facet-wrap
+fig:facet-wrap2
+fig:facet-grid
 fig:patchwork-add
 fig:patchwork-layout
 fig:patchwork-annotate
@@ -214,6 +217,7 @@ violinbox-plot
 violin-point-range-plot
 violin-jitter-plot
 scatter-line-graph
+facets
 plot_grid
 overlap
 reducing-opacity

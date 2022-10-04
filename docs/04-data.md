@@ -66,9 +66,9 @@ We covered this in Chapter\ \@ref(naming-things) for file names. It is also impo
 
 Choose the best consistent column names for a single data file:
 
-* <select class='webex-select'><option value='blank'></option><option value=''>sid</option><option value=''>subject.id</option><option value=''>subject ID</option><option value='answer'>subject_id</option></select>
-* <select class='webex-select'><option value='blank'></option><option value='answer'>age_months</option><option value=''>age</option><option value=''>Age (in months)</option><option value=''>ageMonths</option></select>
-* <select class='webex-select'><option value='blank'></option><option value=''>birth-year</option><option value=''>by</option><option value=''>Birth Year</option><option value='answer'>birth_year</option></select>
+* <select class='webex-select'><option value='blank'></option><option value=''>subject ID</option><option value=''>sid</option><option value='answer'>subject_id</option><option value=''>subject.id</option></select>
+* <select class='webex-select'><option value='blank'></option><option value='answer'>age_months</option><option value=''>ageMonths</option><option value=''>age</option><option value=''>Age (in months)</option></select>
+* <select class='webex-select'><option value='blank'></option><option value='answer'>birth_year</option><option value=''>Birth Year</option><option value=''>birth-year</option><option value=''>by</option></select>
 
 :::
 
@@ -1549,7 +1549,10 @@ mess <- read_csv("data/mess.csv", lazy = FALSE)
 ```
 
 ```
-## Warning: One or more parsing issues, see `problems()` for details
+## Warning: One or more parsing issues, call `problems()` on your data frame for details,
+## e.g.:
+##   dat <- vroom(...)
+##   problems(dat)
 ```
 
 ```
@@ -1656,7 +1659,10 @@ tidier <- read_csv("data/mess.csv",
 ```
 
 ```
-## Warning: One or more parsing issues, see `problems()` for details
+## Warning: One or more parsing issues, call `problems()` on your data frame for details,
+## e.g.:
+##   dat <- vroom(...)
+##   problems(dat)
 ```
 
 ```r

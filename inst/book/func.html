@@ -20,12 +20,12 @@
 <link href="libs/bootstrap-4.6.0/bootstrap.min.css" rel="stylesheet">
 <script src="libs/bootstrap-4.6.0/bootstrap.bundle.min.js"></script><script src="libs/bs3compat-0.4.0/transition.js"></script><script src="libs/bs3compat-0.4.0/tabs.js"></script><script src="libs/bs3compat-0.4.0/bs3compat.js"></script><link href="libs/bs4_book-1.0.0/bs4_book.css" rel="stylesheet">
 <script src="libs/bs4_book-1.0.0/bs4_book.js"></script><script src="libs/kePrint-0.0.1/kePrint.js"></script><link href="libs/lightable-0.0.1/lightable.css" rel="stylesheet">
-<script src="libs/htmlwidgets-1.5.4/htmlwidgets.js"></script><link href="libs/datatables-css-0.0.0/datatables-crosstalk.css" rel="stylesheet">
-<script src="libs/datatables-binding-0.24/datatables.js"></script><link href="libs/dt-core-1.11.3/css/jquery.dataTables.min.css" rel="stylesheet">
+<script src="libs/htmlwidgets-1.5.4/htmlwidgets.js"></script><script src="libs/plotly-binding-4.10.0/plotly.js"></script><script src="libs/typedarray-0.1/typedarray.min.js"></script><link href="libs/crosstalk-1.2.0/css/crosstalk.min.css" rel="stylesheet">
+<script src="libs/crosstalk-1.2.0/js/crosstalk.min.js"></script><link href="libs/plotly-htmlwidgets-css-2.5.1/plotly-htmlwidgets.css" rel="stylesheet">
+<script src="libs/plotly-main-2.5.1/plotly-latest.min.js"></script><link href="libs/datatables-css-0.0.0/datatables-crosstalk.css" rel="stylesheet">
+<script src="libs/datatables-binding-0.25/datatables.js"></script><link href="libs/dt-core-1.11.3/css/jquery.dataTables.min.css" rel="stylesheet">
 <link href="libs/dt-core-1.11.3/css/jquery.dataTables.extra.css" rel="stylesheet">
-<script src="libs/dt-core-1.11.3/js/jquery.dataTables.min.js"></script><link href="libs/crosstalk-1.2.0/css/crosstalk.min.css" rel="stylesheet">
-<script src="libs/crosstalk-1.2.0/js/crosstalk.min.js"></script><script src="libs/plotly-binding-4.10.0/plotly.js"></script><script src="libs/typedarray-0.1/typedarray.min.js"></script><link href="libs/plotly-htmlwidgets-css-2.5.1/plotly-htmlwidgets.css" rel="stylesheet">
-<script src="libs/plotly-main-2.5.1/plotly-latest.min.js"></script><!-- Global site tag (gtag.js) - Google Analytics --><script async src="https://www.googletagmanager.com/gtag/js?id=G-6NP3MF25W3"></script><script>
+<script src="libs/dt-core-1.11.3/js/jquery.dataTables.min.js"></script><!-- Global site tag (gtag.js) - Google Analytics --><script async src="https://www.googletagmanager.com/gtag/js?id=G-6NP3MF25W3"></script><script>
       window.dataLayer = window.dataLayer || [];
       function gtag(){dataLayer.push(arguments);}
       gtag('js', new Date());
@@ -92,8 +92,9 @@
 <li><a class="" href="dplyr.html"><span class="header-section-number">7</span> Data Wrangling</a></li>
 <li><a class="active" href="func.html"><span class="header-section-number">8</span> Iteration &amp; Functions</a></li>
 <li><a class="" href="sim.html"><span class="header-section-number">9</span> Probability &amp; Simulation</a></li>
-<li><a class="" href="custom.html"><span class="header-section-number">10</span> Customising Visualisations &amp; Reports</a></li>
-<li><a class="" href="acknowledgements.html">Acknowledgements</a></li>
+<li><a class="" href="next.html"><span class="header-section-number">10</span> Next Steps</a></li>
+<li><a class="" href="licencecitation.html">Licence/Citation</a></li>
+<li><a class="" href="references-1.html">References</a></li>
 <li class="book-part">Appendices</li>
 <li><a class="" href="installingr.html"><span class="header-section-number">A</span> Installing and Updating</a></li>
 <li><a class="" href="conventions.html"><span class="header-section-number">B</span> Conventions</a></li>
@@ -105,7 +106,7 @@
 <li><a class="" href="twitter-hashtags.html"><span class="header-section-number">H</span> Twitter Hashtags</a></li>
 <li><a class="" href="twitter-data.html"><span class="header-section-number">I</span> Twitter Data</a></li>
 <li><a class="" href="webpages.html"><span class="header-section-number">J</span> Webpages</a></li>
-<li><a class="" href="bookrefs.html"><span class="header-section-number">K</span> References</a></li>
+<li><a class="" href="getting-help.html"><span class="header-section-number">K</span> Getting Help</a></li>
 </ul>
 
         <div class="book-extra">
@@ -118,7 +119,7 @@
 <span class="header-section-number">8</span> Iteration &amp; Functions<a class="anchor" aria-label="anchor" href="#func"><i class="fas fa-link"></i></a>
 </h1>
 <div class="right meme">
-<img src="images/memes/functions.jpg" alt="History channel aliens conspiracy guy. Top text: I've got function inside functions...; Bottom text: ... inside functions.">
+<img src="images/memes/functions.jpg" alt="History channel aliens conspiracy guy. Top text: I've got functions inside functions...; Bottom text: ... inside functions.">
 </div>
 <div id="ilo-func" class="section level2" number="8.1">
 <h2>
@@ -171,12 +172,26 @@
 <h2>
 <span class="header-section-number">8.2</span> Setup<a class="anchor" aria-label="anchor" href="#setup-func"><i class="fas fa-link"></i></a>
 </h2>
-<div class="sourceCode" id="cb347"><pre class="downlit sourceCode r">
-<code class="sourceCode R"><span><span class="co"># libraries needed for these examples</span></span>
-<span><span class="kw"><a href="https://rdrr.io/r/base/library.html">library</a></span><span class="op">(</span><span class="va"><a href="https://tidyverse.tidyverse.org">tidyverse</a></span><span class="op">)</span>  <span class="co">## contains purrr, tidyr, dplyr</span></span>
-<span><span class="kw"><a href="https://rdrr.io/r/base/library.html">library</a></span><span class="op">(</span><span class="va"><a href="https://broom.tidymodels.org/">broom</a></span><span class="op">)</span> <span class="co">## converts test output to tidy tables</span></span>
+<ol style="list-style-type: decimal">
+<li>Open your <code>reprores-class-notes</code> project</li>
+<li>Create a new R Markdown file called <code>08-func.Rmd</code>
+</li>
+<li>Update the YAML header</li>
+<li>Replace the setup chunk with the one below:</li>
+</ol>
+<div class="verbatim">
+<pre class="sourceCode r"><code class="sourceCode R">```{r setup, include = FALSE}</code></pre>
+<div class="sourceCode" id="cb363"><pre class="downlit sourceCode r">
+<code class="sourceCode R"><span><span class="fu">knitr</span><span class="fu">::</span><span class="va"><a href="https://rdrr.io/pkg/knitr/man/opts_chunk.html">opts_chunk</a></span><span class="op">$</span><span class="fu">set</span><span class="op">(</span>echo <span class="op">=</span> <span class="cn">TRUE</span><span class="op">)</span></span>
+<span></span>
+<span><span class="co"># packages needed for this chapter</span></span>
+<span><span class="kw"><a href="https://rdrr.io/r/base/library.html">library</a></span><span class="op">(</span><span class="va"><a href="https://tidyverse.tidyverse.org">tidyverse</a></span><span class="op">)</span>  <span class="co"># loads purrr for iteration</span></span>
+<span><span class="kw"><a href="https://rdrr.io/r/base/library.html">library</a></span><span class="op">(</span><span class="va"><a href="https://broom.tidymodels.org/">broom</a></span><span class="op">)</span>      <span class="co"># converts test output to tidy tables</span></span>
 <span></span>
 <span><span class="fu"><a href="https://rdrr.io/r/base/Random.html">set.seed</a></span><span class="op">(</span><span class="fl">8675309</span><span class="op">)</span> <span class="co"># makes sure random numbers are reproducible</span></span></code></pre></div>
+<pre class="sourceCode r"><code class="sourceCode R">```</code></pre>
+</div>
+<p>Download the <a href="https://raw.githubusercontent.com/rstudio/cheatsheets/main/purrr.pdf">Apply functions with purrr cheat sheet</a>.</p>
 </div>
 <div id="iteration-functions" class="section level2" number="8.3">
 <h2>
@@ -189,26 +204,26 @@
 </h3>
 <p>The function <code><a href="https://rdrr.io/r/base/rep.html">rep()</a></code> lets you repeat the first argument a number of times.</p>
 <p>Use <code><a href="https://rdrr.io/r/base/rep.html">rep()</a></code> to create a vector of alternating <code>"A"</code> and <code>"B"</code> values of length 24.</p>
-<div class="sourceCode" id="cb348"><pre class="downlit sourceCode r">
+<div class="sourceCode" id="cb364"><pre class="downlit sourceCode r">
 <code class="sourceCode R"><span><span class="fu"><a href="https://rdrr.io/r/base/rep.html">rep</a></span><span class="op">(</span><span class="fu"><a href="https://rdrr.io/r/base/c.html">c</a></span><span class="op">(</span><span class="st">"A"</span>, <span class="st">"B"</span><span class="op">)</span>, <span class="fl">12</span><span class="op">)</span></span></code></pre></div>
 <pre><code>##  [1] "A" "B" "A" "B" "A" "B" "A" "B" "A" "B" "A" "B" "A" "B" "A" "B" "A" "B" "A"
 ## [20] "B" "A" "B" "A" "B"</code></pre>
 <p>If you don't specify what the second argument is, it defaults to <code>times</code>, repeating the vector in the first argument that many times. Make the same vector as above, setting the second argument explicitly.</p>
-<div class="sourceCode" id="cb350"><pre class="downlit sourceCode r">
+<div class="sourceCode" id="cb366"><pre class="downlit sourceCode r">
 <code class="sourceCode R"><span><span class="fu"><a href="https://rdrr.io/r/base/rep.html">rep</a></span><span class="op">(</span><span class="fu"><a href="https://rdrr.io/r/base/c.html">c</a></span><span class="op">(</span><span class="st">"A"</span>, <span class="st">"B"</span><span class="op">)</span>, times <span class="op">=</span> <span class="fl">12</span><span class="op">)</span></span></code></pre></div>
 <pre><code>##  [1] "A" "B" "A" "B" "A" "B" "A" "B" "A" "B" "A" "B" "A" "B" "A" "B" "A" "B" "A"
 ## [20] "B" "A" "B" "A" "B"</code></pre>
 <p>If the second argument is a vector that is the same length as the first argument, each element in the first vector is repeated than many times. Use <code><a href="https://rdrr.io/r/base/rep.html">rep()</a></code> to create a vector of 11 <code>"A"</code> values followed by 3 <code>"B"</code> values.</p>
-<div class="sourceCode" id="cb352"><pre class="downlit sourceCode r">
+<div class="sourceCode" id="cb368"><pre class="downlit sourceCode r">
 <code class="sourceCode R"><span><span class="fu"><a href="https://rdrr.io/r/base/rep.html">rep</a></span><span class="op">(</span><span class="fu"><a href="https://rdrr.io/r/base/c.html">c</a></span><span class="op">(</span><span class="st">"A"</span>, <span class="st">"B"</span><span class="op">)</span>, <span class="fu"><a href="https://rdrr.io/r/base/c.html">c</a></span><span class="op">(</span><span class="fl">11</span>, <span class="fl">3</span><span class="op">)</span><span class="op">)</span></span></code></pre></div>
 <pre><code>##  [1] "A" "A" "A" "A" "A" "A" "A" "A" "A" "A" "A" "B" "B" "B"</code></pre>
 <p>You can repeat each element of the vector a sepcified number of times using the <code>each</code> argument, Use <code><a href="https://rdrr.io/r/base/rep.html">rep()</a></code> to create a vector of 12 <code>"A"</code> values followed by 12 <code>"B"</code> values.</p>
-<div class="sourceCode" id="cb354"><pre class="downlit sourceCode r">
+<div class="sourceCode" id="cb370"><pre class="downlit sourceCode r">
 <code class="sourceCode R"><span><span class="fu"><a href="https://rdrr.io/r/base/rep.html">rep</a></span><span class="op">(</span><span class="fu"><a href="https://rdrr.io/r/base/c.html">c</a></span><span class="op">(</span><span class="st">"A"</span>, <span class="st">"B"</span><span class="op">)</span>, each <span class="op">=</span> <span class="fl">12</span><span class="op">)</span></span></code></pre></div>
 <pre><code>##  [1] "A" "A" "A" "A" "A" "A" "A" "A" "A" "A" "A" "A" "B" "B" "B" "B" "B" "B" "B"
 ## [20] "B" "B" "B" "B" "B"</code></pre>
 <p>What do you think will happen if you set both <code>times</code> to 3 and <code>each</code> to 2?</p>
-<div class="sourceCode" id="cb356"><pre class="downlit sourceCode r">
+<div class="sourceCode" id="cb372"><pre class="downlit sourceCode r">
 <code class="sourceCode R"><span><span class="fu"><a href="https://rdrr.io/r/base/rep.html">rep</a></span><span class="op">(</span><span class="fu"><a href="https://rdrr.io/r/base/c.html">c</a></span><span class="op">(</span><span class="st">"A"</span>, <span class="st">"B"</span><span class="op">)</span>, times <span class="op">=</span> <span class="fl">3</span>, each <span class="op">=</span> <span class="fl">2</span><span class="op">)</span></span></code></pre></div>
 <pre><code>##  [1] "A" "A" "B" "B" "A" "A" "B" "B" "A" "A" "B" "B"</code></pre>
 </div>
@@ -218,15 +233,15 @@
 </h3>
 <p>The function <code><a href="https://rdrr.io/r/base/seq.html">seq()</a></code> is useful for generating a sequence of numbers with some pattern.</p>
 <p>Use <code><a href="https://rdrr.io/r/base/seq.html">seq()</a></code> to create a vector of the integers 0 to 10.</p>
-<div class="sourceCode" id="cb358"><pre class="downlit sourceCode r">
+<div class="sourceCode" id="cb374"><pre class="downlit sourceCode r">
 <code class="sourceCode R"><span><span class="fu"><a href="https://rdrr.io/r/base/seq.html">seq</a></span><span class="op">(</span><span class="fl">0</span>, <span class="fl">10</span><span class="op">)</span></span></code></pre></div>
 <pre><code>##  [1]  0  1  2  3  4  5  6  7  8  9 10</code></pre>
 <p>You can set the <code>by</code> argument to count by numbers other than 1 (the default). Use <code><a href="https://rdrr.io/r/base/seq.html">seq()</a></code> to create a vector of the numbers 0 to 100 by 10s.</p>
-<div class="sourceCode" id="cb360"><pre class="downlit sourceCode r">
+<div class="sourceCode" id="cb376"><pre class="downlit sourceCode r">
 <code class="sourceCode R"><span><span class="fu"><a href="https://rdrr.io/r/base/seq.html">seq</a></span><span class="op">(</span><span class="fl">0</span>, <span class="fl">100</span>, by <span class="op">=</span> <span class="fl">10</span><span class="op">)</span></span></code></pre></div>
 <pre><code>##  [1]   0  10  20  30  40  50  60  70  80  90 100</code></pre>
 <p>The argument <code>length.out</code> is useful if you know how many steps you want to divide something into. Use <code><a href="https://rdrr.io/r/base/seq.html">seq()</a></code> to create a vector that starts with 0, ends with 100, and has 12 equally spaced steps (hint: how many numbers would be in a vector with 2 <em>steps</em>?).</p>
-<div class="sourceCode" id="cb362"><pre class="downlit sourceCode r">
+<div class="sourceCode" id="cb378"><pre class="downlit sourceCode r">
 <code class="sourceCode R"><span><span class="fu"><a href="https://rdrr.io/r/base/seq.html">seq</a></span><span class="op">(</span><span class="fl">0</span>, <span class="fl">100</span>, length.out <span class="op">=</span> <span class="fl">13</span><span class="op">)</span></span></code></pre></div>
 <pre><code>##  [1]   0.000000   8.333333  16.666667  25.000000  33.333333  41.666667
 ##  [7]  50.000000  58.333333  66.666667  75.000000  83.333333  91.666667
@@ -238,7 +253,7 @@
 </h3>
 <p>You can use the <code><a href="https://rdrr.io/r/base/lapply.html">replicate()</a></code> function to run a function <code>n</code> times.</p>
 <p>For example, you can get 3 sets of 5 numbers from a random normal distribution by setting <code>n</code> to <code>3</code> and <code>expr</code> to <code>rnorm(5)</code>.</p>
-<div class="sourceCode" id="cb364"><pre class="downlit sourceCode r">
+<div class="sourceCode" id="cb380"><pre class="downlit sourceCode r">
 <code class="sourceCode R"><span><span class="fu"><a href="https://rdrr.io/r/base/lapply.html">replicate</a></span><span class="op">(</span>n <span class="op">=</span> <span class="fl">3</span>, expr <span class="op">=</span> <span class="fu"><a href="https://rdrr.io/r/stats/Normal.html">rnorm</a></span><span class="op">(</span><span class="fl">5</span><span class="op">)</span><span class="op">)</span></span></code></pre></div>
 <pre><code>##            [,1]       [,2]       [,3]
 ## [1,] -0.9965824 0.98721974 -1.5495524
@@ -247,7 +262,7 @@
 ## [4,]  2.0293916 0.57206650 -0.6599640
 ## [5,]  1.0654161 0.90367770 -0.9945890</code></pre>
 <p>By default, <code><a href="https://rdrr.io/r/base/lapply.html">replicate()</a></code> simplifies your result into a <a class="glossary" target="_blank" title="A container data type consisting of numbers arranged into a fixed number of rows and columns" href="https://psyteachr.github.io/glossary/m#matrix">matrix</a> that is easy to convert into a table if your function returns vectors that are the same length. If you'd rather have a list of vectors, set <code>simplify = FALSE</code>.</p>
-<div class="sourceCode" id="cb366"><pre class="downlit sourceCode r">
+<div class="sourceCode" id="cb382"><pre class="downlit sourceCode r">
 <code class="sourceCode R"><span><span class="fu"><a href="https://rdrr.io/r/base/lapply.html">replicate</a></span><span class="op">(</span>n <span class="op">=</span> <span class="fl">3</span>, expr <span class="op">=</span> <span class="fu"><a href="https://rdrr.io/r/stats/Normal.html">rnorm</a></span><span class="op">(</span><span class="fl">5</span><span class="op">)</span>, simplify <span class="op">=</span> <span class="cn">FALSE</span><span class="op">)</span></span></code></pre></div>
 <pre><code>## [[1]]
 ## [1]  1.9724587 -0.4418016 -0.9006372 -0.1505882 -0.8278942
@@ -264,7 +279,7 @@
 </h3>
 <p><code><a href="https://purrr.tidyverse.org/reference/map.html">purrr::map()</a></code> and <code><a href="https://rdrr.io/r/base/lapply.html">lapply()</a></code> return a list of the same length as a vector or list, each element of which is the result of applying a function to the corresponding element. They function much the same, but purrr functions have some optimisations for working with the tidyverse. We'll be working mostly with purrr functions in this course, but apply functions are very common in code that you might see in examples on the web.</p>
 <p>Imagine you want to calculate the power for a two-sample t-test with a mean difference of 0.2 and SD of 1, for all the sample sizes 100 to 1000 (by 100s). You could run the <code><a href="https://rdrr.io/r/stats/power.t.test.html">power.t.test()</a></code> function 20 times and extract the values for "power" from the resulting list and put it in a table.</p>
-<div class="sourceCode" id="cb368"><pre class="downlit sourceCode r">
+<div class="sourceCode" id="cb384"><pre class="downlit sourceCode r">
 <code class="sourceCode R"><span><span class="va">p100</span> <span class="op">&lt;-</span> <span class="fu"><a href="https://rdrr.io/r/stats/power.t.test.html">power.t.test</a></span><span class="op">(</span>n <span class="op">=</span> <span class="fl">100</span>, delta <span class="op">=</span> <span class="fl">0.2</span>, sd <span class="op">=</span> <span class="fl">1</span>, type<span class="op">=</span><span class="st">"two.sample"</span><span class="op">)</span></span>
 <span><span class="co"># 18 more lines</span></span>
 <span><span class="va">p1000</span> <span class="op">&lt;-</span> <span class="fu"><a href="https://rdrr.io/r/stats/power.t.test.html">power.t.test</a></span><span class="op">(</span>n <span class="op">=</span> <span class="fl">500</span>, delta <span class="op">=</span> <span class="fl">0.2</span>, sd <span class="op">=</span> <span class="fl">1</span>, type<span class="op">=</span><span class="st">"two.sample"</span><span class="op">)</span></span>
@@ -312,7 +327,7 @@ power
 </table></div>
 </div>
 <p>However, the <code><a href="https://rdrr.io/r/base/apply.html">apply()</a></code> and <code><a href="https://purrr.tidyverse.org/reference/map.html">map()</a></code> functions allow you to perform a function on each item in a vector or list. First make an object <code>n</code> that is the vector of the sample sizes you want to test, then use <code><a href="https://rdrr.io/r/base/lapply.html">lapply()</a></code> or <code><a href="https://purrr.tidyverse.org/reference/map.html">map()</a></code> to run the function <code><a href="https://rdrr.io/r/stats/power.t.test.html">power.t.test()</a></code> on each item. You can set other arguments to <code><a href="https://rdrr.io/r/stats/power.t.test.html">power.t.test()</a></code> after the function argument.</p>
-<div class="sourceCode" id="cb369"><pre class="downlit sourceCode r">
+<div class="sourceCode" id="cb385"><pre class="downlit sourceCode r">
 <code class="sourceCode R"><span><span class="va">n</span> <span class="op">&lt;-</span> <span class="fu"><a href="https://rdrr.io/r/base/seq.html">seq</a></span><span class="op">(</span><span class="fl">100</span>, <span class="fl">1000</span>, <span class="fl">100</span><span class="op">)</span></span>
 <span><span class="va">pcalc</span> <span class="op">&lt;-</span> <span class="fu"><a href="https://rdrr.io/r/base/lapply.html">lapply</a></span><span class="op">(</span><span class="va">n</span>, <span class="va">power.t.test</span>, </span>
 <span>                delta <span class="op">=</span> <span class="fl">0.2</span>, sd <span class="op">=</span> <span class="fl">1</span>, type<span class="op">=</span><span class="st">"two.sample"</span><span class="op">)</span></span>
@@ -320,7 +335,7 @@ power
 <span><span class="va">pcalc</span> <span class="op">&lt;-</span> <span class="fu">purrr</span><span class="fu">::</span><span class="fu"><a href="https://purrr.tidyverse.org/reference/map.html">map</a></span><span class="op">(</span><span class="va">n</span>, <span class="va">power.t.test</span>, </span>
 <span>                delta <span class="op">=</span> <span class="fl">0.2</span>, sd <span class="op">=</span> <span class="fl">1</span>, type<span class="op">=</span><span class="st">"two.sample"</span><span class="op">)</span></span></code></pre></div>
 <p>These functions return a list where each item is the result of <code><a href="https://rdrr.io/r/stats/power.t.test.html">power.t.test()</a></code>, which returns a list of results that includes the named item "power". This is a special list that has a summary format if you just print it directly:</p>
-<div class="sourceCode" id="cb370"><pre class="downlit sourceCode r">
+<div class="sourceCode" id="cb386"><pre class="downlit sourceCode r">
 <code class="sourceCode R"><span><span class="va">pcalc</span><span class="op">[[</span><span class="fl">1</span><span class="op">]</span><span class="op">]</span></span></code></pre></div>
 <pre><code>## 
 ##      Two-sample t test power calculation 
@@ -334,7 +349,7 @@ power
 ## 
 ## NOTE: n is number in *each* group</code></pre>
 <p>But you can see the individual items using the <code><a href="https://rdrr.io/r/utils/str.html">str()</a></code> function.</p>
-<div class="sourceCode" id="cb372"><pre class="downlit sourceCode r">
+<div class="sourceCode" id="cb388"><pre class="downlit sourceCode r">
 <code class="sourceCode R"><span><span class="va">pcalc</span><span class="op">[[</span><span class="fl">1</span><span class="op">]</span><span class="op">]</span> <span class="op">|&gt;</span> <span class="fu"><a href="https://rdrr.io/r/utils/str.html">str</a></span><span class="op">(</span><span class="op">)</span></span></code></pre></div>
 <pre><code>## List of 8
 ##  $ n          : num 100
@@ -348,17 +363,17 @@ power
 ##  - attr(*, "class")= chr "power.htest"</code></pre>
 <p><code><a href="https://rdrr.io/r/base/lapply.html">sapply()</a></code> is a version of <code><a href="https://rdrr.io/r/base/lapply.html">lapply()</a></code> that returns a vector or array instead of a list, where appropriate. The corresponding purrr functions are <code><a href="https://purrr.tidyverse.org/reference/map.html">map_dbl()</a></code>, <code><a href="https://purrr.tidyverse.org/reference/map.html">map_chr()</a></code>, <code><a href="https://purrr.tidyverse.org/reference/map.html">map_int()</a></code> and <code><a href="https://purrr.tidyverse.org/reference/map.html">map_lgl()</a></code>, which return vectors with the corresponding <a class="glossary" target="_blank" title="The kind of data represented by an object." href="https://psyteachr.github.io/glossary/d#data-type">data type</a>.</p>
 <p>You can extract a value from a list with the function <code>[[</code>. You usually see this written as <code>pcalc[[1]]</code>, but if you put it inside backticks, you can use it in apply and map functions.</p>
-<div class="sourceCode" id="cb374"><pre class="downlit sourceCode r">
+<div class="sourceCode" id="cb390"><pre class="downlit sourceCode r">
 <code class="sourceCode R"><span><span class="fu"><a href="https://rdrr.io/r/base/lapply.html">sapply</a></span><span class="op">(</span><span class="va">pcalc</span>, <span class="va">`[[`</span>, <span class="st">"power"</span><span class="op">)</span></span></code></pre></div>
 <pre><code>##  [1] 0.2902664 0.5140434 0.6863712 0.8064964 0.8847884 0.9333687 0.9623901
 ##  [8] 0.9792066 0.9887083 0.9939638</code></pre>
 <p>We use <code><a href="https://purrr.tidyverse.org/reference/map.html">map_dbl()</a></code> here because the value for "power" is a <a class="glossary" target="_blank" title="A data type representing a real decimal number" href="https://psyteachr.github.io/glossary/d#double">double</a>.</p>
-<div class="sourceCode" id="cb376"><pre class="downlit sourceCode r">
+<div class="sourceCode" id="cb392"><pre class="downlit sourceCode r">
 <code class="sourceCode R"><span><span class="fu">purrr</span><span class="fu">::</span><span class="fu"><a href="https://purrr.tidyverse.org/reference/map.html">map_dbl</a></span><span class="op">(</span><span class="va">pcalc</span>, <span class="va">`[[`</span>, <span class="st">"power"</span><span class="op">)</span></span></code></pre></div>
 <pre><code>##  [1] 0.2902664 0.5140434 0.6863712 0.8064964 0.8847884 0.9333687 0.9623901
 ##  [8] 0.9792066 0.9887083 0.9939638</code></pre>
 <p>We can use the <code><a href="https://purrr.tidyverse.org/reference/map.html">map()</a></code> functions inside a <code><a href="https://dplyr.tidyverse.org/reference/mutate.html">mutate()</a></code> function to run the <code><a href="https://rdrr.io/r/stats/power.t.test.html">power.t.test()</a></code> function on the value of <code>n</code> from each row of a table, then extract the value for "power", and delete the column with the power calculations.</p>
-<div class="sourceCode" id="cb378"><pre class="downlit sourceCode r">
+<div class="sourceCode" id="cb394"><pre class="downlit sourceCode r">
 <code class="sourceCode R"><span><span class="va">mypower</span> <span class="op">&lt;-</span> <span class="fu"><a href="https://tibble.tidyverse.org/reference/tibble.html">tibble</a></span><span class="op">(</span></span>
 <span>  n <span class="op">=</span> <span class="fu"><a href="https://rdrr.io/r/base/seq.html">seq</a></span><span class="op">(</span><span class="fl">100</span>, <span class="fl">1000</span>, <span class="fl">100</span><span class="op">)</span><span class="op">)</span> <span class="op">|&gt;</span></span>
 <span>  <span class="fu"><a href="https://dplyr.tidyverse.org/reference/mutate.html">mutate</a></span><span class="op">(</span>pcalc <span class="op">=</span> <span class="fu">purrr</span><span class="fu">::</span><span class="fu"><a href="https://purrr.tidyverse.org/reference/map.html">map</a></span><span class="op">(</span><span class="va">n</span>, <span class="va">power.t.test</span>, </span>
@@ -385,13 +400,13 @@ Figure 8.1: Power for a two-sample t-test with d = 0.2
 <span class="header-section-number">8.4.1</span> Structuring a function<a class="anchor" aria-label="anchor" href="#structure-function"><i class="fas fa-link"></i></a>
 </h3>
 <p>The general structure of a function is as follows:</p>
-<div class="sourceCode" id="cb379"><pre class="downlit sourceCode r">
+<div class="sourceCode" id="cb395"><pre class="downlit sourceCode r">
 <code class="sourceCode R"><span><span class="va">function_name</span> <span class="op">&lt;-</span> <span class="kw">function</span><span class="op">(</span><span class="va">my_args</span><span class="op">)</span> <span class="op">{</span></span>
 <span>  <span class="co"># process the arguments</span></span>
 <span>  <span class="co"># return some value</span></span>
 <span><span class="op">}</span></span></code></pre></div>
 <p>Here is a very simple function. Can you guess what it does?</p>
-<div class="sourceCode" id="cb380"><pre class="downlit sourceCode r">
+<div class="sourceCode" id="cb396"><pre class="downlit sourceCode r">
 <code class="sourceCode R"><span><span class="va">add1</span> <span class="op">&lt;-</span> <span class="kw">function</span><span class="op">(</span><span class="va">my_number</span><span class="op">)</span> <span class="op">{</span></span>
 <span>  <span class="va">my_number</span> <span class="op">+</span> <span class="fl">1</span></span>
 <span><span class="op">}</span></span>
@@ -400,7 +415,7 @@ Figure 8.1: Power for a two-sample t-test with d = 0.2
 <pre><code>## [1] 11</code></pre>
 <p>Let's make a function that reports p-values in APA format (with "p = [rounded value]" when p &gt;= .001 and "p &lt; .001" when p &lt; .001).</p>
 <p>First, we have to name the function. You can name it anything, but try not to duplicate existing functions or you will overwrite them. For example, if you call your function <code>rep</code>, then you will need to use <code><a href="https://rdrr.io/r/base/rep.html">base::rep()</a></code> to access the normal <code>rep</code> function. Let's call our p-value function <code>report_p</code> and set up the framework of the function.</p>
-<div class="sourceCode" id="cb382"><pre class="downlit sourceCode r">
+<div class="sourceCode" id="cb398"><pre class="downlit sourceCode r">
 <code class="sourceCode R"><span><span class="va">report_p</span> <span class="op">&lt;-</span> <span class="kw">function</span><span class="op">(</span><span class="op">)</span> <span class="op">{</span></span>
 <span><span class="op">}</span></span></code></pre></div>
 </div>
@@ -409,7 +424,7 @@ Figure 8.1: Power for a two-sample t-test with d = 0.2
 <span class="header-section-number">8.4.2</span> Arguments<a class="anchor" aria-label="anchor" href="#arguments"><i class="fas fa-link"></i></a>
 </h3>
 <p>We need to add one <a class="glossary" target="_blank" title="A variable that provides input to a function." href="https://psyteachr.github.io/glossary/a#argument">argument</a>, the p-value you want to report. The names you choose for the arguments are private to that argument, so it is not a problem if they conflict with other variables in your script. You put the arguments in the parentheses of <code>function()</code> in the order you want them to default (just like the built-in functions you've used before).</p>
-<div class="sourceCode" id="cb383"><pre class="downlit sourceCode r">
+<div class="sourceCode" id="cb399"><pre class="downlit sourceCode r">
 <code class="sourceCode R"><span><span class="va">report_p</span> <span class="op">&lt;-</span> <span class="kw">function</span><span class="op">(</span><span class="va">p</span><span class="op">)</span> <span class="op">{</span></span>
 <span><span class="op">}</span></span></code></pre></div>
 </div>
@@ -418,11 +433,11 @@ Figure 8.1: Power for a two-sample t-test with d = 0.2
 <span class="header-section-number">8.4.3</span> Argument defaults<a class="anchor" aria-label="anchor" href="#defaults"><i class="fas fa-link"></i></a>
 </h3>
 <p>You can add a default value to any argument. If that argument is skipped, then the function uses the default argument. It probably doesn't make sense to run this function without specifying the p-value, but we can add a second argument called <code>digits</code> that defaults to 3, so we can round p-values to any number of digits.</p>
-<div class="sourceCode" id="cb384"><pre class="downlit sourceCode r">
+<div class="sourceCode" id="cb400"><pre class="downlit sourceCode r">
 <code class="sourceCode R"><span><span class="va">report_p</span> <span class="op">&lt;-</span> <span class="kw">function</span><span class="op">(</span><span class="va">p</span>, <span class="va">digits</span> <span class="op">=</span> <span class="fl">3</span><span class="op">)</span> <span class="op">{</span></span>
 <span><span class="op">}</span></span></code></pre></div>
 <p>Now we need to write some code inside the function to process the input arguments and turn them into a <strong>return</strong>ed output. Put the output as the last item in function.</p>
-<div class="sourceCode" id="cb385"><pre class="downlit sourceCode r">
+<div class="sourceCode" id="cb401"><pre class="downlit sourceCode r">
 <code class="sourceCode R"><span><span class="va">report_p</span> <span class="op">&lt;-</span> <span class="kw">function</span><span class="op">(</span><span class="va">p</span>, <span class="va">digits</span> <span class="op">=</span> <span class="fl">3</span><span class="op">)</span> <span class="op">{</span></span>
 <span>  <span class="kw">if</span> <span class="op">(</span><span class="va">p</span> <span class="op">&lt;</span> <span class="fl">.001</span><span class="op">)</span> <span class="op">{</span></span>
 <span>    <span class="va">reported</span> <span class="op">=</span> <span class="st">"p &lt; .001"</span></span>
@@ -434,7 +449,7 @@ Figure 8.1: Power for a two-sample t-test with d = 0.2
 <span>  <span class="va">reported</span></span>
 <span><span class="op">}</span></span></code></pre></div>
 <p>You might also see the returned output inside of the <code><a href="https://rdrr.io/r/base/function.html">return()</a></code> function. This does the same thing.</p>
-<div class="sourceCode" id="cb386"><pre class="downlit sourceCode r">
+<div class="sourceCode" id="cb402"><pre class="downlit sourceCode r">
 <code class="sourceCode R"><span><span class="va">report_p</span> <span class="op">&lt;-</span> <span class="kw">function</span><span class="op">(</span><span class="va">p</span>, <span class="va">digits</span> <span class="op">=</span> <span class="fl">3</span><span class="op">)</span> <span class="op">{</span></span>
 <span>  <span class="kw">if</span> <span class="op">(</span><span class="va">p</span> <span class="op">&lt;</span> <span class="fl">.001</span><span class="op">)</span> <span class="op">{</span></span>
 <span>    <span class="va">reported</span> <span class="op">=</span> <span class="st">"p &lt; .001"</span></span>
@@ -446,7 +461,7 @@ Figure 8.1: Power for a two-sample t-test with d = 0.2
 <span>  <span class="kw"><a href="https://rdrr.io/r/base/function.html">return</a></span><span class="op">(</span><span class="va">reported</span><span class="op">)</span></span>
 <span><span class="op">}</span></span></code></pre></div>
 <p>When you run the code defining your function, it doesn't output anything, but makes a new object in the Environment tab under <strong><code>Functions</code></strong>. Now you can run the function.</p>
-<div class="sourceCode" id="cb387"><pre class="downlit sourceCode r">
+<div class="sourceCode" id="cb403"><pre class="downlit sourceCode r">
 <code class="sourceCode R"><span><span class="fu">report_p</span><span class="op">(</span><span class="fl">0.04869</span><span class="op">)</span></span>
 <span><span class="fu">report_p</span><span class="op">(</span><span class="fl">0.0000023</span><span class="op">)</span></span></code></pre></div>
 <pre><code>## [1] "p = 0.049"
@@ -457,7 +472,7 @@ Figure 8.1: Power for a two-sample t-test with d = 0.2
 <span class="header-section-number">8.4.4</span> Scope<a class="anchor" aria-label="anchor" href="#scope"><i class="fas fa-link"></i></a>
 </h3>
 <p>What happens in a function stays in a function. You can change the value of a variable passed to a function, but that won't change the value of the variable outside of the function, even if that variable has the same name as the one in the function.</p>
-<div class="sourceCode" id="cb389"><pre class="downlit sourceCode r">
+<div class="sourceCode" id="cb405"><pre class="downlit sourceCode r">
 <code class="sourceCode R"><span><span class="va">reported</span> <span class="op">&lt;-</span> <span class="st">"not changed"</span></span>
 <span></span>
 <span><span class="co"># inside this function, reported == "p = 0.002"</span></span>
@@ -477,7 +492,7 @@ What happens when you omit the argument for <code>p</code>? Or if you set <code>
 </div>
 <p>You might want to add a more specific warning and stop running the function code if someone enters a value that isn't a number. You can do this with the <code><a href="https://rdrr.io/r/base/stop.html">stop()</a></code> function.</p>
 <p>If someone enters a number that isn't possible for a p-value (0-1), you might want to warn them that this is probably not what they intended, but still continue with the function. You can do this with <code><a href="https://rdrr.io/r/base/warning.html">warning()</a></code>.</p>
-<div class="sourceCode" id="cb391"><pre class="downlit sourceCode r">
+<div class="sourceCode" id="cb407"><pre class="downlit sourceCode r">
 <code class="sourceCode R"><span><span class="va">report_p</span> <span class="op">&lt;-</span> <span class="kw">function</span><span class="op">(</span><span class="va">p</span>, <span class="va">digits</span> <span class="op">=</span> <span class="fl">3</span><span class="op">)</span> <span class="op">{</span></span>
 <span>  <span class="kw">if</span> <span class="op">(</span><span class="op">!</span><span class="fu"><a href="https://rdrr.io/r/base/numeric.html">is.numeric</a></span><span class="op">(</span><span class="va">p</span><span class="op">)</span><span class="op">)</span> <span class="kw"><a href="https://rdrr.io/r/base/stop.html">stop</a></span><span class="op">(</span><span class="st">"p must be a number"</span><span class="op">)</span></span>
 <span>  <span class="kw">if</span> <span class="op">(</span><span class="va">p</span> <span class="op">&lt;=</span> <span class="fl">0</span><span class="op">)</span> <span class="kw"><a href="https://rdrr.io/r/base/warning.html">warning</a></span><span class="op">(</span><span class="st">"p-values are normally greater than 0"</span><span class="op">)</span></span>
@@ -492,16 +507,16 @@ What happens when you omit the argument for <code>p</code>? Or if you set <code>
 <span>  </span>
 <span>  <span class="va">reported</span></span>
 <span><span class="op">}</span></span></code></pre></div>
-<div class="sourceCode" id="cb392"><pre class="downlit sourceCode r">
+<div class="sourceCode" id="cb408"><pre class="downlit sourceCode r">
 <code class="sourceCode R"><span><span class="fu">report_p</span><span class="op">(</span><span class="op">)</span></span></code></pre></div>
 <pre><code>## Error in report_p(): argument "p" is missing, with no default</code></pre>
-<div class="sourceCode" id="cb394"><pre class="downlit sourceCode r">
+<div class="sourceCode" id="cb410"><pre class="downlit sourceCode r">
 <code class="sourceCode R"><span><span class="fu">report_p</span><span class="op">(</span><span class="st">"a"</span><span class="op">)</span></span></code></pre></div>
 <pre><code>## Error in report_p("a"): p must be a number</code></pre>
-<div class="sourceCode" id="cb396"><pre class="downlit sourceCode r">
+<div class="sourceCode" id="cb412"><pre class="downlit sourceCode r">
 <code class="sourceCode R"><span><span class="fu">report_p</span><span class="op">(</span><span class="op">-</span><span class="fl">2</span><span class="op">)</span></span></code></pre></div>
 <pre><code>## Warning in report_p(-2): p-values are normally greater than 0</code></pre>
-<div class="sourceCode" id="cb398"><pre class="downlit sourceCode r">
+<div class="sourceCode" id="cb414"><pre class="downlit sourceCode r">
 <code class="sourceCode R"><span><span class="fu">report_p</span><span class="op">(</span><span class="fl">2</span><span class="op">)</span></span></code></pre></div>
 <pre><code>## Warning in report_p(2): p-values are normally less than 1</code></pre>
 <pre><code>## [1] "p &lt; .001"
@@ -512,33 +527,32 @@ What happens when you omit the argument for <code>p</code>? Or if you set <code>
 <h2>
 <span class="header-section-number">8.5</span> Iterating your own functions<a class="anchor" aria-label="anchor" href="#iterating-your-own-functions"><i class="fas fa-link"></i></a>
 </h2>
+<div id="build-code" class="section level3" number="8.5.1">
+<h3>
+<span class="header-section-number">8.5.1</span> Build code<a class="anchor" aria-label="anchor" href="#build-code"><i class="fas fa-link"></i></a>
+</h3>
 <p>First, let's build up the code that we want to iterate.</p>
-<div id="rnorm" class="section level3" number="8.5.1">
-<h3>
-<span class="header-section-number">8.5.1</span> rnorm()<a class="anchor" aria-label="anchor" href="#rnorm"><i class="fas fa-link"></i></a>
-</h3>
+<div id="simulate-and-structure-data" class="section level4" number="8.5.1.1">
+<h4>
+<span class="header-section-number">8.5.1.1</span> Simulate and structure data<a class="anchor" aria-label="anchor" href="#simulate-and-structure-data"><i class="fas fa-link"></i></a>
+</h4>
 <p>Create a vector of 20 random numbers drawn from a normal distribution with a mean of 5 and standard deviation of 1 using the <code><a href="https://rdrr.io/r/stats/Normal.html">rnorm()</a></code> function and store them in the variable <code>A</code>.</p>
-<div class="sourceCode" id="cb401"><pre class="downlit sourceCode r">
+<div class="sourceCode" id="cb417"><pre class="downlit sourceCode r">
 <code class="sourceCode R"><span><span class="va">A</span> <span class="op">&lt;-</span> <span class="fu"><a href="https://rdrr.io/r/stats/Normal.html">rnorm</a></span><span class="op">(</span><span class="fl">20</span>, mean <span class="op">=</span> <span class="fl">5</span>, sd <span class="op">=</span> <span class="fl">1</span><span class="op">)</span></span></code></pre></div>
-</div>
-<div id="tibbletibble" class="section level3" number="8.5.2">
-<h3>
-<span class="header-section-number">8.5.2</span> tibble::tibble()<a class="anchor" aria-label="anchor" href="#tibbletibble"><i class="fas fa-link"></i></a>
-</h3>
 <p>A <code>tibble</code> is a type of table or <code>data.frame</code>. The function <code><a href="https://tibble.tidyverse.org/reference/tibble.html">tibble::tibble()</a></code> creates a tibble with a column for each argument. Each argument takes the form <code>column_name = data_vector</code>.</p>
 <p>Create a table called <code>dat</code> including two vectors: <code>A</code> that is a vector of 20 random normally distributed numbers with a mean of 5 and SD of 1, and <code>B</code> that is a vector of 20 random normally distributed numbers with a mean of 5.5 and SD of 1.</p>
-<div class="sourceCode" id="cb402"><pre class="downlit sourceCode r">
+<div class="sourceCode" id="cb418"><pre class="downlit sourceCode r">
 <code class="sourceCode R"><span><span class="va">dat</span> <span class="op">&lt;-</span> <span class="fu"><a href="https://tibble.tidyverse.org/reference/tibble.html">tibble</a></span><span class="op">(</span></span>
 <span>  A <span class="op">=</span> <span class="fu"><a href="https://rdrr.io/r/stats/Normal.html">rnorm</a></span><span class="op">(</span><span class="fl">20</span>, <span class="fl">5</span>, <span class="fl">1</span><span class="op">)</span>,</span>
 <span>  B <span class="op">=</span> <span class="fu"><a href="https://rdrr.io/r/stats/Normal.html">rnorm</a></span><span class="op">(</span><span class="fl">20</span>, <span class="fl">5.5</span>, <span class="fl">1</span><span class="op">)</span></span>
 <span><span class="op">)</span></span></code></pre></div>
 </div>
-<div id="t.test" class="section level3" number="8.5.3">
-<h3>
-<span class="header-section-number">8.5.3</span> t.test()<a class="anchor" aria-label="anchor" href="#t.test"><i class="fas fa-link"></i></a>
-</h3>
+<div id="statistical-test" class="section level4" number="8.5.1.2">
+<h4>
+<span class="header-section-number">8.5.1.2</span> Statistical test<a class="anchor" aria-label="anchor" href="#statistical-test"><i class="fas fa-link"></i></a>
+</h4>
 <p>You can run a Welch two-sample t-test by including the two samples you made as the first two arguments to the function <code>t.test</code>. You can reference one column of a table by its names using the format <code>table_name$column_name</code></p>
-<div class="sourceCode" id="cb403"><pre class="downlit sourceCode r">
+<div class="sourceCode" id="cb419"><pre class="downlit sourceCode r">
 <code class="sourceCode R"><span><span class="fu"><a href="https://rdrr.io/r/stats/t.test.html">t.test</a></span><span class="op">(</span><span class="va">dat</span><span class="op">$</span><span class="va">A</span>, <span class="va">dat</span><span class="op">$</span><span class="va">B</span><span class="op">)</span></span></code></pre></div>
 <pre><code>## 
 ##  Welch Two Sample t-test
@@ -552,7 +566,7 @@ What happens when you omit the argument for <code>p</code>? Or if you set <code>
 ## mean of x mean of y 
 ##  4.886096  5.466453</code></pre>
 <p>You can also convert the table to long format using the <code>gather</code> function and specify the t-test using the format <code>dv_column~grouping_column</code>.</p>
-<div class="sourceCode" id="cb405"><pre class="downlit sourceCode r">
+<div class="sourceCode" id="cb421"><pre class="downlit sourceCode r">
 <code class="sourceCode R"><span><span class="va">longdat</span> <span class="op">&lt;-</span> <span class="fu"><a href="https://tidyr.tidyverse.org/reference/gather.html">gather</a></span><span class="op">(</span><span class="va">dat</span>, <span class="va">group</span>, <span class="va">score</span>, <span class="va">A</span><span class="op">:</span><span class="va">B</span><span class="op">)</span></span>
 <span></span>
 <span><span class="fu"><a href="https://rdrr.io/r/stats/t.test.html">t.test</a></span><span class="op">(</span><span class="va">score</span><span class="op">~</span><span class="va">group</span>, data <span class="op">=</span> <span class="va">longdat</span><span class="op">)</span> </span></code></pre></div>
@@ -568,12 +582,12 @@ What happens when you omit the argument for <code>p</code>? Or if you set <code>
 ## mean in group A mean in group B 
 ##        4.886096        5.466453</code></pre>
 </div>
-<div id="broomtidy" class="section level3" number="8.5.4">
-<h3>
-<span class="header-section-number">8.5.4</span> broom::tidy()<a class="anchor" aria-label="anchor" href="#broomtidy"><i class="fas fa-link"></i></a>
-</h3>
+<div id="tidy-output" class="section level4" number="8.5.1.3">
+<h4>
+<span class="header-section-number">8.5.1.3</span> Tidy output<a class="anchor" aria-label="anchor" href="#tidy-output"><i class="fas fa-link"></i></a>
+</h4>
 <p>You can use the function <code><a href="https://generics.r-lib.org/reference/tidy.html">broom::tidy()</a></code> to extract the data from a statistical test in a table format. The example below pipes everything together.</p>
-<div class="sourceCode" id="cb407"><pre class="downlit sourceCode r">
+<div class="sourceCode" id="cb423"><pre class="downlit sourceCode r">
 <code class="sourceCode R"><span><span class="fu"><a href="https://tibble.tidyverse.org/reference/tibble.html">tibble</a></span><span class="op">(</span></span>
 <span>  A <span class="op">=</span> <span class="fu"><a href="https://rdrr.io/r/stats/Normal.html">rnorm</a></span><span class="op">(</span><span class="fl">20</span>, <span class="fl">5</span>, <span class="fl">1</span><span class="op">)</span>,</span>
 <span>  B <span class="op">=</span> <span class="fu"><a href="https://rdrr.io/r/stats/Normal.html">rnorm</a></span><span class="op">(</span><span class="fl">20</span>, <span class="fl">5.5</span>, <span class="fl">1</span><span class="op">)</span></span>
@@ -652,8 +666,13 @@ two.sided
 <div class="info">
 <p>In the pipeline above, <code>t.test(score~group, data = _)</code> uses the <code>_</code> notation to change the location of the piped-in data table from it's default position as the first argument to a different position.</p>
 </div>
+</div>
+<div id="extract-important-values" class="section level4" number="8.5.1.4">
+<h4>
+<span class="header-section-number">8.5.1.4</span> Extract important values<a class="anchor" aria-label="anchor" href="#extract-important-values"><i class="fas fa-link"></i></a>
+</h4>
 <p>Finally, we can extract a single value from this results table using <code><a href="https://dplyr.tidyverse.org/reference/pull.html">pull()</a></code>.</p>
-<div class="sourceCode" id="cb408"><pre class="downlit sourceCode r">
+<div class="sourceCode" id="cb424"><pre class="downlit sourceCode r">
 <code class="sourceCode R"><span><span class="fu"><a href="https://tibble.tidyverse.org/reference/tibble.html">tibble</a></span><span class="op">(</span></span>
 <span>  A <span class="op">=</span> <span class="fu"><a href="https://rdrr.io/r/stats/Normal.html">rnorm</a></span><span class="op">(</span><span class="fl">20</span>, <span class="fl">5</span>, <span class="fl">1</span><span class="op">)</span>,</span>
 <span>  B <span class="op">=</span> <span class="fu"><a href="https://rdrr.io/r/stats/Normal.html">rnorm</a></span><span class="op">(</span><span class="fl">20</span>, <span class="fl">5.5</span>, <span class="fl">1</span><span class="op">)</span></span>
@@ -664,12 +683,14 @@ two.sided
 <span>  <span class="fu"><a href="https://dplyr.tidyverse.org/reference/pull.html">pull</a></span><span class="op">(</span><span class="va">p.value</span><span class="op">)</span></span></code></pre></div>
 <pre><code>## [1] 0.7550108</code></pre>
 </div>
-<div id="custom-function-t_sim" class="section level3" number="8.5.5">
+</div>
+<div id="custom-function" class="section level3" number="8.5.2">
 <h3>
-<span class="header-section-number">8.5.5</span> Custom function: t_sim()<a class="anchor" aria-label="anchor" href="#custom-function-t_sim"><i class="fas fa-link"></i></a>
+<span class="header-section-number">8.5.2</span> Custom function<a class="anchor" aria-label="anchor" href="#custom-function"><i class="fas fa-link"></i></a>
 </h3>
+<p>Next, we can group the code above inside a function.</p>
 <p>First, name your function <code>t_sim</code> and wrap the code above in a function with no arguments.</p>
-<div class="sourceCode" id="cb410"><pre class="downlit sourceCode r">
+<div class="sourceCode" id="cb426"><pre class="downlit sourceCode r">
 <code class="sourceCode R"><span><span class="va">t_sim</span> <span class="op">&lt;-</span> <span class="kw">function</span><span class="op">(</span><span class="op">)</span> <span class="op">{</span></span>
 <span>  <span class="fu"><a href="https://tibble.tidyverse.org/reference/tibble.html">tibble</a></span><span class="op">(</span></span>
 <span>    A <span class="op">=</span> <span class="fu"><a href="https://rdrr.io/r/stats/Normal.html">rnorm</a></span><span class="op">(</span><span class="fl">20</span>, <span class="fl">5</span>, <span class="fl">1</span><span class="op">)</span>,</span>
@@ -681,28 +702,27 @@ two.sided
 <span>    <span class="fu"><a href="https://dplyr.tidyverse.org/reference/pull.html">pull</a></span><span class="op">(</span><span class="va">p.value</span><span class="op">)</span> </span>
 <span><span class="op">}</span></span></code></pre></div>
 <p>Run it a few times to see what happens.</p>
-<div class="sourceCode" id="cb411"><pre class="downlit sourceCode r">
+<div class="sourceCode" id="cb427"><pre class="downlit sourceCode r">
 <code class="sourceCode R"><span><span class="fu">t_sim</span><span class="op">(</span><span class="op">)</span></span></code></pre></div>
 <pre><code>## [1] 0.2744559</code></pre>
-</div>
-<div id="iterate-t_sim" class="section level3" number="8.5.6">
-<h3>
-<span class="header-section-number">8.5.6</span> Iterate t_sim()<a class="anchor" aria-label="anchor" href="#iterate-t_sim"><i class="fas fa-link"></i></a>
-</h3>
+<div id="iterate" class="section level4" number="8.5.2.1">
+<h4>
+<span class="header-section-number">8.5.2.1</span> Iterate<a class="anchor" aria-label="anchor" href="#iterate"><i class="fas fa-link"></i></a>
+</h4>
 <p>Let's run the <code>t_sim</code> function 1000 times, assign the resulting p-values to a vector called <code>reps</code>, and check what proportion of p-values are lower than alpha (e.g., .05). This number is the power for this analysis.</p>
-<div class="sourceCode" id="cb413"><pre class="downlit sourceCode r">
+<div class="sourceCode" id="cb429"><pre class="downlit sourceCode r">
 <code class="sourceCode R"><span><span class="va">reps</span> <span class="op">&lt;-</span> <span class="fu"><a href="https://rdrr.io/r/base/lapply.html">replicate</a></span><span class="op">(</span><span class="fl">1000</span>, <span class="fu">t_sim</span><span class="op">(</span><span class="op">)</span><span class="op">)</span></span>
 <span><span class="va">alpha</span> <span class="op">&lt;-</span> <span class="fl">.05</span></span>
 <span><span class="va">power</span> <span class="op">&lt;-</span> <span class="fu"><a href="https://rdrr.io/r/base/mean.html">mean</a></span><span class="op">(</span><span class="va">reps</span> <span class="op">&lt;</span> <span class="va">alpha</span><span class="op">)</span></span>
 <span><span class="va">power</span></span></code></pre></div>
 <pre><code>## [1] 0.329</code></pre>
 </div>
-<div id="seed" class="section level3" number="8.5.7">
-<h3>
-<span class="header-section-number">8.5.7</span> Set seed<a class="anchor" aria-label="anchor" href="#seed"><i class="fas fa-link"></i></a>
-</h3>
+<div id="seed" class="section level4" number="8.5.2.2">
+<h4>
+<span class="header-section-number">8.5.2.2</span> Set seed<a class="anchor" aria-label="anchor" href="#seed"><i class="fas fa-link"></i></a>
+</h4>
 <p>You can use the <code>set.seed</code> function before you run a function that uses random numbers to make sure that you get the same random data back each time. You can use any integer you like as the seed.</p>
-<div class="sourceCode" id="cb415"><pre class="downlit sourceCode r">
+<div class="sourceCode" id="cb431"><pre class="downlit sourceCode r">
 <code class="sourceCode R"><span><span class="fu"><a href="https://rdrr.io/r/base/Random.html">set.seed</a></span><span class="op">(</span><span class="fl">90201</span><span class="op">)</span></span></code></pre></div>
 <div class="warning">
 <p>Make sure you don't ever use <code><a href="https://rdrr.io/r/base/Random.html">set.seed()</a></code> <strong>inside</strong> of a simulation function, or you will just simulate the exact same data over and over again.</p>
@@ -714,12 +734,12 @@ Figure 8.2: @KellyBodwin
 </p>
 </div>
 </div>
-<div id="add-arguments" class="section level3" number="8.5.8">
-<h3>
-<span class="header-section-number">8.5.8</span> Add arguments<a class="anchor" aria-label="anchor" href="#add-arguments"><i class="fas fa-link"></i></a>
-</h3>
-<p>You can just edit your function each time you want to cacluate power for a different sample n, but it is more efficent to build this into your fuction as an arguments. Redefine <code>t_sim</code>, setting arguments for the mean and SD of group A, the mean and SD of group B, and the number of subjects per group. Give them all default values.</p>
-<div class="sourceCode" id="cb416"><pre class="downlit sourceCode r">
+<div id="add-arguments" class="section level4" number="8.5.2.3">
+<h4>
+<span class="header-section-number">8.5.2.3</span> Add arguments<a class="anchor" aria-label="anchor" href="#add-arguments"><i class="fas fa-link"></i></a>
+</h4>
+<p>You can just edit your function each time you want to calculate power for a different sample n, but it is more efficient to build this into your function as an arguments. Redefine <code>t_sim</code>, setting arguments for the mean and SD of group A, the mean and SD of group B, and the number of subjects per group. Give them all default values.</p>
+<div class="sourceCode" id="cb432"><pre class="downlit sourceCode r">
 <code class="sourceCode R"><span><span class="va">t_sim</span> <span class="op">&lt;-</span> <span class="kw">function</span><span class="op">(</span><span class="va">n</span> <span class="op">=</span> <span class="fl">10</span>, <span class="va">m1</span><span class="op">=</span><span class="fl">0</span>, <span class="va">sd1</span><span class="op">=</span><span class="fl">1</span>, <span class="va">m2</span><span class="op">=</span><span class="fl">0</span>, <span class="va">sd2</span><span class="op">=</span><span class="fl">1</span><span class="op">)</span> <span class="op">{</span></span>
 <span>  <span class="fu"><a href="https://tibble.tidyverse.org/reference/tibble.html">tibble</a></span><span class="op">(</span></span>
 <span>    A <span class="op">=</span> <span class="fu"><a href="https://rdrr.io/r/stats/Normal.html">rnorm</a></span><span class="op">(</span><span class="va">n</span>, <span class="va">m1</span>, <span class="va">sd1</span><span class="op">)</span>,</span>
@@ -730,20 +750,26 @@ Figure 8.2: @KellyBodwin
 <span>    <span class="fu">broom</span><span class="fu">::</span><span class="fu"><a href="https://generics.r-lib.org/reference/tidy.html">tidy</a></span><span class="op">(</span><span class="op">)</span> <span class="op">|&gt;</span></span>
 <span>    <span class="fu"><a href="https://dplyr.tidyverse.org/reference/pull.html">pull</a></span><span class="op">(</span><span class="va">p.value</span><span class="op">)</span> </span>
 <span><span class="op">}</span></span></code></pre></div>
+</div>
+</div>
+<div id="test-your-function" class="section level3" number="8.5.3">
+<h3>
+<span class="header-section-number">8.5.3</span> Test your function<a class="anchor" aria-label="anchor" href="#test-your-function"><i class="fas fa-link"></i></a>
+</h3>
 <p>Test your function with some different values to see if the results make sense.</p>
-<div class="sourceCode" id="cb417"><pre class="downlit sourceCode r">
+<div class="sourceCode" id="cb433"><pre class="downlit sourceCode r">
 <code class="sourceCode R"><span><span class="fu">t_sim</span><span class="op">(</span><span class="fl">100</span><span class="op">)</span></span>
 <span><span class="fu">t_sim</span><span class="op">(</span><span class="fl">100</span>, <span class="fl">0</span>, <span class="fl">1</span>, <span class="fl">0.5</span>, <span class="fl">1</span><span class="op">)</span></span></code></pre></div>
 <pre><code>## [1] 0.8460064
 ## [1] 0.0002446404</code></pre>
 <p>Use <code>replicate</code> to calculate power for 100 subjects/group with an effect size of 0.2 (e.g., A: m = 0, SD = 1; B: m = 0.2, SD = 1). Use 1000 replications.</p>
-<div class="sourceCode" id="cb419"><pre class="downlit sourceCode r">
+<div class="sourceCode" id="cb435"><pre class="downlit sourceCode r">
 <code class="sourceCode R"><span><span class="va">reps</span> <span class="op">&lt;-</span> <span class="fu"><a href="https://rdrr.io/r/base/lapply.html">replicate</a></span><span class="op">(</span><span class="fl">1000</span>, <span class="fu">t_sim</span><span class="op">(</span><span class="fl">100</span>, <span class="fl">0</span>, <span class="fl">1</span>, <span class="fl">0.2</span>, <span class="fl">1</span><span class="op">)</span><span class="op">)</span></span>
 <span><span class="va">power</span> <span class="op">&lt;-</span> <span class="fu"><a href="https://rdrr.io/r/base/mean.html">mean</a></span><span class="op">(</span><span class="va">reps</span> <span class="op">&lt;</span> <span class="fl">.05</span><span class="op">)</span></span>
 <span><span class="va">power</span></span></code></pre></div>
 <pre><code>## [1] 0.284</code></pre>
 <p>Compare this to power calculated from the <code>power.t.test</code> function.</p>
-<div class="sourceCode" id="cb421"><pre class="downlit sourceCode r">
+<div class="sourceCode" id="cb437"><pre class="downlit sourceCode r">
 <code class="sourceCode R"><span><span class="fu"><a href="https://rdrr.io/r/stats/power.t.test.html">power.t.test</a></span><span class="op">(</span>n <span class="op">=</span> <span class="fl">100</span>, delta <span class="op">=</span> <span class="fl">0.2</span>, sd <span class="op">=</span> <span class="fl">1</span>, type<span class="op">=</span><span class="st">"two.sample"</span><span class="op">)</span></span></code></pre></div>
 <pre><code>## 
 ##      Two-sample t test power calculation 
@@ -756,12 +782,14 @@ Figure 8.2: @KellyBodwin
 ##     alternative = two.sided
 ## 
 ## NOTE: n is number in *each* group</code></pre>
+<div class="try">
 <p>Calculate power via simulation and <code>power.t.test</code> for the following tests:</p>
 <ul>
 <li>20 subjects/group, A: m = 0, SD = 1; B: m = 0.2, SD = 1</li>
 <li>40 subjects/group, A: m = 0, SD = 1; B: m = 0.2, SD = 1</li>
 <li>20 subjects/group, A: m = 10, SD = 1; B: m = 12, SD = 1.5</li>
 </ul>
+</div>
 </div>
 </div>
 <div id="glossary-func" class="section level2" number="8.6">
@@ -836,7 +864,7 @@ A container data type consisting of numbers arranged into a fixed number of rows
 <ul>
 <li>Chapters 19 and 21 of <a href="http://r4ds.had.co.nz">R for Data Science</a>
 </li>
-<li><a href="https://github.com/rstudio/cheatsheets/raw/master/purrr.pdf">RStudio Apply Functions Cheatsheet</a></li>
+<li><a href="https://raw.githubusercontent.com/rstudio/cheatsheets/main/purrr.pdf">Apply functions with purrr cheat sheet</a></li>
 </ul>
 </div>
 </div>
@@ -1091,14 +1119,9 @@ function openCity(evt, cityName) {
 </li>
 <li>
 <a class="nav-link" href="#iterating-your-own-functions"><span class="header-section-number">8.5</span> Iterating your own functions</a><ul class="nav navbar-nav">
-<li><a class="nav-link" href="#rnorm"><span class="header-section-number">8.5.1</span> rnorm()</a></li>
-<li><a class="nav-link" href="#tibbletibble"><span class="header-section-number">8.5.2</span> tibble::tibble()</a></li>
-<li><a class="nav-link" href="#t.test"><span class="header-section-number">8.5.3</span> t.test()</a></li>
-<li><a class="nav-link" href="#broomtidy"><span class="header-section-number">8.5.4</span> broom::tidy()</a></li>
-<li><a class="nav-link" href="#custom-function-t_sim"><span class="header-section-number">8.5.5</span> Custom function: t_sim()</a></li>
-<li><a class="nav-link" href="#iterate-t_sim"><span class="header-section-number">8.5.6</span> Iterate t_sim()</a></li>
-<li><a class="nav-link" href="#seed"><span class="header-section-number">8.5.7</span> Set seed</a></li>
-<li><a class="nav-link" href="#add-arguments"><span class="header-section-number">8.5.8</span> Add arguments</a></li>
+<li><a class="nav-link" href="#build-code"><span class="header-section-number">8.5.1</span> Build code</a></li>
+<li><a class="nav-link" href="#custom-function"><span class="header-section-number">8.5.2</span> Custom function</a></li>
+<li><a class="nav-link" href="#test-your-function"><span class="header-section-number">8.5.3</span> Test your function</a></li>
 </ul>
 </li>
 <li><a class="nav-link" href="#glossary-func"><span class="header-section-number">8.6</span> Glossary</a></li>
@@ -1120,7 +1143,7 @@ function openCity(evt, cityName) {
 <footer class="bg-primary text-light mt-5"><div class="container"><div class="row">
 
   <div class="col-12 col-md-6 mt-3">
-    <p>"<strong>Data Skills for Reproducible Research</strong>: <br><a href="https://doi.org/10.5281/zenodo.6527194"><img src="https://zenodo.org/badge/DOI/10.5281/zenodo.6527194.svg" alt="DOI: 10.5281/zenodo.6527194"></a>" was written by . It was last built on 2022-08-30.</p>
+    <p>"<strong>Data Skills for Reproducible Research</strong>: <br><a href="https://doi.org/10.5281/zenodo.6527194"><img src="https://zenodo.org/badge/DOI/10.5281/zenodo.6527194.svg" alt="DOI: 10.5281/zenodo.6527194"></a>" was written by . It was last built on 2022-10-04.</p>
   </div>
 
   <div class="col-12 col-md-6 mt-3">

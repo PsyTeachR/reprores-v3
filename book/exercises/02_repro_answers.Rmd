@@ -9,7 +9,7 @@ output:
 ---
 
 ```{r setup, include=FALSE}
-library(fortunes)
+library(cowsay)
 ```
 
 
@@ -41,5 +41,5 @@ tibble::tribble(
 
 
 ```{r, echo = FALSE}
-fortune()
+cowsay::say("I love R!", by = "spider", by_color = "black", what_color = "red", )
 ```

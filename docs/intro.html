@@ -23,7 +23,7 @@
 <script src="libs/htmlwidgets-1.5.4/htmlwidgets.js"></script><script src="libs/plotly-binding-4.10.0/plotly.js"></script><script src="libs/typedarray-0.1/typedarray.min.js"></script><link href="libs/crosstalk-1.2.0/css/crosstalk.min.css" rel="stylesheet">
 <script src="libs/crosstalk-1.2.0/js/crosstalk.min.js"></script><link href="libs/plotly-htmlwidgets-css-2.5.1/plotly-htmlwidgets.css" rel="stylesheet">
 <script src="libs/plotly-main-2.5.1/plotly-latest.min.js"></script><link href="libs/datatables-css-0.0.0/datatables-crosstalk.css" rel="stylesheet">
-<script src="libs/datatables-binding-0.24/datatables.js"></script><link href="libs/dt-core-1.11.3/css/jquery.dataTables.min.css" rel="stylesheet">
+<script src="libs/datatables-binding-0.25/datatables.js"></script><link href="libs/dt-core-1.11.3/css/jquery.dataTables.min.css" rel="stylesheet">
 <link href="libs/dt-core-1.11.3/css/jquery.dataTables.extra.css" rel="stylesheet">
 <script src="libs/dt-core-1.11.3/js/jquery.dataTables.min.js"></script><!-- Global site tag (gtag.js) - Google Analytics --><script async src="https://www.googletagmanager.com/gtag/js?id=G-6NP3MF25W3"></script><script>
       window.dataLayer = window.dataLayer || [];
@@ -492,23 +492,23 @@ Figure 1.3: Alter these settings for increased reproducibility.
 <p>If you want 10 random numbers from a normal distribution with mean of 0 and standard deviation, you can just use the defaults.</p>
 <div class="sourceCode" id="cb30"><pre class="downlit sourceCode r">
 <code class="sourceCode R"><span><span class="fu"><a href="https://rdrr.io/r/stats/Normal.html">rnorm</a></span><span class="op">(</span><span class="fl">10</span><span class="op">)</span></span></code></pre></div>
-<pre><code>##  [1]  1.36915071 -0.52249875  1.52987198 -1.15550086 -2.48983989  0.02715158
-##  [7] -0.12933548  0.35790825 -1.53524971  1.65323523</code></pre>
+<pre><code>##  [1]  1.0776361 -1.5428004 -1.0694126  0.4656785  0.2716471  1.6077680
+##  [7] -1.3126246 -0.7284652  0.2781463 -0.4458766</code></pre>
 <p>If you want 10 numbers from a normal distribution with a mean of 100:</p>
 <div class="sourceCode" id="cb32"><pre class="downlit sourceCode r">
 <code class="sourceCode R"><span><span class="fu"><a href="https://rdrr.io/r/stats/Normal.html">rnorm</a></span><span class="op">(</span><span class="fl">10</span>, <span class="fl">100</span><span class="op">)</span></span></code></pre></div>
-<pre><code>##  [1] 100.47279 102.24291  99.09208 100.81950  99.38132 100.41614  99.03202
-##  [8] 101.13144  98.87303  99.19437</code></pre>
+<pre><code>##  [1] 100.46196  98.86046 100.19352  98.78103 100.48892 100.12980  99.81721
+##  [8] 100.27994  99.78089 101.32672</code></pre>
 <p>This would be an equivalent but less efficient way of calling the function:</p>
 <div class="sourceCode" id="cb34"><pre class="downlit sourceCode r">
 <code class="sourceCode R"><span><span class="fu"><a href="https://rdrr.io/r/stats/Normal.html">rnorm</a></span><span class="op">(</span>n <span class="op">=</span> <span class="fl">10</span>, mean <span class="op">=</span> <span class="fl">100</span><span class="op">)</span></span></code></pre></div>
-<pre><code>##  [1] 100.21499  98.80225 100.40324  99.04775  99.69542 100.95335  99.05811
-##  [8] 100.03049  99.64425 100.95763</code></pre>
+<pre><code>##  [1] 100.16626  99.45014 100.76694  98.43625 100.91983  98.14420 101.21891
+##  [8] 102.08515  99.16165 101.25589</code></pre>
 <p>We don't need to name the arguments because R will recognize that we intended to fill in the first and second arguments by their position in the function call. However, if we want to change the default for an argument coming later in the list, then we need to name it. For instance, if we wanted to keep the default <code>mean = 0</code> but change the standard deviation to 100, we would do it this way:</p>
 <div class="sourceCode" id="cb36"><pre class="downlit sourceCode r">
 <code class="sourceCode R"><span><span class="fu"><a href="https://rdrr.io/r/stats/Normal.html">rnorm</a></span><span class="op">(</span><span class="fl">10</span>, sd <span class="op">=</span> <span class="fl">100</span><span class="op">)</span></span></code></pre></div>
-<pre><code>##  [1] -102.02527  -98.04928  -41.16034   79.68347  -62.45727   37.00988
-##  [7]  -22.44341   78.81657 -285.20586  -16.66918</code></pre>
+<pre><code>##  [1] -104.708496 -121.343579   69.986104   -9.516204    7.198781 -195.764591
+##  [7]  -38.231374   38.747884  -58.830097 -133.046854</code></pre>
 <p>Some functions give a list of options after an argument; this means the default value is the first option. The usage entry for the <code><a href="https://rdrr.io/r/stats/power.t.test.html">power.t.test()</a></code> function looks like this:</p>
 <div class="sourceCode" id="cb38"><pre class="downlit sourceCode r">
 <code class="sourceCode R"><span><span class="fu"><a href="https://rdrr.io/r/stats/power.t.test.html">power.t.test</a></span><span class="op">(</span>n <span class="op">=</span> <span class="cn">NULL</span>, delta <span class="op">=</span> <span class="cn">NULL</span>, sd <span class="op">=</span> <span class="fl">1</span>, sig.level <span class="op">=</span> <span class="fl">0.05</span>,</span>
@@ -519,20 +519,20 @@ Figure 1.3: Alter these settings for increased reproducibility.
 <div class="try">
 <ul>
 <li>What is the default value for <code>sd</code>? <select class="webex-select"><option value="blank"></option>
+<option value="answer">1</option>
 <option value="">two.sample</option>
 <option value="">NULL</option>
-<option value="">0.05</option>
-<option value="answer">1</option></select>
+<option value="">0.05</option></select>
 </li>
 <li>What is the default value for <code>type</code>? <select class="webex-select"><option value="blank"></option>
-<option value="">paired</option>
-<option value="answer">two.sample</option>
 <option value="">one.sample</option>
-<option value="">NULL</option></select>
+<option value="">NULL</option>
+<option value="">paired</option>
+<option value="answer">two.sample</option></select>
 </li>
 <li>Which is equivalent to <code><span><span class="fu"><a target="_blank" href="https://rdrr.io/r/stats/power.t.test.html">power.t.test</a></span><span class="op">(</span><span class="fl">100</span>, <span class="fl">0.5</span><span class="op">)</span></span></code>?
-<div id="radio_GIJMEKONEZ" class="webex-radiogroup">
-<label><input type="radio" autocomplete="off" name="radio_GIJMEKONEZ" value=""><span>power.t.test()</span></label><label><input type="radio" autocomplete="off" name="radio_GIJMEKONEZ" value="answer"><span>power.t.test(delta = 0.5, n = 100)</span></label><label><input type="radio" autocomplete="off" name="radio_GIJMEKONEZ" value=""><span>power.t.test(100, 0.5, sig.level = 1, sd = 0.05)</span></label><label><input type="radio" autocomplete="off" name="radio_GIJMEKONEZ" value=""><span>power.t.test(n = 100)</span></label>
+<div id="radio_SUVVAMCMNR" class="webex-radiogroup">
+<label><input type="radio" autocomplete="off" name="radio_SUVVAMCMNR" value=""><span>power.t.test()</span></label><label><input type="radio" autocomplete="off" name="radio_SUVVAMCMNR" value=""><span>power.t.test(n = 100)</span></label><label><input type="radio" autocomplete="off" name="radio_SUVVAMCMNR" value="answer"><span>power.t.test(delta = 0.5, n = 100)</span></label><label><input type="radio" autocomplete="off" name="radio_SUVVAMCMNR" value=""><span>power.t.test(100, 0.5, sig.level = 1, sd = 0.05)</span></label>
 </div>
 </li>
 </ul>
@@ -1249,7 +1249,7 @@ function openCity(evt, cityName) {
 <footer class="bg-primary text-light mt-5"><div class="container"><div class="row">
 
   <div class="col-12 col-md-6 mt-3">
-    <p>"<strong>Data Skills for Reproducible Research</strong>: <br><a href="https://doi.org/10.5281/zenodo.6527194"><img src="https://zenodo.org/badge/DOI/10.5281/zenodo.6527194.svg" alt="DOI: 10.5281/zenodo.6527194"></a>" was written by . It was last built on 2022-09-07.</p>
+    <p>"<strong>Data Skills for Reproducible Research</strong>: <br><a href="https://doi.org/10.5281/zenodo.6527194"><img src="https://zenodo.org/badge/DOI/10.5281/zenodo.6527194.svg" alt="DOI: 10.5281/zenodo.6527194"></a>" was written by . It was last built on 2022-10-04.</p>
   </div>
 
   <div class="col-12 col-md-6 mt-3">

@@ -67,7 +67,7 @@ my_dir <- NULL
 
 ## Install a package
 
-Install the CRAN package called "fortunes". Run the code to do this and include it in the code chunk below, but comment it out. It is bad practice to write a script that installs a package without the user having the option to cancel. Also, some packages take a long time to load, so you won't want to install them every time you run a script.
+Install the CRAN package called "cowsay". Run the code to do this and include it in the code chunk below, but comment it out. It is bad practice to write a script that installs a package without the user having the option to cancel. Also, some packages take a long time to load, so you won't want to install them every time you run a script.
 
 ```{r Q6}
 # comment out the installation code
@@ -75,9 +75,17 @@ Install the CRAN package called "fortunes". Run the code to do this and include 
 ```
 
 
-The code below has an error and won't run. Fix the code.
+The code below has errors. Fix the code.
 
 ```{r Q7}
-fortune::fortune()
+cowsay::say)
 ```
 
+```{r Q8}
+cowsay::say(by = pumpkin)
+```
+
+
+```{r Q9}
+cowsay::say(by_colour = "blue")
+```
