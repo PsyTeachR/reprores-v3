@@ -310,7 +310,7 @@ where `n` is the number of randomly generated numbers you want, `mean` is the me
 rnorm()
 ```
 
-If you want 10 random numbers from a normal distribution with mean of 0 and standard deviation, you can just use the defaults.
+If you want 10 random numbers from a normal distribution with mean of 0 and standard deviation of 1, you can just use the defaults.
 
 ```{r rnorm-10}
 rnorm(10)
